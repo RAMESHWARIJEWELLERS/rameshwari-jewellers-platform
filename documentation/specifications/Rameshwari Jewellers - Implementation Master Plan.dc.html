@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15px; line-height: 1.56; }
+h1, h2, h3, h4 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 36px; letter-spacing: -0.03em; }
+h2 { font-size: 22px; margin: 26px 0 4px; }
+h3 { font-size: 16px; margin: 18px 0 6px; }
+h4 { font-size: 14px; font-weight: 600; margin: 14px 0 4px; letter-spacing: 0; }
+h5 { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 14px 0 6px; }
+p { margin: 0 0 10px; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 11px; padding-left: 20px; }
+li { margin: 0 0 4px; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 10px 0 15px; font-size: 11.4px; line-height: 1.4; }
+th { text-align: left; font-weight: 600; font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 8px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 5px 8px 5px 0; vertical-align: top; overflow-wrap: normal; word-break: keep-all; }
+td:nth-last-child(-n+2), td.wrap { overflow-wrap: anywhere; word-break: normal; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 3px; border-radius: 3px; color: #423a6a; }
+pre { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.2px; line-height: 1.5; background: #f3f5fe; border-left: 2px solid #9184d9; padding: 11px 13px; margin: 11px 0 15px; border-radius: 0 8px 8px 0; white-space: pre-wrap; color: #292b31; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.7in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Implementation Master Plan</span>
+  <span>22 stages · greenfield</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>Planning pass. No production code.</span>
+  <span>Stage N begins only after Stage N−1 gate passes</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px">
+  <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Specification → codebase</div>
+  <h1 style="margin:0">Implementation Master Plan</h1>
+  <div style="font-size:17.5px;color:#595d6c;line-height:1.35">Twenty-two dependency-ordered stages, each with an explicit verification gate and a named read scope. The codebase is empty, which makes this simpler than it would otherwise be.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:14px 16px;margin-bottom:16px;break-inside:avoid">
+  <h5 style="margin:0 0 5px;color:#8a6410">The Part 1 finding, stated plainly</h5>
+  <p style="margin:0 0 7px;font-size:14.5px"><strong>There is no existing WordPress codebase.</strong> I listed the project tree rather than assuming: it contains twenty specification documents, the design-system bundle, and two runtime files belonging to the document viewer. <strong>No plugin, no theme, no <code>inc/</code>, no namespaces, no CPT or taxonomy registration, no REST routes, no admin screens, no templates, no Elementor or Gutenberg integration, no AJAX handlers, no repositories, no services, no migrations, no tests, no build tooling, no autoloader.</strong></p>
+  <p style="margin:0;font-size:14px">This is a <strong>greenfield build</strong>. The KEEP / EXTEND / REFACTOR / REPLACE / REMOVE classification your Part 1 asks for has nothing to classify — every file is CREATE. That is good news: there is no legacy conflicting with the locked architecture, so the "existing codebase conflicts" list at the end is empty for a verifiable reason rather than an optimistic one.</p>
+</div>
+
+<h2 style="margin-top:0">1 · Current codebase inventory</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:26%">Category</th><th style="width:14%">Found</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Plugin files</td><td style="color:#8a3a2f">None</td><td>No <code>rameshwari-core</code>, no optional plugins</td></tr>
+    <tr><td>Theme files</td><td style="color:#8a3a2f">None</td><td>No <code>style.css</code>, <code>functions.php</code>, templates or template parts</td></tr>
+    <tr><td>Namespaces · autoloading</td><td style="color:#8a3a2f">None</td><td>No PSR-4 map, no Composer, no bundled autoloader</td></tr>
+    <tr><td>CPT · taxonomy · meta registration</td><td style="color:#8a3a2f">None</td><td>Nothing registered anywhere</td></tr>
+    <tr><td>Options · settings</td><td style="color:#8a3a2f">None</td><td>No group, schema or validator implemented</td></tr>
+    <tr><td>REST routes</td><td style="color:#8a3a2f">None</td><td><code>rj/v1</code> namespace unclaimed</td></tr>
+    <tr><td>Admin screens</td><td style="color:#8a3a2f">None</td><td>21 specified, 0 built</td></tr>
+    <tr><td>Frontend templates · renderers</td><td style="color:#8a3a2f">None</td><td>—</td></tr>
+    <tr><td>Elementor · Gutenberg integration</td><td style="color:#8a3a2f">None</td><td>—</td></tr>
+    <tr><td>Repositories · services · domain</td><td style="color:#8a3a2f">None</td><td>—</td></tr>
+    <tr><td>Tables · migrations</td><td style="color:#8a3a2f">None</td><td>8 specified, 0 created</td></tr>
+    <tr><td>Import / export</td><td style="color:#8a3a2f">None</td><td>—</td></tr>
+    <tr><td>Tests · build tooling · standards config</td><td style="color:#8a3a2f">None</td><td>No PHPUnit, phpcs, phpstan or package manifest</td></tr>
+    <tr><td><strong>Specification documents</strong></td><td style="color:#2f6b3a"><strong>20</strong></td><td>Platform Architecture · UI/UX Blueprint · Technical Blueprint · Development Blueprint · Category Master · Navigation/Facet Decision · Resolver Approval &amp; Lock · Admin UX lock · Elementor Free-First Audit · Final Specification Lock · Synchronization Changelog · plus nine historical reasoning records</td></tr>
+    <tr><td><strong>The one import asset</strong></td><td style="color:#8a6410">Specified, not yet written</td><td><code>documentation/data/categories.json</code> — the 306-term source of record. Its shape is locked in Development Blueprint §8.1; the file itself is a Stage 5 deliverable.</td></tr>
+  </tbody>
+</table>
+<h4>Housekeeping — one item</h4>
+<p><strong>OWNER ACTION BEFORE STAGE 0.</strong> <code>Rameshwari Jewellers - Platform Architecture copy.dc.html</code> sits beside the original. <strong>Two copies of the same architecture will drift.</strong> Delete the duplicate if it is not intentional, or confirm it is deliberate. <strong>Not deleted in any correction pass — the file is still present</strong>, and no pass has claimed otherwise.</p>
+
+<h2>2 · Architecture layers</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p>Sixteen layers. The dependency rule is one-directional: <strong>a layer may depend only on layers above it in this table.</strong> That single constraint is what produces every portability property the specification claims.</p>
+<table>
+  <thead><tr><th style="width:5%">#</th><th style="width:15%">Layer</th><th style="width:30%">Responsibility</th><th style="width:22%">May depend on</th><th>Must NOT depend on</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Support</strong></td><td>Autoloader, cache with transient fallback, locks, rate limiter, typed sanitisers, escapers, string and transliteration helpers, IP hashing, error logger</td><td>Nothing but WordPress core</td><td>Everything else. If Support needs a repository, the helper is in the wrong layer</td></tr>
+    <tr><td>2</td><td><strong>Data</strong></td><td>Registers the 6 post types, 7 taxonomies, all meta with schema and auth callbacks, the 10 options groups, the 8 table definitions, capabilities, rewrites, numbered migrations</td><td>Support</td><td>Domain, Services, Admin, REST, Frontend, any builder, the theme</td></tr>
+    <tr><td>3</td><td><strong>Domain</strong></td><td>Nine aggregates, each a Model + Repository + Validator. Pure PHP: no output, no hooks, no superglobals</td><td>Support, Data</td><td>Admin, REST, Frontend, Elementor, Gutenberg, the theme, the chatbot</td></tr>
+    <tr><td>4</td><td><strong>Validation</strong></td><td>One rule per field, defined once. Consumed identically by admin, REST, importer and CLI</td><td>Support</td><td>Anything that produces output</td></tr>
+    <tr><td>5</td><td><strong>Services</strong></td><td>WhatsApp engine, Leads, MenuTree, Search, ProductIndex, Media, Activity, Importer, Exporter, Notifier, Auth, Schema.org, Health</td><td>Support, Data, Domain, Validation</td><td>Admin, REST, Frontend, builders, theme</td></tr>
+    <tr><td>6</td><td><strong>WordPress adapters</strong></td><td>Hook wiring, cron registration, capability mapping, privacy-tool registration</td><td>Layers 1–5</td><td>Builders, theme</td></tr>
+    <tr><td>7</td><td><strong>REST</strong></td><td>Thin controllers: validate arguments, check permission, delegate, shape the response against a schema</td><td>Layers 1–6</td><td><strong>Business rules.</strong> A controller that decides anything belongs in Domain</td></tr>
+    <tr><td>8</td><td><strong>Admin</strong></td><td>21 screens, list tables, meta boxes, settings screens, notices</td><td>Layers 1–7</td><td><strong>Repository logic.</strong> A screen never queries directly and never re-implements a validator</td></tr>
+    <tr><td>9</td><td><strong>Frontend rendering</strong></td><td>The single shared renderer, query construction, account screens, visual-edit layer, shortcodes</td><td>Layers 1–7</td><td>Builders, theme specifics</td></tr>
+    <tr><td>10</td><td><strong>Gutenberg</strong></td><td>One block per renderer, server-rendered, editor previews</td><td>Layer 9</td><td>Elementor. <strong>Business logic of any kind</strong></td></tr>
+    <tr><td>11</td><td><strong>Elementor</strong></td><td>15 Free-compatible widgets; 11 Pro dynamic tags behind a Pro check</td><td>Layer 9</td><td>Gutenberg. <strong>Business logic of any kind</strong></td></tr>
+    <tr><td>12</td><td><strong>Theme bridge</strong></td><td>Five helper functions the theme may call: contact, WhatsApp URL, render, menu tree, plugin-present check</td><td>Layer 9</td><td>Direct Domain or Data access. The theme reaches business data only through these five doors</td></tr>
+    <tr><td>13</td><td><strong>Security</strong></td><td>Cross-cutting: the four gates, permission callbacks, upload validation, formula guard, secret handling</td><td>Support</td><td>Nothing may bypass it — it is enforced at every write in layers 7, 8, 9</td></tr>
+    <tr><td>14</td><td><strong>Import / export</strong></td><td>Parsers, mappers, dry run, batch committer, rollback ledger, streamed writers</td><td>Layers 1–5</td><td>Admin, REST — those call it, not the reverse</td></tr>
+    <tr><td>15</td><td><strong>Logging / audit</strong></td><td>Diff writer and reader. Called by Domain so every write path logs identically</td><td>Support, Data</td><td><strong>Everything.</strong> Depends on nothing so anything may call it</td></tr>
+    <tr><td>16</td><td><strong>Chatbot</strong> <span style="font-size:9px;color:#8a6410">OPTIONAL</span></td><td>Engine, knowledge layer, provider interface, UI component</td><td>Layers 1–5, 9</td><td><strong>Post meta directly.</strong> Reads only through Domain repositories, so visibility, weight and resolver rules apply automatically</td></tr>
+  </tbody>
+</table>
+<h4>The five prohibitions, and the mechanism that prevents each</h4>
+<table>
+  <thead><tr><th style="width:34%">Prohibition</th><th>Prevented by</th></tr></thead>
+  <tbody>
+    <tr><td>Domain depending on Elementor or the theme</td><td>Domain is layer 3; both are layers 11 and 12. A review rejection, and detectable by static analysis on the namespace map</td></tr>
+    <tr><td>Business logic in widgets or shortcodes</td><td>Both call the layer-9 renderer with arguments. A widget holds settings; it never holds a rule</td></tr>
+    <tr><td>Business logic in templates</td><td>Templates receive a prepared view-model, never a raw post plus meta lookups — which is also what makes a theme override safe for a non-developer</td></tr>
+    <tr><td>Chatbot reading random post meta</td><td>The knowledge layer has no access to <code>get_post_meta</code>; its only inputs are repository methods</td></tr>
+    <tr><td>Admin duplicating repository logic</td><td><strong>Admin screens and REST controllers both call the same shared application/service layer. Neither calls the other, and no admin screen issues an internal HTTP request to the site's REST API.</strong> REST remains the external API transport boundary. A screen with its own query is a review rejection</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">3 · Proposed directory structure</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p>Derived from the locked Development Blueprint §1 and §2.1 rather than from the generic example in your brief. <strong>Three deviations from that example, each for a reason:</strong> <code>src/Repositories</code> and <code>src/Validation</code> are folded into <code>src/Domain/&lt;Aggregate&gt;/</code> because a model, its repository and its validator change together; <code>src/Database</code> is <code>src/Data</code> because it also holds post-type, taxonomy and options registration, not only tables; <code>src/Security</code> is not a directory because security is enforced inside every write path rather than delegated to one, with only its reusable primitives living in <code>Support</code> and <code>Rest/Permissions</code>.</p>
+<pre><code>rameshwari-platform/
+├── plugin/rameshwari-core/          # REQUIRED — all business data and logic
+│   ├── rameshwari-core.php          # header, constants, guards, bootstrap handoff
+│   ├── uninstall.php                # opt-in removal only
+│   ├── languages/rameshwari.pot
+│   ├── assets/{admin,public}/{css,js}/
+│   ├── templates/                   # plugin templates + parts/ + account/
+│   └── src/
+│       ├── Plugin.php  Container.php  ModuleRegistry.php
+│       ├── Activator.php  Deactivator.php  Uninstaller.php  Upgrader.php
+│       ├── Support/                 # layer 1
+│       ├── Data/                    # layer 2  (+ Data/Migrations/)
+│       ├── Domain/<Aggregate>/      # layer 3+4: Model, Repository, Validator
+│       ├── Services/                # layer 5   (+ Services/Chatbot/ — layer 16)
+│       ├── Cron/                    # layer 6
+│       ├── Rest/{Controllers,Permissions,Schemas}/   # layer 7
+│       ├── Admin/{Menu,Screens,MetaBoxes,ListTables,Settings,Notices}/  # 8
+│       ├── Frontend/                # layer 9  (+ Shortcodes, Renderer, Account)
+│       └── Diagnostics/             # Health
+├── optional/
+│   ├── rameshwari-blocks/           # layer 10
+│   ├── rameshwari-elementor/        # layer 11
+│   └── rameshwari-tools/            # CLI + diagnostics, never required
+├── theme/rameshwari/                # layer 12 — presentation only
+│   ├── style.css  functions.php  theme.json  screenshot.png
+│   ├── index.php  header.php  footer.php  front-page.php
+│   ├── page.php  single.php  archive.php  search.php  404.php  searchform.php
+│   ├── inc/                         # setup, enqueue, customizer, nav-walker,
+│   │                                #   template-hooks, patterns, a11y
+│   ├── template-parts/{header,footer,home,content}/
+│   ├── rameshwari/                  # plugin template overrides — empty at launch
+│   ├── patterns/                    # block patterns: Elementor-off rebuild path
+│   └── assets/{css,js,fonts,images}/
+├── documentation/                   # the specification set + decisions/ + runbooks/
+│   └── data/categories.json         # 306-term import source — NOT documentation
+├── tests/{unit,integration,rest,security,migration,regression,fixtures}/
+└── build/{composer.json,package.json,phpcs.xml,phpstan.neon,release.md}</code></pre>
+<table>
+  <thead><tr><th style="width:26%">Directory</th><th>Purpose · and why it exists separately</th></tr></thead>
+  <tbody>
+    <tr><td><code>src/Support/</code></td><td>Primitives depending on nothing. Kept separate so a reviewer can confirm at a glance that nothing here reaches upward.</td></tr>
+    <tr><td><code>src/Data/</code></td><td>The single place a column, a meta key, a post type or an options schema is declared. One file per concern; <code>Migrations/</code> numbered and idempotent.</td></tr>
+    <tr><td><code>src/Domain/&lt;Aggregate&gt;/</code></td><td>Nine folders — Product, Category, Reel, Collection, Showroom, Testimonial, Lead, Customer, Notification. <strong>Plus PageSection</strong>, which the locked architecture requires for hero campaigns. Ten aggregates.</td></tr>
+    <tr><td><code>src/Services/</code></td><td>Cross-aggregate orchestration. <code>Chatbot/</code> is a subfolder, not a sibling plugin, because it must reach repositories — but it is behind a feature gate and loads nothing when off.</td></tr>
+    <tr><td><code>src/Frontend/Shortcodes/</code></td><td>The compatibility floor, built <strong>first</strong> among the presentation layers. Every component reachable without any builder.</td></tr>
+    <tr><td><code>theme/rameshwari/patterns/</code></td><td>Block patterns for every homepage section. This is the concrete Elementor-off rebuild path — without it, "arrangement is rebuildable in hours" is a claim rather than a capability.</td></tr>
+    <tr><td><code>theme/rameshwari/rameshwari/</code></td><td>Plugin template overrides, mirroring the plugin's own tree. <strong>Empty at launch</strong> — the plugin's defaults are sufficient, and an empty folder documents the extension point.</td></tr>
+    <tr><td><code>documentation/data/</code></td><td>Version-controlled business data. The only thing under <code>documentation/</code> that ships.</td></tr>
+  </tbody>
+</table>
+
+<h2>4 · Database implementation map</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p>No SQL. <strong>All eight tables required by the current specification are created by migration 001 in Stage 3. No further table is required by the current specification; the numbered migration router exists so that a future explicitly approved decision can add one without disturbing these eight.</strong> Column detail is locked in Development Blueprint §5 and is not restated.</p>
+<table>
+  <thead><tr><th style="width:15%">Table</th><th style="width:11%">Primary key</th><th style="width:20%">Indexes</th><th style="width:13%">Owner module</th><th style="width:11%">Deletable</th><th>Lifecycle · migration</th></tr></thead>
+  <tbody>
+    <tr><td><code>rj_leads</code></td><td><code>id</code></td><td>created_at · (status, created_at) · (source, object_id) · phone · customer_id</td><td>Domain\Lead</td><td style="color:#8a3a2f">No — revenue record</td><td>Indefinite; spam purged at 60 days. Migration 001</td></tr>
+    <tr><td><code>rj_activity_log</code></td><td><code>id</code></td><td>created_at · (object_type, object_id) · (user_id, created_at)</td><td>Services\Activity</td><td style="color:#8a3a2f">No — security record</td><td>180-day retention, daily batch purge. 001</td></tr>
+    <tr><td><code>rj_notification_queue</code></td><td><code>id</code></td><td>(status, scheduled_at) · (event, created_at) · recipient_id · unique dedupe_key</td><td>Domain\Notification</td><td style="color:#2f6b3a">Yes — transient</td><td>Sent 30 days, dead 90. 001</td></tr>
+    <tr><td><code>rj_wishlist</code></td><td>Composite (user_id, post_id)</td><td>post_id</td><td>Domain\Customer</td><td style="color:#8a3a2f">No — customer data</td><td>Life of account. Composite key makes add idempotent with no pre-check. 001</td></tr>
+    <tr><td><code>rj_recent_views</code></td><td>Composite (user_id, post_id)</td><td>(user_id, viewed_at)</td><td>Domain\Customer</td><td style="color:#2f6b3a">Yes — regenerable</td><td>Trimmed to 40 per customer on write. 001</td></tr>
+    <tr><td><code>rj_login_log</code></td><td><code>id</code></td><td>(user_id, created_at) · (result, created_at)</td><td>Services\Auth</td><td style="color:#8a6410">Partially — needed for lockout</td><td>90-day retention, weekly purge. The second index is what the lockout check reads. 001</td></tr>
+    <tr><td><code>rj_product_index</code></td><td><code>post_id</code></td><td><strong>unique code</strong> · (visibility, weight) · name_hi · name_en · primary_term_id</td><td>Services\ProductIndex</td><td style="color:#2f6b3a">Yes — derived</td><td>Rebuilt on every product save; full rebuild from Tools. <strong>The unique index is where product-code uniqueness is actually enforced.</strong> 001</td></tr>
+    <tr><td><code>rj_import_ledger</code></td><td><code>id</code></td><td>token · (token, id) · created_at</td><td>Services\Importer</td><td style="color:#2f6b3a">Yes after 30 days</td><td>30-day rollback window. <code>(token, id)</code> gives ordered reversal. 001</td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:26%">Aspect</th><th>Decision</th></tr></thead>
+  <tbody>
+    <tr><td>Reference behaviour</td><td>Posts and users referenced by ID, <strong>no foreign-key constraints</strong> — WordPress core does not use them, and a hard constraint would block a legitimate post deletion. Integrity is maintained by a weekly orphan sweep.</td></tr>
+    <tr><td>Deletion behaviour</td><td>Hard-deleting a product nulls <code>rj_leads.object_id</code> but <strong>keeps <code>object_code</code></strong>, so a lead still names the piece. Customer erasure nulls <code>customer_id</code> and keeps the lead.</td></tr>
+    <tr><td>Charset</td><td>Taken from the installation, verified four-byte Unicode at activation and daily. A wrong collation corrupts Devanagari silently, which is why it is a Health check rather than an assumption.</td></tr>
+    <tr><td><strong>Chatbot</strong></td><td><strong>No table. No transcript persistence.</strong> Configuration is the <code>rj_chatbot</code> options group; secrets are server-side constants.</td></tr>
+    <tr><td>Post types (6)</td><td><code>rj_product</code> · <code>rj_reel</code> · <code>rj_collection</code> · <code>rj_showroom</code> · <code>rj_testimonial</code> · <code>rj_page_section</code>. Registered on <code>init</code> priority 5, before anything queries them.</td></tr>
+    <tr><td>Taxonomies (7)</td><td><code>rj_category</code> hierarchical; <code>rj_metal</code>, <code>rj_purity</code>, <code>rj_occasion</code>, <code>rj_audience</code>, <code>rj_collection_tax</code>, <code>rj_tag</code> flat. Same priority, before attachment.</td></tr>
+    <tr><td>Options groups (10)</td><td>Four autoload — contact, whatsapp, display, features. Six do not — auth_providers, notifications, seo, db_version, install_state, <strong>chatbot</strong>. Every write schema-validated then read back and compared.</td></tr>
+    <tr><td>Rollback</td><td>Migrations are reversible or additive-only, numbered, idempotent, run behind a lock on <code>admin_init</code> or CLI — <strong>never on a front-end request</strong>. A downgrade cannot corrupt data.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">5 · Zero-data-loss design</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:24%">Event</th><th style="width:14%">Data lost</th><th>Mechanism</th></tr></thead>
+  <tbody>
+    <tr><td>Plugin update</td><td style="color:#2f6b3a">None</td><td>Schema version drives numbered idempotent migrations behind a lock. Capabilities re-asserted from one map on upgrade, repairing a role another plugin edited.</td></tr>
+    <tr><td>Theme change</td><td style="color:#8a6410">Arrangement only</td><td>All data in core post types, taxonomies, meta and the eight tables — plugin-registered. Rewrites plugin-owned, so no URL changes and nothing 404s. Components plugin-rendered. <strong>The test: delete <code>functions.php</code> and <code>style.css</code>; if one row, one setting or one working WhatsApp link is lost, code moves to the plugin.</strong></td></tr>
+    <tr><td>Elementor removed</td><td style="color:#8a6410">Arrangement only</td><td>Widget settings are layout settings. Builder pages fall back to the theme page template; catalogue pages were never Elementor templates. Rebuild path: the theme's block patterns.</td></tr>
+    <tr><td>Elementor Pro absent</td><td style="color:#2f6b3a">None</td><td>Zero required base dynamic tags. Pro-only controls take defaults; the 15 widgets are Free-registered.</td></tr>
+    <tr><td>Builder replaced entirely</td><td style="color:#8a6410">Arrangement only</td><td>Shortcodes are the floor — every component reachable from any builder or none.</td></tr>
+    <tr><td>Host change</td><td style="color:#2f6b3a">None <em>except secrets</em></td><td>Media referenced by <strong>attachment ID, never URL</strong>, so there is no search-and-replace through serialised content — the commonest migration failure, designed out. <strong>Provider secrets live in server configuration and must be transferred separately; they do not travel in the database.</strong></td></tr>
+    <tr><td>Failed update rolled back</td><td style="color:#2f6b3a">None</td><td>Pre-release backup is automatic. Redeploy the previous plugin version; migrations are reversible or additive-only.</td></tr>
+    <tr><td>Bad import</td><td style="color:#2f6b3a">None within 30 days</td><td>Dry run before any write; ledger records every created ID and prior value; rollback reverses in reverse order in batches, flagging records a human has since edited.</td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:40%">Database-owned — source of truth</th><th>Presentation-owned — rebuildable</th></tr></thead>
+  <tbody>
+    <tr><td>Products · 306 categories and their resolver mappings · reels · collections · showrooms and timings · testimonials · hero campaigns and schedules · search synonyms · leads · customers, wishlists, view history, notification preferences, consent · activity log · all 10 settings groups · media (as attachments)</td><td>Header and footer arrangement · homepage section order · builder-composed page layouts · widget and block settings · theme tokens · block patterns · Customizer presentation settings</td></tr>
+  </tbody>
+</table>
+<p><strong>The load-bearing rule:</strong> a theme template is never the source of truth for business data. Contact details, WhatsApp numbers, addresses and hours reach a template only through the five bridge functions, and a Tools scan flags any phone-number-shaped string typed into post content.</p>
+
+<h2 style="break-before:page">6 · Implementation stages</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p>Twenty-two stages, ordered by technical dependency rather than by visible feature. <strong>Four deviations from your example order, each with a reason:</strong> the resolver merges into the category engine (its mappings are term meta, and splitting them means writing the tree twice); shortcodes get their own stage before Gutenberg and Elementor (they are the compatibility floor everything else falls back to); the theme comes before the builders (widgets wrap renderers already proven in templates); and the category import moves earlier, because the theme must be built against real content — a theme built on fake data hides every real edge case.</p>
+
+<h3>Stage 0 — Environment baseline</h3>
+<table>
+  <thead><tr><th style="width:18%">Field</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Goal</td><td>A working development, staging and version-control setup before one line of plugin code exists.</td></tr>
+    <tr><td>Dependencies</td><td>None.</td></tr>
+    <tr><td>Deliverables</td><td>Git repository <strong>hosted on GitHub</strong>, with branches <strong><code>main</code></strong> (releases) and <strong><code>develop</code></strong> (integration), holding the directory skeleton of §3 · <strong>GitHub's hosted pipeline configured to run the coding-standard check, static analysis and the test suites on every push</strong> · <code>build/composer.json</code> (dev tooling only) · <code>phpcs.xml</code> on WordPress standards · <code>phpstan.neon</code> with a rule banning dynamic evaluation, shell execution and variable include paths · PHPUnit configured against a WordPress test installation · staging environment mirroring production · backup taken and <strong>its restore verified</strong> · the <code>Platform Architecture copy</code> duplicate deleted.</td></tr>
+    <tr><td>DB · Admin · Frontend</td><td>None · none · none.</td></tr>
+    <tr><td>Tests</td><td>One trivial passing test, to prove the harness runs.</td></tr>
+    <tr><td><strong>Gate</strong></td><td>Staging restores from backup successfully; phpcs and phpstan both run clean on the empty tree; the trivial test passes.</td></tr>
+    <tr><td>Rollback</td><td>Nothing to roll back — no code, no data.</td></tr>
+  </tbody>
+</table>
+
+<h3>Stage 1 — Bootstrap and container</h3>
+<table>
+  <thead><tr><th style="width:18%">Field</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Goal</td><td>A plugin that activates cleanly and does nothing else.</td></tr>
+    <tr><td>Dependencies</td><td>Stage 0.</td></tr>
+    <tr><td>Files</td><td><code>rameshwari-core.php</code> · <code>src/Plugin.php</code> · <code>Container.php</code> · <code>ModuleRegistry.php</code> · <code>Support/Autoloader.php</code> · <code>Support/Logger.php</code></td></tr>
+    <tr><td>Deliverables</td><td>Constants (<code>RJ_VERSION</code>, <code>RJ_DB_VERSION</code>, <code>RJ_FILE</code>, <code>RJ_PATH</code>, <code>RJ_URL</code>, <code>RJ_MIN_PHP</code> = 8.2, <code>RJ_MIN_WP</code> = 6.5, <code>RJ_TEXTDOMAIN</code>) · minimum-version guards that deactivate gracefully with a notice · bundled PSR-4 autoloader (Composer optional, because some shared hosts block it) · service locator with lazy factories, no reflection · module registry topologically sorted at boot. <strong>The module contract:</strong> constructors do no work, <code>register()</code> only adds hooks — which makes load order irrelevant and every module testable alone.</td></tr>
+    <tr><td>DB · Admin · Frontend</td><td>None · none · none.</td></tr>
+    <tr><td>Tests</td><td>Unit: container resolves lazily; registry sorts a dependency graph; a cyclic graph is rejected with a clear error.</td></tr>
+    <tr><td><strong>Gate</strong></td><td>Plugin activates and deactivates with zero notices on PHP at the declared minimum and at current. Activating below the minimum shows the guard notice and does not fatal.</td></tr>
+    <tr><td>Rollback</td><td>Deactivate. No data touched.</td></tr>
+  </tbody>
+</table>
+
+<h3>Stage 2 — Support primitives</h3>
+<table>
+  <thead><tr><th style="width:18%">Field</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Goal</td><td>Every layer-1 primitive, tested in isolation, before anything depends on one.</td></tr>
+    <tr><td>Dependencies</td><td>Stage 1.</td></tr>
+    <tr><td>Files</td><td><code>Support/</code>: Assets · Template · Cache · Lock · RateLimiter · Sanitizer · Escaper · Str · Hash</td></tr>
+    <tr><td>Deliverables</td><td>Versioned-key cache over the object cache with a <strong>transient fallback</strong>, so every later cache degrades to "slower, never wrong" on free hosting · cooperative locks · rate-limit counters · the typed sanitiser library the field registry will reference · the three-step template lookup (child theme → parent → plugin) · Devanagari-to-Latin transliteration and slug generation · salted IP hashing, the <strong>only</strong> place a raw address is seen.</td></tr>
+    <tr><td>Tests</td><td>Unit, heavily: cache with and without a persistent backend; version bump invalidates a whole group in one write; lock prevents overlap; rate limiter counts and expires; each sanitiser against valid, invalid and boundary input; transliteration on all 306 category names; hashing is stable and non-reversible.</td></tr>
+    <tr><td><strong>Gate</strong></td><td>Full unit suite green. Cache tests pass in both modes — this is the property that keeps InfinityFree viable.</td></tr>
+    <tr><td>Rollback</td><td>Deactivate. No data.</td></tr>
+  </tbody>
+</table>
+
+<h3>Stage 3 — Schema and migrations</h3>
+<table>
+  <thead><tr><th style="width:18%">Field</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Goal</td><td>All eight tables, the migration runner, roles and capabilities.</td></tr>
+    <tr><td>Dependencies</td><td>Stage 2.</td></tr>
+    <tr><td>Files</td><td><code>Data/Schema.php</code> · <code>Data/Capabilities.php</code> · <code>Data/Migrations/Migration_001.php</code> · <code>Activator.php</code> · <code>Deactivator.php</code> · <code>Upgrader.php</code> · <code>Uninstaller.php</code></td></tr>
+    <tr><td>Deliverables</td><td>Eight tables per §4, prefixed at runtime, charset from the installation · schema version stored · migration router running on <code>admin_init</code> or CLI only, behind a lock · capability map applied at activation and re-asserted on upgrade · customer role read-only · uninstall removes nothing unless the owner opts in.</td></tr>
+    <tr><td>DB impact</td><td><strong>All of it.</strong> This is the only stage that creates a table.</td></tr>
+    <tr><td>Tests</td><td>Migration: fresh install creates all eight with correct indexes; running twice is a no-op; four-byte Unicode verified by writing and reading a Devanagari string; a failure mid-migration leaves a consistent state. Permission: the capability matrix asserted for all five actor types.</td></tr>
+    <tr><td><strong>Gate</strong></td><td>Clean install creates eight tables with every specified index. Re-activation is idempotent. A Devanagari round-trip through each text column is byte-identical.</td></tr>
+    <tr><td>Rollback</td><td><strong>Stage 3 has no data rollback</strong> — its recovery mechanism for a destructive failure is a <strong>verified restore</strong>. Migration 001 is reversible in staging; in production, take the pre-release backup first and verify the restore before running. Dropping tables is the one genuinely destructive step in the whole plan.</td></tr>
+  </tbody>
+</table>
+
+<h3>Stage 4 — Core registries</h3>
+<table>
+  <thead><tr><th style="width:18%">Field</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Goal</td><td>Six post types, seven taxonomies, every meta key, ten options groups. <strong>Names become permanent here.</strong></td></tr>
+    <tr><td>Dependencies</td><td>Stage 3.</td></tr>
+    <tr><td>Files</td><td><code>Data/PostTypes.php</code> · <code>Taxonomies.php</code> · <code>Meta.php</code> · <code>Options.php</code> · <code>Rewrites.php</code></td></tr>
+    <tr><td>Deliverables</td><td>Registration on <code>init</code> priority 5 · every meta key from Development Blueprint §9 with type, REST schema, sanitiser and <strong>explicit auth callback</strong> (the default lets any post editor write, which enquiry agents must not) · the three derived category caches write-blocked over REST · ten options groups with schemas and <strong>write-then-read verification</strong> · rewrites for short product codes and account screens, flushed only on activation and an explicit Tools action.</td></tr>
+    <tr><td>Admin impact</td><td>Native WordPress screens appear for all six post types — the owner can already create records, unstyled.</td></tr>
+    <tr><td>Tests</td><td>Integration: every entity creatable and readable over <code>wp/v2</code> on a stock theme with only core active. <strong>Regression 1:</strong> each of the ten groups written, read back and compared, with a mismatch failing the test. <strong>Regression 5:</strong> a category term created via UI, REST, import and direct insert is visible in all four cases.</td></tr>
+    <tr><td><strong>Gate</strong></td><td>Six post types, seven taxonomies, ten groups present. Settings save and reflect immediately. <strong>Theme-independence test 1 of 5 passes:</strong> stock theme, core only, every entity editable and REST-readable.</td></tr>
+    <tr><td>Rollback</td><td>Deactivation unregisters; data persists as orphaned post rows, recoverable on reactivation. No loss.</td></tr>
+  </tbody>
+</table>
+
+<h3>Stage 5 — Category engine and resolver</h3>
+<table>
+  <thead><tr><th style="width:18%">Field</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Goal</td><td>The 306-term tree, its caches, its guards, and Model B resolution. <strong>Merged with the resolver deliberately</strong> — resolver mappings are term meta on the same terms, and separating them means writing the tree twice.</td></tr>
+    <tr><td>Dependencies</td><td>Stage 4.</td></tr>
+    <tr><td>Files</td><td><code>Domain/Category/{Model,Repository,Validator}.php</code> · <code>Services/MenuTree.php</code> · <code>Services/Importer/{JsonParser,BranchCloner}.php</code> · <code>documentation/data/categories.json</code></td></tr>
+    <tr><td>Deliverables</td><td>Path and depth caches, rewritten inside the same transaction as any reparent, plus a nightly rebuild and a live fallback if stale · sibling ordering gapped by 10 · deep counts written hourly, never live · <strong>three independent cycle guards</strong> (model, UI, weekly sweep) with a depth-20 ceiling as a corruption detector, not a business limit · resolver Shape A (tax + slug) and <strong>Shape B (portable <code>paths</code> + derived <code>terms</code>)</strong> · the 306-term JSON authored from the Category Master, path-matched so re-import updates rather than duplicates · branch clone, which is how Black Polish Silver is produced from Silver rather than by hand.</td></tr>
+    <tr><td>Tests</td><td><strong>Regression 6:</strong> visible term count and menu payload count identical before and after a full-branch reorder. <strong>Regression 7:</strong> self-parent, descendant-parent and a deep chain all rejected at model, UI and sweep. Integration: 306 terms imported, counts asserted at 5 roots / 74 / 98 / 98; re-import produces no duplicates; duplicate leaf names under different parents remain distinct; 22 resolver mappings resolve; a reparent re-resolves Shape B from paths; a broken mapping raises a Health warning and 404s rather than returning empty.</td></tr>
+    <tr><td><strong>Gate</strong></td><td>306 terms present with exact branch counts. Reorder and reparent preserve every count and every resolver mapping. <strong>No product may be assigned to a resolver term</strong> — rejected at REST with 409 and at import during dry run.</td></tr>
+    <tr><td>Rollback</td><td>The import's own 30-day ledger. Caches are derived and rebuildable from scratch at any time.</td></tr>
+  </tbody>
+</table>
+
+<h3>Stage 6 — Product domain</h3>
+<table>
+  <thead><tr><th style="width:18%">Field</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Goal</td><td>The product aggregate, its index, and code uniqueness.</td></tr>
+    <tr><td>Dependencies</td><td>Stage 5.</td></tr>
+    <tr><td>Files</td><td><code>Domain/Product/{Model,Repository,Validator}.php</code> · <code>Services/ProductIndex.php</code> · <code>Services/Search.php</code></td></tr>
+    <tr><td>Deliverables</td><td>Find by ID, by code, by filter · save with index sync · visibility transitions (public, hidden, archived) · <strong>archive rather than delete</strong> · unified search across Hindi name, English name, slug, product code and <code>_rj_name_alt</code> synonyms · filtering by <strong>taxonomy, never meta</strong>, because metal, purity, audience and occasion are taxonomies precisely so filtering uses indexed relationship tables.</td></tr>
+    <tr><td>Tests</td><td><strong>Regression 8:</strong> a duplicate code via UI, REST and import is rejected with 409 naming the conflict. Integration: index stays in step across save, restore and bulk edit; a full rebuild reproduces it byte-for-byte; search matches all five field types; synonyms match without altering identity or URL.</td></tr>
+    <tr><td><strong>Gate</strong></td><td>Code uniqueness enforced at the unique index, not only in application code. Search returns Hindi, English and code matches. Filtering issues no meta query.</td></tr>
+    <tr><td>Rollback</td><td>The index is derived — drop and rebuild.</td></tr>
+  </tbody>
+</table>
+
+<h3>Stages 7–11 — remaining domain and services</h3>
+<table>
+  <thead><tr><th style="width:6%">St</th><th style="width:15%">Name</th><th style="width:26%">Deliverables</th><th style="width:24%">Tests</th><th>Gate</th></tr></thead>
+  <tbody>
+    <tr><td><strong>7</strong></td><td>Media pipeline</td><td>Five image sizes, plugin-registered so a theme change never orphans one · WebP on upload, AVIF where available, <strong>originals always kept</strong> · responsive output with dimensions always declared · gallery as an ordered array (no separate sort field to drift) · chunked resumable bulk upload · replace keeping the attachment ID · reference guard blocking deletion of a referenced file · poster extraction for reels · alt text generated from names when blank · daily audit</td><td><strong>Regression 3:</strong> every enqueued handle resolves to an existing file. <strong>Regression 4:</strong> a reel with no poster renders a generated frame and plays. Unit: format generation degrades to JPEG with a Health warning where the server cannot</td><td>A 60-image upload over a slow connection completes or resumes. Replace updates every reference at once. Missing-media audit reports accurately</td></tr>
+    <tr><td><strong>8</strong></td><td>Reels · collections · showrooms · testimonials</td><td>Four aggregates. Reel source resolution across <strong>MP4 upload, Instagram, YouTube Shorts and external URL</strong>, each host allow-listed per type, MIME verified by file content · collection membership via the link taxonomy so retiring a collection never touches its products · showroom address, <code>_rj_timings</code> seven-day model and open-now in the site timezone · testimonials with ordering. <strong>No <code>rj_reel_type</code></strong> — reel filtering uses <code>rj_tag</code></td><td>Integration: all four source types resolve; an unreachable provider degrades with a logged warning and no visitor-facing error; open-now correct across midnight and closed days; public timings read stored data with no hardcoded fallback</td><td>All four reel sources play. Showroom timings come from the database. No reel-type taxonomy exists</td></tr>
+    <tr><td><strong>9</strong></td><td>Page sections and hero</td><td><code>Domain/PageSection</code> with the eleven meta keys · <strong>eligibility computed at read, never written by cron</strong> · cache TTL bounded by the next start or end boundary among all scheduled sections, so a campaign appears and retires on time even where cron is unreliable · desktop renders all active in order; <strong>mobile renders only the single lowest-order active</strong>, with no carousel script and no sibling images · <strong>no eligible campaign means the section is not rendered at all</strong></td><td>Integration: a campaign appears at its start and retires at its end with cron disabled; a dateless campaign is always eligible; overlap resolves by order. <strong>The zero-space test:</strong> with no eligible campaign, the hero contributes no wrapper, no height and no placeholder, and the next section moves up — asserted on desktop, tablet and mobile</td><td>Scheduling works without cron. Zero layout space when ineligible, measured not assumed</td></tr>
+    <tr><td><strong>10</strong></td><td>WhatsApp and leads</td><td><strong>One engine, no exceptions.</strong> Number normalisation at save · five templates with declared tokens · token resolution escaped for URL context so a product name cannot inject a parameter · fallback number then a call-us degradation, never a dead link · 900-character truncation on a word boundary preserving the product link · web-scheme links, not app-scheme · lead written <strong>server-side before the redirect</strong> · honeypot, dwell time, rate limit, 30-minute dedupe</td><td><strong>Regression 15:</strong> a lead insert that throws still returns a valid WhatsApp URL and the client still redirects. Unit: Devanagari round-trips through URL encoding unmangled; an unknown template token is rejected at save; over-length truncation preserves the link. Integration: changing the number in settings changes every link on the site</td><td>Changing the number once changes it everywhere. A failed lead write never blocks the conversation</td></tr>
+    <tr><td><strong>11</strong></td><td>Activity log and REST</td><td>Diff writer called <strong>by the domain layer</strong>, so a change made in admin, over REST, by the importer or from CLI is logged identically · denormalised actor login so an entry still names its author after the user is deleted · salted IP hash only · secrets masked at write · append-only in the application layer · then all 28 <code>rj/v1</code> routes as thin controllers with explicit permission callbacks, declared arguments, opt-in response schemas, pagination caps and one error shape</td><td>REST: every route for arguments, schema, status codes, pagination and cache headers. Permission: every route attempted as each of the five actor types — <strong>exhaustive, not sampled</strong>. Security: a not-visible record returns 404, not 403, so existence is not disclosed</td><td>No route lacks a permission callback. Every write produces an activity entry with a diff. Secrets appear in no response, log or export</td></tr>
+  </tbody>
+</table>
+
+<h3>Stages 12–16 — admin, presentation and builders</h3>
+<table>
+  <thead><tr><th style="width:6%">St</th><th style="width:15%">Name</th><th style="width:26%">Deliverables</th><th style="width:24%">Tests</th><th>Gate</th></tr></thead>
+  <tbody>
+    <tr><td><strong>12</strong></td><td>Admin UX — 21 screens</td><td>All 21 per Development Blueprint §17, consuming the Stage 11 routes rather than re-implementing them. Every list sorted, filtered and paged <strong>server-side</strong>; no screen loads a full result set. The category tree manager is virtualised for 1,500 terms with core UI and quick-edit disabled. Every destructive action confirms and names its consequence; every save writes a diff; <strong>a failed save re-renders with the submitted values intact</strong></td><td>Admin workflow, scripted: the owner publishes a product, a reel and a category <strong>from a phone, unaided</strong>. Each screen's empty, error and success states asserted. Bulk actions on 500 records complete without timeout</td><td>Twenty-one screens reachable and usable. Admin product list under 800 ms at 20,000 products. No screen queries directly</td></tr>
+    <tr><td><strong>13</strong></td><td>Shared renderer and shortcodes</td><td><strong>The compatibility floor, built before any builder.</strong> One renderer per component, one shortcode each, and the query layer applying the discipline rules — found-rows skipped where no count shows, only needed caches primed, IDs then hydrate, never an unbounded result set. Resolver archives resolve <strong>here</strong>, in the query layer, so no builder ever resolves anything</td><td>Integration: every shortcode renders correctly in a post, a page, a widget area and a template. Empty states identical across all three surfaces. Query counts under 40 per page uncached</td><td>Every component reachable with no builder installed. Resolver archives work through the query layer alone</td></tr>
+    <tr><td><strong>14</strong></td><td>Theme</td><td>Child theme, token sheet, the 16 template parts, plugin template overrides left empty, block patterns for every homepage section, <strong>Mega Menu as a theme component</strong> reading the cached tree, the five bridge functions each guarded by <code>function_exists</code>, breadcrumbs, structured data, sitemap. Built against the real 306 categories and real products from Stage 5</td><td><strong>Regression 11:</strong> switch to a stock theme — all counts identical, 20 sampled products render fully, no term hidden, no sitemap URL 404s. Performance, measured in the reference environment defined below: LCP under 2.5 s, INP under 200 ms, CLS under 0.05; JS under 20 KB and CSS under 45 KB gzipped; mega menu under 50 ms at 1,000 terms, <strong>warm cache</strong></td><td>All budgets met in the reference environment, device model and cache state recorded. <strong>Deleting <code>functions.php</code> and <code>style.css</code> loses no data, no setting and no working WhatsApp link</strong></td></tr>
+    <tr><td><strong>15</strong></td><td>Gutenberg blocks</td><td>One server-rendered block per renderer with editor previews and a block variation per preset. <strong>Before Elementor deliberately</strong> — blocks plus shortcodes are the fallback Elementor rests on, and building them second would leave no floor to fall back to</td><td>Integration: every block renders identically to its shortcode. A block whose renderer is missing warns in the editor and outputs nothing publicly. Placed blocks survive plugin deactivation as invalid-block notices with no data loss</td><td>Every component available in Gutenberg. Output identical to the shortcode path</td></tr>
+    <tr><td><strong>16</strong></td><td>Elementor Free integration</td><td><strong>15 widgets registered on Elementor Core</strong> via <code>elementor/widgets/register</code> — thin adapters collecting settings and calling the Stage 13 renderer, with no markup, query or rule of their own. Data controls only; colour, spacing and type come from the tokens and Elementor's own style tab. Presets rather than widgets for Category Slider, Reel Slider, Featured Categories and Store Locator. <strong>Zero dynamic tags.</strong> The 11 Pro tags behind a Pro check, built only if Pro is ever bought</td><td><strong>Regression 10, two configurations:</strong> Elementor Free with Pro absent, and Elementor deactivated. Both must pass for all 13 named surfaces. Editor previews capped at 12 items. One query per widget instance — four product widgets make four queries, not four times their cards</td><td><strong>The removal test passes line by line:</strong> deactivate Elementor, switch to a stock theme, and every product, category, reel, collection and showroom still renders with its image, names, specification and a working WhatsApp button. Plain, not broken</td></tr>
+  </tbody>
+</table>
+
+<h3>Stages 17–21 — accounts, chatbot, data tooling, hardening, launch</h3>
+<table>
+  <thead><tr><th style="width:6%">St</th><th style="width:15%">Name</th><th style="width:26%">Deliverables</th><th style="width:24%">Tests</th><th>Gate</th></tr></thead>
+  <tbody>
+    <tr><td><strong>17</strong></td><td>Accounts and auth</td><td>Customer role, provider registry behind one interface, email and password sign-on with double opt-in, <strong>WordPress-native password reset</strong> (single-use, time-limited, hashed, invalidated on use and re-request, rate limited, non-enumerating, presented in the account area), <strong>persistent session</strong> on the standard auth cookie with remember-me and <strong>no client-side token</strong>, nonce-protected logout destroying the server-side token, eight account screens as rewrite-driven virtual pages, guest-local wishlist and view history, <strong>guest-first merge that never overwrites</strong>, admin customer panel with indexed search, privacy tooling. Google login with PKCE and subject-ID matching. <strong>Logout-all reserved, not built</strong></td><td><strong>Regression 2:</strong> all auth flows pass headless with no third-party cookie and no session storage. <strong>Regression 9:</strong> credentials removed — no button renders, email login works, no error, no console error. Integration: reset key single-use and time-limited; the form cannot enumerate; a session survives navigation and ends on each of the six named conditions; guest merge loses nothing. <strong>Accounts off: every catalogue surface works and no login control renders anywhere</strong></td><td>Browsing works with accounts on and off. Reset works. A login persists across pages and visits. No token in <code>localStorage</code> or <code>sessionStorage</code></td></tr>
+    <tr><td><strong>18</strong></td><td>Notifications</td><td>Event bus as ordinary actions with documented payloads · audience from <strong><code>_rj_notify_prefs</code></strong> — what the customer opted into, never an inferred segment · queue, worker every five minutes behind a lock, 50 rows a pass, backoff over five attempts then dead · digests, because a jewellery shop publishes twenty pieces from one shoot and twenty emails costs the list · quiet hours 22:00–08:00 IST · email and admin-notice drivers, both free · preference centre and signed unsubscribe needing no login. <strong>No segment storage of any kind</strong></td><td><strong>Regression 14:</strong> a driver that throws — the product still publishes, the row marks failed, retry is scheduled. Integration: a published product reaches subscribers as a digest <strong>with no paid service configured</strong>; de-duplication suppresses a re-publish; quiet hours shift delivery; throttle rolls excess into the next digest</td><td>Notifications work with no external account and no API key. A failing driver never blocks a publish</td></tr>
+    <tr><td><strong>19</strong></td><td>Import / export / rollback</td><td>Three-phase import — map, <strong>dry run</strong>, commit — where the report is the approval step. Batches of 100 behind a lock, resumable, writing the ledger as it goes. Products by code, categories by <strong>full slug path</strong>, collections by slug, reels by source URL. Leads and customers <strong>export-only</strong>, because importing customers would bypass consent. Streamed export with a byte-order marker so Devanagari opens correctly, formula-injection escaping on every free-text cell, explicit column selection with sensitive fields unselectable, <strong>resolver Shape B paths preserved</strong></td><td>Integration: dry-run counts match the commit exactly; rollback restores prior values in reverse order; a record edited by a human after import is flagged, not overwritten; a timeout mid-batch leaves a consistent state and a resume point. <strong>Regression 20:</strong> a cell beginning with a formula character is escaped on export</td><td>No import writes without a dry run. Rollback verified within the 30-day window. Devanagari survives a full export-import cycle</td></tr>
+    <tr><td><strong>20</strong></td><td>Chatbot <span style="font-size:9px;color:#8a6410">OPTIONAL</span></td><td><strong>Off by default.</strong> Feature gate in <code>rj_features.chatbot</code>; configuration in the non-autoloaded <code>rj_chatbot</code> group; <strong>secrets in server-side constants only</strong>, with a configured / not-configured indicator that never renders the value. Engine, knowledge layer reading <strong>only through repositories</strong>, provider interface mirroring the notification driver, WhatsApp handoff reusing the locked engine, lead <code>source</code> gaining a value rather than a column. Placed last because it is optional and depends on nine earlier stages</td><td><strong>Off:</strong> no UI, <strong>no script or stylesheet enqueued</strong>, no provider request, nothing else degraded. <strong>On:</strong> answers from RJ data; refuses price and stock as permanently unsupported; <strong>respects <code>show_weight_publicly</code></strong> — weight never reaches the knowledge layer when off; an unavailable provider degrades to fallback and handoff without breaking the page; no outbound call on a page render</td><td>Business fully functional with the chatbot off. With it on, no fabricated fact and no secret reachable from the browser</td></tr>
+    <tr><td><strong>21</strong></td><td>Hardening, testing, launch</td><td>Security audit against every row of Development Blueprint §21 · exhaustive permission matrix · static analysis clean · accessibility audit against UI/UX §15 · real-device testing on iOS Safari and Android Chrome · load test at 1,000 categories and 20,000 products · <strong>restore rehearsal</strong> · owner training · content load, redirects, sitemap submission, backup verification, rollback plan, seven-day watch</td><td>All 20 regression tests green — Development Blueprint §24, rows 1–20. Every suite passing. <strong>Regression 12:</strong> export, import to a clean installation — counts match, Devanagari intact, media resolves, WhatsApp works, a test lead captures</td><td>Written sign-off on security, accessibility and performance. <strong>Live with a tested restore and no Health warnings.</strong> The owner publishes unaided</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">7 · Stage dependency graph</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<pre><code>0 ─ 1 ─ 2 ─ 3 ─ 4 ─ 5 ─ 6 ─┬─ 7 ──┬─ 8 ─┐
+ env  boot sup  db  reg  cat prod │ media│ rcs │
+                                  │      │     │
+                                  ├─ 9 ──┤     │   9 = hero (needs 7 media)
+                                  ├─ 10 ─┤     │  10 = whatsapp + leads
+                                  └─ 11 ─┴─────┤  11 = activity + REST
+                                               │
+                                     ┌─────────┴─ 12 admin      (needs 11)
+                                     ├─────────── 13 renderer   (needs 11)
+                                     │             │
+                                     │             ├─ 14 theme  (needs 13)
+                                     │             ├─ 15 blocks (needs 13)
+                                     │             └─ 16 elementor (needs 15)
+                                     │
+                                     ├─────────── 17 accounts   (needs 11)  ─┐
+                                     │             └─ 18 notifications      │
+                                     ├─────────── 19 imp/exp (7,8,10,11,17) │
+                                     └─────────── 20 chatbot (13,17,10,19)  │
+                                                                            │
+                                                        21 hardening ◄──── all</code></pre>
+<table>
+  <thead><tr><th style="width:26%">Property</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Strictly sequential</td><td>0 → 1 → 2 → 3 → 4 → 5 → 6. Nothing may be parallelised before Stage 6: each builds directly on the previous, and Stage 4 fixes permanent identifiers.</td></tr>
+    <tr><td>First parallel opportunity</td><td>Declared dependencies, not stage numbers: <strong>7 ← 6 · 8 ← 6 · 9 ← 7 · 10 ← 6 · 11 ← 6.</strong> So after Stage 6 passes its gate, <strong>7, 8, 10 and 11 may begin; Stage 9 waits for Stage 7</strong> because it needs the media pipeline. Four stages in parallel, not five.</td></tr>
+    <tr><td>Stage 19 dependencies</td><td><strong>19 ← 7 · 8 · 10 · 11 · 17.</strong> Media for imported product images; reels, collections and showrooms for their importers; leads and customers for their export-only datasets; the activity log and REST routes that every import, export and rollback uses. Stages 5 and 6 are reached through 7 and 8. Because 19 waits for 17, the path 0→6→11→17→19→20→21 is also twelve stages, so the customer chain has no slack.</td></tr>
+    <tr><td>Dependency source</td><td>Stages 0–6 declare their dependencies in their own stage tables. <strong>For Stages 7–21 this dependency graph is the single authoritative source</strong>; their compact stage table carries deliverables, tests and gates only. Where a stage table and the graph differ, the graph governs.</td></tr>
+    <tr><td>Second parallel opportunity</td><td>After Stage 11: the presentation chain (12, 13 → 14, 15 → 16) and the customer chain (17 → 18) touch no shared code. <strong>This is the only place two people can work for a sustained period without collision.</strong></td></tr>
+    <tr><td>Critical path</td><td>0→1→2→3→4→5→6→11→13→15→16→21. <strong>Twelve stages.</strong> Everything else has slack.</td></tr>
+    <tr><td>Latest-possible stages</td><td>18 (needs an audience), 20 (optional, depends on nine others), 21 (needs everything).</td></tr>
+    <tr><td>Priority if time runs short</td><td>Catalogue and tree (5, 6) → WhatsApp and leads (10) → public site and menu (13, 14) → reels (8) → showrooms and collections (8). <strong>Launching with those is a working business asset;</strong> accounts, notifications and the chatbot are valuable and not required to sell.</td></tr>
+  </tbody>
+</table>
+
+<h2>8 · Admin implementation map</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p>All 21 screens. The workflow column describes what the owner actually does — not "CRUD".</p>
+<table>
+  <thead><tr><th style="width:13%">Screen</th><th style="width:13%">Capability</th><th style="width:13%">Repository / service</th><th style="width:32%">Usable workflow</th><th>States · bulk</th></tr></thead>
+  <tbody>
+    <tr><td>Products list</td><td>rj_manage_catalogue</td><td>Product repo + ProductIndex</td><td>Filter by category, metal, purity, visibility; search by code or either name; scan a column of thumbnails with code and weight; click through to edit</td><td>Empty: "Add your first piece" with the import link · bulk visibility, assign collection, assign category, regenerate thumbnails</td></tr>
+    <tr><td>Product edit</td><td>rj_manage_catalogue</td><td>Product repo + Validator</td><td>The locked sequence in one screen: name → Hindi and English names → code → metal → purity → weight → gallery → categories → <strong>primary category</strong> → collection → tags → WhatsApp override → visibility → save. Four meta boxes group these so the shop's own order is followed</td><td>Error: field-level, beside the field, submitted values preserved · Success: "Saved" with a view link</td></tr>
+    <tr><td>Categories</td><td>rj_manage_categories</td><td>Category repo + MenuTree</td><td>A virtualised drag tree over 306 terms: expand a branch, drag to reorder or reparent, edit a term inline for Hindi name, English name, synonyms, image, SEO and visibility, set the resolver mapping on the 22 navigation terms, reassign-then-delete</td><td>Hidden terms always shown and marked · a refused drop explains why (cycle) · bulk visibility</td></tr>
+    <tr><td>Hero &amp; Sections</td><td>rj_manage_settings</td><td>PageSection repo</td><td>A campaign list with computed status and a count of how many are currently active, so the owner can see the consequence before publishing; add a campaign with two image crops, bilingual titles, description, CTA, dates, active flag and order</td><td>Empty: "No campaigns — the hero is hidden", which is a valid state, not an error · bulk activate, deactivate, delete</td></tr>
+    <tr><td>Search Synonyms</td><td>rj_manage_categories</td><td>Category repo</td><td>A filterable list of terms showing path, visible name and current aliases; type comma-separated aliases inline and save. A term with no aliases is normal and unflagged</td><td>Error: over 191 characters, shown with the count</td></tr>
+    <tr><td>AI Chatbot</td><td>manage_options</td><td>Chatbot service</td><td>One master switch; three messages; knowledge-source and capability toggles; FAQ pairs; provider selection with a <strong>configured / not-configured indicator</strong>; privacy and logging controls</td><td>Not-configured shows how to set the constant, never a field for the secret · every save logged with secrets masked</td></tr>
+    <tr><td>Reels</td><td>rj_manage_reels</td><td>Reel repo + Media</td><td>Paste an Instagram or YouTube URL, or upload an MP4; the poster is fetched or generated; link products; set caption, visibility and expiry</td><td>A reel with no resolvable source is flagged in the list and by the daily audit · bulk visibility, expiry</td></tr>
+    <tr><td>Collections</td><td>rj_manage_catalogue</td><td>Collection repo</td><td>Create, set cover and badge, populate by picking products or by rule, feature, retire. Retiring never touches the products</td><td>Empty collection warns before publishing</td></tr>
+    <tr><td>Showrooms</td><td>rj_manage_showrooms</td><td>Showroom repo</td><td>Address, phone, WhatsApp, a seven-day timings control, map URL, gallery, set primary</td><td>An invalid map host is rejected at save</td></tr>
+    <tr><td>Testimonials</td><td>rj_manage_catalogue</td><td>Testimonial repo</td><td>Quote, author, context, rating, photo, order</td><td>Rating 0 means unrated and hides the stars</td></tr>
+    <tr><td>Facets ×5</td><td>rj_manage_catalogue</td><td>Term repos</td><td>Standard term management with an order column for Metals, Purity, Occasions, Audience and Tags. Tags is the only one staff may extend freely</td><td>Standard WordPress term states</td></tr>
+    <tr><td>Enquiries</td><td>rj_read_leads · rj_manage_leads</td><td>Leads table</td><td>Newest first with source, product code and phone; set status, add a note, assign, click to call or reply on WhatsApp; export</td><td>Empty: "No enquiries yet" · bulk status, mark spam, export</td></tr>
+    <tr><td>Customers</td><td>rj_read_customers</td><td>Users + 3 tables</td><td>Tiles, then an indexed list searchable by name, phone with or without country code, or email; filter by source, method, verified state and activity; detail shows profile, wishlist, views, their leads, login history, preferences and consent</td><td>Export with explicit columns; <strong>hashes and tokens unselectable</strong></td></tr>
+    <tr><td>Dashboard</td><td>rj_manage_settings</td><td>Multiple</td><td>Counts, recent leads, Health summary, quick publish</td><td>Read only</td></tr>
+    <tr><td>Contact &amp; WhatsApp</td><td>rj_manage_settings</td><td>Options + WhatsApp</td><td>Phones, WhatsApp numbers, emails, social, locality, primary branch; five message templates with token validation and a <strong>test-link button</strong></td><td>A malformed number is rejected at save with the reason</td></tr>
+    <tr><td>Display · Features · SEO</td><td>rj_manage_settings</td><td>Options</td><td>Three grouped screens. Display carries <strong><code>show_weight_publicly</code></strong>; Features carries the six flags including the chatbot gate</td><td>Every save read back and compared</td></tr>
+    <tr><td>Accounts</td><td>manage_options</td><td>Auth providers</td><td>Provider credentials with a test button</td><td>Masked; redacted in the log</td></tr>
+    <tr><td>Notifications</td><td>manage_options</td><td>Notifier + queue</td><td>Channel enablement, throttles, digest schedule, quiet hours; send a test; retry dead letters in bulk; purge</td><td>Dead letters listed with the last error</td></tr>
+    <tr><td>Import / Export</td><td>rj_import_data · rj_export_data</td><td>Importer · Exporter</td><td>Upload, map columns (saved as a reusable profile), <strong>dry run</strong>, read the report by row number, commit, and keep the rollback token for 30 days</td><td><strong>No commit without a dry run.</strong> A second import returns 409 rather than interleaving</td></tr>
+    <tr><td>Activity Log</td><td>rj_view_activity_log</td><td>Log table</td><td>Filter by object type, object, actor, action and date; every row links to its object; per-object history also appears inline on product, category and reel edit screens — where the question is actually asked</td><td><strong>No edit path, no delete route</strong></td></tr>
+    <tr><td>Health</td><td>manage_options</td><td>Health service</td><td>Every standing check with pass, warn or fail; rebuild caches; flush rewrites; run a cron job manually — the admin equivalent of every CLI command, for hosts with no command line</td><td>Warnings surface as dismissible admin notices; nothing fails silently</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">9 · Frontend and renderer architecture</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<pre><code>            Domain repositories  +  Services          ← the only source of truth
+                        │
+                Frontend\Query   (filters, resolver resolution, query discipline)
+                        │
+                Frontend\Renderer   ← ONE renderer per component
+                        │
+   ┌──────────┬──────────┬──────────┬──────────┬──────────┐
+Shortcode  Gutenberg  Elementor   Theme      Account    Visual
+ (13)       block(15)  widget(16)  part(14)  screen(17)  edit
+   │          │          │          │          │          │
+   └──────────┴──────────┴──────────┴──────────┴──────────┘
+              all six call the SAME renderer with the SAME arguments</code></pre>
+<table>
+  <thead><tr><th style="width:26%">Rule</th><th>Consequence</th></tr></thead>
+  <tbody>
+    <tr><td>One renderer, six front doors</td><td>A bug is fixed once and output is identical everywhere. Six implementations would diverge within a month.</td></tr>
+    <tr><td>Resolution happens in the query layer</td><td><strong>No builder ever resolves a Model B term.</strong> A native Gutenberg query loop pointed at a resolver term returns empty rather than erroring — an accepted limitation, since our own block, widget and shortcode all handle it.</td></tr>
+    <tr><td>Templates receive a view-model</td><td>Never a raw post plus meta lookups. This is what makes a theme override editable by someone who is not a developer.</td></tr>
+    <tr><td>Mega Menu is a theme component</td><td>Plugin owns the cached tree, the visibility filtering and the query; theme owns placement and skin. Elementor Free cannot build headers, and requiring Pro is forbidden.</td></tr>
+    <tr><td>Five bridge functions</td><td><code>rj_contact()</code> · <code>rj_whatsapp_url()</code> · <code>rj_render()</code> · <code>rj_menu_tree()</code> · <code>rj_is_active()</code>. All guarded by <code>function_exists</code>, so a theme installed without the plugin renders a plain WordPress site rather than a stack of errors.</td></tr>
+    <tr><td>Assets conditional</td><td>Registered globally on <code>init</code>, enqueued only where a component renders. Slider libraries load once per page regardless of instance count.</td></tr>
+  </tbody>
+</table>
+
+<h2>10 · Elementor Free-first architecture</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p><strong>Layer selection rule: use the lowest layer that solves the requirement correctly.</strong></p>
+<table>
+  <thead><tr><th style="width:8%">Layer</th><th style="width:26%">Use when</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Elementor Free already does it</td><td>Headings, images, buttons, spacers, containers, Google Maps, static galleries. <strong>Never recreated as an RJ widget.</strong></td></tr>
+    <tr><td>2</td><td>A shortcode is sufficient</td><td>Any component in a context with no widget picker — a text widget, a template, a future builder.</td></tr>
+    <tr><td>3</td><td>It belongs to page chrome</td><td>Mega Menu, header, footer. Free cannot build these, so the theme must.</td></tr>
+    <tr><td>4</td><td>The owner needs real controls</td><td>The 15 widgets. A category tree picker over 306 terms, per-breakpoint column counts and a live editor preview are the value a shortcode string cannot give.</td></tr>
+    <tr><td>5</td><td>Pro is present and it genuinely helps</td><td>The 11 dynamic tags, Theme Builder, Loop Grid. <strong>Never required, never the source of truth.</strong></td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:34%">The 15 widgets</th><th style="width:30%">Not widgets</th><th>Why not</th></tr></thead>
+  <tbody>
+    <tr><td rowspan="7">Product Grid · Product Carousel · Category Grid · Reel Grid · Showroom Grid · Collection Grid · Testimonial Grid · RJ Search · RJ Wishlist · RJ Customer Account · RJ WhatsApp CTA · RJ Hero · RJ Category Navigation · RJ Contact / Enquiry · RJ Notification Signup</td><td>Mega Menu</td><td>Theme component — Free has no header builder</td></tr>
+    <tr><td>Category Slider</td><td>Category Grid preset / mode</td></tr>
+    <tr><td>Reel Slider</td><td>Reel Grid preset / mode</td></tr>
+    <tr><td>Featured Categories</td><td>Category Grid filter</td></tr>
+    <tr><td>Store Locator</td><td>Showroom Grid preset</td></tr>
+    <tr><td>Product Card</td><td>Shared renderer the grid calls</td></tr>
+    <tr><td>Reel Viewer</td><td>Modal the Reel Grid opens</td></tr>
+  </tbody>
+</table>
+
+<h2>11 · Customer authentication plan</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:22%">Flow</th><th style="width:16%">Mechanism</th><th>Implementation notes</th></tr></thead>
+  <tbody>
+    <tr><td>Email + password sign-on</td><td>WordPress native</td><td>Double opt-in verification. Works with no external service, which is why it is the Phase-1 provider.</td></tr>
+    <tr><td>Google login</td><td>Authorisation code + PKCE</td><td>State verified; matched on the <strong>provider subject ID before verified email</strong>, because emails change and subject IDs do not; linking to an existing password account requires an ownership confirmation, never silent; client secret from a configuration constant.</td></tr>
+    <tr><td>Forgot / reset</td><td>WordPress lost-password flow</td><td>Single-use, time-limited, hashed key; invalidated on use and on re-request; rate limited; <strong>response identical whether or not the address exists</strong>; presented in the account area so <code>wp-login.php</code> is never seen; every attempt logged.</td></tr>
+    <tr><td>Google-only identity</td><td>No local password</td><td>The reset screen states that sign-in is managed by Google and offers no reset. A password is created only from the profile screen <strong>under an existing session</strong> — credential creation, not a second reset path.</td></tr>
+    <tr><td>Persistent session</td><td>Standard auth cookie</td><td>Two days, fourteen with remember-me. Ends on logout, password change or reset, administrative or all-device revocation, WordPress invalidation, or expiry. <strong>No <code>localStorage</code> or <code>sessionStorage</code> token; no custom permanent token.</strong></td></tr>
+    <tr><td>Logout</td><td>Nonce-protected</td><td>Destroys the server-side session token, not merely the cookie.</td></tr>
+    <tr><td>Logout-all</td><td style="color:#5d5294">RESERVED</td><td>WordPress's token store supports it; no control specified, not built.</td></tr>
+    <tr><td>Future OTP · magic link</td><td>Provider slots</td><td>The interface, the verified-phone field and the settings group already exist. Needs an SMS provider and a budget.</td></tr>
+    <tr><td>Guest</td><td>No server state</td><td>Local wishlist and view history, merged <strong>guest-first, never overwriting</strong>, on first login.</td></tr>
+    <tr><td>Role hardening</td><td>Capability map</td><td>Read-only, admin bar off, admin access redirected, application passwords disabled, own-record-only REST, author enumeration blocked.</td></tr>
+  </tbody>
+</table>
+<p><strong>The load-bearing rule:</strong> no catalogue capability is ever gated behind an account. With accounts switched off the site loses cross-device wishlist and notifications, and nothing else.</p>
+
+<h2 style="break-before:page">12 · Chatbot plan</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:22%">Concern</th><th>Implementation</th></tr></thead>
+  <tbody>
+    <tr><td>Feature gate</td><td><code>rj_features.chatbot</code>, off by default. When off: no UI, <strong>no script or stylesheet enqueued</strong>, no provider request, nothing else degraded.</td></tr>
+    <tr><td>Configuration</td><td>The non-autoloaded <code>rj_chatbot</code> group — messages, knowledge-source and capability toggles, FAQ pairs, provider selection, privacy and logging controls.</td></tr>
+    <tr><td>Secrets</td><td><strong>Server-side constants or environment only.</strong> Admin shows configured / not-configured from whether the constant is defined and non-empty. The value never reaches the browser, a REST response, an export or a log line. No second credential store, no encrypted table.</td></tr>
+    <tr><td>Knowledge layer</td><td>Reads <strong>only through Domain repositories</strong> — it has no access to <code>get_post_meta</code>. Visibility rules, the weight setting and resolver rules therefore apply automatically rather than being re-implemented.</td></tr>
+    <tr><td>Provider adapter</td><td>An interface with <code>id()</code>, <code>is_available()</code>, <code>complete()</code> — deliberately the same shape as the notification driver, which is the existing precedent for provider independence. <strong>No provider named at architecture level;</strong> none hardcoded into the domain.</td></tr>
+    <tr><td>Never fabricates</td><td>No price, stock, timing, purity, policy, availability or specification that is not in RJ data. <strong>Price and stock are structurally impossible to state correctly — the platform stores neither</strong> (catalogue-only, no checkout), so both are permanent refusals rather than missing data.</td></tr>
+    <tr><td>Weight</td><td>When <code>show_weight_publicly</code> is off, weight <strong>never reaches the knowledge layer</strong>. The C-11 lock applies here exactly as it applies to public REST.</td></tr>
+    <tr><td>No page-render outbound call</td><td>Provider calls only on customer interaction. This is what preserves the no-outbound-request-on-a-front-end-request rule, and with it InfinityFree viability.</td></tr>
+    <tr><td>Fallback · handoff</td><td>Configured fallback message, then WhatsApp handoff through the <strong>existing engine</strong> — no second URL builder, no sixth template — or human support. A provider outage degrades to fallback without breaking the page or blocking enquiry.</td></tr>
+    <tr><td>Lead integration</td><td>An ordinary lead with <code>source</code> recording the chatbot. <code>source</code> is <code>VARCHAR(32)</code> with an application-level vocabulary, so a new value needs <strong>no migration and no new table</strong>.</td></tr>
+    <tr><td>Transcripts</td><td><strong>Not persisted.</strong> Counters only by default. Transcript storage would need a ninth table and a consent decision; neither is established, so it is reserved and unbuilt.</td></tr>
+  </tbody>
+</table>
+
+<h2>13 · Security plan</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p><strong>Every write passes four gates in this order.</strong> The order matters: checking capability after sanitising wastes work on a request that was never allowed.</p>
+<p><strong>Gate 1 has two declared branches, and which branch applies is a property of the endpoint, declared once in <code>Rest\Permissions</code> and reused by the REST controller and every other entry point.</strong> A public endpoint that declares no policy fails review. There is no "public capability" — granting a capability to guests is forbidden.</p>
+<table>
+  <thead><tr><th style="width:6%">#</th><th style="width:16%">Gate</th><th style="width:18%">Layer</th><th>Rule</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1a</strong></td><td>Capability<br><span style="font-size:10px;color:#5d5294">AUTHENTICATED WRITE</span></td><td>Rest\Permissions · Admin</td><td>A specific capability with the object where relevant. <strong>Never a screen check standing in for a permission check.</strong> Unchanged and not weakened by 1b.</td></tr>
+    <tr><td><strong>1b</strong></td><td>Endpoint policy<br><span style="font-size:10px;color:#5d5294">PUBLIC WRITE</span></td><td>Rest\Permissions</td><td>There is no logged-in user, so there is no capability to check. The gate is the endpoint's <strong>declared authorization and anti-abuse policy</strong>: origin validation · honeypot · minimum dwell time · per-IP-hash rate limit · per-identifier rate limit where an identifier exists · replay protection · duplicate suppression · non-enumerating responses · safe same-site redirect handling · request validation · field sanitisation · output escaping · logging. <strong>Declared per endpoint, not inherited from a service.</strong></td></tr>
+    <tr><td>2</td><td>Intent</td><td>Rest · Admin · Frontend</td><td>Nonce on forms and AJAX, header nonce on REST, origin check on public writes. Per-operation action strings, not one global nonce.</td></tr>
+    <tr><td>3</td><td>Sanitise</td><td>Support\Sanitizer via Data\Meta</td><td>A typed sanitiser per field, defined once. <strong>Nothing reads a request superglobal outside a sanitising accessor.</strong></td></tr>
+    <tr><td>4</td><td>Escape</td><td>At output</td><td>Never at save — escaping early is how double-escaped Devanagari appears.</td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:24%">Control</th><th style="width:20%">Implementation layer</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td>SQL safety</td><td>Domain repositories</td><td>Prepared statements everywhere; table names from the prefix; <strong>dynamic sort and limit values allow-listed before use</strong></td></tr>
+    <tr><td>XSS</td><td>Sanitiser + Escaper</td><td>Rich text through an allow-list filter, everything else plain-text; output escaped even though input was sanitised, because the importer and REST are separate entry points</td></tr>
+    <tr><td>CSRF</td><td>Gate 2</td><td>Including logout, wishlist toggles and visual-edit saves</td></tr>
+    <tr><td>Upload validation · MIME · SVG</td><td>Services\Media</td><td>Declared type verified against <strong>actual file content</strong>, both allow-listed; <strong>vector images disabled</strong>; filenames sanitised; execution prevented in the upload folder on Apache and IIS</td></tr>
+    <tr><td>CSV injection</td><td>Exporter\FormulaGuard</td><td>Every cell beginning with a formula character prefixed — the vector is a customer typing a formula into an enquiry form</td></tr>
+    <tr><td>Rate limiting</td><td>Support\RateLimiter</td><td>Object cache or transients, so it works on free hosting with no Redis. 429 with a retry hint and a log entry — silently dropping makes an integration undebuggable</td></tr>
+    <tr><td>Brute force</td><td>Services\Auth</td><td>5 failures per 15 minutes then lockout; the <code>(result, created_at)</code> index exists for this check</td></tr>
+    <tr><td>Safe redirects</td><td>Frontend\Account</td><td>Return URL validated same-host</td></tr>
+    <tr><td>Secrets</td><td>Constants first</td><td>Masked in UI, redacted in logs with a changed flag only, excluded from exports, never in a REST response</td></tr>
+    <tr><td>Privacy</td><td>Domain\Customer\Privacy</td><td>Registered with WordPress's own exporter and eraser. <strong>Salted IP hash only — a raw address is never stored anywhere in the platform</strong></td></tr>
+    <tr><td>Circular categories</td><td>Domain\Category ×3</td><td>Model validation, a UI that refuses the drop, weekly sweep with a depth ceiling</td></tr>
+    <tr><td>Broken resolver</td><td>Domain\Category + Health</td><td>A mapping whose target no longer resolves raises a Health warning and 404s — <strong>never a silently empty archive</strong></td></tr>
+    <tr><td>Broken WhatsApp</td><td>WhatsApp\Validator</td><td>Numbers and template tokens validated on every admin load</td></tr>
+    <tr><td>Unsafe execution</td><td>Build check</td><td>No dynamic evaluation, no shell execution, no variable include paths — <strong>enforced by a static-analysis rule</strong>, so it is a gate rather than a convention</td></tr>
+    <tr><td>Privilege escalation</td><td>Data\Capabilities</td><td>Granted only at activation and upgrade from one map; no runtime addition; tampering detected by Health</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">14 · Testing strategy</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:20%">Suite</th><th style="width:14%">Stage built</th><th>Covers</th></tr></thead>
+  <tbody>
+    <tr><td>Unit</td><td>2 onward</td><td>Validators, sanitisers, phone normaliser, token resolver, differ, formula guard, transliteration, path-cache computation, eligibility computation</td></tr>
+    <tr><td>Integration</td><td>4 onward</td><td>Repositories against a real database: save, read, filter, reorder, reparent, merge</td></tr>
+    <tr><td>REST</td><td>11</td><td>All 28 routes: arguments, schema, status codes, pagination, cache headers</td></tr>
+    <tr><td>Permission</td><td>11</td><td>Every route and screen as each of five actor types — <strong>exhaustive, not sampled</strong></td></tr>
+    <tr><td>Security</td><td>21</td><td>Injection, unescaped output, upload bypass, formula injection, open redirect, enumeration</td></tr>
+    <tr><td>Migration</td><td>3</td><td>Fresh install, upgrade from each prior version, idempotency, failure rollback, four-byte Unicode preservation</td></tr>
+    <tr><td>Category tree</td><td>5</td><td>306 terms, exact branch counts, reorder, reparent, cycles, duplicate names, re-import idempotency</td></tr>
+    <tr><td>Resolver</td><td>5</td><td>22 mappings, Shape A and B, re-resolution after reparent, <strong>product assignment rejected</strong>, broken mapping 404s</td></tr>
+    <tr><td>Import / rollback</td><td>19</td><td>Dry-run accuracy, batch commit, rollback fidelity, conflict flagging, resume after timeout, round-trip encoding</td></tr>
+    <tr><td>Theme independence</td><td>4, 14</td><td>Stock theme, core only: counts, rendering, editing, REST. <strong>Run at the end of every stage</strong></td></tr>
+    <tr><td>Elementor Free-only</td><td>16</td><td>Free with Pro absent — 13 named surfaces</td></tr>
+    <tr><td>Elementor removal</td><td>16</td><td>Deactivated: no fatal, catalogue intact</td></tr>
+    <tr><td>Feature-off</td><td>17, 18, 20</td><td>Google off, accounts off, notifications off, chatbot off — each independently</td></tr>
+    <tr><td>Authentication</td><td>17</td><td>Reset single-use and expiring, non-enumerating, session persistence and its six end conditions, guest merge</td></tr>
+    <tr><td>Chatbot</td><td>20</td><td>Off means no assets; on means no fabrication; weight respects the switch; provider outage degrades</td></tr>
+    <tr><td>WhatsApp</td><td>10</td><td>Number change propagates; Devanagari survives encoding; failed lead write still redirects</td></tr>
+    <tr><td>Host migration</td><td>21</td><td>Export, import to a clean installation, counts and Devanagari intact</td></tr>
+    <tr><td>Performance</td><td>14, 21</td><td>Menu at 1,000 terms, admin list at 20,000 products, query counts, asset budget</td></tr>
+    <tr><td>Mobile</td><td>21</td><td>Real devices: iOS Safari, Android Chrome. Tap targets, drawer, reels, filters, forms</td></tr>
+  </tbody>
+</table>
+<h4>The twenty locked rules and the test that pins each</h4>
+<table>
+  <thead><tr><th style="width:38%">Locked rule</th><th style="width:14%">Test</th><th>Assertion</th></tr></thead>
+  <tbody>
+    <tr><td>306 categories, 5 roots, 74/98/98</td><td>Category tree</td><td>Exact counts after import; re-import changes nothing</td></tr>
+    <tr><td>22 resolver terms</td><td>Resolver</td><td>All 22 resolve; count asserted</td></tr>
+    <tr><td>Resolver term holds no product relationship</td><td>Resolver + REST</td><td>Assignment rejected with 409 at REST and during import dry run</td></tr>
+    <tr><td>No circular category</td><td>Regression 7</td><td>Three attack shapes rejected at three guards</td></tr>
+    <tr><td>Hero zero-space when ineligible</td><td>Regression, measured</td><td>No wrapper, no height, next section moves up, on three breakpoints</td></tr>
+    <tr><td>Weight switch</td><td>Integration + chatbot</td><td>Off: absent from UI, public REST <em>and</em> the knowledge layer. On: present where data exists</td></tr>
+    <tr><td>Synonym semantics</td><td>Integration</td><td>Matches in search; creates no term; alters no URL or canonical; does not replace the primary term</td></tr>
+    <tr><td>Persistent login</td><td>Authentication</td><td>Survives navigation; ends on each of six conditions; no client-side token</td></tr>
+    <tr><td>Password reset</td><td>Authentication</td><td>Single-use, expiring, rate limited, non-enumerating</td></tr>
+    <tr><td>Free without Pro</td><td>Regression 10</td><td>13 surfaces in two configurations</td></tr>
+    <tr><td>Chatbot off</td><td>Chatbot</td><td>No UI, no asset enqueued, no provider request</td></tr>
+    <tr><td>Chatbot no fake data</td><td>Chatbot</td><td>Price and stock refused; unknown facts fall back rather than guess</td></tr>
+    <tr><td>Server-side secrets</td><td>Security</td><td>No secret in HTML, REST, export or log; configured-state detectable without disclosure</td></tr>
+    <tr><td>No customer segments</td><td>Integration</td><td>No segment taxonomy, meta or field exists; audience comes from <code>_rj_notify_prefs</code></td></tr>
+    <tr><td>Settings save reflects</td><td>Regression 1</td><td>Write, read back, compare, across all ten groups</td></tr>
+    <tr><td>Product code unique</td><td>Regression 8</td><td>Duplicate rejected via three entry paths</td></tr>
+    <tr><td>Theme change preserves data</td><td>Regression 11</td><td>Counts identical, 20 products render, no term hidden, no 404</td></tr>
+    <tr><td>Host migration preserves data</td><td>Regression 12</td><td>Clean-install import: counts, Devanagari, media, WhatsApp, a live lead</td></tr>
+    <tr><td>Notification failure doesn't block publishing</td><td>Regression 14</td><td>Driver throws; product publishes; row marks failed</td></tr>
+    <tr><td>Failed lead write still opens WhatsApp</td><td>Regression 15</td><td>Insert throws; endpoint still returns the URL</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">15 · Rollback strategy</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p><strong>Five distinct operations. The word "rollback" alone is never sufficient — the table below names which one applies.</strong> Under incident pressure, flattening these is how someone reaches for the wrong instrument.</p>
+<table>
+  <thead><tr><th style="width:20%">Operation</th><th style="width:22%">Reverses</th><th>Definition</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Code rollback</strong></td><td>Plugin version</td><td>Redeploy the previous code version. <strong>Reverses no business data by itself.</strong></td></tr>
+    <tr><td><strong>Config rollback</strong></td><td>A setting or feature flag</td><td>Change a configuration value. <strong>Reverses no database history.</strong> Turning the chatbot off is this, and it is not equivalent to restoring a database.</td></tr>
+    <tr><td><strong>Cache rebuild</strong></td><td>Nothing — regenerates</td><td>Discard a derived cache or index and regenerate it from source. Never a loss.</td></tr>
+    <tr><td><strong>Data rollback</strong></td><td>Written business rows</td><td>Reverse written data <strong>only where the architecture maintains a rollback ledger</strong> — the import system, within 30 days. Nowhere else.</td></tr>
+    <tr><td><strong>Restore</strong></td><td>The database</td><td>Restore from a verified backup, when the operation cannot be safely reversed by a ledger. <strong>Stage 3 has no data rollback; restore is its only recovery mechanism</strong>, which is why the pre-release backup is mandatory rather than advisory.</td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:11%">Stage</th><th style="width:22%">What can fail</th><th style="width:18%">Data at risk</th><th style="width:20%">Detection</th><th>Rollback · can the previous release run?</th></tr></thead>
+  <tbody>
+    <tr><td>0–2</td><td>Tooling misconfigured</td><td style="color:#2f6b3a">None</td><td>Tests or linters do not run</td><td>Reconfigure. <strong>Yes</strong> — no code shipped</td></tr>
+    <tr><td><strong>3</strong></td><td><strong>Migration fails mid-run</strong></td><td style="color:#8a3a2f">All eight tables</td><td>Migration test; schema version not advanced</td><td><strong>The one genuinely destructive stage.</strong> Pre-release backup mandatory; restore verified before running. Migration is idempotent so a re-run is safe. <strong>Yes</strong></td></tr>
+    <tr><td>4</td><td>A permanent identifier registered wrongly</td><td style="color:#8a6410">Renaming later needs a migration</td><td>Gate: six types, seven taxonomies, ten groups asserted</td><td><strong>Fix before publishing any content.</strong> Slugs become database values here, which is why the gate is strict. Yes</td></tr>
+    <tr><td>5</td><td>Import creates duplicates or a bad tree</td><td style="color:#8a6410">306 terms</td><td>Count assertion; duplicate scan</td><td>The 30-day ledger. Path matching means a corrected re-import updates rather than duplicates. <strong>Yes</strong></td></tr>
+    <tr><td>6</td><td>Index drifts from post meta</td><td style="color:#2f6b3a">None — derived</td><td>Staleness check; Health</td><td>Drop and rebuild. <strong>Yes</strong></td></tr>
+    <tr><td>7</td><td>Format generation unsupported; bulk upload times out</td><td style="color:#2f6b3a">Originals always kept</td><td>Health warning; per-file progress</td><td>Serve JPEG; resume the upload. <strong>Yes</strong></td></tr>
+    <tr><td>8–9</td><td>A provider embed breaks; eligibility computed wrongly</td><td style="color:#2f6b3a">None</td><td>Daily audit; scheduling test</td><td>Deactivate the module; records persist. <strong>Yes</strong></td></tr>
+    <tr><td><strong>10</strong></td><td><strong>Leads not captured</strong></td><td style="color:#8a3a2f">Lost enquiries are unrecoverable</td><td>Lead count monitored daily in the first week; Health checks number validity</td><td>WhatsApp still opens even when the write fails, so the conversation survives the bug. <strong>Highest-consequence stage after 3</strong> — this is the revenue path. Yes</td></tr>
+    <tr><td>11–13</td><td>A route or renderer regresses</td><td style="color:#2f6b3a">None — read paths</td><td>REST and integration suites</td><td>Redeploy previous version. <strong>Yes</strong></td></tr>
+    <tr><td>14</td><td>Budgets missed; a template breaks</td><td style="color:#2f6b3a">None</td><td>Performance gate on a real device</td><td>Revert the theme; the plugin's templates take over through the fallback chain. <strong>Yes</strong></td></tr>
+    <tr><td>15–16</td><td>A block or widget fails</td><td style="color:#2f6b3a">None — settings only</td><td>Editor warning; removal test</td><td>Deactivate the optional plugin. Arrangement lost, no data. <strong>Yes</strong></td></tr>
+    <tr><td>17</td><td>Auth flow broken; merge loses a wishlist</td><td style="color:#8a6410">Customer wishlists</td><td>Authentication suite; merge test</td><td>Disable the accounts flag — the catalogue is unaffected by design. <strong>Yes</strong></td></tr>
+    <tr><td>18</td><td>Queue floods or stalls</td><td style="color:#2f6b3a">None — transient</td><td>Dead letters on Health</td><td>Disable notifications; purge the queue. <strong>Yes</strong></td></tr>
+    <tr><td>19</td><td>A bad import commits</td><td style="color:#8a6410">Whatever it touched</td><td>Dry-run report is the approval step</td><td>Rollback token within 30 days; conflicts flagged not overwritten. <strong>Yes</strong></td></tr>
+    <tr><td>20</td><td>Provider outage; a fabricated answer</td><td style="color:#2f6b3a">None</td><td>Fallback path; chatbot suite</td><td><strong>Turn the flag off.</strong> The cleanest rollback in the plan — one boolean. Yes</td></tr>
+    <tr><td>21</td><td>A gate fails at launch</td><td style="color:#2f6b3a">None if caught</td><td>20 regression tests</td><td>Do not launch. <strong>Yes</strong></td></tr>
+  </tbody>
+</table>
+<p><strong>Deployment discipline, every stage:</strong> backup with verified restore → apply to staging → run migrations → smoke test → maintenance mode if the release migrates → deploy → migrate → confirm version → flush caches and rewrites if routes changed → Health clean → maintenance off → smoke test production.</p>
+
+<h2>16 · Credit optimisation</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p>Each stage names its read scope, so no pass re-reads the whole project. <strong>The specification is the context; the code is small.</strong></p>
+<table>
+  <thead><tr><th style="width:10%">Stage</th><th style="width:30%">Read only these</th><th style="width:28%">Modify</th><th>Expected verification output</th></tr></thead>
+  <tbody>
+    <tr><td>0–2</td><td>This plan §3, §6</td><td><code>build/</code>, <code>src/Support/</code></td><td>Unit suite green; phpcs and phpstan clean</td></tr>
+    <tr><td>3</td><td>Dev Blueprint §5 · this plan §4</td><td><code>src/Data/Schema</code>, <code>Capabilities</code>, <code>Migrations/</code></td><td>"8 tables created, indexes verified, Devanagari round-trip identical"</td></tr>
+    <tr><td>4</td><td>Dev Blueprint §6, §7, §9, §10</td><td><code>src/Data/</code></td><td>"6 post types, 7 taxonomies, 10 groups; settings read-back matches"</td></tr>
+    <tr><td>5</td><td>Category Master · Resolver Approval · Dev §8</td><td><code>src/Domain/Category/</code>, <code>Services/MenuTree</code>, <code>categories.json</code></td><td>"306 terms; 5/74/98/98; 22 mappings resolve; 0 duplicates"</td></tr>
+    <tr><td>6</td><td>Dev Blueprint §9.2, §5.6</td><td><code>src/Domain/Product/</code>, <code>Services/ProductIndex</code>, <code>Search</code></td><td>"Duplicate code rejected 3/3 paths; search matches 5 field types"</td></tr>
+    <tr><td>7–10</td><td>Dev §18 · §16 · §6.2 · §9.4 (one per stage)</td><td>The one aggregate or service</td><td>Its own suite green, plus the theme-independence check</td></tr>
+    <tr><td>11</td><td>Dev Blueprint §11, §20</td><td><code>src/Rest/</code>, <code>Services/Activity</code></td><td>"28 routes; permission matrix 5 actors × 28 routes"</td></tr>
+    <tr><td>12</td><td>Dev Blueprint §17 · this plan §8</td><td><code>src/Admin/</code></td><td>"21 screens reachable; product list under 800 ms at 20,000"</td></tr>
+    <tr><td>13–14</td><td>UI/UX Blueprint · Dev §4</td><td><code>src/Frontend/</code>, <code>theme/</code></td><td>"Budgets: LCP, INP, CLS, JS, CSS — each measured"</td></tr>
+    <tr><td>15–16</td><td>Free-First Audit §2 · Dev §12</td><td><code>optional/rameshwari-blocks/</code>, <code>-elementor/</code></td><td>"Removal test: 13 surfaces × 2 configurations"</td></tr>
+    <tr><td>17–18</td><td>Tech §6.2, §7 · Dev §14, §15</td><td><code>Services/Auth/</code>, <code>Notifier/</code>, <code>Frontend/Account/</code></td><td>"Auth suite green; digest delivered with no paid service"</td></tr>
+    <tr><td>19–20</td><td>Dev §19 · Admin UX lock §5 · this plan §12</td><td><code>Services/Importer/</code>, <code>Exporter/</code>, <code>Chatbot/</code></td><td>"Rollback fidelity verified; chatbot off enqueues nothing"</td></tr>
+    <tr><td>21</td><td>Dev §21, §24 · this plan §14</td><td>Fixes only</td><td>"20/20 regression tests green (Dev §24, rows 1–20)"</td></tr>
+  </tbody>
+</table>
+<p><strong>Three rules for each pass:</strong> read the named specification sections and the files being modified, nothing more; report the verification output verbatim rather than summarising it; if a stage needs a file outside its scope, that is a signal the layer boundary is wrong — raise it rather than widening the read.</p>
+
+<h2 style="break-before:page">17 · Final build order</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p><strong>Stage N may begin once every stage in its declared dependency list has passed its verification gate. Dependencies are listed per stage in §6 and drawn in §5; they are not implied by stage numbering.</strong></p>
+<pre><code>
+
+ 0  Environment baseline        ── gate: staging restores; linters clean
+ 1  Bootstrap and container     ── gate: activates with zero notices
+ 2  Support primitives          ── gate: unit suite green, both cache modes
+ 3  Schema and migrations       ── gate: 8 tables; idempotent; Devanagari intact
+ 4  Core registries             ── gate: 6/7/10; settings read-back matches
+ 5  Category engine + resolver  ── gate: 306 terms; 22 mappings; no duplicates
+ 6  Product domain              ── gate: code uniqueness at the index
+ 7  Media pipeline              ── gate: bulk upload resumes; audit accurate
+ 8  Reels, collections,         ── gate: 4 sources play; timings from the DB
+      showrooms, testimonials
+ 9  Page sections and hero      ── gate: schedules without cron; zero space
+10  WhatsApp and leads          ── gate: one number change propagates
+11  Activity log and REST       ── gate: 28 routes; exhaustive permissions
+12  Admin UX — 21 screens       ── gate: owner publishes from a phone
+13  Shared renderer, shortcodes ── gate: works with no builder installed
+14  Theme                       ── gate: budgets on a real phone; delete test
+15  Gutenberg blocks            ── gate: output identical to shortcodes
+16  Elementor Free integration  ── gate: removal test, line by line
+17  Accounts and auth           ── gate: works with accounts on AND off
+18  Notifications               ── gate: digest with no paid service
+19  Import / export / rollback  ── gate: rollback fidelity in 30-day window
+20  Chatbot (optional)          ── gate: off enqueues nothing; no fabrication
+21  Hardening, testing, launch  ── gate: 20/20 regression (Dev §24); tested restore</code></pre>
+
+<h2>18 · Pre-coding checklist</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:8%"></th><th style="width:32%">Item</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Specification locked, zero open decisions</td><td style="color:#2f6b3a">Confirmed — Final Specification Lock §8</td></tr>
+    <tr><td>2</td><td>Active documents internally consistent</td><td style="color:#2f6b3a">Confirmed — Synchronization Changelog, 19 edits</td></tr>
+    <tr><td>3</td><td>Staging environment</td><td style="color:#8a6410"><strong>Owner action.</strong> Not optional — it is where every theme switch, migration and import is rehearsed</td></tr>
+    <tr><td>4</td><td>Version control with the §3 skeleton</td><td style="color:#8a6410"><strong>Stage 0 deliverable</strong></td></tr>
+    <tr><td>5</td><td>Backup with a <em>verified</em> restore</td><td style="color:#8a6410"><strong>Owner action.</strong> An untested backup is an assumption</td></tr>
+    <tr><td>6</td><td>Hosting decision for Stage 14 onward</td><td style="color:#8a6410"><strong>Owner action.</strong> InfinityFree works for stages 1–13; from 14 the performance gates and media volume argue for paid shared hosting. The architecture moves with a dump and a DNS switch</td></tr>
+    <tr><td>7</td><td><code>categories.json</code> authored from the Category Master</td><td style="color:#8a6410">Stage 5 deliverable. Expect three loads, not one — the taxonomy will grow during the build, and path matching makes that free</td></tr>
+    <tr><td>8</td><td>Photography pipeline</td><td style="color:#8a6410"><strong>Owner action.</strong> Products draft without images and publish in bulk later. <strong>No placeholder or stock imagery is ever committed</strong></td></tr>
+    <tr><td>9</td><td>Google OAuth credentials</td><td style="color:#8a6410">Needed at Stage 17 only. Absent, email login carries the system</td></tr>
+    <tr><td>10</td><td>AI provider account</td><td style="color:#8a6410">Needed at Stage 20 only, and Stage 20 is optional</td></tr>
+    <tr><td>11</td><td>Duplicate Platform Architecture file deleted</td><td style="color:#8a6410"><strong>Do this first</strong> — two copies of one architecture will drift</td></tr>
+    <tr><td>12</td><td>Coding standards and static analysis wired into the build</td><td style="color:#8a6410">Stage 0 deliverable. The dangerous-function ban is a machine rule, not a convention</td></tr>
+  </tbody>
+</table>
+
+<h2>19 · Risks and unknowns</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:24%">Risk</th><th style="width:12%">Likelihood</th><th>Mitigation</th></tr></thead>
+  <tbody>
+    <tr><td>Free hosting cannot carry the catalogue</td><td>High</td><td>Budget paid shared hosting from Stage 14. The architecture moves with no code change.</td></tr>
+    <tr><td>Taxonomy grows during the build</td><td>Certain</td><td>Path-matched import re-runs without duplication. Plan for three loads.</td></tr>
+    <tr><td>Photography lags the build</td><td>High</td><td>Products draft without images. No placeholder ever committed.</td></tr>
+    <tr><td>Owner time for content entry</td><td>High</td><td>Spreadsheet import from records the shop already keeps, plus a 90-second mobile publish path (Stage 12 gate).</td></tr>
+    <tr><td>Scope creep toward e-commerce</td><td>Medium</td><td>Catalogue-only is locked. Adding checkout is a new project with its own architecture — and it is what would make the chatbot's price refusal obsolete.</td></tr>
+    <tr><td>Devanagari corruption on a host move</td><td>Medium</td><td>Four-byte Unicode verified at activation, daily, and as an explicit migration step.</td></tr>
+    <tr><td>Cron unreliable on shared hosting</td><td>Medium</td><td>Every job idempotent, batched, resumable and manually runnable. <strong>Hero eligibility is computed at read, so scheduling does not depend on cron at all.</strong></td></tr>
+    <tr><td>Developer turnover</td><td>Medium</td><td>WordPress standards, no bespoke framework, documented hooks, and twenty specification documents.</td></tr>
+    <tr><td>Elementor breaking change</td><td>Low</td><td>Documented APIs only, version check at load, and the shortcode floor underneath everything.</td></tr>
+  </tbody>
+</table>
+<h4>Genuine unknowns — stated rather than assumed</h4>
+<table>
+  <thead><tr><th style="width:30%">Unknown</th><th>When it must be resolved, and by what</th></tr></thead>
+  <tbody>
+    <tr><td>Whether the target host can generate WebP and AVIF</td><td>Stage 7, by inspection. The pipeline degrades to JPEG with a Health warning, so this is a performance question rather than a blocker.</td></tr>
+    <tr><td>Whether a persistent object cache is available</td><td>Stage 2 already handles both. Affects the mega-menu budget at 1,000 terms, measured at Stage 14.</td></tr>
+    <tr><td>Real product volume at launch</td><td>Stage 12's 20,000-product gate is the designed ceiling. If the actual figure is far lower, the load test is cheap insurance rather than wasted effort.</td></tr>
+    <tr><td>Whether the owner wants external analytics</td><td>Never blocking. The customer analytics screen is computed from existing data with no pixel and no third party; adding one is an owner decision with a privacy dimension.</td></tr>
+    <tr><td>Which AI provider, if the chatbot is ever enabled</td><td>Stage 20, and deliberately deferred. The adapter interface means the choice changes one class.</td></tr>
+    <tr><td><strong>Whether the target host delivers outbound mail reliably</strong> <span style="font-size:10px;color:#2f6b3a">ADDED</span></td><td><strong>Stage 15, before the account system is considered complete</strong> — send a real password-reset email to a real inbox and complete the reset. <code>wp_mail</code> delivery is never assumed. If unreliable: email/password registration <strong>must not be enabled on that host</strong> until a supported mail transport is configured; Google login may continue if its own dependencies hold; catalogue browsing is unaffected. <strong>This is a blocker for the account system, not a performance question</strong> — password reset has no second path by design, so undelivered mail locks an account out permanently.</td></tr>
+    <tr><td><strong>Whether the host permits reliable outbound HTTPS from PHP</strong> <span style="font-size:10px;color:#2f6b3a">ADDED</span></td><td>Stage 15 for the Google OAuth server-to-server exchange, Stage 20 for AI provider calls. <strong>Working front-end HTTPS does not establish that server-side outbound HTTPS is permitted</strong> — free hosts commonly restrict it. Both degrade to unavailable-and-not-rendered, which the architecture already supports. Never a front-end page-render dependency.</td></tr>
+    <tr><td><strong>Whether the host offers PHP 8.2 or newer and WordPress 6.5 or newer</strong> <span style="font-size:10px;color:#2f6b3a">ADDED</span></td><td>Stage 0, before the first deploy. The core plugin's floors are <code>RJ_MIN_PHP</code> = 8.2 and <code>RJ_MIN_WP</code> = 6.5; below either, the plugin deactivates with a notice. Check the live control panel, not the help pages — Hostinger's contradict themselves, and InfinityFree sets the PHP version itself.</td></tr>
+  </tbody>
+</table>
+
+<h3>Reference environment — targets are unchanged; this makes them reproducible</h3>
+<p>A target measured anywhere else is not a passed gate. Recorded in the test log with every run.</p>
+<table>
+  <thead><tr><th style="width:22%">Dimension</th><th>Definition</th></tr></thead>
+  <tbody>
+    <tr><td>Field device</td><td>A named real mid-tier Android handset of the class the shop's customers carry — <strong>exact model recorded in the test log</strong>. Not an emulator, not "a mid-range phone".</td></tr>
+    <tr><td>Network</td><td>4G-like throttling: approximately <strong>9 Mbps down, 170 ms RTT</strong>.</td></tr>
+    <tr><td>Cache state</td><td><strong>Explicitly recorded as cold or warm.</strong> Field metrics are taken cold; where a host-realistic cached state differs materially, both are measured and both reported.</td></tr>
+    <tr><td>Runs</td><td><strong>Three runs, median reported.</strong> A single run is not a measurement.</td></tr>
+    <tr><td>Admin load test</td><td>Seeded fixture of <strong>20,000 products and 1,500 terms</strong>, generated by the Stage 18 importer, on the target production host or a documented equivalent. <strong>PHP version and object-cache state recorded.</strong></td></tr>
+    <tr><td>Mega menu</td><td><strong>1,000 terms, warm cache</strong> for the 50 ms budget; the cold figure is recorded alongside but is not the gate.</td></tr>
+    <tr><td>Query count</td><td>Under 40 on the <strong>category archive with filters applied, uncached</strong>. The page and the cache condition are both part of the target.</td></tr>
+    <tr><td>Asset budgets</td><td>Build-step assertion on the gzipped bundles — environment-independent, and the one budget that needs no reference device.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">20 · Implementation readiness verdict</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<h3>Codebase conflicts with the locked architecture</h3>
+<table>
+  <thead><tr><th style="width:30%">Classification</th><th style="width:14%">Count</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>MUST FIX BEFORE IMPLEMENTATION</td><td style="color:#2f6b3a">0</td><td>No code exists to conflict.</td></tr>
+    <tr><td>REFACTOR DURING IMPLEMENTATION</td><td style="color:#2f6b3a">0</td><td>Same.</td></tr>
+    <tr><td>SAFE TO KEEP</td><td>20 documents</td><td>The specification set. Nothing executable.</td></tr>
+    <tr><td>UNKNOWN — NEEDS INSPECTION</td><td style="color:#8a6410">1</td><td><code>Platform Architecture copy.dc.html</code> — a duplicate of a specification document, not code. Delete it or confirm it is deliberate. <strong>The only item on this list.</strong></td></tr>
+  </tbody>
+</table>
+<p>This list is empty for a verifiable reason, not an optimistic one: I listed the project tree and found no PHP, no JavaScript, no CSS and no WordPress files at all. Had there been a partial implementation, this section would carry its conflicts.</p>
+
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:16px 18px;margin-top:14px;break-inside:avoid">
+  <table style="margin:0">
+    <tbody>
+      <tr><td style="width:44%"><strong>SPECIFICATION</strong></td><td style="color:#2f6b3a;font-weight:600">LOCKED</td></tr>
+      <tr><td><strong>IMPLEMENTATION PLAN</strong></td><td style="color:#2f6b3a;font-weight:600">READY</td></tr>
+      <tr><td><strong>PRODUCTION CODE WRITTEN</strong></td><td style="color:#2f6b3a;font-weight:600">NO</td></tr>
+      <tr><td><strong>LOCKED DECISIONS REOPENED</strong></td><td style="color:#2f6b3a;font-weight:600">0</td></tr>
+      <tr><td><strong>NEW SCHEMA ELEMENTS INVENTED</strong></td><td style="color:#2f6b3a;font-weight:600">0</td></tr>
+      <tr><td><strong>ELEMENTOR PRO DEPENDENCY</strong></td><td style="color:#2f6b3a;font-weight:600">NO</td></tr>
+      <tr><td><strong>CUSTOMER SEGMENT ARCHITECTURE</strong></td><td style="color:#2f6b3a;font-weight:600">NO</td></tr>
+      <tr><td><strong>CHATBOT SECRET IN DATABASE</strong></td><td style="color:#2f6b3a;font-weight:600">NO</td></tr>
+      <tr><td><strong>NEXT STEP</strong></td><td>Begin Stage 0 only after this plan is approved</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4>Self-review against the locked specification</h4>
+<table>
+  <thead><tr><th style="width:38%">Constraint</th><th>Verified in this plan</th></tr></thead>
+  <tbody>
+    <tr><td>Counts unchanged</td><td>6 post types (§4) · 7 taxonomies (§4) · 8 tables (§4, all created in Stage 3) · 10 options groups (§4) · 5 roots and 306 terms (Stage 5) · 22 resolver terms (Stage 5) · 21 admin screens (§8) · 15 widgets (§10) · 0 required tags · 11 optional Pro</td></tr>
+    <tr><td>No new schema</td><td>Ten Domain aggregates map to the six post types plus Lead, Customer, Notification and Category — <strong>no new storage.</strong> PageSection is the locked <code>rj_page_section</code>, not an addition</td></tr>
+    <tr><td>No chatbot table or transcript</td><td>§4 and §12 both state it. Transcript storage reserved and unbuilt</td></tr>
+    <tr><td>No secret in options</td><td>§12 and §13. Configured-state detection without disclosure</td></tr>
+    <tr><td>No segments</td><td>Stage 18 uses <code>_rj_notify_prefs</code>; §14 tests for their absence</td></tr>
+    <tr><td>No business logic in builders, widgets or templates</td><td>§2's five prohibitions, each with its preventing mechanism; §9's one-renderer diagram</td></tr>
+    <tr><td>Pro never required</td><td>§10's layer rule; Stage 16's two-configuration gate</td></tr>
+  </tbody>
+</table>
+
+</doc-page>
+</x-dc>
+</body>
+</html>

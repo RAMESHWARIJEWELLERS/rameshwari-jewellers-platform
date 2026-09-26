@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15px; line-height: 1.58; }
+h1, h2 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 36px; letter-spacing: -0.03em; }
+h2 { font-size: 22px; margin: 24px 0 4px; }
+h5 { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 14px 0 6px; }
+p { margin: 0 0 10px; orphans: 3; widows: 3; }
+ul { margin: 0 0 11px; padding-left: 20px; }
+li { margin: 0 0 4px; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 10px 0 15px; font-size: 11.8px; line-height: 1.42; }
+th { text-align: left; font-weight: 600; font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 8px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 5px 8px 5px 0; vertical-align: top; overflow-wrap: anywhere; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 3px; border-radius: 3px; color: #423a6a; overflow-wrap: anywhere; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.75in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Cleanup Pass</span>
+  <span>NEW-1 · C-12 synchronization</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>No code. No architecture change.</span>
+  <span>Four decisions remain open · NEW-2 deferred</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px">
+  <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Follow-up cleanup</div>
+  <h1 style="margin:0">NEW-1 &amp; C-12 Cleanup</h1>
+  <div style="font-size:17.5px;color:#595d6c;line-height:1.35">Two corrections. The rejected segment dependency is gone from the audience resolver, and the Final Reconciliation no longer lists a hero-timezone blocker.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<h2 style="margin-top:0">1 · Changes applied</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:9%">ID</th><th style="width:19%">Document</th><th style="width:10%">§</th><th>Exact change</th><th style="width:10%">Status</th></tr></thead>
+  <tbody>
+    <tr><td>NEW-1</td><td>Development Blueprint</td><td>15</td><td>Audience resolver row. <strong>Responsibility</strong> changed from "Expands an event into recipients from followed categories, followed collections <em>and segments</em>. Chunks above 500." to "Expands an event into recipients from followed categories, followed collections, <strong>and the customer-declared <code>_rj_notify_prefs</code> event groups — the sole audience source</strong>. Chunks above 500." <strong>Depends-on</strong> changed from "Customer, <em>Segment</em>" to "Customer, <strong>Preferences</strong>" — the dependency name already used by the Preference filter row in the same table.</td><td>APPLIED</td></tr>
+    <tr><td>C-12</td><td>Final Reconciliation</td><td>5</td><td>The C-12 contradiction row rewritten. Earlier statement now reads "This document's first draft recorded the hero scheduling timezone as undefined"; conflict "<strong>False finding</strong> — Development Blueprint §9.6 already carried the rule"; authoritative source Development Blueprint §9.6; action <strong>CLARIFICATION APPLIED</strong>, stating the site-timezone rule, the Asia/Kolkata value, the absence of a second setting, and that quiet hours are unaffected.</td><td>APPLIED</td></tr>
+    <tr><td>C-12</td><td>Final Reconciliation</td><td>9</td><td>Critical-blocker table row 2 changed to <strong>"DISCHARGED — CLARIFICATION APPLIED"</strong>, with Blocks = "Nothing" and Resolution = "None". Heading changed from "Critical blockers" to <strong>"Critical blocker"</strong> (singular).</td><td>APPLIED</td></tr>
+    <tr><td>C-12</td><td>Final Reconciliation</td><td>1</td><td>Executive status: "Hero timezone" row changed from NEEDS CLARIFICATION / "IST established for notifications only" to <strong>LOCKED</strong> / "Development Blueprint §9.6 — WordPress site timezone, the single source for hero scheduling".</td><td>APPLIED</td></tr>
+    <tr><td>C-12</td><td>Final Reconciliation</td><td>10</td><td>Summary row changed from "C-12 hero timezone · NEEDS CLARIFICATION · One sentence. Critical blocker." to <strong>"C-12 hero timezone · LOCKED · None — clarification applied. WordPress site timezone is the single source."</strong></td><td>APPLIED</td></tr>
+    <tr><td>C-12</td><td>Final Reconciliation</td><td>6</td><td><code>_rj_starts_at</code> / <code>_rj_ends_at</code> registry row: purpose changed from "Campaign window. Timezone per C-12" to <strong>"Campaign window. Evaluated in the WordPress site timezone (C-12)"</strong> — the rule stated rather than cross-referenced.</td><td>APPLIED</td></tr>
+    <tr><td>C-12</td><td>Final Reconciliation</td><td>counts</td><td>Subtitle "Two critical blockers remain" → <strong>"One critical blocker remains"</strong>. Page footer "2 critical blockers · 12 contradictions" → <strong>"1 critical blocker · 12 contradictions"</strong>. Headline note "Two things are genuinely unresolved and one is genuinely undefined" → <strong>"Two things are genuinely unresolved"</strong>. Closing box "Two things… and one sentence fixing the hero timezone" → <strong>"One thing. Nine mechanical specification edits that need no decision."</strong></td><td>APPLIED</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12px;color:#595d6c">Seven rows, seven edits. One in the Development Blueprint, six in the Final Reconciliation.</p>
+
+<h2>2 · NEW-1 verification</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:48%">Confirmation</th><th style="width:10%">Result</th><th>Evidence</th></tr></thead>
+  <tbody>
+    <tr><td><code>AudienceResolver</code> no longer depends on Segment storage</td><td>PASS</td><td>Depends-on column now reads "Customer, Preferences". The word Segment does not appear in §15.</td></tr>
+    <tr><td><code>_rj_segment</code> is not required</td><td>PASS</td><td>Absent from §9.5 and from §15. Its only occurrences in the document are the two labelled rejection records (§0, closing box).</td></tr>
+    <tr><td><code>rj_customer_segment</code> is not required</td><td>PASS</td><td>Absent from §7.1 and §15. Occurs only in §0, §7.3 and the closing box, each a labelled rejection record.</td></tr>
+    <tr><td><code>_rj_notify_prefs</code> is the audience source</td><td>PASS</td><td>Named in the §15 responsibility as "the sole audience source"; registered in §9.5; already the audience in §8.3 and §7.3.</td></tr>
+    <tr><td>No new architecture introduced</td><td>PASS</td><td>No taxonomy, no meta key, no table, no options group added. <code>_rj_notify_prefs</code> schema untouched.</td></tr>
+    <tr><td>Documented functionality preserved</td><td>PASS</td><td>Followed categories and followed collections retained — both read <code>_rj_fav_collections</code> and category follows, neither needs a segment object. The 500-recipient chunking rule is unchanged.</td></tr>
+    <tr><td>Adjacent wording checked</td><td>PASS</td><td>Preference filter, Queue, Worker, Digest builder and the twelve remaining §15 rows contain no segment reference. The §8.3 event table was already corrected in the previous pass.</td></tr>
+    <tr><td>Notification architecture unchanged</td><td>PASS</td><td>Events, channels, drivers, consent model, throttles, quiet hours, queue table and the <code>rj_notifications</code> options group are all untouched.</td></tr>
+  </tbody>
+</table>
+
+<h2>3 · C-12 verification</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:48%">Confirmation</th><th style="width:10%">Result</th><th>Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>Hero timezone is explicitly defined</td><td>PASS</td><td>Development Blueprint §9.6: "Hero campaign start and end windows are evaluated in the WordPress site timezone, which is the single timezone source for hero scheduling."</td></tr>
+    <tr><td>WordPress site timezone is the single source</td><td>PASS</td><td>Stated in those words in §9.6, and repeated in Final Reconciliation §1, §5, §6, §9 and §10.</td></tr>
+    <tr><td>Asia/Kolkata is the business site timezone</td><td>PASS</td><td>§9.6: "for this business that setting is Asia/Kolkata".</td></tr>
+    <tr><td>No second hero-specific timezone setting</td><td>PASS</td><td>§9.6 states it explicitly. No timezone key exists in any of the nine options groups.</td></tr>
+    <tr><td>Notification quiet hours unaffected</td><td>PASS</td><td>§9.6 notes "Notification quiet hours (§8.4) are unaffected by this rule." §8.4's 22:00–08:00 IST rule is untouched.</td></tr>
+    <tr><td>C-12 is no longer a blocker</td><td>PASS</td><td>§9 row 2 reads DISCHARGED, Blocks = Nothing. The heading is singular.</td></tr>
+    <tr><td>Final Reconciliation status synchronized</td><td>PASS</td><td>All six locations updated: subtitle, footer, headline note, §1, §5, §9, §10 and the closing box. No location still calls it pending.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">4 · Open items — unchanged</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:14%">Item</th><th style="width:32%">Subject</th><th style="width:22%">Status</th><th>Confirmation</th></tr></thead>
+  <tbody>
+    <tr><td>C-7</td><td><code>_rj_name_alt</code></td><td>NEEDS CLARIFICATION</td><td>Untouched. Not decided.</td></tr>
+    <tr><td>C-11</td><td>Weight visibility</td><td>NEEDS CLARIFICATION</td><td>Untouched. Not decided.</td></tr>
+    <tr><td>OPEN-1</td><td>Elementor widget count: 17 vs 21</td><td>OPEN</td><td>Untouched. No count chosen.</td></tr>
+    <tr><td>OPEN-2</td><td>Hero fallback when no campaign is active</td><td>OPEN</td><td>Untouched. Still NOT ESTABLISHED IN SUPPLIED DOCUMENTS. No fallback invented.</td></tr>
+  </tbody>
+</table>
+
+<h2>5 · NEW-2 — unchanged</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p><strong>NEW-2 remains deferred to C-7. No change made in this pass.</strong></p>
+<p style="font-size:12.5px;color:#595d6c">Development Blueprint §7.2's feature matrix still marks <code>rj_tag</code> as supporting bilingual names and <code>rj_category</code> as supporting <code>_rj_name_alt</code>. Both entries are untouched. Whichever way C-7 resolves — removal, or retention as a search-synonym field — that decision must cover the §7.2 row as well as the §9.3 registry entry, so one is not left behind.</p>
+
+<h2>6 · Hygiene search result</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<h5>Segment references — active vs historical</h5>
+<table>
+  <thead><tr><th style="width:12%">Class</th><th style="width:26%">Location</th><th style="width:14%">Label</th><th>Assessment</th></tr></thead>
+  <tbody>
+    <tr><td><strong>ACTIVE</strong></td><td colspan="3" style="color:#2f6b3a"><strong>None.</strong> No implementation-oriented section in any document now implies that Segment storage exists.</td></tr>
+    <tr><td>Historical</td><td>Dev Blueprint §0, Conflict 3 decision table</td><td>"Rejected"</td><td>Correctly labelled. Retain.</td></tr>
+    <tr><td>Historical</td><td>Dev Blueprint §7.3</td><td>"NOT CREATED — Conflict 3 resolved"</td><td>Records the substitution and revisit trigger. Retain — it is the reference the corrections point at.</td></tr>
+    <tr><td>Historical</td><td>Dev Blueprint closing box</td><td>"Conflict 3 — RESOLVED. Not created:"</td><td>Correctly labelled. Retain.</td></tr>
+    <tr><td>Historical</td><td>Technical Blueprint §4.1 row + note</td><td>"NOT CREATED" badge under a PARTLY SUPERSEDED notice</td><td>Corrected in the previous pass. Retain as reasoning record.</td></tr>
+    <tr><td>Historical</td><td>Technical Blueprint closing box</td><td>"REJECTED"</td><td>Correctly labelled. Retain.</td></tr>
+    <tr><td>Historical</td><td>Conflict 3 Resolution · Conflict 3 Validation</td><td>Whole documents are reasoning records with RESOLVED banners</td><td>Retain. These are the decision record.</td></tr>
+    <tr><td>Historical</td><td>Final Reconciliation §3, §6</td><td>"SUPERSEDED" / "REJECTED — never create"</td><td>Correctly labelled. Retain.</td></tr>
+  </tbody>
+</table>
+<h5>C-12 status references</h5>
+<table>
+  <thead><tr><th style="width:12%">Class</th><th style="width:30%">Location</th><th>Assessment</th></tr></thead>
+  <tbody>
+    <tr><td><strong>ACTIVE</strong></td><td colspan="2" style="color:#2f6b3a"><strong>None incorrect.</strong> No current status section lists C-12 as unresolved or as a critical blocker.</td></tr>
+    <tr><td>Corrected</td><td>Final Reconciliation §1, §5, §6, §9, §10, subtitle, footer, closing box</td><td>All now state LOCKED, DISCHARGED or CLARIFICATION APPLIED.</td></tr>
+    <tr><td>Historical</td><td>Correction Pass Report — amber notice and §6</td><td>Already describes C-12 as a false finding to be re-recorded as a wording clarification. Consistent with this pass. Retain.</td></tr>
+  </tbody>
+</table>
+<h5>Searched terms</h5>
+<p style="font-size:12.5px;color:#595d6c"><code>AudienceResolver</code> · "segments" · "Segment" · "Customer, Segment" · <code>_rj_segment</code> · <code>rj_customer_segment</code> · hero timezone · "critical blocker" · "C-12 blocker" · "timezone undefined". The last two return no matches in any document. No historical reasoning record was deleted.</p>
+
+<h2>7 · Final status</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:16px 18px;break-inside:avoid">
+  <p style="margin:0 0 10px;font-size:16px;font-weight:500;color:#2f6b3a">NEW-1 corrected. C-12 synchronized and no longer a blocker. No locked architecture changed. No code written. C-7, C-11, OPEN-1 and OPEN-2 remain unresolved. NEW-2 remains deferred to C-7.</p>
+  <table style="margin:0 0 8px">
+    <tbody>
+      <tr><td style="width:44%"><strong>Changes applied</strong></td><td>7 edits · 2 documents — each edit is one row in §1</td></tr>
+      <tr><td><strong>Verification</strong></td><td style="color:#2f6b3a;font-weight:600">NEW-1: 8 / 8 PASS · C-12: 7 / 7 PASS</td></tr>
+      <tr><td><strong>Active segment references</strong></td><td style="color:#2f6b3a;font-weight:600">Zero</td></tr>
+      <tr><td><strong>Locked architecture</strong></td><td>Unchanged — 6 post types · 7 taxonomies · 8 tables · 9 settings groups · 306 terms · 5 roots</td></tr>
+      <tr><td><strong>Critical blockers remaining</strong></td><td style="color:#2f6b3a;font-weight:600">None — both discharged. Blocker 1 (nine specification edits) was applied in the Correction Pass; blocker 2 (C-12) is a clarification.</td></tr>
+    </tbody>
+  </table>
+  <p style="margin:0;font-size:13.5px;color:#595d6c">Both Final Reconciliation critical blockers are now discharged, so nothing blocks Stage 1. Of what remains, C-7 and C-11 are non-blocking clarifications, OPEN-1 blocks Stage 21, and OPEN-2 blocks Stage 22.</p>
+</div>
+
+</doc-page>
+</x-dc>
+</body>
+</html>

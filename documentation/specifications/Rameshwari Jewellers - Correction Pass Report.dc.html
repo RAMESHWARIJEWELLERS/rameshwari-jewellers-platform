@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15px; line-height: 1.58; }
+h1, h2, h3 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 37px; letter-spacing: -0.03em; }
+h2 { font-size: 22px; margin: 24px 0 4px; }
+h5 { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 14px 0 6px; }
+p { margin: 0 0 10px; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 11px; padding-left: 20px; }
+li { margin: 0 0 4px; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 10px 0 15px; font-size: 11.6px; line-height: 1.42; }
+th { text-align: left; font-weight: 600; font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 8px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 5px 8px 5px 0; vertical-align: top; overflow-wrap: anywhere; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 3px; border-radius: 3px; color: #423a6a; overflow-wrap: anywhere; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.7in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Correction Pass Report</span>
+  <span>C-1…C-6, C-8…C-10, C-12</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>No code written. No locked architecture changed.</span>
+  <span>Four decisions remain open</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px">
+  <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Specification correction pass</div>
+  <h1 style="margin:0">Correction Pass Report</h1>
+  <div style="font-size:17.5px;color:#595d6c;line-height:1.35">Ten corrections applied across three documents. Two new unresolved findings reported, not fixed.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:14px 16px;margin-bottom:16px;break-inside:avoid">
+  <h5 style="margin:0 0 5px;color:#8a6410">C-12 was already substantially established — my earlier finding was wrong</h5>
+  <p style="margin:0;font-size:14px">Development Blueprint §9.6 already read: "Dates are stored and compared in the site timezone, which for this business is fixed to Asia/Kolkata; a campaign set for Diwali must not shift because a server reports UTC." So the hero timezone was <strong>not</strong> undefined, and the Final Reconciliation's C-12 was a false finding — the same error class as the C-3 it already corrected. <strong>Action taken:</strong> the sentence was strengthened to state the rule explicitly and to confirm no second timezone setting is introduced. No contradicting rule was added. C-12 should be recorded as a wording clarification, not a critical blocker.</p>
+</div>
+
+<h2 style="margin-top:0">1 · Corrections applied</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:6%">ID</th><th style="width:17%">Document</th><th style="width:9%">§</th><th>Exact correction made</th><th style="width:10%">Status</th></tr></thead>
+  <tbody>
+    <tr><td>C-1</td><td>Development Blueprint</td><td>6.1</td><td><code>rj_reel</code> taxonomies row changed from "category, reel_type, collection_tax, tag" to <strong>"category, collection_tax, tag"</strong>.</td><td>APPLIED</td></tr>
+    <tr><td>C-2</td><td>Development Blueprint</td><td>6.1</td><td><code>rj_showroom</code> taxonomies cell changed from "location" to <strong>"None — location comes from <code>_rj_city</code>, <code>_rj_state</code>, <code>_rj_pincode</code>"</strong>.</td><td>APPLIED</td></tr>
+    <tr><td>C-3</td><td>Development Blueprint</td><td>12.1</td><td>RJ Reel Grid controls changed from "Category, reel type, collection…" to <strong>"Category, tag, collection…"</strong>. RJ Reel Slider inherits via its "Same" source cell.</td><td>APPLIED</td></tr>
+    <tr><td>C-4</td><td>Development Blueprint</td><td>11.2</td><td><code>GET reels</code> arguments: <code>reel_type</code> → <strong><code>tag</code></strong>. <code>GET showrooms</code>: <code>location</code> removed, leaving <strong><code>with_hours</code></strong>. No replacement argument invented.</td><td>APPLIED</td></tr>
+    <tr><td>C-5</td><td>Development Blueprint</td><td>8.3</td><td><code>rj/bridal_collection_published</code> audience changed from "Bridal Interest segment" to <strong>"Customers whose <code>_rj_notify_prefs</code> include the bridal event group"</strong>.</td><td>APPLIED</td></tr>
+    <tr><td>C-5</td><td>Technical Blueprint</td><td>8.3</td><td>Same correction on the "Bridal collection" row. Additionally the "Marketing campaign" row changed from "Owner-chosen segments" to <strong>"Owner-chosen audiences, drawn from <code>_rj_notify_prefs</code> event groups"</strong> — same rejected mechanism, same correction.</td><td>APPLIED</td></tr>
+    <tr><td>C-6</td><td>Development Blueprint</td><td>17</td><td>Customers screen actions changed from "View, assign segment, export · bulk segment" to <strong>"View, export · bulk export. Filtered by notification preference, login method, verified state and activity window"</strong>. Segment column removed.</td><td>APPLIED</td></tr>
+    <tr><td>C-6</td><td>Development Blueprint</td><td>2.5</td><td><code>Domain\Customer</code> responsibilities: "segment assignment" removed. <em>The Final Reconciliation cited this string as §14; it is in §2.5. Same string, corrected at its real location.</em></td><td>APPLIED</td></tr>
+    <tr><td>C-8</td><td>Navigation Facet Decision</td><td>6</td><td><code>_rj_resolver</code> definition rewritten: Shape A labelled explicitly; Shape B changed from <code>{"terms":[id,id,id]}</code> to <strong><code>{"terms":[derived IDs],"paths":["jewellery/gold-jewellery/…","jewellery/silver-jewellery/…","jewellery/black-polish-silver/…"]}</code></strong>, with the rule that paths are the portable migration source and IDs are re-resolved from them. Wording matched to <em>Resolver Approval</em> §4.</td><td>APPLIED</td></tr>
+    <tr><td>C-8</td><td>Navigation Facet Decision</td><td>16</td><td>LOCKED RULE clause 2 gains: "Shape A stores <code>tax</code> + <code>slug</code>; Shape B stores <code>terms</code> + portable <code>paths</code>, with IDs re-resolved from paths on load."</td><td>APPLIED</td></tr>
+    <tr><td>C-9</td><td>Navigation Facet Decision</td><td>4</td><td>Maang Tikka row now reads: <strong>"The three टिका leaves — under JEWELLERY › Gold Jewellery / Silver Jewellery / Black Polish Silver › महिला के आभूषण › सिर के आभूषण › टिका. Not Neck Jewellery."</strong> Mangalsutra and Bridal Nath rows also given their explicit parent paths (Neck Jewellery and Nose Jewellery) for consistency.</td><td>APPLIED</td></tr>
+    <tr><td>C-10</td><td>Technical Blueprint</td><td>3.6</td><td>Heading badge changed NEW → <strong>SUPERSEDED — CONFLICT 3 RESOLVED</strong>. A notice states <code>rj_page_section</code> CREATED and the six NOT CREATED, pointing to <em>Conflict 3 Validation</em> A–G and <em>Development Blueprint</em> §6.2, §9.6. Row badges changed to CREATED / NOT CREATED. Table retained as the reasoning record.</td><td>APPLIED</td></tr>
+    <tr><td>C-10</td><td>Technical Blueprint</td><td>4.1</td><td>Heading badge → <strong>PARTLY SUPERSEDED</strong>. A notice states seven taxonomies are registered and names the three rejected with their substitutions, pointing to <em>Development Blueprint</em> §7.3. The three row badges changed NEW → NOT CREATED.</td><td>APPLIED</td></tr>
+    <tr><td>C-10</td><td>Technical Blueprint</td><td>3.2, 3.4</td><td><code>rj_reel</code> relationships: <code>rj_reel_type</code> replaced with <code>rj_tag</code>. <code>rj_showroom</code> relationships: <code>rj_location</code> replaced with "No taxonomy — location comes from the address meta". Both carry a parenthetical noting the rejection.</td><td>APPLIED</td></tr>
+    <tr><td>C-10</td><td>Technical Blueprint</td><td>4.1 note</td><td>The segment-assignment paragraph gains a SUPERSEDED preface naming <code>_rj_notify_prefs</code> as the mechanism; the original reasoning is retained below it.</td><td>APPLIED</td></tr>
+    <tr><td>C-10</td><td>Technical Blueprint</td><td>closing box</td><td>"What needs approval before Phase 1" replaced with <strong>"Approval status — all five resolved"</strong>: one APPROVED post type, one APPROVED folder structure, four REJECTED, each with its outcome, plus the final 6/7/8/9 schema.</td><td>APPLIED</td></tr>
+    <tr><td>C-12</td><td>Development Blueprint</td><td>9.6</td><td>Closing note now states: <strong>"Hero campaign start and end windows are evaluated in the WordPress site timezone, which is the single timezone source for hero scheduling"</strong> — Asia/Kolkata being that setting's value for this business. Explicitly notes no second timezone setting, and that notification quiet hours (§8.4) are unaffected.</td><td>APPLIED</td></tr>
+  </tbody>
+</table>
+
+<h2>2 · Documents touched</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:30%">Document</th><th style="width:26%">Sections modified</th><th>Corrections</th></tr></thead>
+  <tbody>
+    <tr><td>Development Blueprint</td><td>2.5 · 6.1 · 8.3 · 9.6 · 11.2 · 12.1 · 17</td><td>C-1, C-2, C-3, C-4, C-5, C-6, C-12 — eight edits</td></tr>
+    <tr><td>Technical Blueprint</td><td>3.2 · 3.4 · 3.6 · 4.1 · 8.3 · closing box</td><td>C-5, C-10 — six edits</td></tr>
+    <tr><td>Navigation Facet Decision</td><td>4 · 6 · 16 · 17</td><td>C-8, C-9 — three edits</td></tr>
+  </tbody>
+</table>
+<p><strong>Development Blueprint §7.3 was not touched.</strong> It already records the three rejected taxonomies with their substitutions and revisit triggers, and is the reference the C-3, C-5 and C-10 corrections now point at.</p>
+<h5>Not touched — no correction required</h5>
+<p style="font-size:12.5px;color:#595d6c">Category Master · Resolver Approval &amp; Lock · Conflict 3 Resolution · Conflict 3 Validation · Decision 1 Category Roots · Platform Architecture · UI/UX Blueprint · Final Reconciliation. The Final Reconciliation retains C-12 as a critical blocker; see the notice above — it should be downgraded to a wording clarification, which is a change to that document's own finding and is not made here.</p>
+
+<h2>3 · Documents not touched — remaining unresolved</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:14%">Item</th><th style="width:30%">Subject</th><th style="width:20%">Status</th><th>Confirmation</th></tr></thead>
+  <tbody>
+    <tr><td>C-7</td><td><code>_rj_name_alt</code></td><td>NEEDS CLARIFICATION</td><td>Untouched. Still registered in Development Blueprint §9.3 with its superseded justification in §8.1. No edit made.</td></tr>
+    <tr><td>C-11</td><td><code>_rj_weight</code> visibility</td><td>NEEDS CLARIFICATION</td><td>Untouched. §9.2 still marks it Public: Yes; §10 still carries the <code>rj_display</code> flag. No edit made.</td></tr>
+    <tr><td>OPEN-1</td><td>Elementor widget count</td><td>OPEN</td><td>Untouched. Development Blueprint §12.1 still lists seventeen with §12.2 recording the four dropped; the Final Reconciliation still records 13 / 17 / 21 as the documented alternatives. No count decided.</td></tr>
+    <tr><td>OPEN-2</td><td>Hero fallback, no active campaign</td><td>OPEN</td><td>Untouched. Still NOT ESTABLISHED IN SUPPLIED DOCUMENTS. No fallback invented.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">4 · Post-correction consistency check</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:44%">Verification</th><th style="width:12%">Result</th><th>Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>No active registry creates <code>rj_reel_type</code></td><td>PASS</td><td>Dev §6.1 and §7.1 clean; Tech §4.1 row badged NOT CREATED under a notice; Dev §7.3 records the rejection.</td></tr>
+    <tr><td>No active registry creates <code>rj_location</code></td><td>PASS</td><td>Same three locations.</td></tr>
+    <tr><td>No active registry creates <code>rj_customer_segment</code></td><td>PASS</td><td>Same three locations.</td></tr>
+    <tr><td>No active registry creates <code>_rj_segment</code></td><td>PASS</td><td>Absent from Dev §9.5; recorded as REJECTED in the Final Reconciliation registry.</td></tr>
+    <tr><td>No active registry creates <code>rj_sections</code></td><td>PASS</td><td>Dev §10 lists nine groups, none of them <code>rj_sections</code>; recorded as rejected in Dev §0 and Tech §3.6.</td></tr>
+    <tr><td>No active section presents those as pending</td><td>PASS</td><td>Every remaining mention now sits under a SUPERSEDED or NOT CREATED badge, or inside a labelled reasoning record.</td></tr>
+    <tr><td><code>rj_reel</code> filtering uses <code>tag</code></td><td>PASS</td><td>Dev §6.1 taxonomies, §11.2 <code>GET reels</code>, §12.1 Reel Grid control; Tech §3.2 relationships.</td></tr>
+    <tr><td>Showroom location uses existing meta</td><td>PASS</td><td>Dev §6.1 names <code>_rj_city</code>/<code>_rj_state</code>/<code>_rj_pincode</code>; §9.4 registers all eleven showroom keys unchanged; Tech §3.4 relationships corrected.</td></tr>
+    <tr><td>Notification audience uses <code>_rj_notify_prefs</code></td><td>PASS</td><td>Dev §8.3 bridal row; Tech §8.3 bridal and marketing rows; Dev §9.5 registers the key.</td></tr>
+    <tr><td>Shape B = <code>terms</code> + <code>paths</code></td><td>PASS</td><td>Resolver Approval §4 (unchanged, already correct); Navigation Facet §6 and §16 now match it.</td></tr>
+    <tr><td>Maang Tikka → सिर के आभूषण › टिका</td><td>PASS</td><td>Navigation Facet §4 states the full path and "Not Neck Jewellery"; Resolver Approval §5 already correct.</td></tr>
+    <tr><td>Hero timezone = WordPress site timezone</td><td>PASS</td><td>Dev §9.6 closing note, stated explicitly as the single source.</td></tr>
+    <tr><td>Category Master unchanged</td><td>PASS</td><td>File not opened for writing. 306 · 5 roots · 74 / 98 / 98 intact.</td></tr>
+    <tr><td>Model B unchanged</td><td>PASS</td><td>Navigation Facet §15 decision and the 22 mappings untouched; only Shape B wording and one parent path corrected.</td></tr>
+    <tr><td><code>_rj_resolver</code> unchanged</td><td>PASS</td><td>Resolver Approval not modified. Schema, two shapes, twelve clauses, 31 validation rows all intact.</td></tr>
+  </tbody>
+</table>
+<p><strong>Fifteen verifications, fifteen PASS.</strong></p>
+
+<h2>5 · New unresolved findings</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p>Two contradictions found during the hygiene search that were not among C-1 to C-12. <strong>Reported, not changed.</strong></p>
+<table>
+  <thead><tr><th style="width:12%">ID</th><th style="width:22%">Location</th><th style="width:26%">Text</th><th>Why it contradicts, and what a fix would need</th></tr></thead>
+  <tbody>
+    <tr><td><strong>NEW-1</strong></td><td>Development Blueprint §15, Audience resolver row</td><td>"Expands an event into recipients from followed categories, followed collections <strong>and segments</strong>. Chunks above 500." Depends-on column reads "Customer, <strong>Segment</strong>".</td><td>Segments were rejected, so <code>AudienceResolver</code> is specified to read a source that will not exist. Distinct from C-5 and C-6, which were about audience wording and admin actions. A fix would replace "and segments" with the <code>_rj_notify_prefs</code> event groups and drop "Segment" from the dependency list — but that is a specification change and is not made here.</td></tr>
+    <tr><td><strong>NEW-2</strong></td><td>Development Blueprint §7.2 feature matrix</td><td>The "Hindi + English names" row marks <code>rj_tag</code> as supporting bilingual names, and the "Alternate name" row marks <code>rj_category</code> as supporting <code>_rj_name_alt</code>.</td><td>The second interacts with the still-open C-7. If C-7 is resolved as removal, this row goes with it; if resolved as a search-synonym field, the row needs a restated purpose. Recorded so the C-7 decision covers both places rather than leaving one behind.</td></tr>
+  </tbody>
+</table>
+
+<h2>6 · Final status</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:16px 18px;break-inside:avoid">
+  <p style="margin:0 0 10px;font-size:16px;font-weight:500;color:#2f6b3a">Specification corrections C-1 to C-6, C-8 to C-10 and C-12 applied. No code written. No locked architecture changed. Four decisions remain open.</p>
+  <table style="margin:0 0 8px">
+    <tbody>
+      <tr><td style="width:44%"><strong>Corrections applied</strong></td><td>10 IDs · 17 individual edits · 3 documents — each edit is one row in §1</td></tr>
+      <tr><td><strong>Consistency check</strong></td><td style="color:#2f6b3a;font-weight:600">15 / 15 PASS</td></tr>
+      <tr><td><strong>Locked architecture</strong></td><td>Unchanged — 6 post types · 7 taxonomies · 8 tables · 9 settings groups · 306 terms · 5 roots</td></tr>
+      <tr><td><strong>Open decisions</strong></td><td>C-7 · C-11 · OPEN-1 · OPEN-2</td></tr>
+      <tr><td><strong>New unresolved findings</strong></td><td>NEW-1 · NEW-2 — reported, not changed</td></tr>
+    </tbody>
+  </table>
+  <p style="margin:0;font-size:13.5px;color:#595d6c">Critical Blocker 1 from the Final Reconciliation is now discharged. Critical Blocker 2 (C-12) is discharged and should be re-recorded as a wording clarification, since the rule was already present.</p>
+</div>
+
+</doc-page>
+</x-dc>
+</body>
+</html>

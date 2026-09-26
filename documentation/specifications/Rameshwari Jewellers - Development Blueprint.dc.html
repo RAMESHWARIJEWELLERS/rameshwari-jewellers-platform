@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15.5px; line-height: 1.62; }
+h1, h2, h3, h4, h5, h6 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.14; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 40px; letter-spacing: -0.03em; }
+h2 { font-size: 27px; margin: 0 0 4px; }
+h3 { font-size: 19px; margin: 28px 0 6px; }
+h4 { font-size: 15.5px; font-weight: 600; margin: 20px 0 4px; letter-spacing: 0; }
+h5 { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 18px 0 6px; }
+p { margin: 0 0 11px; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 12px; padding-left: 20px; }
+li { margin: 0 0 4px; orphans: 3; widows: 3; }
+a { color: #5d5294; text-underline-offset: 3px; }
+a:hover { color: #796cbf; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 12px 0 18px; font-size: 12.2px; line-height: 1.42; }
+th { text-align: left; font-weight: 600; font-size: 9.5px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 10px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 5px 10px 5px 0; vertical-align: top; overflow-wrap: anywhere; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 4px; border-radius: 3px; color: #423a6a; overflow-wrap: anywhere; }
+pre { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.8px; line-height: 1.5; background: #f3f5fe; border-left: 2px solid #9184d9; padding: 11px 13px; margin: 12px 0 16px; border-radius: 0 8px 8px 0; white-space: pre-wrap; overflow-wrap: anywhere; break-inside: avoid; color: #292b31; }
+pre code { background: none; padding: 0; color: inherit; font-size: 1em; }
+hr { border: 0; height: 1px; background: #cfd3e5; margin: 24px 0; }
+</style>
+</helmet>
+<doc-page margin="0.75in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Development Blueprint</span>
+  <span>Session 4 · Build-ready</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9.5px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>Locked architecture. Conflicts flagged, not resolved.</span>
+  <span>Planning only. No implementation.</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:24px">
+  <div style="font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Jaipur · Document 4</div>
+  <h1 style="margin:0">Development Blueprint</h1>
+  <div style="font-size:19px;color:#595d6c;line-height:1.3">The build map: every folder, file, class, table, key, route, widget and screen a developer needs to start Stage 1 without re-deriving a single decision.</div>
+  <div style="height:2px;background:#9184d9;width:96px;margin-top:14px"></div>
+</div>
+
+<div style="background:#f5f4ff;border:1px solid #d2cefd;border-radius:8px;padding:15px 17px;margin-bottom:18px;break-inside:avoid">
+  <h5 style="margin:0 0 6px">How to read this</h5>
+  <p style="margin:0 0 7px;font-size:14.5px">Sections 1–29 <em>are</em> the final registries. The closing index maps each requested "final registry" to the section that holds it rather than repeating it — a duplicated registry is a registry that will disagree with itself within a month.</p>
+  <p style="margin:0;font-size:13.5px;color:#595d6c">Names shown here are final. Post type slugs, taxonomy slugs, table names and meta keys become database values on day one of Stage 1 and cannot be changed afterwards without a migration.</p>
+</div>
+
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:15px 17px;margin-bottom:22px;break-inside:avoid">
+  <h5 style="margin:0 0 6px;color:#8a6410">Architecture conflicts — one resolved, two open</h5>
+  <p style="margin:0;font-size:14.5px">Three items in the Session 4 brief disagreed with locked decisions. <strong>Conflict 3 is resolved</strong> by owner decision of Session 5A.1 and this document is updated throughout to match. Conflicts 1 and 2 remain open; neither blocks the schema. All three are set out in Section 0.</p>
+</div>
+
+<h3 style="margin-top:0">Contents</h3>
+<div style="columns:2;column-gap:30px;font-size:12.5px;line-height:1.75">
+  <div>0 · Architecture conflicts</div>
+  <div>1 · Project structure</div>
+  <div>2 · rameshwari-core</div>
+  <div>3 · Optional plugins</div>
+  <div>4 · Theme structure</div>
+  <div>5 · Database tables</div>
+  <div>6 · CPT registry</div>
+  <div>7 · Taxonomy registry</div>
+  <div>8 · Category data model</div>
+  <div>9 · Meta key registry</div>
+  <div>10 · Settings registry</div>
+  <div>11 · REST route registry</div>
+  <div>12 · Elementor widgets</div>
+  <div>13 · Dynamic data</div>
+  <div>14 · Customer modules</div>
+  <div>15 · Notification modules</div>
+  <div>16 · WhatsApp engine</div>
+  <div>17 · Admin screens</div>
+  <div>18 · Media modules</div>
+  <div>19 · Import / export</div>
+  <div>20 · Activity log</div>
+  <div>21 · Security checklist</div>
+  <div>22 · Performance checklist</div>
+  <div>23 · Testing structure</div>
+  <div>24 · Regression tests</div>
+  <div>25 · File-to-feature matrix</div>
+  <div>26 · Dependency graph</div>
+  <div>27 · Coding order</div>
+  <div>28 · Development rules</div>
+  <div>29 · Build checklist</div>
+  <div style="color:#595d6c">Index of final registries</div>
+</div>
+
+<h2 style="break-before:page">0 · Architecture Conflicts</h2>
+<div style="height:2px;background:#d2a03c;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">Conflict 1 — Combined category terms</h3>
+<table>
+  <thead><tr><th style="width:20%">Aspect</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Existing decision</td><td>The approved taxonomy (Architecture Appendix A) records <code>झुमका</code> and <code>झूमर</code> as two sibling terms; likewise <code>लौंग</code> / <code>लूंग</code>, <code>जंजीर</code> / <code>सांकली</code>, <code>कड़ा</code> / <code>कड़ी</code>, <code>चुटकी</code> / <code>बिछिया</code>.</td></tr>
+    <tr><td>Conflict</td><td>Section 8 of this session's brief writes them as single slash-joined entries: <code>झुमका/झूमर</code>, <code>लौंग/लूंग</code>, <code>जंजीर/सांकली</code>, <code>कड़ा/कड़ी</code>, <code>चुटकी/बिछिया</code>.</td></tr>
+    <tr><td>Technical impact</td><td>Five terms versus ten. It changes term IDs, slugs, URLs, the import file, product filing and the mega-menu row count. Deciding after products are filed means re-filing them by hand. A slash in a term name also produces an awkward slug and reads badly in a breadcrumb.</td></tr>
+    <tr><td>Recommendation</td><td>Keep them as <strong>separate terms</strong>, as approved. Where the shop genuinely treats two words as one thing, put the second word in the term's alternate-name field so search matches both — that is what <code>_rj_name_alt</code> is for (§9). This gives one URL, one filing decision, and both words findable.</td></tr>
+    <tr><td>Blocked until decided</td><td>The Stage 2 category import file only. Everything else proceeds.</td></tr>
+  </tbody>
+</table>
+
+<h3>Conflict 2 — <span style="color:#2f6b3a">RESOLVED</span> (Free-First Audit)</h3>
+<table>
+  <thead><tr><th style="width:20%">Aspect</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Existing decision</td><td>Thirteen widgets and seven dynamic tags, approved in the WordPress Architecture and mapped section-by-section in the UI/UX Blueprint.</td></tr>
+    <tr><td>Conflict</td><td>Section 12 lists twenty-one. Four of the additions duplicate approved widgets under a second name: <em>Store Locator</em> duplicates Showroom Grid; <em>Featured Categories</em> duplicates Category Grid with its featured filter; <em>Product Card</em> duplicates a single-item Product Grid; <em>Reel Viewer</em> is not a placeable widget — it is a modal the Reel Grid opens.</td></tr>
+    <tr><td>Technical impact</td><td>Two widgets that render the same component diverge. The owner then has two Showroom widgets with different settings and no way to know which one a page uses. Every duplicate also doubles the control surface to maintain and test.</td></tr>
+    <tr><td>Recommendation</td><td>Build <strong>seventeen</strong>: the approved thirteen plus four genuinely new ones — Wishlist Button, Customer Account, Hero, and Notification Signup. Drop the four duplicates; Store Locator and Featured Categories become preset configurations of the widgets that already exist, offered as saved presets rather than separate widgets. Section 12 is written this way, with the dropped four listed and explained.</td></tr>
+    <tr><td>Blocked until decided</td><td>Stage 21 only.</td></tr>
+  </tbody>
+</table>
+
+<h3>Conflict 3 — <span style="color:#2f6b3a">RESOLVED</span> (Session 5A.1)</h3>
+<table>
+  <thead><tr><th style="width:20%">Aspect</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Original conflict</td><td>Two post types and three taxonomies were proposed in the Technical Blueprint and appeared in neither the CPT nor the taxonomy list of the Session 4 brief.</td></tr>
+    <tr><td>Validation</td><td>Each was tested against the approved architecture in Session 5A.1: is the capability required, and can an already-approved structure provide it?</td></tr>
+    <tr><td><strong>Owner decision</strong></td><td><strong>Create <code>rj_page_section</code>.</strong> Scheduled hero campaigns are an approved business requirement — start date, end date, active state, order, image, bilingual titles, description, CTA — and a post type is the correct container: scheduling and revisions are native, and the record set grows over time as campaigns accumulate.</td></tr>
+    <tr><td>Rejected</td><td><code>rj_hero</code> · <code>rj_reel_type</code> · <code>rj_location</code> · <code>rj_customer_segment</code> · <code>_rj_segment</code>. Hero is a section key, not a second post type. Reels use <code>rj_tag</code>, already registered on them. Showroom location is already carried by the approved address meta. Notification audiences come from <code>_rj_notify_prefs</code> — consent the customer gave — rather than from segments inferred about them.</td></tr>
+    <tr><td>Also rejected</td><td>The <code>rj_sections</code> options group proposed as an alternative container. Hero storage is the post type.</td></tr>
+    <tr><td>Net schema change</td><td>One post type. No new taxonomy, no new table. Eleven meta keys on the new post type — a consequence of the approved field list, registered in §9.6.</td></tr>
+    <tr><td>Status</td><td><strong>Stages 3, 4 and 5 unblocked.</strong></td></tr>
+  </tbody>
+</table>
+
+<h4>Non-conflicts, for the record</h4>
+<table>
+  <thead><tr><th style="width:34%">Item</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>Design System as a numbered approved document</td><td>Not a conflict. It is Section 13 of the UI/UX Blueprint; the token values there are the source of truth.</td></tr>
+    <tr><td>SEO and Hosting Architecture as approved documents</td><td>Not a conflict. Their content lives inside the Architecture and Technical Blueprint sections; this document treats them as settled.</td></tr>
+    <tr><td>Section 19's "never import leads or customers"</td><td>Matches the locked decision exactly.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">1 · Project Structure</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<pre><code>rameshwari-platform/
+├── plugin/
+│   └── rameshwari-core/            # REQUIRED — all business data and logic
+├── optional/
+│   ├── rameshwari-blocks/          # Gutenberg blocks
+│   ├── rameshwari-elementor/       # Elementor widgets and dynamic tags
+│   └── rameshwari-tools/           # CLI, bulk media, diagnostics
+├── theme/
+│   └── rameshwari/                 # Presentation only
+├── documentation/
+│   ├── specifications/             # the specification set (.dc.html)
+│   ├── decisions/                  # one file per owner decision, dated
+│   ├── runbooks/                   # deploy, migrate, restore, theme-switch
+│   └── data/
+│       ├── categories.json         # the real taxonomy, import source
+│       └── settings-defaults.json
+├── tests/
+│   ├── unit/  ├── integration/  ├── rest/  ├── security/
+│   ├── migration/  ├── regression/  └── fixtures/
+└── build/
+    ├── composer.json               # dev tooling and autoload map only
+    ├── package.json                # asset build only
+    ├── phpcs.xml                   # WordPress coding standards
+    ├── phpstan.neon                # static analysis, bans dangerous calls
+    └── release.md                  # the release procedure, as a checklist</code></pre>
+<table>
+  <thead><tr><th style="width:18%">Directory</th><th style="width:14%">Ships to production</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td><code>plugin/</code></td><td>Yes, always</td><td>The site is functional with only this and any theme.</td></tr>
+    <tr><td><code>optional/</code></td><td>By choice</td><td>Each installs and uninstalls independently. None may ever hold business data.</td></tr>
+    <tr><td><code>theme/</code></td><td>Yes</td><td>Replaceable at any time.</td></tr>
+    <tr><td><code>documentation/</code></td><td>No</td><td>Except <code>data/categories.json</code>, which is an import source, not documentation.</td></tr>
+    <tr><td><code>tests/</code>, <code>build/</code></td><td>No</td><td>Never deployed. Composer is a development convenience; the plugin ships with its own autoloader because some shared hosts block Composer entirely.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">2 · rameshwari-core</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">2.1 Tree</h3>
+<pre><code>rameshwari-core/
+├── rameshwari-core.php          # header, constants, guards, bootstrap handoff
+├── uninstall.php                # opt-in data removal only
+├── readme.txt
+├── languages/rameshwari.pot
+├── assets/
+│   ├── admin/css/  admin/js/    # tree-manager, gallery, settings, importer
+│   └── public/css/  public/js/  # cards, menu, reels, filters, wishlist, whatsapp
+├── templates/
+│   ├── single-product.php       archive-product.php
+│   ├── taxonomy-category.php    single-reel.php      archive-reel.php
+│   ├── single-collection.php    archive-collection.php
+│   ├── single-showroom.php      archive-showroom.php
+│   ├── account/{dashboard,wishlist,viewed,collections,profile,
+│   │            notifications,privacy,login}.php
+│   └── parts/{card-product,card-category,tile-reel,card-collection,
+│              card-showroom,card-testimonial,whatsapp-button,breadcrumb,
+│              filter-panel,mega-menu,search-overlay,gallery,spec-list,
+│              pagination,empty-state,skeleton,toast,drawer}.php
+└── src/
+    ├── Plugin.php  Container.php  ModuleRegistry.php  Activator.php
+    ├── Deactivator.php  Uninstaller.php  Upgrader.php
+    ├── Support/      Data/      Domain/     Services/
+    ├── Admin/        Rest/      Frontend/   Cron/
+    └── Diagnostics/</code></pre>
+
+<h3>2.2 Bootstrap and container</h3>
+<table>
+  <thead><tr><th style="width:22%">File</th><th style="width:30%">Purpose / responsibility</th><th style="width:20%">Depends on</th><th>Data · Theme · Elementor</th></tr></thead>
+  <tbody>
+    <tr><td><code>rameshwari-core.php</code></td><td>Plugin header. Defines <code>RJ_VERSION</code>, <code>RJ_DB_VERSION</code>, <code>RJ_FILE</code>, <code>RJ_PATH</code>, <code>RJ_URL</code>, <code>RJ_MIN_PHP</code> (8.2), <code>RJ_MIN_WP</code> (6.5), <code>RJ_TEXTDOMAIN</code>. Checks minimums, registers the autoloader, hands to <code>Plugin::boot()</code> on <code>plugins_loaded</code>. Nothing else.</td><td>Nothing</td><td>No · No · No</td></tr>
+    <tr><td><code>src/Plugin.php</code></td><td>Builds the container, reads the module registry, calls <code>register()</code> on each module in dependency order.</td><td>Container, ModuleRegistry</td><td>No · No · No</td></tr>
+    <tr><td><code>src/Container.php</code></td><td>Minimal service locator. Lazy factories, no reflection, no third-party dependency.</td><td>Nothing</td><td>No · No · No</td></tr>
+    <tr><td><code>src/ModuleRegistry.php</code></td><td>The list of modules and their declared requirements. Topologically sorted at boot, so load order is never a source of bugs.</td><td>Nothing</td><td>No · No · No</td></tr>
+    <tr><td><code>src/Activator.php</code></td><td>Creates tables, writes <code>rj_db_version</code>, registers roles and capabilities, seeds the five root categories and default settings if empty, schedules cron, flushes rewrites once, logs the activation.</td><td>Data, Services</td><td>Writes · No · No</td></tr>
+    <tr><td><code>src/Deactivator.php</code></td><td>Unschedules cron, clears transients and cache groups, flushes rewrites. Touches no data.</td><td>Support\Cache</td><td>No · No · No</td></tr>
+    <tr><td><code>src/Uninstaller.php</code></td><td>Runs only if the owner has opted in. Default behaviour removes nothing.</td><td>Data\Schema</td><td>Deletes, opt-in · No · No</td></tr>
+    <tr><td><code>src/Upgrader.php</code></td><td>Compares stored schema version to <code>RJ_DB_VERSION</code> and runs numbered migrations behind a lock, on <code>admin_init</code> or CLI only — never on a front-end request.</td><td>Data\Migrations</td><td>Writes · No · No</td></tr>
+  </tbody>
+</table>
+<h4>Module contract</h4>
+<pre><code>interface Module {
+    public static function id(): string;
+    public static function requires(): array;   // module ids
+    public function register( Container $c ): void;   // adds hooks only
+}</code></pre>
+<p>Constructors do no work, so the container can build the graph without side effects. <code>register()</code> only adds hooks, which makes load order irrelevant and every module testable in isolation.</p>
+
+<h3>2.3 Support</h3>
+<table>
+  <thead><tr><th style="width:24%">Class</th><th style="width:34%">Responsibility</th><th>Data · Theme · Elementor</th></tr></thead>
+  <tbody>
+    <tr><td><code>Support\Autoloader</code></td><td>PSR-4 loader bundled as a fallback where Composer is unavailable.</td><td>No · No · No</td></tr>
+    <tr><td><code>Support\Assets</code></td><td>Registers every handle on <code>init</code>; enqueues conditionally. Versioning by file modification time in development, plugin version in production.</td><td>No · No · No</td></tr>
+    <tr><td><code>Support\Template</code></td><td>The three-step template lookup: child theme → parent theme → plugin. Passes a prepared view-model, never a raw post.</td><td>No · <em>Reads</em> theme paths, does not depend on any theme existing · No</td></tr>
+    <tr><td><code>Support\Cache</code></td><td>Versioned-key wrapper over the object cache with a transient fallback. Group version bump invalidates a whole set in one write.</td><td>No · No · No</td></tr>
+    <tr><td><code>Support\Lock</code></td><td>Cooperative locks for cron, import, migration and the notification worker.</td><td>No · No · No</td></tr>
+    <tr><td><code>Support\RateLimiter</code></td><td>Counter store keyed by hashed IP or credential, over Cache.</td><td>No · No · No</td></tr>
+    <tr><td><code>Support\Sanitizer</code></td><td>The typed sanitiser library the field registry references. One definition per field type.</td><td>No · No · No</td></tr>
+    <tr><td><code>Support\Escaper</code></td><td>Context helpers used at output. Thin, but it makes "escape at output" greppable in review.</td><td>No · No · No</td></tr>
+    <tr><td><code>Support\Str</code></td><td>Transliteration, slug generation from Devanagari, safe truncation on word boundaries.</td><td>No · No · No</td></tr>
+    <tr><td><code>Support\Hash</code></td><td>Salted IP hashing. The only place a raw address is ever seen, and it never leaves.</td><td>No · No · No</td></tr>
+    <tr><td><code>Support\Logger</code></td><td>Error and debug logging. Distinct from the activity log, which is a business record.</td><td>No · No · No</td></tr>
+  </tbody>
+</table>
+
+<h3>2.4 Data layer</h3>
+<table>
+  <thead><tr><th style="width:26%">Class</th><th style="width:36%">Responsibility</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td><code>Data\PostTypes</code></td><td>Registers all post types on <code>init</code> priority 5.</td><td>Before anything that queries them, including builders.</td></tr>
+    <tr><td><code>Data\Taxonomies</code></td><td>Registers all taxonomies, same priority, before post types are attached.</td><td>—</td></tr>
+    <tr><td><code>Data\Meta</code></td><td>Registers every key in §9 with type, schema, sanitiser and auth callback.</td><td>No unregistered meta read exists anywhere in the codebase.</td></tr>
+    <tr><td><code>Data\Options</code></td><td>The ten settings groups, their schemas and the write-then-read verification.</td><td>Answers the historic "saved but not reflected" failure.</td></tr>
+    <tr><td><code>Data\Schema</code></td><td>Table definitions and creation. The single place a column is declared.</td><td>—</td></tr>
+    <tr><td><code>Data\Capabilities</code></td><td>The role-to-capability map, applied at activation and re-asserted on upgrade.</td><td>Repairs a role edited by a third-party plugin.</td></tr>
+    <tr><td><code>Data\Rewrites</code></td><td>Custom routes: short product codes, account screens.</td><td>Flushed only on activation and an explicit Tools action.</td></tr>
+    <tr><td><code>Data\Migrations\Migration_001…</code></td><td>Numbered, idempotent, each reversible or additive-only.</td><td>Never run on a front-end request.</td></tr>
+  </tbody>
+</table>
+
+<h3>2.5 Domain layer</h3>
+<p>One folder per aggregate, each containing <code>Model</code>, <code>Repository</code> and <code>Validator</code>. Pure PHP: no output, no hooks, no superglobals. This is the layer the REST controllers, the admin screens, the importer and the CLI all share, which is why a change made by any of them is validated and logged identically.</p>
+<table>
+  <thead><tr><th style="width:22%">Aggregate</th><th style="width:36%">Repository responsibilities</th><th>Depends on</th></tr></thead>
+  <tbody>
+    <tr><td><code>Domain\Product</code></td><td>Find by ID, by code, by filter; save with index sync; visibility transitions; archive rather than delete.</td><td>Category, Media, Activity</td></tr>
+    <tr><td><code>Domain\Category</code></td><td>Tree read, children, ancestors, reorder batch, reparent with cycle guard, path and depth cache writes, deep counts.</td><td>Media, Activity</td></tr>
+    <tr><td><code>Domain\Reel</code></td><td>Source resolution across four provider types, poster resolution, linked-product relations.</td><td>Product, Media</td></tr>
+    <tr><td><code>Domain\Collection</code></td><td>Membership via the link taxonomy, optional rule evaluation, cover handling.</td><td>Product</td></tr>
+    <tr><td><code>Domain\Showroom</code></td><td>Address model, timings model, open-now computation in the site timezone.</td><td>Media</td></tr>
+    <tr><td><code>Domain\Testimonial</code></td><td>Simple CRUD with ordering.</td><td>Media</td></tr>
+    <tr><td><code>Domain\Lead</code></td><td>Create with spam scoring and deduplication; status transitions; immutable source fields.</td><td>WhatsApp, Activity</td></tr>
+    <tr><td><code>Domain\Customer</code></td><td>Profile read and write, wishlist, recent views, guest merge, erasure.</td><td>Product, Activity</td></tr>
+    <tr><td><code>Domain\Notification</code></td><td>Queue rows, audience expansion, preference resolution, dispatch state.</td><td>Customer</td></tr>
+  </tbody>
+</table>
+<p>None of the nine depends on the theme, on Elementor, or on anything in <code>Admin</code>, <code>Rest</code> or <code>Frontend</code>. Dependencies point one way.</p>
+
+<h3>2.6 Services</h3>
+<table>
+  <thead><tr><th style="width:24%">Service</th><th style="width:38%">Responsibility</th><th>Depends on</th></tr></thead>
+  <tbody>
+    <tr><td><code>Services\WhatsApp</code></td><td>Number normalisation, template registry, token resolution, URL building, validation. The only producer of a WhatsApp URL anywhere.</td><td>Options</td></tr>
+    <tr><td><code>Services\Leads</code></td><td>Capture orchestration: rate limit, spam checks, write, counter increment, event, redirect payload.</td><td>Lead, WhatsApp, RateLimiter</td></tr>
+    <tr><td><code>Services\MenuTree</code></td><td>Builds and caches the mega-menu payload. Target under 50 ms at 1,000 terms.</td><td>Category, Cache</td></tr>
+    <tr><td><code>Services\Search</code></td><td>Unified Hindi, English, slug and code search over products, categories, collections and reels.</td><td>Product, Category, ProductIndex</td></tr>
+    <tr><td><code>Services\ProductIndex</code></td><td>Maintains the lookup table on save; full rebuild on demand.</td><td>Product</td></tr>
+    <tr><td><code>Services\Media</code></td><td>Size registration, format generation, responsive output, gallery ordering, audit.</td><td>Nothing</td></tr>
+    <tr><td><code>Services\Activity</code></td><td>Diff writer and reader. Depends on nothing, so every module may call it.</td><td>Nothing</td></tr>
+    <tr><td><code>Services\Importer</code> / <code>Exporter</code></td><td>Parse, map, dry run, batch commit, rollback ledger; streamed export with escaping.</td><td>All domain repositories, Activity</td></tr>
+    <tr><td><code>Services\Notifier</code></td><td>Event bus, enqueue, worker, driver dispatch, digest assembly.</td><td>Notification, Customer</td></tr>
+    <tr><td><code>Services\Auth</code></td><td>Provider registry and the login and registration orchestration.</td><td>Customer</td></tr>
+    <tr><td><code>Services\Schema</code></td><td>Structured data output for products, breadcrumbs, showrooms and the organisation.</td><td>Product, Category, Showroom</td></tr>
+    <tr><td><code>Services\Health</code></td><td>Runs every standing check and reports. The never-again list lives here.</td><td>Everything</td></tr>
+  </tbody>
+</table>
+
+<h3>2.7 Admin, REST, Frontend, Cron, Diagnostics</h3>
+<table>
+  <thead><tr><th style="width:24%">Folder</th><th style="width:40%">Contents</th><th>Data · Theme · Elementor</th></tr></thead>
+  <tbody>
+    <tr><td><code>Admin/Menu</code></td><td>Menu and submenu registration, capability gating.</td><td>No · No · No</td></tr>
+    <tr><td><code>Admin/Screens/</code></td><td>One class per screen in §17.</td><td>Via domain · No · No</td></tr>
+    <tr><td><code>Admin/MetaBoxes/</code></td><td>ProductIdentity, ProductSpec, ProductGallery, ProductWhatsApp, CategoryPicker, ReelSource, ShowroomDetails, CollectionRules.</td><td>Via domain · No · No</td></tr>
+    <tr><td><code>Admin/ListTables/</code></td><td>Products, Reels, Leads, Customers, Activity. Server-side sort, filter and pagination throughout.</td><td>Via domain · No · No</td></tr>
+    <tr><td><code>Admin/Settings/</code></td><td>One class per settings group, each with its schema.</td><td>Via Options · No · No</td></tr>
+    <tr><td><code>Admin/Notices</code></td><td>Persistent, dismissible notices driven by Health.</td><td>No · No · No</td></tr>
+    <tr><td><code>Rest/Controllers/</code></td><td>One controller per resource in §11. Controllers validate and delegate; they contain no business rules.</td><td>Via domain · No · No</td></tr>
+    <tr><td><code>Rest/Permissions</code></td><td>The permission callbacks, defined once and reused, so no route can quietly lack one.</td><td>No · No · No</td></tr>
+    <tr><td><code>Rest/Schemas/</code></td><td>Response schemas. Fields are opt-in; a new meta key never leaks by accident.</td><td>No · No · No</td></tr>
+    <tr><td><code>Frontend/Shortcodes</code></td><td>The compatibility floor — every component as a shortcode.</td><td>Via domain · No · No</td></tr>
+    <tr><td><code>Frontend/Renderer</code></td><td>The single renderer that shortcodes, blocks and widgets all call.</td><td>Via domain · No · No</td></tr>
+    <tr><td><code>Frontend/Query</code></td><td>Archive and filter query construction, applying the query discipline rules.</td><td>Via domain · No · No</td></tr>
+    <tr><td><code>Frontend/Account</code></td><td>The seven virtual account screens.</td><td>Via domain · No · No</td></tr>
+    <tr><td><code>Frontend/VisualEdit</code></td><td>The capability-gated edit layer. Loads for nobody else.</td><td>Via REST · No · No</td></tr>
+    <tr><td><code>Cron/</code></td><td>Seven jobs: Notifications, TermCounts, MenuCache, Purge, MediaAudit, Orphans, PathRebuild. All idempotent, batched, resumable.</td><td>Writes · No · No</td></tr>
+    <tr><td><code>Diagnostics/</code></td><td>Health checks, the Site Health integration, and the debug panel that Tools exposes.</td><td>Reads · No · No</td></tr>
+  </tbody>
+</table>
+<p><strong>Across the whole plugin: no file depends on the theme, and no file depends on Elementor.</strong> That is the property every table in this section is recording.</p>
+
+<h2 style="break-before:page">3 · Optional Plugins</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">3.1 rameshwari-blocks</h3>
+<table>
+  <thead><tr><th style="width:24%">Aspect</th><th>Behaviour</th></tr></thead>
+  <tbody>
+    <tr><td>Dependency</td><td>Core plugin, active. WordPress 6.5 or later — the core plugin's floor.</td></tr>
+    <tr><td>Activation</td><td>Checks for the core plugin. If absent, deactivates itself and shows a notice naming what is missing.</td></tr>
+    <tr><td>Contents</td><td>One block per renderer, server-side rendered, with editor previews and a block variation for each preset.</td></tr>
+    <tr><td>Failure</td><td>A block whose renderer is missing shows an editor warning and outputs nothing on the front end. It never fatals.</td></tr>
+    <tr><td>Removed</td><td>Blocks already placed in content render as an invalid-block notice in the editor and output nothing on the front end. No data is lost. Re-activating restores them.</td></tr>
+    <tr><td>Business data</td><td>None. Ever.</td></tr>
+  </tbody>
+</table>
+
+<h3>3.2 rameshwari-elementor</h3>
+<table>
+  <thead><tr><th style="width:24%">Aspect</th><th>Behaviour</th></tr></thead>
+  <tbody>
+    <tr><td>Dependency</td><td>Core plugin and Elementor, both active.</td></tr>
+    <tr><td>Activation</td><td>If either is absent it registers nothing and shows a notice. It does not deactivate itself — Elementor may be temporarily disabled during maintenance, and self-deactivating would require the owner to remember to turn it back on.</td></tr>
+    <tr><td>Elementor absent at runtime</td><td>Detected on <code>plugins_loaded</code>; the plugin returns before touching a single Elementor class. No fatal, no notice spam, no editor breakage.</td></tr>
+    <tr><td>Elementor version change</td><td>A compatibility check at load disables individual widgets with a notice rather than crashing the editor.</td></tr>
+    <tr><td>Removed</td><td>Elementor-composed pages fall back to the theme's page template. Product, category, reel, collection and showroom pages are unaffected — they were never Elementor templates.</td></tr>
+    <tr><td>Business data</td><td>None. Widget settings are layout settings; deleting them loses an arrangement, never content.</td></tr>
+  </tbody>
+</table>
+
+<h3>3.3 rameshwari-tools</h3>
+<table>
+  <thead><tr><th style="width:24%">Aspect</th><th>Behaviour</th></tr></thead>
+  <tbody>
+    <tr><td>Dependency</td><td>Core plugin.</td></tr>
+    <tr><td>Contents</td><td>WP-CLI commands (import, export, rebuild indexes, rebuild paths, regenerate media, run a cron job, health), bulk media utilities, a query debug panel, fixture loaders for staging.</td></tr>
+    <tr><td>Production</td><td>Not required. Recommended on hosts with a command line; irrelevant on those without, because every command has an admin-screen equivalent in core.</td></tr>
+    <tr><td>Removed</td><td>Nothing is lost. This is the plugin's design constraint: if removing Tools breaks an operation, that operation belonged in core.</td></tr>
+    <tr><td>Business data</td><td>None.</td></tr>
+  </tbody>
+</table>
+
+<h3>3.4 The rule all three obey</h3>
+<p>No optional plugin may register a post type, a taxonomy, a meta key, a table, a capability or a setting. Each is a consumer of core, never a producer. The test is run at the end of every stage: deactivate all three, and every product, category, reel, collection, showroom, lead and customer is still present, still editable and still readable over REST.</p>
+
+<h2 style="break-before:page">4 · Theme Structure</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">4.1 Tree</h3>
+<pre><code>rameshwari/
+├── style.css                 # theme header + the design token sheet
+├── functions.php             # requires inc/ files. Nothing else.
+├── theme.json                # palette, type scale, spacing — editor parity
+├── screenshot.png            # 1200×900
+├── index.php                 # fallback loop
+├── header.php  footer.php    # chrome
+├── front-page.php            # homepage section order
+├── page.php  single.php  archive.php  search.php  404.php
+├── searchform.php
+├── inc/
+│   ├── setup.php             # theme supports, menus, image-size opt-outs
+│   ├── enqueue.php           # asset registration and conditional loading
+│   ├── customizer.php        # presentation settings only
+│   ├── nav-walker.php        # renders the tree the plugin supplies
+│   ├── template-hooks.php    # rj_before_* / rj_after_* hook points
+│   ├── patterns.php          # block patterns for homepage sections
+│   └── a11y.php              # skip link, landmarks, reduced-motion
+├── template-parts/
+│   ├── header/{topbar,branding,nav,icons,mobile-drawer}.php
+│   ├── footer/{columns,contact,legal}.php
+│   ├── home/{hero,featured-categories,new-arrivals,reels,bridal,
+│   │          trending,about,testimonials,showrooms}.php
+│   └── content/{page,single,none,search-result}.php
+├── rameshwari/               # plugin template overrides — empty at launch
+├── patterns/                 # block pattern files
+└── assets/
+    ├── css/{tokens,base,layout,chrome,critical}.css
+    ├── js/{header,menu,drawer}.js
+    ├── fonts/                # self-hosted Latin + Devanagari subsets
+    └── images/               # logo, marks, empty-state art only</code></pre>
+<p>Homepage sections are template parts that <em>call plugin renderers</em>. <code>home/new-arrivals.php</code> contains a heading and a call to the product renderer — it contains no query and no markup for a card.</p>
+
+<h3>4.2 The boundary, file by file</h3>
+<table>
+  <thead><tr><th style="width:20%">File</th><th style="width:38%">Safe to store</th><th>Must never be stored</th></tr></thead>
+  <tbody>
+    <tr><td><code>style.css</code></td><td>Theme header, design tokens, base type</td><td>Any value that changes with the business — a phone number in a pseudo-element is still a phone number in the theme</td></tr>
+    <tr><td><code>functions.php</code></td><td><code>require</code> statements only</td><td>Post type or taxonomy registration, meta keys, database writes, REST routes, cron, capabilities, contact details, shortcode definitions</td></tr>
+    <tr><td><code>theme.json</code></td><td>Palette, type scale, spacing, layout widths</td><td>Content of any kind</td></tr>
+    <tr><td>Templates and parts</td><td>Layout, headings, calls to plugin renderers</td><td>Hardcoded product data, category names, addresses, phone numbers, WhatsApp links, direct meta reads</td></tr>
+    <tr><td>Customizer</td><td>Logos, token overrides, header variant, sticky behaviour, footer column visibility</td><td>Phones, WhatsApp numbers, emails, addresses, hours, social links, feature flags, notification settings, any catalogue data</td></tr>
+    <tr><td><code>assets/</code></td><td>Logo, marks, empty-state art, fonts, chrome scripts</td><td>Product, category, reel or showroom imagery — those belong in the media library</td></tr>
+    <tr><td>Elementor templates</td><td>Layout arrangements</td><td>Typed-in field values of any kind. Everything comes from a dynamic tag.</td></tr>
+  </tbody>
+</table>
+<p><strong>The enforceable test, run at the end of every stage:</strong> delete <code>functions.php</code> and <code>style.css</code>. If one row of business data, one setting or one working WhatsApp link is lost, the theme has overstepped and that code moves to the plugin.</p>
+
+<h3>4.3 Theme helper functions</h3>
+<table>
+  <thead><tr><th style="width:30%">Function</th><th>Returns</th></tr></thead>
+  <tbody>
+    <tr><td><code>rj_contact( $path )</code></td><td>A value from the one contact record, by dotted path. The theme's only permitted route to a phone number.</td></tr>
+    <tr><td><code>rj_whatsapp_url( $context )</code></td><td>Delegates to the WhatsApp service. The theme never composes a link.</td></tr>
+    <tr><td><code>rj_render( $component, $args )</code></td><td>Delegates to the plugin renderer.</td></tr>
+    <tr><td><code>rj_menu_tree( $args )</code></td><td>The cached mega-menu payload.</td></tr>
+    <tr><td><code>rj_is_active()</code></td><td>Whether the core plugin is present, so a template can degrade politely instead of fataling.</td></tr>
+  </tbody>
+</table>
+<p>All five are thin wrappers that check <code>function_exists</code> on the plugin side first. A theme installed without the plugin renders a plain WordPress site rather than a stack of errors.</p>
+
+<h2 style="break-before:page">5 · Database Tables</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<p style="color:#595d6c">Eight tables. Every name is prefixed at runtime from the WordPress database prefix — never written literally. Charset and collation are taken from the installation so four-byte Devanagari stores correctly.</p>
+
+<h3 style="margin-top:0">5.1 rj_leads</h3>
+<table>
+  <thead><tr><th style="width:20%">Column</th><th style="width:20%">Type</th><th style="width:10%">Null</th><th style="width:14%">Default</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>id</td><td>BIGINT UNSIGNED</td><td>No</td><td>auto</td><td>Primary key</td></tr>
+    <tr><td>created_at</td><td>DATETIME</td><td>No</td><td>—</td><td>Site timezone</td></tr>
+    <tr><td>status</td><td>VARCHAR(20)</td><td>No</td><td>new</td><td>new · contacted · converted · closed · spam</td></tr>
+    <tr><td>source</td><td>VARCHAR(32)</td><td>No</td><td>—</td><td>product · reel · collection · showroom · bridal · contact. Immutable</td></tr>
+    <tr><td>object_id</td><td>BIGINT UNSIGNED</td><td>Yes</td><td>NULL</td><td>Post ID. Nulled if the post is hard-deleted</td></tr>
+    <tr><td>object_code</td><td>VARCHAR(64)</td><td>Yes</td><td>NULL</td><td>Product code, copied at write. Immutable — a lead still names the piece after it is archived</td></tr>
+    <tr><td>customer_id</td><td>BIGINT UNSIGNED</td><td>Yes</td><td>NULL</td><td>User ID. Nulled on erasure</td></tr>
+    <tr><td>name</td><td>VARCHAR(191)</td><td>Yes</td><td>NULL</td><td>—</td></tr>
+    <tr><td>phone</td><td>VARCHAR(32)</td><td>Yes</td><td>NULL</td><td>Normalised</td></tr>
+    <tr><td>email</td><td>VARCHAR(191)</td><td>Yes</td><td>NULL</td><td>—</td></tr>
+    <tr><td>message</td><td>TEXT</td><td>Yes</td><td>NULL</td><td>Escaped on export</td></tr>
+    <tr><td>channel</td><td>VARCHAR(20)</td><td>No</td><td>whatsapp</td><td>whatsapp · form · call</td></tr>
+    <tr><td>page_url · referrer</td><td>TEXT</td><td>Yes</td><td>NULL</td><td>Attribution</td></tr>
+    <tr><td>ip_hash</td><td>CHAR(64)</td><td>Yes</td><td>NULL</td><td>Salted hash. Raw address never stored</td></tr>
+    <tr><td>user_agent</td><td>VARCHAR(255)</td><td>Yes</td><td>NULL</td><td>—</td></tr>
+    <tr><td>spam_score</td><td>TINYINT</td><td>No</td><td>0</td><td>—</td></tr>
+    <tr><td>notes</td><td>TEXT</td><td>Yes</td><td>NULL</td><td>Staff, editable</td></tr>
+    <tr><td>handled_by · handled_at</td><td>BIGINT UNSIGNED · DATETIME</td><td>Yes</td><td>NULL</td><td>—</td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:20%">Property</th><th>Value</th></tr></thead>
+  <tbody>
+    <tr><td>Indexes</td><td><code>created_at</code> · <code>(status, created_at)</code> · <code>(source, object_id)</code> · <code>phone</code> · <code>customer_id</code></td></tr>
+    <tr><td>References</td><td>Posts and users by ID, not enforced by a foreign key — WordPress core does not use them and a hard constraint would block a legitimate post deletion</td></tr>
+    <tr><td>Retention</td><td>Indefinite. Spam-marked rows purged at 60 days</td></tr>
+    <tr><td>Read · Write</td><td><code>rj_read_leads</code> · <code>rj_manage_leads</code> for status and notes; public create through the rate-limited endpoint</td></tr>
+    <tr><td>Migration</td><td>001</td></tr>
+  </tbody>
+</table>
+
+<h3>5.2 rj_activity_log</h3>
+<table>
+  <thead><tr><th style="width:22%">Column</th><th style="width:22%">Type</th><th style="width:10%">Null</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>id</td><td>BIGINT UNSIGNED</td><td>No</td><td>Primary key, auto</td></tr>
+    <tr><td>created_at</td><td>DATETIME</td><td>No</td><td>—</td></tr>
+    <tr><td>user_id</td><td>BIGINT UNSIGNED</td><td>Yes</td><td>—</td></tr>
+    <tr><td>user_login</td><td>VARCHAR(60)</td><td>Yes</td><td>Denormalised — survives user deletion</td></tr>
+    <tr><td>object_type</td><td>VARCHAR(32)</td><td>No</td><td>product · category · reel · collection · showroom · testimonial · lead · customer · setting · media · system</td></tr>
+    <tr><td>object_id</td><td>BIGINT UNSIGNED</td><td>Yes</td><td>—</td></tr>
+    <tr><td>action</td><td>VARCHAR(32)</td><td>No</td><td>create · update · delete · restore · reorder · reparent · visibility · import · export · rollback · login · setting</td></tr>
+    <tr><td>summary</td><td>VARCHAR(255)</td><td>Yes</td><td>Human-readable one-liner for the list view</td></tr>
+    <tr><td>changes</td><td>LONGTEXT</td><td>Yes</td><td>JSON diff, changed fields only. Secrets masked</td></tr>
+    <tr><td>ip_hash</td><td>CHAR(64)</td><td>Yes</td><td>—</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Indexes: <code>created_at</code> · <code>(object_type, object_id)</code> · <code>(user_id, created_at)</code>. Retention 180 days, purged daily oldest-first in batches of 1,000. Read <code>rj_view_activity_log</code>; write is application-internal only — there is no edit path. Migration 001.</p>
+
+<h3>5.3 rj_notification_queue</h3>
+<table>
+  <thead><tr><th style="width:22%">Column</th><th style="width:22%">Type</th><th style="width:10%">Null</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>id</td><td>BIGINT UNSIGNED</td><td>No</td><td>Primary key, auto</td></tr>
+    <tr><td>created_at · scheduled_at</td><td>DATETIME</td><td>No</td><td>Quiet hours shift <code>scheduled_at</code>, never <code>created_at</code></td></tr>
+    <tr><td>event</td><td>VARCHAR(64)</td><td>No</td><td>Event identifier from §15</td></tr>
+    <tr><td>channel</td><td>VARCHAR(32)</td><td>No</td><td>email · admin_notice · webpush · firebase · onesignal · whatsapp</td></tr>
+    <tr><td>recipient_id</td><td>BIGINT UNSIGNED</td><td>Yes</td><td>—</td></tr>
+    <tr><td>recipient_key</td><td>VARCHAR(191)</td><td>Yes</td><td>Address or device token</td></tr>
+    <tr><td>dedupe_key</td><td>VARCHAR(191)</td><td>Yes</td><td>Event + channel + recipient + object. Unique within 24 h</td></tr>
+    <tr><td>payload</td><td>LONGTEXT</td><td>Yes</td><td>JSON</td></tr>
+    <tr><td>status</td><td>VARCHAR(16)</td><td>No</td><td>pending · sent · failed · dead · suppressed</td></tr>
+    <tr><td>attempts</td><td>TINYINT</td><td>No</td><td>Default 0, maximum 5</td></tr>
+    <tr><td>last_error</td><td>VARCHAR(255)</td><td>Yes</td><td>Never contains a secret</td></tr>
+    <tr><td>sent_at</td><td>DATETIME</td><td>Yes</td><td>—</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Indexes: <code>(status, scheduled_at)</code> · <code>(event, created_at)</code> · <code>recipient_id</code> · unique <code>dedupe_key</code>. Retention: sent 30 days, dead 90 days. Read and retry <code>rj_manage_settings</code>; write is application-internal. Migration 001.</p>
+
+<h3>5.4 rj_wishlist · rj_recent_views</h3>
+<table>
+  <thead><tr><th style="width:22%">Table</th><th style="width:30%">Columns</th><th>Keys, retention, access</th></tr></thead>
+  <tbody>
+    <tr><td><code>rj_wishlist</code></td><td>user_id BIGINT UNSIGNED NOT NULL · post_id BIGINT UNSIGNED NOT NULL · added_at DATETIME NOT NULL</td><td>Composite primary key <code>(user_id, post_id)</code>, which makes an add idempotent with no duplicate check. Index on <code>post_id</code> for "most wishlisted". No retention limit. Owner reads and writes their own rows only; <code>rj_read_customers</code> reads any.</td></tr>
+    <tr><td><code>rj_recent_views</code></td><td>user_id · post_id · viewed_at</td><td>Same composite key. Index <code>(user_id, viewed_at)</code>. Trimmed to 40 rows per customer on write. Same access rules. Both migration 001.</td></tr>
+  </tbody>
+</table>
+
+<h3>5.5 rj_login_log</h3>
+<table>
+  <thead><tr><th style="width:22%">Column</th><th style="width:22%">Type</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>id</td><td>BIGINT UNSIGNED</td><td>Primary key, auto</td></tr>
+    <tr><td>user_id</td><td>BIGINT UNSIGNED</td><td>Nullable — a failed attempt may name no real user</td></tr>
+    <tr><td>created_at</td><td>DATETIME</td><td>—</td></tr>
+    <tr><td>method</td><td>VARCHAR(20)</td><td>password · google · otp · magic</td></tr>
+    <tr><td>result</td><td>VARCHAR(16)</td><td>success · failed · blocked</td></tr>
+    <tr><td>ip_hash</td><td>CHAR(64)</td><td>—</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Indexes: <code>(user_id, created_at)</code> · <code>(result, created_at)</code> — the second is what the lockout check reads. Retention 90 days, weekly purge. Read <code>rj_read_customers</code>. Migration 001.</p>
+
+<h3>5.6 rj_product_index</h3>
+<table>
+  <thead><tr><th style="width:22%">Column</th><th style="width:22%">Type</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>post_id</td><td>BIGINT UNSIGNED</td><td>Primary key. One row per product</td></tr>
+    <tr><td>code</td><td>VARCHAR(64)</td><td><strong>Unique key.</strong> This is where product-code uniqueness is actually enforced</td></tr>
+    <tr><td>name_hi · name_en</td><td>VARCHAR(191)</td><td>Denormalised for search</td></tr>
+    <tr><td>weight</td><td>DECIMAL(10,3)</td><td>Grams. Range filtering and sorting</td></tr>
+    <tr><td>metal_id · purity_id</td><td>BIGINT UNSIGNED</td><td>Term IDs, nullable</td></tr>
+    <tr><td>primary_term_id</td><td>BIGINT UNSIGNED</td><td>Drives breadcrumb and canonical</td></tr>
+    <tr><td>visibility</td><td>VARCHAR(16)</td><td>public · hidden · archived</td></tr>
+    <tr><td>updated_at</td><td>DATETIME</td><td>Staleness detection for the rebuild job</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Indexes: unique <code>code</code> · <code>(visibility, weight)</code> · <code>name_hi</code> · <code>name_en</code> · <code>primary_term_id</code>. Rebuilt from post meta on every product save, plus a full rebuild from Tools. No retention — it is derived data and can be dropped and rebuilt at any time. Read public through services; write application-internal. Migration 001.</p>
+
+<h3>5.7 rj_import_ledger <span style="font-size:10px;color:#5d5294;letter-spacing:0.08em">ADDITIONAL — required by approved rollback</span></h3>
+<p>The approved architecture requires 30-day import rollback. That requires storing, per import run, every created ID and every changed field's prior value. There is nowhere else for that to live, so the table is a consequence of an approved decision rather than a new one.</p>
+<table>
+  <thead><tr><th style="width:22%">Column</th><th style="width:22%">Type</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>id</td><td>BIGINT UNSIGNED</td><td>Primary key, auto</td></tr>
+    <tr><td>token</td><td>CHAR(32)</td><td>Rollback token. Indexed</td></tr>
+    <tr><td>created_at</td><td>DATETIME</td><td>—</td></tr>
+    <tr><td>user_id</td><td>BIGINT UNSIGNED</td><td>Operator</td></tr>
+    <tr><td>import_type</td><td>VARCHAR(32)</td><td>products · categories · collections · reels</td></tr>
+    <tr><td>object_type · object_id</td><td>VARCHAR(32) · BIGINT UNSIGNED</td><td>What the row describes</td></tr>
+    <tr><td>operation</td><td>VARCHAR(16)</td><td>created · updated</td></tr>
+    <tr><td>before</td><td>LONGTEXT</td><td>JSON of prior values. Null for a creation</td></tr>
+    <tr><td>rolled_back_at</td><td>DATETIME</td><td>Null until reversed</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Indexes: <code>token</code> · <code>(token, id)</code> for ordered reversal · <code>created_at</code>. Retention 30 days, then purged with the token. Read and write <code>rj_import_data</code>. Migration 001.</p>
+
+<h3>5.8 Table summary</h3>
+<table>
+  <thead><tr><th style="width:24%">Table</th><th style="width:20%">Growth</th><th style="width:20%">Retention</th><th>Purge job</th></tr></thead>
+  <tbody>
+    <tr><td>rj_leads</td><td>5,000 / year</td><td>Indefinite</td><td>Spam only, daily</td></tr>
+    <tr><td>rj_activity_log</td><td>60,000 / year</td><td>180 days</td><td>Daily</td></tr>
+    <tr><td>rj_notification_queue</td><td>Transient</td><td>30 / 90 days</td><td>Daily</td></tr>
+    <tr><td>rj_wishlist</td><td>10 / customer</td><td>Life of account</td><td>Orphan sweep, weekly</td></tr>
+    <tr><td>rj_recent_views</td><td>40 / customer, capped</td><td>Life of account</td><td>Trimmed on write</td></tr>
+    <tr><td>rj_login_log</td><td>Variable</td><td>90 days</td><td>Weekly</td></tr>
+    <tr><td>rj_product_index</td><td>1 / product</td><td>Derived</td><td>Rebuilt, never purged</td></tr>
+    <tr><td>rj_import_ledger</td><td>Per import run</td><td>30 days</td><td>Daily</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">6 · CPT Registry</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">6.1 Core five</h3>
+<table>
+  <thead><tr><th style="width:17%">Argument</th><th style="width:18%">rj_product</th><th style="width:17%">rj_reel</th><th style="width:17%">rj_collection</th><th style="width:16%">rj_showroom</th><th>rj_testimonial</th></tr></thead>
+  <tbody>
+    <tr><td>public</td><td>true</td><td>true</td><td>true</td><td>true</td><td>false</td></tr>
+    <tr><td>has_archive</td><td>jewellery</td><td>reels</td><td>collections</td><td>showrooms</td><td>false</td></tr>
+    <tr><td>rewrite slug</td><td>product</td><td>reel</td><td>collection</td><td>showroom</td><td>—</td></tr>
+    <tr><td>with_front</td><td>false</td><td>false</td><td>false</td><td>false</td><td>—</td></tr>
+    <tr><td>hierarchical</td><td>false</td><td>false</td><td>false</td><td>false</td><td>false</td></tr>
+    <tr><td>show_in_rest</td><td>true</td><td>true</td><td>true</td><td>true</td><td>true</td></tr>
+    <tr><td>rest_base</td><td>products</td><td>reels</td><td>collections</td><td>showrooms</td><td>testimonials</td></tr>
+    <tr><td>capability_type</td><td>rj_product / rj_products</td><td>rj_reel / rj_reels</td><td>rj_collection / rj_collections</td><td>rj_showroom / rj_showrooms</td><td>rj_testimonial / rj_testimonials</td></tr>
+    <tr><td>map_meta_cap</td><td>true</td><td>true</td><td>true</td><td>true</td><td>true</td></tr>
+    <tr><td>menu_icon</td><td>awards</td><td>video-alt3</td><td>portfolio</td><td>store</td><td>format-quote</td></tr>
+    <tr><td>show_in_nav_menus</td><td>true</td><td>true</td><td>true</td><td>true</td><td>false</td></tr>
+    <tr><td>supports</td><td>title, editor, thumbnail, excerpt, revisions, custom-fields, page-attributes</td><td>title, thumbnail, excerpt, revisions, custom-fields</td><td>title, editor, thumbnail, revisions, custom-fields</td><td>title, editor, thumbnail, revisions, custom-fields</td><td>title, editor, thumbnail, custom-fields</td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:17%">Aspect</th><th style="width:18%">rj_product</th><th style="width:17%">rj_reel</th><th style="width:17%">rj_collection</th><th style="width:16%">rj_showroom</th><th>rj_testimonial</th></tr></thead>
+  <tbody>
+    <tr><td>Admin label</td><td>Jewellery</td><td>Reels</td><td>Collections</td><td>Showrooms</td><td>Testimonials</td></tr>
+    <tr><td>Manage cap</td><td>rj_manage_catalogue</td><td>rj_manage_reels</td><td>rj_manage_catalogue</td><td>rj_manage_showrooms</td><td>rj_manage_catalogue</td></tr>
+    <tr><td>Taxonomies</td><td>category, metal, purity, occasion, audience, collection_tax, tag</td><td>category, collection_tax, tag</td><td>occasion</td><td>None — location comes from <code>_rj_city</code>, <code>_rj_state</code>, <code>_rj_pincode</code></td><td>—</td></tr>
+    <tr><td>Lifecycle</td><td>draft → published → hidden → archived</td><td>draft → published → expired</td><td>created → populated → featured → retired</td><td>created → published</td><td>draft → published</td></tr>
+    <tr><td>Deletion</td><td>Soft to archived. Hard delete administrator only; nulls lead object_id, keeps object_code</td><td>Soft; source retained</td><td>Retire, never delete while it has members</td><td>Administrator only</td><td>Free</td></tr>
+    <tr><td>Archive policy</td><td>Archived stays addressable, excluded from listings and sitemap, no 404</td><td>Expired hidden from feed, URL still resolves</td><td>Retired page remains, unlinked</td><td>n/a</td><td>n/a</td></tr>
+    <tr><td>Elementor</td><td>Grid, Slider, template, 7 tags</td><td>Grid, Slider</td><td>Grid</td><td>Grid</td><td>Grid</td></tr>
+    <tr><td>Gutenberg</td><td>Blocks + query loop</td><td>Blocks + query loop</td><td>Blocks</td><td>Blocks</td><td>Blocks</td></tr>
+  </tbody>
+</table>
+
+<h3>6.2 rj_page_section <span style="font-size:11px;color:#2f6b3a;letter-spacing:0.08em">APPROVED — Conflict 3 resolved</span></h3>
+<table>
+  <thead><tr><th style="width:24%">Argument</th><th>Value</th></tr></thead>
+  <tbody>
+    <tr><td>public · show_ui · show_in_rest</td><td>false · true · true</td></tr>
+    <tr><td>rest_base</td><td><code>page-sections</code></td></tr>
+    <tr><td>has_archive · rewrite · show_in_nav_menus</td><td>false · false · false. No public URL, no sitemap entry.</td></tr>
+    <tr><td>supports</td><td>title, thumbnail, revisions, custom-fields, page-attributes</td></tr>
+    <tr><td>capability_type · map_meta_cap</td><td><code>rj_section</code> / <code>rj_sections</code> · true</td></tr>
+    <tr><td>Manage capability</td><td><code>rj_manage_settings</code></td></tr>
+    <tr><td>menu_icon · admin label</td><td><code>cover-image</code> · Page Sections, under the Rameshwari menu</td></tr>
+    <tr><td>Lifecycle</td><td>draft → scheduled → active → expired → archived. Computed, not stored — see below.</td></tr>
+    <tr><td>Deletion</td><td>Free. No other record references a section.</td></tr>
+    <tr><td>Elementor · Gutenberg</td><td>RJ Hero widget · Hero block. Both read the same renderer.</td></tr>
+    <tr><td>Scalability</td><td>200 records. Campaigns accumulate; expired ones are kept as a record of what ran when.</td></tr>
+  </tbody>
+</table>
+<h4>Section keys</h4>
+<table>
+  <thead><tr><th style="width:22%">Key</th><th style="width:16%">Cardinality</th><th>Purpose</th></tr></thead>
+  <tbody>
+    <tr><td><code>hero</code></td><td>Many, scheduled</td><td>Hero campaigns. Multiple may be active at once.</td></tr>
+    <tr><td><code>about</code> · <code>bridal_band</code> · <code>trust_strip</code> · <code>footer_note</code></td><td>Singleton each</td><td>Editable homepage and footer bands. Dates left empty means always active.</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Extending the key list is a code change to the allow-list, not a schema change.</p>
+<h4>Scheduling behaviour</h4>
+<table>
+  <thead><tr><th style="width:26%">Rule</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Activity is computed at read, never written by cron</strong></td><td>A section is active when <code>_rj_active</code> is true and the current time falls within <code>_rj_starts_at</code> / <code>_rj_ends_at</code> (either may be empty for open-ended). <strong>No scheduled job flips a flag.</strong> Shared hosting cron is unreliable, and a campaign that failed to appear because cron did not fire would be exactly the class of silent failure this platform exists to prevent.</td></tr>
+    <tr><td>Cache correctness</td><td>The hero payload is cached with a time-to-live bounded by the next start or end boundary among all scheduled sections, so a campaign appears and retires on time even behind a page cache. Publishing or editing any section bumps the cache version.</td></tr>
+    <tr><td>Desktop</td><td>All currently active hero sections, in <code>_rj_order</code> ascending. One active section renders as a static hero, not a one-slide carousel.</td></tr>
+    <tr><td>Mobile</td><td><strong>The single lowest-order active hero only.</strong> No carousel script, no autoplay, no preloading of sibling slide images — the other slides' markup and media are never sent. This is a server-side decision, not a CSS hide, so nothing extra is downloaded on a cellular connection.</td></tr>
+    <tr><td>Empty state</td><td><strong>None rendered — the hero is a conditional layout section.</strong> When no campaign is eligible (<code>_rj_active</code> false, not yet started, or expired) the hero section is <strong>not rendered at all</strong>: no wrapper, no reserved height, no placeholder image or text, no empty carousel, no default campaign. It contributes <strong>zero layout space</strong> and the next homepage section collapses upward automatically, on desktop, tablet and mobile. The hero reappears by itself when a campaign becomes eligible. <strong>OPEN-2 LOCKED.</strong></td></tr>
+    <tr><td>Evergreen campaign</td><td>A hero section with both dates empty is <strong>an ordinary always-eligible campaign</strong>, not a fallback — eligible whenever <code>_rj_active</code> is true, and subject to the same order rules. With no eligible campaign of any kind the section does not render. <strong>There is no last-resort fallback and no theme-rendered substitute band.</strong></td></tr>
+    <tr><td>Overlap</td><td>Permitted and expected — a festive campaign may run alongside a bridal one. Order decides precedence, and mobile takes the first.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">7 · Taxonomy Registry</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">7.1 The seven approved</h3>
+<table>
+  <thead><tr><th style="width:17%">Taxonomy</th><th style="width:11%">Shape</th><th style="width:19%">Objects</th><th style="width:13%">Rewrite</th><th style="width:13%">REST base</th><th>Admin UI</th></tr></thead>
+  <tbody>
+    <tr><td>rj_category</td><td>Hierarchical</td><td>product, reel</td><td><code>c</code>, hierarchical, with_front false</td><td>categories</td><td>Custom tree manager. Core UI and quick-edit disabled — 1,500 checkboxes is unusable</td></tr>
+    <tr><td>rj_metal</td><td>Flat</td><td>product</td><td><code>metal</code></td><td>metals</td><td>Standard, with an order column</td></tr>
+    <tr><td>rj_purity</td><td>Flat</td><td>product</td><td><code>purity</code></td><td>purity</td><td>Standard</td></tr>
+    <tr><td>rj_occasion</td><td>Flat</td><td>product, reel, collection</td><td><code>occasion</code></td><td>occasions</td><td>Standard</td></tr>
+    <tr><td>rj_audience</td><td>Flat</td><td>product</td><td><code>for</code></td><td>audience</td><td>Standard</td></tr>
+    <tr><td>rj_collection_tax</td><td>Flat</td><td>product, reel</td><td>none, public false</td><td>collection-links</td><td>Hidden. Managed through the collection screen, never edited directly</td></tr>
+    <tr><td>rj_tag</td><td>Flat</td><td>product, reel</td><td><code>tag-j</code></td><td>jewellery-tags</td><td>Standard with tag cloud. The only taxonomy staff may extend on the fly</td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:22%">Capability</th><th style="width:30%">rj_category</th><th>All others</th></tr></thead>
+  <tbody>
+    <tr><td>manage_terms · edit_terms · delete_terms</td><td>rj_manage_categories</td><td>rj_manage_catalogue</td></tr>
+    <tr><td>assign_terms</td><td>rj_manage_catalogue</td><td>rj_manage_catalogue</td></tr>
+  </tbody>
+</table>
+
+<h3>7.2 Per-taxonomy feature support</h3>
+<table>
+  <thead><tr><th style="width:24%">Feature</th><th style="width:14%">category</th><th style="width:14%">metal / purity / occasion / audience</th><th style="width:14%">collection_tax</th><th>tag</th></tr></thead>
+  <tbody>
+    <tr><td>Manual ordering</td><td>Yes, drag, gapped values</td><td>Yes, numeric field</td><td>No</td><td>No</td></tr>
+    <tr><td>Visibility flag</td><td>Yes</td><td>Yes</td><td>No</td><td>No</td></tr>
+    <tr><td>Featured flag</td><td>Yes</td><td>No</td><td>No</td><td>No</td></tr>
+    <tr><td>Hindi + English names</td><td>Yes, both</td><td>Yes, both</td><td>No</td><td>Yes</td></tr>
+    <tr><td>Alternate name</td><td>Yes</td><td>No</td><td>No</td><td>No</td></tr>
+    <tr><td>Image · icon</td><td>Yes, both</td><td>Icon only</td><td>No</td><td>No</td></tr>
+    <tr><td>SEO title, description, noindex</td><td>Yes</td><td>Yes</td><td>No</td><td>Title only</td></tr>
+    <tr><td>Path and depth cache</td><td>Yes</td><td>n/a</td><td>n/a</td><td>n/a</td></tr>
+    <tr><td>Deep count cache</td><td>Yes</td><td>No</td><td>No</td><td>No</td></tr>
+    <tr><td>Mega menu</td><td>Yes, the source</td><td>No</td><td>No</td><td>No</td></tr>
+  </tbody>
+</table>
+
+<h3>7.3 Rejected taxonomies <span style="font-size:11px;color:#8a3a2f;letter-spacing:0.08em">NOT CREATED — Conflict 3 resolved</span></h3>
+<p>Seven taxonomies are registered. These three were proposed and are <strong>not created</strong>; the capability each was meant to provide is delivered by an already-approved structure.</p>
+<table>
+  <thead><tr><th style="width:20%">Not created</th><th style="width:26%">Capability delivered instead by</th><th>Trigger for revisiting</th></tr></thead>
+  <tbody>
+    <tr><td><code>rj_reel_type</code></td><td><code>rj_tag</code>, already registered on reels. The five values become suggested tags; a curated filter row reads a fixed list of tag slugs from the display settings.</td><td>Reel library passes ~200 items and tag-based filtering proves inadequate.</td></tr>
+    <tr><td><code>rj_location</code></td><td>Existing showroom meta — <code>_rj_city</code>, <code>_rj_state</code>, <code>_rj_pincode</code>, <code>_rj_lat</code>, <code>_rj_lng</code>. Local-business structured data is generated from these directly.</td><td>Five or more branches across multiple cities, where location archives stop being duplicates of the showroom pages.</td></tr>
+    <tr><td><code>rj_customer_segment</code></td><td><code>_rj_notify_prefs</code> — the customer's own opt-in. A better audience than an inferred one, and it stores no unrequested personal label.</td><td>A campaign need that opt-in preferences genuinely cannot target. Then one meta key and a backfill.</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">The honest risk: three capabilities now arrive as conventions rather than as schema, and conventions drift where schema does not. The triggers above are the mitigation and only work if they are honoured.</p>
+
+<h2 style="break-before:page">8 · Category Data Model</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<p style="color:#595d6c">The provided hierarchy is real business data and is treated as the import source of record. It lives at <code>documentation/data/categories.json</code> and is version-controlled alongside the code.</p>
+
+<h3 style="margin-top:0">8.1 Import record shape</h3>
+<pre><code>{
+  "path":        "jewellery/gold-jewellery/mahila/sir-ke-abhushan/borla",
+  "name_en":     "Borla",
+  "name_hi":     "बोरला",
+  "name_alt":    "",
+  "slug":        "borla",
+  "order":       30,
+  "visible":     true,
+  "featured":    false,
+  "image":       null,
+  "seo_title":   "",
+  "seo_desc":    "",
+  "seo_noindex": false
+}</code></pre>
+<table>
+  <thead><tr><th style="width:22%">Field</th><th>Rule</th></tr></thead>
+  <tbody>
+    <tr><td><code>path</code></td><td>The match key. Full slug path from root. Re-running the import against the same path updates rather than duplicates — this is why three taxonomy loads cost nothing.</td></tr>
+    <tr><td><code>name_en</code></td><td>Becomes the term name. Latin transliteration where no English word exists.</td></tr>
+    <tr><td><code>name_hi</code></td><td>Devanagari. Stored in term meta, displayed as the lead name, indexed for search.</td></tr>
+    <tr><td><code>name_alt</code></td><td><strong>Search synonyms / search aliases</strong> — comma-separated additional match terms for the search index. Optional, empty by default. Never creates a term, never alters identity — C-7 LOCKED</td></tr>
+    <tr><td><code>slug</code></td><td>Latin only. Devanagari slugs percent-encode badly and break on some hosts.</td></tr>
+    <tr><td><code>order</code></td><td>Gapped by 10 within siblings, so a later insert rarely renumbers a branch.</td></tr>
+    <tr><td><code>visible</code></td><td><strong>Defaults to true.</strong> The historic disappearing-category bug came from defaulting to false on terms created outside the UI.</td></tr>
+  </tbody>
+</table>
+
+<h3>8.2 Roots and their children</h3>
+<table>
+  <thead><tr><th style="width:16%">Root</th><th style="width:10%">Order</th><th>Children</th></tr></thead>
+  <tbody>
+    <tr><td>JEWELLERY</td><td>10</td><td>Gold Jewellery · Silver Jewellery · Black Polish Silver · Gold Jewellery Set · Silver Jewellery Set</td></tr>
+    <tr><td>METALS</td><td>20</td><td>Gold · Diamond · Silver · Platinum · Gemstone · White Gold · Rose Gold</td></tr>
+    <tr><td>WEDDING</td><td>30</td><td>Bridal Set · Mangalsutra · Couple Rings · Engagement Rings · Bridal Nath · Maang Tikka · Anniversary</td></tr>
+    <tr><td>FOR</td><td>40</td><td>Baby · Kids · Girls · Boys · Men · Women · Bride · Groom</td></tr>
+    <tr><td>OTHERS</td><td>50</td><td>Antique · Traditional · Navaratna · Temple Jewellery · Lakshmi Jewellery · Name Rings · Gold Coin</td></tr>
+  </tbody>
+</table>
+
+<h3>8.3 Gold Jewellery — full depth</h3>
+<table>
+  <thead><tr><th style="width:24%">Level 3 · Group</th><th style="width:10%">Depth</th><th>Level 4 terms</th></tr></thead>
+  <tbody>
+    <tr><td colspan="3" style="color:#5d5294;font-weight:600;font-size:11px;letter-spacing:0.06em">महिला के आभूषण · WOMEN'S JEWELLERY (level 2)</td></tr>
+    <tr><td>सिर के आभूषण · Head</td><td>4</td><td>शीशफूल Sheeshphool · सिरमांग Sirmaang · बोरला Borla · रखड़ी Rakhdi · टिका Tika · टीडीभलको Teedi Bhalko · सिरपेच Sarpech</td></tr>
+    <tr><td>कान के आभूषण · Ear</td><td>4</td><td>कर्णफूल Karnphool · झुमका Jhumka · झूमर Jhoomar · झुमकी Jhumki · बाली Bali · झेला Jhela · लूंग Loong · टॉप्स Tops · कुंडला Kundal · छेलकडी Chhelkadi</td></tr>
+    <tr><td>नाक के आभूषण · Nose</td><td>4</td><td>नथ Nath · कांटा Kanta · लौंग Laung · नथड़ी Nathdi · नाक की बाली Nose Bali · लटकन Latkan · नकफूल Nakphool</td></tr>
+    <tr><td>गले के आभूषण · Neck</td><td>4</td><td>चन्द्रहार Chandrahaar · कण्ठहार Kanthhaar · रानीहार Raanihaar · झालरा Jhalra · हालरो Haalro · कंठी Kanthi · चैन Chain · माणिक्य माला Manikya Mala · आड़ Aad · मंगलसूत्र Mangalsutra · मांदलियो Mandaliyo · लॉकेट Locket · टेवटा Tevta · पंचमणियो Panchmaniyo · बंगड़ी Bangdi</td></tr>
+    <tr><td>बाजू के आभूषण · Arm</td><td>4</td><td>बाजूबंद Bajuband</td></tr>
+    <tr><td>कलाई के आभूषण · Wrist</td><td>4</td><td>हथफूल Hathphool · पुँची Poonchi · कड़ा Kada · चुडिया Chudiyan · बंगड़ी Bangdi · नोगरी Nogri · छेलकड़ो Chhelkado · ब्रेसलेट Bracelet</td></tr>
+    <tr><td>अंगुली के आभूषण · Finger</td><td>4</td><td>अंगूठी Angoothi · दामणा Damna · छल्ला Challa · हथफुल Hathphool</td></tr>
+    <tr><td colspan="3" style="color:#5d5294;font-weight:600;font-size:11px;letter-spacing:0.06em">पुरुषों के आभूषण · MEN'S JEWELLERY (level 2)</td></tr>
+    <tr><td>कान के · Ear</td><td>4</td><td>बालियां Baliyan · मुरकियाँ Murkiyan · लोंग Long</td></tr>
+    <tr><td>गले के · Neck</td><td>4</td><td>चेन Chain</td></tr>
+    <tr><td>कलाई के · Wrist</td><td>4</td><td>कड़ा Kada · ब्रेसलेट Bracelet</td></tr>
+    <tr><td>अंगुली के · Finger</td><td>4</td><td>अंगूठी Angoothi · छल्ला Challa</td></tr>
+  </tbody>
+</table>
+
+<h3>8.4 Silver Jewellery — the Gold structure plus three groups</h3>
+<table>
+  <thead><tr><th style="width:24%">Group</th><th>Terms</th></tr></thead>
+  <tbody>
+    <tr><td>कमर के आभूषण · Waist</td><td>कणकती Kankti · सटका Satka · जंजीर Janjeer · सांकली Sankli · कमरबन्द Kamarband</td></tr>
+    <tr><td>पेर के आभूषण · Foot</td><td>कड़ा Kada · कड़ी Kadi · आंवला Anvla · टणका Tanka · पायल Payal · चीड़ की पायल Cheed ki Payal · झाँझर Jhanjhar · घुंगरू Ghungroo · जोड़ Jod · चुटकी Chutki · बिछिया Bichiya · गुंठला Gunthla</td></tr>
+    <tr><td>बच्चों के आभूषण · Children's</td><td>कड़ा Kada · ताबीज Taviz · नजरिया Nazariya · पेर के कड़े Foot Kade</td></tr>
+  </tbody>
+</table>
+<p><strong>Black Polish Silver</strong> carries the identical hierarchy. It is produced by the importer's branch-clone mode rather than by hand, which keeps the three branches in step when one of them grows.</p>
+
+<h3>8.5 Scale properties</h3>
+<table>
+  <thead><tr><th style="width:26%">Property</th><th style="width:16%">At launch</th><th style="width:16%">Designed for</th><th>Mechanism</th></tr></thead>
+  <tbody>
+    <tr><td>Term count</td><td>~320</td><td>1,500</td><td>Path and depth caches; deep counts on schedule; virtualised tree UI</td></tr>
+    <tr><td>Maximum depth</td><td>5</td><td>Unlimited</td><td>No level is special-cased anywhere; depth 20 is a cycle detector, not a business limit</td></tr>
+    <tr><td>Menu render</td><td>—</td><td>under 50 ms at 1,000</td><td>Whole payload cached under a versioned key</td></tr>
+    <tr><td>Duplicate leaf names</td><td>Expected</td><td>—</td><td>कड़ा appears under wrist, foot and children's; बंगड़ी under neck and wrist. Correct and intentional — slugs disambiguate by path, and the importer matches on path, never on name</td></tr>
+    <tr><td>Practical ceiling</td><td>—</td><td>~5,000</td><td>Beyond that the tree payload exceeds one cache object and the menu moves to on-demand level loading</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">9 · Meta Key Registry</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<p style="color:#595d6c">Every key below is registered with a type, a REST schema, a sanitiser and an authorisation callback. There is no unregistered meta read anywhere in the codebase, and adding a field means adding a row here — not calling a meta update from a new place.</p>
+
+<h3 style="margin-top:0">9.1 Conventions</h3>
+<table>
+  <thead><tr><th style="width:24%">Rule</th><th>Reason</th></tr></thead>
+  <tbody>
+    <tr><td>Underscore prefix on every key</td><td>Keeps keys out of the default Custom Fields box, so nobody hand-edits a derived cache value.</td></tr>
+    <tr><td>Single value, always</td><td>Arrays are stored as one JSON-encoded value. Multi-row meta loses order, and gallery order matters.</td></tr>
+    <tr><td>Explicit REST schema</td><td>A bare "true" accepts anything. The schema is what gives the block editor, the importer and a future app validation for free.</td></tr>
+    <tr><td>Authorisation callback always set</td><td>The default permits any user who can edit posts. Enquiry agents can; they must not write product meta.</td></tr>
+    <tr><td>Public means readable without authentication</td><td>Internal notes, counters and derived caches are private and never appear in a public response.</td></tr>
+  </tbody>
+</table>
+
+<h3>9.2 Product</h3>
+<table>
+  <thead><tr><th style="width:18%">Key</th><th style="width:11%">Type</th><th style="width:22%">Validation / sanitisation</th><th style="width:10%">Default</th><th style="width:9%">Public</th><th>Index / migration</th></tr></thead>
+  <tbody>
+    <tr><td>_rj_code</td><td>string</td><td>Text, uppercased, pattern A–Z 0–9 hyphen, unique</td><td>''</td><td>Yes</td><td>Index table, unique. 001</td></tr>
+    <tr><td>_rj_name_hi</td><td>string</td><td>Text, max 191</td><td>''</td><td>Yes</td><td>Index table. 001</td></tr>
+    <tr><td>_rj_name_en</td><td>string</td><td>Text, max 191</td><td>''</td><td>Yes</td><td>Index table. 001</td></tr>
+    <tr><td>_rj_weight</td><td>number</td><td>Float, 0–99999, 3 decimals. Empty permitted — no fake or default value is ever substituted</td><td>0</td><td><strong>Conditional</strong></td><td>Index table. 001. <strong>Public exposure governed by <code>rj_display.show_weight_publicly</code>: OFF omits the field from every public REST response and every public surface; ON returns it when a valid value exists.</strong> Authenticated administrative reads are unaffected in both states — C-11 LOCKED</td></tr>
+    <tr><td>_rj_weight_unit</td><td>enum</td><td>g · tola · carat</td><td>g</td><td><strong>Conditional</strong></td><td>Governed by the same <code>rj_display</code> switch as <code>_rj_weight</code> — the two travel together</td></tr>
+    <tr><td>_rj_gallery</td><td>int[]</td><td>Each an attachment ID, verified to exist, max 12</td><td>[]</td><td>Yes</td><td>—</td></tr>
+    <tr><td>_rj_stone_details</td><td>string</td><td>Textarea, max 500</td><td>''</td><td>Yes</td><td>—</td></tr>
+    <tr><td>_rj_making_note</td><td>string</td><td>Textarea, max 500</td><td>''</td><td><strong>No</strong></td><td>Staff only, never rendered publicly</td></tr>
+    <tr><td>_rj_whatsapp_message</td><td>string</td><td>Textarea, token set validated</td><td>''</td><td>No</td><td>—</td></tr>
+    <tr><td>_rj_visibility</td><td>enum</td><td>public · hidden · archived</td><td>public</td><td>Yes</td><td>Index table. 001</td></tr>
+    <tr><td>_rj_featured</td><td>boolean</td><td>Boolean</td><td>false</td><td>Yes</td><td>—</td></tr>
+    <tr><td>_rj_primary_term</td><td>integer</td><td>Term ID, must be in rj_category and assigned</td><td>0</td><td>Yes</td><td>Index table. Drives breadcrumb and canonical</td></tr>
+    <tr><td>_rj_view_count</td><td>integer</td><td>Absolute integer</td><td>0</td><td>No</td><td>Written off-request</td></tr>
+    <tr><td>_rj_enquiry_count</td><td>integer</td><td>Absolute integer</td><td>0</td><td>No</td><td>Denormalised from leads</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Write permission on all fourteen: <code>edit_post</code> on that product. Metal, purity, occasion, audience, collection and tag are taxonomies, not meta — they need archives, filtering and counts.</p>
+
+<h3>9.3 Category term meta</h3>
+<table>
+  <thead><tr><th style="width:20%">Key</th><th style="width:11%">Type</th><th style="width:26%">Validation</th><th style="width:11%">Default</th><th style="width:9%">Public</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>_rj_order</td><td>integer</td><td>0–99999</td><td>auto, gapped 10</td><td>Yes</td><td>—</td></tr>
+    <tr><td>_rj_visible</td><td>boolean</td><td>Boolean</td><td><strong>true</strong></td><td>Yes</td><td>Defaulting to false is the historic disappearing-category bug</td></tr>
+    <tr><td>_rj_featured</td><td>boolean</td><td>Boolean</td><td>false</td><td>Yes</td><td>—</td></tr>
+    <tr><td>_rj_name_hi</td><td>string</td><td>Text, max 191</td><td>''</td><td>Yes</td><td>Indexed for search</td></tr>
+    <tr><td>_rj_name_en</td><td>string</td><td>Text, max 191</td><td>''</td><td>Yes</td><td>Override where the term name is a transliteration</td></tr>
+    <tr><td>_rj_name_alt</td><td>string</td><td>Text, max 191. Comma-separated — multiple aliases in one existing field, no new key</td><td>''</td><td>Yes</td><td><strong>Search synonyms / search aliases only.</strong> Additional match terms for the search index. Does <strong>not</strong> define category identity, create a taxonomy term, alter a URL or canonical, produce a duplicate archive, or replace <code>_rj_primary_term</code>. The visible name stays authoritative; the full path stays the identity — C-7 LOCKED</td></tr>
+    <tr><td>_rj_image_id · _rj_icon_id</td><td>integer</td><td>Attachment ID, verified</td><td>0</td><td>Yes</td><td>—</td></tr>
+    <tr><td>_rj_seo_title · _rj_seo_desc</td><td>string</td><td>Text, 70 / 160</td><td>''</td><td>Yes</td><td>—</td></tr>
+    <tr><td>_rj_seo_noindex</td><td>boolean</td><td>Boolean</td><td>false</td><td>Yes</td><td>—</td></tr>
+    <tr><td>_rj_menu_columns</td><td>integer</td><td>1–5</td><td>4</td><td>Yes</td><td>Root terms only</td></tr>
+    <tr><td>_rj_depth_cache</td><td>integer</td><td>0–20</td><td>0</td><td>No</td><td><strong>Derived.</strong> Never hand-edited; rebuilt on reparent and nightly</td></tr>
+    <tr><td>_rj_path_cache</td><td>string</td><td>Slash-joined ancestor IDs</td><td>''</td><td>No</td><td>Derived. Powers descendant queries and breadcrumbs</td></tr>
+    <tr><td>_rj_count_deep</td><td>integer</td><td>Absolute integer</td><td>0</td><td>Yes</td><td>Derived. Written hourly, never counted live</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Write permission: <code>rj_manage_categories</code>. The three derived keys are additionally write-blocked over REST — they have no authorisation callback that returns true for any user. Flat taxonomies carry the same keys minus the four cache and menu fields.</p>
+
+<h3>9.4 Reel, collection, showroom, testimonial</h3>
+<table>
+  <thead><tr><th style="width:15%">Object</th><th style="width:20%">Key</th><th style="width:11%">Type</th><th style="width:26%">Validation</th><th>Public</th></tr></thead>
+  <tbody>
+    <tr><td rowspan="8">Reel</td><td>_rj_source_type</td><td>enum</td><td>upload · instagram · youtube · url</td><td>Yes</td></tr>
+    <tr><td>_rj_source_url</td><td>string</td><td>URL, scheme and host allow-listed per type</td><td>Yes</td></tr>
+    <tr><td>_rj_video_id</td><td>string</td><td>Provider ID, alphanumeric</td><td>Yes</td></tr>
+    <tr><td>_rj_attachment_id</td><td>integer</td><td>Attachment, MIME must be video</td><td>Yes</td></tr>
+    <tr><td>_rj_poster_id</td><td>integer</td><td>Attachment, verified</td><td>Yes</td></tr>
+    <tr><td>_rj_linked_products</td><td>int[]</td><td>Product IDs, verified, max 8</td><td>Yes</td></tr>
+    <tr><td>_rj_caption</td><td>string</td><td>Text, max 300</td><td>Yes</td></tr>
+    <tr><td>_rj_visibility · _rj_expires_at</td><td>enum · datetime</td><td>As product · valid future date or empty</td><td>Yes</td></tr>
+    <tr><td rowspan="4">Collection</td><td>_rj_cover_id</td><td>integer</td><td>Attachment</td><td>Yes</td></tr>
+    <tr><td>_rj_badge</td><td>string</td><td>Text, max 24</td><td>Yes</td></tr>
+    <tr><td>_rj_order</td><td>integer</td><td>0–9999</td><td>Yes</td></tr>
+    <tr><td>_rj_auto_rule</td><td>object</td><td>JSON, schema-validated, depth 3</td><td>No</td></tr>
+    <tr><td rowspan="6">Showroom</td><td>_rj_address</td><td>string</td><td>Textarea, max 300</td><td>Yes</td></tr>
+    <tr><td>_rj_city · _rj_state · _rj_pincode</td><td>string</td><td>Text · text · 6 digits</td><td>Yes</td></tr>
+    <tr><td>_rj_phone · _rj_whatsapp</td><td>string</td><td>Normalised international, validated</td><td>Yes</td></tr>
+    <tr><td>_rj_timings</td><td>object</td><td>JSON, seven days, open and close or closed</td><td>Yes</td></tr>
+    <tr><td>_rj_map_url</td><td>string</td><td>URL, host allow-listed</td><td>Yes</td></tr>
+    <tr><td>_rj_lat · _rj_lng · _rj_gallery</td><td>number · number · int[]</td><td>−90…90 · −180…180 · attachments</td><td>Yes</td></tr>
+    <tr><td rowspan="4">Testimonial</td><td>_rj_author</td><td>string</td><td>Text, max 120</td><td>Yes</td></tr>
+    <tr><td>_rj_rating</td><td>integer</td><td>0–5, 0 means unrated and hides the row</td><td>Yes</td></tr>
+    <tr><td>_rj_photo_id</td><td>integer</td><td>Attachment</td><td>Yes</td></tr>
+    <tr><td>_rj_context · _rj_source · _rj_order</td><td>string · string · integer</td><td>Text · text · 0–9999</td><td>Yes</td></tr>
+  </tbody>
+</table>
+
+<h3>9.5 Customer user meta</h3>
+<table>
+  <thead><tr><th style="width:22%">Key</th><th style="width:12%">Type</th><th style="width:26%">Validation</th><th style="width:14%">Readable by</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>_rj_phone</td><td>string</td><td>Normalised international</td><td>Owner, rj_read_customers</td><td>Optional but strongly prompted</td></tr>
+    <tr><td>_rj_phone_verified</td><td>boolean</td><td>Boolean</td><td>Same</td><td>Reserved for OTP</td></tr>
+    <tr><td>_rj_signup_source</td><td>enum</td><td>email · google · otp · admin · import</td><td>rj_read_customers</td><td>Immutable after creation</td></tr>
+    <tr><td>_rj_signup_context</td><td>string</td><td>URL, same-host</td><td>rj_read_customers</td><td>Which page drove the account</td></tr>
+    <tr><td>_rj_last_login</td><td>datetime</td><td>—</td><td>Same</td><td>—</td></tr>
+    <tr><td>_rj_login_methods</td><td>string[]</td><td>Allow-listed values</td><td>Owner, admin</td><td>An account may hold both a password and a linked identity</td></tr>
+    <tr><td>_rj_identity_google</td><td>string</td><td>Provider subject ID</td><td><strong>Nobody over REST</strong></td><td>Never the email — emails change</td></tr>
+    <tr><td>_rj_fav_collections</td><td>int[]</td><td>Collection IDs</td><td>Owner</td><td>—</td></tr>
+    <tr><td>_rj_notify_prefs</td><td>object</td><td>JSON, schema-validated</td><td>Owner</td><td>Per channel and per event group</td></tr>
+    <tr><td>_rj_consent</td><td>object</td><td>JSON: timestamp, version, wording</td><td>Owner, admin</td><td>Append-only. What was agreed to must be provable</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Wishlist and recent views are tables, not user meta — they are queried by product for "most wishlisted", which user meta cannot do efficiently. Settings live in options, not meta; see §10. <strong>No segment key is registered</strong> — see §7.3.</p>
+
+<h3>9.6 Page section meta <span style="font-size:11px;color:#2f6b3a;letter-spacing:0.08em">ADDED — Conflict 3 resolved</span></h3>
+<p style="font-size:13px">Eleven keys, each a direct consequence of the approved hero field list. Write permission on all: <code>rj_manage_settings</code>.</p>
+<table>
+  <thead><tr><th style="width:20%">Key</th><th style="width:11%">Type</th><th style="width:28%">Validation</th><th style="width:11%">Default</th><th>Public · Notes</th></tr></thead>
+  <tbody>
+    <tr><td>_rj_section_key</td><td>enum</td><td>Allow-list: hero · about · bridal_band · trust_strip · footer_note</td><td>hero</td><td>Yes · Indexed</td></tr>
+    <tr><td>_rj_title_hi</td><td>string</td><td>Text, max 120</td><td>''</td><td>Yes · Devanagari, language-marked at output</td></tr>
+    <tr><td>_rj_title_en</td><td>string</td><td>Text, max 120</td><td>''</td><td>Yes</td></tr>
+    <tr><td>_rj_description</td><td>string</td><td>Textarea, max 300</td><td>''</td><td>Yes</td></tr>
+    <tr><td>_rj_cta_label</td><td>string</td><td>Text, max 40</td><td>''</td><td>Yes · Empty hides the button</td></tr>
+    <tr><td>_rj_cta_url</td><td>string</td><td>URL — same-host path, or a WhatsApp template key. External hosts rejected</td><td>''</td><td>Yes · A WhatsApp key routes through the engine, never a pasted link</td></tr>
+    <tr><td>_rj_image_desktop</td><td>integer</td><td>Attachment ID, verified, image MIME</td><td>0</td><td>Yes · 4:5 crop</td></tr>
+    <tr><td>_rj_image_mobile</td><td>integer</td><td>Attachment ID, verified, image MIME</td><td>0</td><td>Yes · 3:2 crop. Falls back to desktop if unset</td></tr>
+    <tr><td>_rj_active</td><td>boolean</td><td>Boolean</td><td><strong>false</strong></td><td>Yes · Defaults off so a half-built campaign cannot go live by accident</td></tr>
+    <tr><td>_rj_starts_at</td><td>datetime</td><td>Valid datetime or empty. Must precede <code>_rj_ends_at</code></td><td>''</td><td>Yes · Empty means no start bound</td></tr>
+    <tr><td>_rj_ends_at</td><td>datetime</td><td>Valid datetime or empty</td><td>''</td><td>Yes · Empty means no end bound</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c"><code>_rj_order</code> is reused from the existing registry — meta keys are scoped per object type, so the same key on a different type is not a collision. <strong>Hero campaign start and end windows are evaluated in the WordPress site timezone, which is the single timezone source for hero scheduling</strong> — for this business that setting is Asia/Kolkata. No second timezone setting is introduced, and a campaign set for Diwali must not shift because a server reports UTC. Notification quiet hours (§8.4) are unaffected by this rule.</p>
+
+<h2 style="break-before:page">10 · Settings Registry</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<p style="color:#595d6c">Ten option records, not ninety. Each is a single associative array validated against a schema on write, then read back and compared — a malformed value can never be silently stored.</p>
+
+<table>
+  <thead><tr><th style="width:17%">Group</th><th style="width:10%">Autoload</th><th style="width:15%">REST</th><th style="width:14%">Write cap</th><th>Contents</th></tr></thead>
+  <tbody>
+    <tr><td>rj_contact</td><td>Yes</td><td><strong>Public read</strong>, capability write</td><td>rj_manage_settings</td><td>phones[] (label, number, whatsapp flag) · emails[] · social{} · locality · primary_showroom. <strong>The single source of truth for contact data.</strong></td></tr>
+    <tr><td>rj_whatsapp</td><td>Yes</td><td>No read, capability write</td><td>rj_manage_settings</td><td>active_number · fallback_number · templates{product, reel, collection, bridal, showroom} · availability behaviour</td></tr>
+    <tr><td>rj_display</td><td>Yes</td><td>Public read</td><td>rj_manage_settings</td><td>language lead · grid density · items per page · reel autoplay · lazy thresholds · <code>show_weight_publicly</code> (<strong>default OFF</strong> — the single global switch governing weight on public surfaces <em>and</em> in public REST; no second weight setting exists)</td></tr>
+    <tr><td>rj_features</td><td>Yes</td><td>Public read</td><td>rj_manage_settings</td><td>accounts · google_login · notifications · visual_edit · enquiry_list · hero_slider. Feature flags only</td></tr>
+    <tr><td>rj_auth_providers</td><td>No</td><td>None</td><td>manage_options</td><td>Provider credentials. <strong>Sensitive.</strong> Client secrets read from configuration constants when defined; the stored copy is a fallback only</td></tr>
+    <tr><td>rj_notifications</td><td>No</td><td>None</td><td>manage_options</td><td>Channel enablement · driver credentials (sensitive) · throttles · digest schedule · quiet hours</td></tr>
+    <tr><td>rj_seo</td><td>No</td><td>None</td><td>rj_manage_settings</td><td>Title patterns · structured-data toggles · Open Graph defaults · sitemap inclusions</td></tr>
+    <tr><td>rj_db_version</td><td>Yes</td><td>None</td><td>Internal only</td><td>Schema version integer. Drives the migration router</td></tr>
+    <tr><td>rj_install_state</td><td>No</td><td>None</td><td>Internal only</td><td>Install timestamp · completed migration IDs · last rebuild times · seeded flag</td></tr>
+    <tr><td><strong>rj_chatbot</strong> <span style="font-size:10px;color:#2f6b3a;letter-spacing:0.08em">ADDED</span></td><td><strong>No</strong></td><td>None</td><td>manage_options</td><td>Chatbot configuration: welcome, fallback and human-support messages · knowledge-source toggles · capability toggles · FAQ entries · provider selection · privacy and logging controls. <strong>No secret is stored here</strong> — API keys and provider credentials come from server-side configuration only, and the screen shows a configured / not-configured indicator derived from whether the constant is defined. The enable gate stays in <code>rj_features.chatbot</code> and is not moved here, because the gate is read on every request and this group is not autoloaded.</td></tr>
+  </tbody>
+</table>
+
+<h3>10.1 Handling rules</h3>
+<table>
+  <thead><tr><th style="width:24%">Rule</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Validation</td><td>Each group has a declared schema. Unknown keys are rejected; out-of-range values are rejected with a field-level message. Nothing is coerced silently.</td></tr>
+    <tr><td>Write-then-read</td><td>After every save the value is re-read and compared. A mismatch raises an error rather than reporting success — this is the direct answer to the historic saved-but-not-reflected failure.</td></tr>
+    <tr><td>Sensitive fields</td><td>Rendered as masked in the UI, redacted in the activity log with only a changed flag, excluded from every export, never returned by REST, never written to a log line.</td></tr>
+    <tr><td>Fallback</td><td>Every group has a complete default. A missing or corrupt record falls back to defaults and raises a Health warning; it never returns null into a template.</td></tr>
+    <tr><td>Autoload discipline</td><td>Only the four small, always-needed groups autoload. Credentials and rarely-read settings do not.</td></tr>
+    <tr><td>Contact uniqueness</td><td>A Tools scan flags any post content containing a phone-number-shaped string not produced by a shortcode, so a number typed into a page is found by the scan rather than by a customer calling a dead line.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">11 · REST Route Registry</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">11.1 Rules every route obeys</h3>
+<table>
+  <thead><tr><th style="width:24%">Rule</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Permission callback</td><td>Explicit on every route. Public routes state it literally so its presence is visible in review, never omitted.</td></tr>
+    <tr><td>Arguments</td><td>Declared with a validator and a sanitiser each. No controller reads a request superglobal.</td></tr>
+    <tr><td>Response</td><td>An explicit schema. Fields are opt-in, so a new meta key never leaks publicly by accident.</td></tr>
+    <tr><td>Pagination</td><td>On every collection, with a hard maximum page size. No route can be asked for everything.</td></tr>
+    <tr><td>Errors</td><td>One shape: code, message, HTTP status, and a field map where validation failed.</td></tr>
+    <tr><td>Versioning</td><td>A breaking change becomes <code>rj/v2</code>. <code>rj/v1</code> keeps working.</td></tr>
+  </tbody>
+</table>
+
+<h3>11.2 Public read routes</h3>
+<table>
+  <thead><tr><th style="width:23%">Route</th><th style="width:22%">Arguments</th><th style="width:16%">Cache</th><th style="width:14%">Rate limit</th><th>Service · Repository</th></tr></thead>
+  <tbody>
+    <tr><td>GET categories/tree</td><td>depth 1–5, root int, include_hidden bool (capability-gated)</td><td>Object cache + ETag, 300 s</td><td>120/min</td><td>MenuTree · Category</td></tr>
+    <tr><td>GET categories/{id}/children</td><td>id int required, with_counts bool</td><td>Same</td><td>120/min</td><td>MenuTree · Category</td></tr>
+    <tr><td>GET products</td><td>category, metal, purity, audience, occasion, collection, weight_min, weight_max, search, orderby (allow-list), order, page, per_page max 48</td><td>ETag, 300 s</td><td>120/min</td><td>Query · Product</td></tr>
+    <tr><td>GET products/by-code/{code}</td><td>code, pattern-validated</td><td>ETag, 300 s</td><td>120/min</td><td>ProductIndex · Product</td></tr>
+    <tr><td>GET search</td><td>q min 2 max 100, types[], page, per_page max 20</td><td>60 s</td><td><strong>30/min</strong></td><td>Search · multiple</td></tr>
+    <tr><td>GET reels</td><td>category, tag, collection, page, per_page max 24</td><td>ETag, 300 s</td><td>120/min</td><td>— · Reel</td></tr>
+    <tr><td>GET collections</td><td>include[], with_counts</td><td>ETag, 600 s</td><td>120/min</td><td>— · Collection</td></tr>
+    <tr><td>GET showrooms</td><td>with_hours</td><td>ETag, 600 s</td><td>120/min</td><td>— · Showroom</td></tr>
+    <tr><td>GET settings/contact</td><td>none</td><td>ETag, 600 s</td><td>120/min</td><td>— · Options</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">All nine: no authentication, no nonce, no audit log. Errors: 400 invalid argument, 404 not found, 429 rate limited. Hidden and archived records are excluded at the repository, not filtered in the controller — a filter in the wrong layer is how private data leaks.</p>
+
+<h3>11.3 Write and capability routes</h3>
+<table>
+  <thead><tr><th style="width:22%">Route</th><th style="width:19%">Permission</th><th style="width:13%">Nonce</th><th style="width:17%">Rate limit</th><th>Audit · Notes</th></tr></thead>
+  <tbody>
+    <tr><td>POST categories/reorder</td><td>rj_manage_categories</td><td>Yes</td><td>—</td><td>Logged. Batch of {id, parent, order}; transactional; cycle guard; rebuilds path caches; bumps the menu cache version</td></tr>
+    <tr><td>PATCH categories/{id}/visibility</td><td>rj_manage_categories</td><td>Yes</td><td>—</td><td>Logged. Separate from a full term update so the common action is cheap</td></tr>
+    <tr><td>POST leads</td><td><strong>Public</strong></td><td>Yes + origin check</td><td>5/10min, 20/day per IP hash; 3/hour per phone</td><td>Logged. Honeypot and dwell-time checks. Returns the WhatsApp URL to redirect to. 429 on limit</td></tr>
+    <tr><td>GET leads</td><td>rj_read_leads</td><td>Header</td><td>—</td><td>Not logged. Filterable, paged</td></tr>
+    <tr><td>PATCH leads/{id}</td><td>rj_manage_leads</td><td>Yes</td><td>—</td><td>Logged. Status and notes only; source fields rejected with 403</td></tr>
+    <tr><td>GET me</td><td>Logged in</td><td>Header</td><td>—</td><td>Own record only</td></tr>
+    <tr><td>PUT me</td><td>Logged in</td><td>Yes</td><td>10/hour</td><td>Logged for role and email changes only</td></tr>
+    <tr><td>POST me/wishlist</td><td>Logged in</td><td>Yes</td><td>60/hour</td><td>Idempotent by composite key</td></tr>
+    <tr><td>DELETE me/wishlist/{post}</td><td>Logged in</td><td>Yes</td><td>60/hour</td><td>Ownership verified at row level</td></tr>
+    <tr><td>POST me/views</td><td>Logged in</td><td>Yes</td><td>120/hour</td><td>Trims to 40</td></tr>
+    <tr><td>POST me/merge-guest</td><td>Logged in</td><td>Yes</td><td>5/hour</td><td>Union, guest-first, never overwrites. Retried client-side on failure</td></tr>
+    <tr><td>GET customers</td><td>rj_read_customers</td><td>Header</td><td>—</td><td>Indexed search on name, phone, email</td></tr>
+    <tr><td>PUT settings/{group}</td><td>rj_manage_settings; manage_options for the two sensitive groups</td><td>Yes</td><td>—</td><td>Logged with secrets masked. Schema-validated, then read back and compared</td></tr>
+    <tr><td>POST import/{type}</td><td>rj_import_data</td><td>Yes</td><td>5/hour</td><td>Logged. Upload → dry run → commit. Returns a rollback token</td></tr>
+    <tr><td>POST import/rollback/{token}</td><td>rj_import_data</td><td>Yes</td><td>5/hour</td><td>Logged. Reverses in reverse order, in batches</td></tr>
+    <tr><td>GET export/{type}</td><td>rj_export_data</td><td>Header</td><td>10/hour</td><td>Logged. Streamed, escaped, byte-order marked</td></tr>
+    <tr><td>GET activity</td><td>rj_view_activity_log</td><td>Header</td><td>—</td><td>Read-only. There is no write route</td></tr>
+    <tr><td>POST notifications/subscribe</td><td><strong>Public</strong></td><td>Yes</td><td>5/hour</td><td>Logged. Registers a push endpoint or an email subscription</td></tr>
+    <tr><td>GET health</td><td>manage_options</td><td>Header</td><td>—</td><td>Runs every standing check; returns pass, warn or fail per check</td></tr>
+  </tbody>
+</table>
+
+<h3>11.4 Error responses</h3>
+<table>
+  <thead><tr><th style="width:14%">Status</th><th style="width:26%">Code</th><th>When</th></tr></thead>
+  <tbody>
+    <tr><td>400</td><td>rj_invalid_argument</td><td>Validation failed. Body carries a field map</td></tr>
+    <tr><td>401</td><td>rj_not_authenticated</td><td>Authentication required and absent</td></tr>
+    <tr><td>403</td><td>rj_forbidden · rj_invalid_nonce · rj_immutable_field</td><td>Capability missing, intent unverified, or an attempt to change a locked field</td></tr>
+    <tr><td>404</td><td>rj_not_found</td><td>Absent, or present but not visible to this caller — deliberately indistinguishable</td></tr>
+    <tr><td>409</td><td>rj_conflict</td><td>Duplicate product code, circular parent, concurrent import</td></tr>
+    <tr><td>429</td><td>rj_rate_limited</td><td>Limit exceeded. Carries a retry hint</td></tr>
+    <tr><td>500</td><td>rj_internal</td><td>Generic message to the client; detail to the error log only</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">12 · Elementor Widgets</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<p style="color:#595d6c"><strong>Fifteen Elementor-Free widgets</strong> — the authoritative set is the Free-First Audit §2 capability table, which supersedes the count once debated here as Conflict 2. Mega Menu is a theme component; Category Slider and Reel Slider are presets; zero dynamic tags are required in the base. Every widget is a thin adapter: it collects settings and calls the core renderer. None contains markup, a query, or a business rule.</p>
+
+<h3 style="margin-top:0">12.1 Registry — fifteen Elementor-Free widgets</h3>
+<p style="font-size:13px;color:#595d6c">Every one registers on Elementor Core through <code>elementor/widgets/register</code> and works with Pro absent. Each is a thin adapter: it collects settings and calls the shared renderer — no markup, no query, no business rule. Data controls only; colour, spacing and typography come from the token sheet and the builder's own style tab.</p>
+<table>
+  <thead><tr><th style="width:18%">Widget</th><th style="width:20%">Data source</th><th style="width:34%">Controls</th><th>Responsive</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1. Product Grid</strong></td><td>Product repository</td><td>Category tree picker, metal, purity, audience, occasion, collection, featured only, count, order by, show weight / code / WhatsApp / wishlist</td><td>Columns per breakpoint</td></tr>
+    <tr><td><strong>2. Product Carousel</strong></td><td>Product repository</td><td>Same source controls + slides per view, loop, arrows, dots. Autoplay off by default</td><td>Slides per view per breakpoint</td></tr>
+    <tr><td><strong>3. Category Grid</strong></td><td>Category repository</td><td>Parent term, depth, featured only, hide empty, image style, show count, show Hindi name. <strong>Presets: Category Slider (mode), Featured Categories (filter)</strong></td><td>Columns per breakpoint</td></tr>
+    <tr><td><strong>4. Reel Grid</strong></td><td>Reel repository</td><td>Category, tag, collection, count, aspect, hover preview, show caption. <strong>Preset: Reel Slider (mode)</strong>. Opens the Reel Viewer modal</td><td>Columns per breakpoint</td></tr>
+    <tr><td><strong>5. Showroom Grid</strong></td><td>Showroom repository</td><td>Branches, show map / timings / phone / WhatsApp, layout. <strong>Preset: Store Locator</strong></td><td>Columns</td></tr>
+    <tr><td><strong>6. Collection Grid</strong></td><td>Collection repository</td><td>Specific collections or all, cover style, show product count</td><td>Columns</td></tr>
+    <tr><td><strong>7. Testimonial Grid</strong></td><td>Testimonial repository</td><td>Count, rating filter, layout, mobile carousel</td><td>Columns</td></tr>
+    <tr><td><strong>8. RJ Search</strong></td><td>Search service</td><td>Placeholder, scope, live suggestions on/off. Matches Hindi, English, slug, product code and <code>_rj_name_alt</code> synonyms</td><td>Inline / overlay switch</td></tr>
+    <tr><td><strong>9. RJ Wishlist</strong></td><td>Customer repository</td><td>Target product, icon style, show count</td><td>—</td></tr>
+    <tr><td><strong>10. RJ Customer Account</strong></td><td>Customer repository</td><td>Logged-out label, logged-in label, show avatar, link target</td><td>—</td></tr>
+    <tr><td><strong>11. RJ WhatsApp CTA</strong></td><td>WhatsApp service</td><td>Template, custom message, size, icon, float or inline. Only the WhatsApp service may compose a URL</td><td>Width per breakpoint</td></tr>
+    <tr><td><strong>12. RJ Hero</strong></td><td><code>rj_page_section</code>, key <code>hero</code></td><td>Section keys to draw from, slider on/off, height, crop. <strong>RJ owns the conditional render</strong> — outputs nothing at all when no campaign is eligible, so zero layout space is preserved</td><td>Height and crop per breakpoint</td></tr>
+    <tr><td><strong>13. RJ Category Navigation</strong></td><td>MenuTree service</td><td>Root term, depth, columns, featured column, images on/off. <strong>In-page navigation only — the header Mega Menu is a theme component</strong></td><td>Desktop / mobile switch point</td></tr>
+    <tr><td><strong>14. RJ Contact / Enquiry</strong></td><td><code>rj_contact</code> option · Leads service</td><td>Which fields, layout, icons; enquiry form writing to <code>rj_leads</code> server-side before any redirect</td><td>Stack point</td></tr>
+    <tr><td><strong>15. RJ Notification Signup</strong></td><td>Notifier service</td><td>Event groups offered, channel, heading, consent wording</td><td>Layout</td></tr>
+  </tbody>
+</table>
+
+<h4>Not widgets — and why</h4>
+<table>
+  <thead><tr><th style="width:24%">Item</th><th style="width:26%">What it is instead</th><th>Reason</th></tr></thead>
+  <tbody>
+    <tr><td>Mega Menu</td><td><strong>Theme component</strong> in <code>header.php</code></td><td>Elementor Free cannot build headers or footers — that is Pro's Theme Builder. A header widget has nowhere to live, and depending on Pro is forbidden. The plugin supplies the cached tree and query layer; the theme supplies rendering and header integration.</td></tr>
+    <tr><td>Category Slider</td><td>Category Grid preset / mode</td><td>A display mode, not a second data source.</td></tr>
+    <tr><td>Reel Slider</td><td>Reel Grid preset / mode</td><td>Same.</td></tr>
+    <tr><td>Featured Categories</td><td>Category Grid filter / preset</td><td>One checkbox on an existing widget.</td></tr>
+    <tr><td>Store Locator</td><td>Showroom Grid preset</td><td>Identical data, identical component.</td></tr>
+    <tr><td>Product Card</td><td>Shared renderer</td><td>A renderer the grid calls, not a placeable element. A second widget rendering the same component would diverge.</td></tr>
+    <tr><td>Reel Viewer</td><td>RJ modal / component</td><td>A modal the Reel Grid opens. Placing it on a page has no meaning, and Free has no popup mechanism to host it.</td></tr>
+  </tbody>
+</table>
+
+<h3>12.2 Dropped from the original twenty-one-item request</h3>
+<p style="font-size:13px;color:#595d6c">Superseded detail — the authoritative disposition is the "Not widgets" table in §12.1, which covers these four plus Mega Menu, Category Slider and Reel Slider. Retained as the record of what was asked for.</p>
+<table>
+  <thead><tr><th style="width:24%">Requested</th><th style="width:26%">Resolution</th><th>Reason</th></tr></thead>
+  <tbody>
+    <tr><td>RJ Product Card</td><td>Product Grid with count 1</td><td>A second widget rendering the same component will diverge from the first.</td></tr>
+    <tr><td>RJ Reel Viewer</td><td>Opened by Reel Grid</td><td>The viewer is a modal, not a placeable element. Placing it on a page has no meaning.</td></tr>
+    <tr><td>RJ Store Locator</td><td>Showroom Grid preset</td><td>Identical data, identical component. Offered as a saved preset in the widget's own control.</td></tr>
+    <tr><td>RJ Featured Categories</td><td>Category Grid with featured filter</td><td>One checkbox on an existing widget.</td></tr>
+  </tbody>
+</table>
+
+<h3>12.3 Fallback behaviour</h3>
+<table>
+  <thead><tr><th style="width:26%">Condition</th><th>Behaviour</th></tr></thead>
+  <tbody>
+    <tr><td>Core plugin absent</td><td>The Elementor plugin does not activate. Nothing registers, nothing fatals.</td></tr>
+    <tr><td>Elementor absent</td><td>Detected on load; nothing registers. Content built with widgets falls back to the theme's page template; catalogue pages are unaffected.</td></tr>
+    <tr><td>Renderer missing</td><td>The widget shows an editor warning and outputs nothing publicly.</td></tr>
+    <tr><td>Empty result</td><td>The renderer's own empty state, identical to the shortcode and block output — never a blank region.</td></tr>
+    <tr><td>Equivalent without Elementor</td><td>Every widget has a block and a shortcode that call the same renderer with the same arguments.</td></tr>
+  </tbody>
+</table>
+
+<h3>12.4 Performance rules</h3>
+<ul>
+  <li>One query per widget instance. A page with four product widgets makes four queries, not four multiplied by its cards.</li>
+  <li>Widget assets are registered globally and enqueued only when an instance renders.</li>
+  <li>Editor previews are capped at 12 items regardless of the configured count, so the editor stays usable.</li>
+  <li>Slider libraries load once per page no matter how many sliders are placed.</li>
+  <li>No widget may set <code>per_page</code> above its declared maximum; the control's range enforces it.</li>
+</ul>
+
+<h2 style="break-before:page">13 · Dynamic Data Exposure — <span style="color:#8a6410">OPTIONAL PRO LAYER</span></h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:13px 15px;margin-bottom:14px;break-inside:avoid">
+<p style="margin:0 0 7px;font-size:14.5px"><strong>Required base dynamic tags = 0. The eleven below are optional Elementor Pro enhancements.</strong> Dynamic tags are a Pro-only feature, so they cannot sit in the base architecture without making Pro a dependency — which is forbidden. The base exposure path is the shared renderer reached through Elementor Free widgets, shortcodes, Gutenberg blocks and theme components.</p>
+<p style="margin:0;font-size:14px">None of these tags is required for products, categories, reels, collections, showrooms, hero, customer accounts, WhatsApp, the chatbot, or any core business page. Every one has a shortcode equivalent. The table is retained as the <strong>Pro specification</strong>: if Pro is ever bought, this is what gets built.</p>
+</div>
+<table>
+  <thead><tr><th style="width:17%">Object</th><th style="width:22%">Dynamic tag</th><th style="width:30%">Exposes</th><th>Source</th></tr></thead>
+  <tbody>
+    <tr><td>Product</td><td>rj-product-field</td><td>Code, Hindi name, English name, weight with unit, purity, metal, stones, primary category, permalink</td><td>Registered meta and taxonomy terms</td></tr>
+    <tr><td>Product</td><td>rj-product-gallery</td><td>Ordered attachment set, for Elementor's own gallery and carousel widgets</td><td><code>_rj_gallery</code></td></tr>
+    <tr><td>Reel</td><td>rj-reel-field</td><td>Title, caption, poster, resolved embed URL, linked product codes</td><td>Registered meta, resolved by the reel service</td></tr>
+    <tr><td>Category</td><td>rj-category-field</td><td>Name, Hindi name, description, image, deep count, breadcrumb path</td><td>Registered term meta and caches</td></tr>
+    <tr><td>Collection</td><td>rj-collection-field</td><td>Name, cover, badge, member count, permalink</td><td>Registered meta</td></tr>
+    <tr><td>Showroom</td><td>rj-showroom-field</td><td>Address, city, pincode, phone, WhatsApp, timings, open-now state, map URL</td><td>Registered meta</td></tr>
+    <tr><td>Testimonial</td><td>rj-testimonial-field</td><td>Quote, author, context, rating, photo</td><td>Registered meta</td></tr>
+    <tr><td>Contact</td><td>rj-contact</td><td>Any phone, WhatsApp, email, social link, locality, primary address</td><td><code>rj_contact</code> option. The only route to a phone number</td></tr>
+    <tr><td>WhatsApp</td><td>rj-whatsapp-url</td><td>A correct enquiry URL for any context, for use behind any Elementor button</td><td>WhatsApp service</td></tr>
+    <tr><td>Customer</td><td>rj-customer-field</td><td>Display name, wishlist count, logged-in state</td><td>Customer repository. Nothing sensitive is exposed as a tag</td></tr>
+    <tr><td>Notification</td><td>rj-notify-state</td><td>Whether the current visitor is subscribed, for conditional display</td><td>Notifier service</td></tr>
+  </tbody>
+</table>
+<h4>Rules</h4>
+<ul>
+  <li><strong>No business data is ever duplicated into an Elementor custom field.</strong> A value typed into a builder is a value that will be wrong within a year.</li>
+  <li>Tags read through the domain layer, never directly from post meta, so visibility and permission rules apply identically.</li>
+  <li>A tag with no value returns empty and the element is hidden — never the string "false", never a raw key name.</li>
+  <li>Sensitive fields — internal notes, provider identities, credentials — have no dynamic tag at all.</li>
+  <li>Every tag has a shortcode equivalent, so a page can be rebuilt without Elementor.</li>
+</ul>
+
+<h2 style="break-before:page">14 · Customer Modules</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<table>
+  <thead><tr><th style="width:20%">Feature</th><th style="width:24%">Class</th><th style="width:26%">Responsibility</th><th>Depends on</th></tr></thead>
+  <tbody>
+    <tr><td>Guest browsing</td><td><code>Frontend\GuestState</code></td><td>Local wishlist and view history, merge payload assembly. No server state at all.</td><td>Nothing</td></tr>
+    <tr><td>Provider registry</td><td><code>Services\Auth\ProviderRegistry</code></td><td>Holds providers, answers which are available, renders only those.</td><td>Options</td></tr>
+    <tr><td>Provider contract</td><td><code>Services\Auth\AuthProvider</code> (interface)</td><td><code>id()</code>, <code>is_available()</code>, <code>render_button()</code>, <code>handle_callback()</code>.</td><td>—</td></tr>
+    <tr><td>Email signup</td><td><code>Services\Auth\Providers\PasswordProvider</code></td><td>Registration, double opt-in verification, sign-on. Works with no external service.</td><td>Customer, Notifier</td></tr>
+    <tr><td>Google login</td><td><code>Services\Auth\Providers\GoogleProvider</code></td><td>Authorisation code with PKCE, state verification, subject-ID matching, confirmed linking.</td><td>Customer, Options</td></tr>
+    <tr><td>OTP <span style="font-size:10px;color:#5d5294">FUTURE</span></td><td><code>Services\Auth\Providers\OtpProvider</code></td><td>Interface slot reserved. Field and settings group already exist.</td><td>—</td></tr>
+    <tr><td>Profile</td><td><code>Domain\Customer\Repository</code></td><td>Read and write own record, normalise phone, record consent.</td><td>Activity</td></tr>
+    <tr><td>Wishlist</td><td><code>Domain\Customer\Wishlist</code></td><td>Add, remove, list, count. Idempotent by composite key.</td><td>Product</td></tr>
+    <tr><td>Recently viewed</td><td><code>Domain\Customer\RecentViews</code></td><td>Record and trim to 40.</td><td>Product</td></tr>
+    <tr><td>Guest merge</td><td><code>Domain\Customer\GuestMerge</code></td><td>Union, guest-first, never overwrite; cap views; return the merged set.</td><td>Wishlist, RecentViews</td></tr>
+    <tr><td>Preferences</td><td><code>Domain\Customer\Preferences</code></td><td>Per channel and event group, frequency, global off, consent record.</td><td>Notifier</td></tr>
+    <tr><td>Dashboard</td><td><code>Frontend\Account</code> + seven templates</td><td>The seven rewrite-driven virtual screens. No database Page required.</td><td>Repository, Rewrites</td></tr>
+    <tr><td>Admin panel</td><td><code>Admin\Screens\Customers</code>, <code>CustomerDetail</code>, <code>CustomerInsights</code></td><td>Tiles, indexed list, filters, detail, analytics.</td><td>Repository</td></tr>
+    <tr><td>Export</td><td><code>Services\Exporter\CustomerExporter</code></td><td>Streamed, explicit columns, escaped, byte-order marked. Hashes and tokens unselectable.</td><td>Exporter</td></tr>
+    <tr><td>Erasure</td><td><code>Domain\Customer\Privacy</code></td><td>Registered with WordPress's own exporter and eraser. Removes profile, wishlist, views and login history; retains leads with the identifier nulled.</td><td>Activity</td></tr>
+    <tr><td>Role guard</td><td><code>Data\Capabilities</code> + <code>Frontend\AdminRedirect</code></td><td>Read-only capability, admin bar off, admin redirected, own-record REST, author enumeration blocked, application passwords disabled.</td><td>—</td></tr>
+  </tbody>
+</table>
+<h4>Two properties enforced by test</h4>
+<ul>
+  <li><strong>Accounts off:</strong> with the feature flag disabled, every catalogue surface works, the account area is absent, and no login control renders anywhere. Regression test 9.</li>
+  <li><strong>Google off:</strong> with credentials removed, the Google button is not rendered and email login is unaffected. A refused or failed provider never produces a visible error to a visitor.</li>
+</ul>
+
+<h2>15 · Notification Modules</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<table>
+  <thead><tr><th style="width:22%">Component</th><th style="width:26%">Class / interface</th><th style="width:26%">Responsibility</th><th>Depends on</th></tr></thead>
+  <tbody>
+    <tr><td>Event bus</td><td><code>Services\Notifier\EventBus</code></td><td>Declares events, fires them as ordinary WordPress actions with a documented payload.</td><td>Nothing</td></tr>
+    <tr><td>Event registry</td><td><code>Services\Notifier\EventRegistry</code></td><td>Event identifiers, their audiences and their default channels.</td><td>—</td></tr>
+    <tr><td>Audience resolver</td><td><code>Services\Notifier\AudienceResolver</code></td><td>Expands an event into recipients from followed categories, followed collections, and the customer-declared <code>_rj_notify_prefs</code> event groups \u2014 the sole audience source. Chunks above 500.</td><td>Customer, Preferences</td></tr>
+    <tr><td>Preference filter</td><td><code>Services\Notifier\PreferenceFilter</code></td><td>Drops recipients who have opted out, applies frequency and throttle.</td><td>Preferences</td></tr>
+    <tr><td>Queue</td><td><code>Domain\Notification\Repository</code></td><td>Multi-row insert, due selection, state transitions, deduplication.</td><td>Schema</td></tr>
+    <tr><td>Worker</td><td><code>Cron\NotificationWorker</code></td><td>Every five minutes, fifty rows, behind a lock. Backoff over five attempts, then dead.</td><td>Queue, Drivers, Lock</td></tr>
+    <tr><td>Digest builder</td><td><code>Services\Notifier\DigestBuilder</code></td><td>Groups a recipient's pending items into one message on schedule.</td><td>Queue</td></tr>
+    <tr><td>Driver contract</td><td><code>Services\Notifier\Driver</code> (interface)</td><td><code>id()</code>, <code>is_available()</code>, <code>supports()</code>, <code>send()</code> returning ok, retry or fail.</td><td>—</td></tr>
+    <tr><td>Email driver</td><td><code>Drivers\EmailDriver</code></td><td>HTML with a plain-text alternative. Required. Works with no account anywhere.</td><td>—</td></tr>
+    <tr><td>Admin notice driver</td><td><code>Drivers\AdminNoticeDriver</code></td><td>Owner-facing operational events.</td><td>—</td></tr>
+    <tr><td>Web push driver</td><td><code>Drivers\WebPushDriver</code></td><td>Native push with locally generated keys and a service worker. No third party.</td><td>Options</td></tr>
+    <tr><td>Firebase adapter</td><td><code>Drivers\FirebaseDriver</code> <span style="font-size:10px;color:#5d5294">FUTURE</span></td><td>Slot reserved for a mobile app.</td><td>Options</td></tr>
+    <tr><td>OneSignal adapter</td><td><code>Drivers\OneSignalDriver</code> <span style="font-size:10px;color:#5d5294">FUTURE</span></td><td>Alternative if self-hosted push deliverability proves difficult.</td><td>Options</td></tr>
+    <tr><td>WhatsApp adapter</td><td><code>Drivers\WhatsAppApiDriver</code> <span style="font-size:10px;color:#5d5294">FUTURE</span></td><td>Business API with approved templates. Paid, deliberately last.</td><td>WhatsApp service</td></tr>
+    <tr><td>Subscription store</td><td><code>Domain\Notification\Subscriptions</code></td><td>Push endpoints and email subscriptions, including unauthenticated ones.</td><td>Schema</td></tr>
+    <tr><td>Preference centre</td><td><code>Frontend\Account\Notifications</code></td><td>The customer-facing screen and the signed unsubscribe link.</td><td>Preferences</td></tr>
+  </tbody>
+</table>
+<h4>Events</h4>
+<table>
+  <thead><tr><th style="width:30%">Event</th><th style="width:26%">Audience</th><th>Default delivery</th></tr></thead>
+  <tbody>
+    <tr><td>rj/product_published</td><td>Followers of its category or collection</td><td>Daily digest</td></tr>
+    <tr><td>rj/reel_published</td><td>Reel subscribers</td><td>Digest, plus push</td></tr>
+    <tr><td>rj/collection_published</td><td>Collection followers</td><td>Immediate email</td></tr>
+    <tr><td>rj/bridal_collection_published</td><td>Customers whose <code>_rj_notify_prefs</code> include the bridal event group</td><td>Immediate email</td></tr>
+    <tr><td>rj/festival_collection_published</td><td>All opted-in</td><td>Email and push</td></tr>
+    <tr><td>rj/wishlist_item_updated</td><td>The wishlist owner</td><td>Email</td></tr>
+    <tr><td>rj/lead_created · rj/lead_unhandled_24h</td><td>Owner, enquiry desk</td><td>Immediate email</td></tr>
+    <tr><td>rj/import_completed · rj/health_warning</td><td>Operator, owner</td><td>Admin notice, email</td></tr>
+  </tbody>
+</table>
+<p><strong>No provider is ever mandatory.</strong> Email and admin notices alone make the system complete. A failing driver marks its queue row and retries; it never blocks the publish that triggered it. Regression test 14.</p>
+
+<h2 style="break-before:page">16 · WhatsApp Engine</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<table>
+  <thead><tr><th style="width:22%">Component</th><th style="width:26%">Class</th><th>Responsibility</th></tr></thead>
+  <tbody>
+    <tr><td>Service facade</td><td><code>Services\WhatsApp</code></td><td>The single public entry point. <code>url( $context )</code> and <code>message( $context )</code>. Nothing else in the codebase composes a WhatsApp URL.</td></tr>
+    <tr><td>Template registry</td><td><code>Services\WhatsApp\TemplateRegistry</code></td><td>The five templates and their permitted token sets.</td></tr>
+    <tr><td>Token resolver</td><td><code>Services\WhatsApp\TokenResolver</code></td><td>Fills tokens from the context object, escaping each for URL context so a product name cannot introduce a query parameter.</td></tr>
+    <tr><td>Phone normaliser</td><td><code>Services\WhatsApp\PhoneNormalizer</code></td><td>Converts any entered format to international form at save time; rejects what cannot be normalised.</td></tr>
+    <tr><td>Fallback resolver</td><td><code>Services\WhatsApp\NumberResolver</code></td><td>Active, then fallback, then the call-us degradation. Never returns an empty number.</td></tr>
+    <tr><td>URL builder</td><td><code>Services\WhatsApp\UrlBuilder</code></td><td>Web-scheme link, raw-encoded body, 900-character truncation on a word boundary preserving the product link. Passes through a filter for future interception.</td></tr>
+    <tr><td>Lead bridge</td><td><code>Services\Leads::capture_from_whatsapp()</code></td><td>Writes the lead before the redirect; a write failure still returns the URL.</td></tr>
+    <tr><td>Validator</td><td><code>Services\WhatsApp\Validator</code></td><td>Numbers and template tokens checked on every admin load; reports through Health.</td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:20%">Template</th><th style="width:34%">Tokens</th><th>Called from</th></tr></thead>
+  <tbody>
+    <tr><td>product</td><td>code, name_hi, name_en, metal, purity, weight, url</td><td>Card, detail, quick view, enquiry list, wishlist</td></tr>
+    <tr><td>reel</td><td>title, url, linked_codes</td><td>Reel viewer</td></tr>
+    <tr><td>collection</td><td>name, url</td><td>Collection header</td></tr>
+    <tr><td>bridal</td><td>url</td><td>Bridal band, bridal landing</td></tr>
+    <tr><td>showroom</td><td>branch, address, url</td><td>Branch card, showroom page</td></tr>
+  </tbody>
+</table>
+<p><strong>Business API readiness:</strong> templates already exist as named objects with declared tokens — the exact shape the WhatsApp Business API requires. Adopting it means registering the same templates with the provider and swapping the URL builder for an API driver. No call site changes.</p>
+
+<h2>17 · Admin Screens</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<table>
+  <thead><tr><th style="width:15%">Screen</th><th style="width:15%">Capability</th><th style="width:16%">Data source</th><th style="width:24%">Actions · bulk</th><th>Endpoint · audit</th></tr></thead>
+  <tbody>
+    <tr><td>Products list</td><td>rj_manage_catalogue</td><td>Product repo + index</td><td>Edit, duplicate, archive · set visibility, assign collection, assign category, regenerate thumbnails</td><td>wp/v2 + rj/v1/products · logged</td></tr>
+    <tr><td>Product edit</td><td>rj_manage_catalogue</td><td>Product repo</td><td>Save, preview, archive</td><td>wp/v2 · logged with diff</td></tr>
+    <tr><td>Categories</td><td>rj_manage_categories</td><td>Category repo</td><td>Create, edit, drag reorder, reparent, hide, reassign-then-delete · bulk visibility</td><td>rj/v1/categories/* · logged</td></tr>
+    <tr><td>Metals · Purity · Occasions · Audience · Tags</td><td>rj_manage_catalogue</td><td>Term repos</td><td>Standard term CRUD with ordering</td><td>wp/v2 · logged</td></tr>
+    <tr><td>Reels</td><td>rj_manage_reels</td><td>Reel repo</td><td>Edit, replace source, regenerate poster · visibility, expiry</td><td>wp/v2 · logged</td></tr>
+    <tr><td>Collections</td><td>rj_manage_catalogue</td><td>Collection repo</td><td>Edit, populate, feature, retire</td><td>wp/v2 · logged</td></tr>
+    <tr><td>Showrooms</td><td>rj_manage_showrooms</td><td>Showroom repo</td><td>Edit, set timings, set primary</td><td>wp/v2 · logged</td></tr>
+    <tr><td>Enquiries</td><td>rj_read_leads</td><td>Leads table</td><td>Set status, note, assign, call, WhatsApp reply · bulk status, mark spam, export</td><td>rj/v1/leads · logged</td></tr>
+    <tr><td>Customers</td><td>rj_read_customers</td><td>Users + tables</td><td>View, export · bulk export. Filtered by notification preference, login method, verified state and activity window</td><td>rj/v1/customers · logged</td></tr>
+    <tr><td>Dashboard</td><td>rj_manage_settings</td><td>Multiple</td><td>At-a-glance counts, recent leads, health summary, quick publish</td><td>Read only</td></tr>
+    <tr><td>Contact &amp; WhatsApp</td><td>rj_manage_settings</td><td>rj_contact, rj_whatsapp</td><td>Save, test link, validate numbers</td><td>rj/v1/settings · logged</td></tr>
+    <tr><td>Display · Features · SEO</td><td>rj_manage_settings</td><td>Their groups</td><td>Save</td><td>rj/v1/settings · logged</td></tr>
+    <tr><td>Accounts</td><td>manage_options</td><td>rj_auth_providers</td><td>Save, test provider</td><td>rj/v1/settings · logged, masked</td></tr>
+    <tr><td>Notifications</td><td>manage_options</td><td>rj_notifications, queue</td><td>Save, send test, retry dead letters, purge</td><td>rj/v1/settings · logged, masked</td></tr>
+    <tr><td>Import / Export</td><td>rj_import_data · rj_export_data</td><td>Importer, Exporter, ledger</td><td>Upload, map, dry run, commit, rollback, export</td><td>rj/v1/import, /export · logged</td></tr>
+    <tr><td>Activity Log</td><td>rj_view_activity_log</td><td>Log table</td><td>Filter, view diff. No edit, no delete</td><td>rj/v1/activity · n/a</td></tr>
+    <tr><td>Health</td><td>manage_options</td><td>Health service</td><td>Run checks, rebuild caches, flush rewrites, run a cron job</td><td>rj/v1/health · logged</td></tr>
+    <tr><td><strong>Hero &amp; Sections</strong> <span style="font-size:10px;color:#2f6b3a">ADDED</span></td><td>rj_manage_settings</td><td><code>rj_page_section</code> repository, <code>_rj_section_key</code> = <code>hero</code></td><td>Campaign list with computed status (draft · scheduled · active · expired); add, edit, duplicate, delete; desktop image, mobile image, Hindi title, English title, description, CTA label, CTA URL, start date, end date, active flag, order · bulk activate, deactivate, delete</td><td>wp/v2/page-sections · logged with diff</td></tr>
+    <tr><td><strong>Search Synonyms</strong> <span style="font-size:10px;color:#2f6b3a">ADDED</span></td><td>rj_manage_categories</td><td><code>_rj_name_alt</code> across <code>rj_category</code></td><td>Filterable list showing category path, visible name and current aliases; inline edit; save. A term with no aliases is the normal case and is not flagged</td><td>wp/v2 term meta · logged with diff</td></tr>
+    <tr><td><strong>AI Chatbot</strong> <span style="font-size:10px;color:#2f6b3a">ADDED</span></td><td>manage_options</td><td><code>rj_features.chatbot</code> gate · <code>rj_chatbot</code> configuration</td><td>Enable/disable; welcome, fallback and human-support messages; knowledge-source toggles; capability toggles; FAQ entries; provider selection; configured / not-configured status; privacy controls; logging controls</td><td>rj/v1/settings · logged, secrets masked</td></tr>
+  </tbody>
+</table>
+<p style="background:#f5f4ff;border:1px solid #d2cefd;border-radius:8px;padding:12px 14px;margin:12px 0 14px"><strong>The completeness principle.</strong> A business-admin requirement is <strong>not</strong> complete merely because a post type, taxonomy, meta key, REST endpoint or database field exists. An actual usable WordPress admin screen must exist for the business owner. <strong>RJ Plugin owns this business-management UI; Elementor does not manage business data.</strong> Twenty-one screens.</p>
+
+<h4>Cross-screen rules</h4>
+<ul>
+  <li>Every list is sorted, filtered and paged server-side. Nothing loads a full result set into the page.</li>
+  <li>Every form validates on the server with the same validators REST uses, and returns field-level errors adjacent to the field.</li>
+  <li>Every destructive action requires confirmation naming what will happen; every one is reversible except a hard product delete.</li>
+  <li>Every save writes an activity entry with a diff, secrets masked.</li>
+  <li>A failed save re-renders with the submitted values intact. Losing a form's contents on an error is its own bug.</li>
+</ul>
+
+<h2 style="break-before:page">18 · Media Modules</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<table>
+  <thead><tr><th style="width:22%">Module</th><th style="width:26%">Class</th><th>Responsibility</th></tr></thead>
+  <tbody>
+    <tr><td>Size registry</td><td><code>Services\Media\Sizes</code></td><td>Five sizes: thumb 300², card 600², detail 1200×1500, hero 1920×1200, reel poster 720×1280. Registered by the plugin so a theme change never orphans one.</td></tr>
+    <tr><td>Format pipeline</td><td><code>Services\Media\Formats</code></td><td>WebP on upload where supported, AVIF where available, originals kept. Reports through Health if the server cannot.</td></tr>
+    <tr><td>Responsive output</td><td><code>Services\Media\Responsive</code></td><td>Source sets and size hints from the registered sizes; modern format with a fallback, never modern-only.</td></tr>
+    <tr><td>Lazy policy</td><td><code>Services\Media\Loading</code></td><td>Below-fold lazy and async; hero and first row eager and prioritised. Dimensions always declared.</td></tr>
+    <tr><td>Gallery</td><td><code>Services\Media\Gallery</code></td><td>Ordered attachment array, drag reorder, add, remove. Order is the array order — no separate sort field to drift.</td></tr>
+    <tr><td>Bulk upload</td><td><code>Admin\Media\BulkUploader</code></td><td>Chunked, per-file progress, resumable. A sixty-image shoot must not fail as one transaction.</td></tr>
+    <tr><td>Code auto-assign</td><td><code>Services\Media\CodeMatcher</code></td><td>Filenames beginning with a known product code are offered for assignment to that product.</td></tr>
+    <tr><td>Replace</td><td><code>Services\Media\Replacer</code></td><td>Swaps the file behind an attachment, keeping the ID so every reference updates at once. Old file retained 30 days.</td></tr>
+    <tr><td>Delete guard</td><td><code>Services\Media\ReferenceGuard</code></td><td>Blocks deletion of a referenced attachment and lists what references it.</td></tr>
+    <tr><td>Regenerate</td><td><code>Services\Media\Regenerator</code></td><td>Batched and resumable, runnable from the admin screen for hosts with no command line.</td></tr>
+    <tr><td>Poster generation</td><td><code>Services\Media\PosterExtractor</code></td><td>Frame extraction for reels with no thumbnail, provider poster fetch for embeds. Regression test 4.</td></tr>
+    <tr><td>Audit</td><td><code>Cron\MediaAudit</code></td><td>Daily: products without images, categories without thumbnails, reels without a resolvable source, unreferenced attachments over 90 days. Direct edit links.</td></tr>
+    <tr><td>Alt text</td><td><code>Services\Media\AltText</code></td><td>Generated from names and category when left blank. Never empty on a product image.</td></tr>
+  </tbody>
+</table>
+<p><strong>No hardcoded paths anywhere.</strong> Every reference is an attachment ID; every URL is generated. That is what makes a domain change, a host move and a future storage offload all cost nothing.</p>
+
+<h2>19 · Import / Export</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<table>
+  <thead><tr><th style="width:22%">Component</th><th style="width:26%">Class</th><th>Responsibility</th></tr></thead>
+  <tbody>
+    <tr><td>CSV parser</td><td><code>Services\Importer\CsvParser</code></td><td>Streaming read, delimiter detection, encoding normalisation, byte-order-mark handling.</td></tr>
+    <tr><td>JSON parser</td><td><code>Services\Importer\JsonParser</code></td><td>Depth and size limits. The category tree format.</td></tr>
+    <tr><td>Mapper</td><td><code>Services\Importer\ColumnMapper</code></td><td>Column-to-field mapping, saved as a reusable profile.</td></tr>
+    <tr><td>Validator</td><td><code>Services\Importer\RowValidator</code></td><td>Delegates to the same domain validators the admin UI uses. One rule, one place.</td></tr>
+    <tr><td>Dry run</td><td><code>Services\Importer\DryRun</code></td><td>Creates, updates, skips and errors by row number. Writes nothing.</td></tr>
+    <tr><td>Committer</td><td><code>Services\Importer\BatchCommitter</code></td><td>Batches of 100 behind a lock, resumable, writes the ledger as it goes.</td></tr>
+    <tr><td>Branch clone</td><td><code>Services\Importer\BranchCloner</code></td><td>Copies a whole category branch. How Black Polish Silver is produced from Silver.</td></tr>
+    <tr><td>Rollback</td><td><code>Services\Importer\Rollback</code></td><td>Reverse order, batched, conflict-flagged where a human has since edited a record.</td></tr>
+    <tr><td>CSV exporter</td><td><code>Services\Exporter\CsvWriter</code></td><td>Streamed row by row. Never buffers a whole set.</td></tr>
+    <tr><td>Escaper</td><td><code>Services\Exporter\FormulaGuard</code></td><td>Prefixes any cell beginning with a formula character. Applied to every free-text field.</td></tr>
+    <tr><td>Encoding</td><td><code>Services\Exporter\Encoding</code></td><td>Byte-order marker so spreadsheets open Devanagari correctly.</td></tr>
+    <tr><td>Lock</td><td><code>Support\Lock</code></td><td>One import at a time. A second returns 409 rather than interleaving.</td></tr>
+    <tr><td>Recovery</td><td><code>Services\Importer\Resume</code></td><td>A timeout mid-batch leaves a consistent state and a resume point.</td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:24%">Dataset</th><th style="width:20%">Direction</th><th>Match key</th></tr></thead>
+  <tbody>
+    <tr><td>Products</td><td>Import and export</td><td>Product code</td></tr>
+    <tr><td>Categories</td><td>Import and export</td><td>Full slug path — why re-importing never duplicates a branch</td></tr>
+    <tr><td>Collections</td><td>Import and export</td><td>Slug; membership as product codes</td></tr>
+    <tr><td>Reels</td><td>Import and export</td><td>Source URL</td></tr>
+    <tr><td>Leads · Customers</td><td><strong>Export only</strong></td><td>Records of events, not editable content. Importing customers would bypass consent</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">20 · Activity Log</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<table>
+  <thead><tr><th style="width:24%">Component</th><th style="width:26%">Class</th><th>Responsibility</th></tr></thead>
+  <tbody>
+    <tr><td>Writer</td><td><code>Services\Activity::record()</code></td><td>Called by the domain layer, never by a screen — so a change made over REST, by the importer or from the command line is logged identically.</td></tr>
+    <tr><td>Differ</td><td><code>Services\Activity\Differ</code></td><td>Changed fields only, as structured data. Never whole objects.</td></tr>
+    <tr><td>Masker</td><td><code>Services\Activity\SecretMasker</code></td><td>Replaces any value from a sensitive settings group with a changed-or-unchanged flag.</td></tr>
+    <tr><td>Reader</td><td><code>Services\Activity\Query</code></td><td>Filtered, paged reads for the viewer and the per-object history panels.</td></tr>
+    <tr><td>Viewer</td><td><code>Admin\Screens\ActivityLog</code></td><td>Filter by object type, object, actor, action, date. Every row links to its object.</td></tr>
+    <tr><td>Object history</td><td><code>Admin\MetaBoxes\HistoryPanel</code></td><td>Recent history inline on the product, category and reel edit screens — the place the question is actually asked.</td></tr>
+    <tr><td>Retention</td><td><code>Cron\Purge</code></td><td>180 days, daily, oldest first, batched.</td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:26%">Recorded per entry</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Actor</td><td>User ID plus a denormalised login name, so an entry still names its author after the user is deleted.</td></tr>
+    <tr><td>Time</td><td>Site timezone.</td></tr>
+    <tr><td>Object</td><td>Type and ID.</td></tr>
+    <tr><td>Action</td><td>From the fixed vocabulary in §5.2.</td></tr>
+    <tr><td>Before / after</td><td>JSON diff of changed fields only.</td></tr>
+    <tr><td>IP</td><td>Salted hash. <strong>The raw address is never stored anywhere in the platform.</strong></td></tr>
+    <tr><td>Summary</td><td>A human-readable one-liner for the list view.</td></tr>
+    <tr><td>Secrets</td><td>Never. Masked at write, not at display.</td></tr>
+  </tbody>
+</table>
+<p>Coverage: product, category (including reorder, reparent and visibility), collection, reel, showroom, testimonial, lead, customer administration, notification dispatch failures, import, export, rollback, settings and login events. Append-only in the application layer — there is no edit path and no delete route, only the retention job.</p>
+
+<h2>21 · Security Checklist</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<table>
+  <thead><tr><th style="width:14%">Module</th><th style="width:16%">Capability</th><th style="width:11%">Nonce</th><th style="width:20%">Validation / sanitisation</th><th style="width:15%">Escaping</th><th>Module-specific</th></tr></thead>
+  <tbody>
+    <tr><td>Products</td><td>rj_manage_catalogue + edit_post</td><td>Yes</td><td>Typed per field from the registry</td><td>At output, per context</td><td>Code uniqueness at the unique index; gallery IDs verified as attachments</td></tr>
+    <tr><td>Categories</td><td>rj_manage_categories</td><td>Yes</td><td>Same</td><td>Same</td><td>Cycle guard in model, UI and sweep; derived keys write-blocked</td></tr>
+    <tr><td>Reels</td><td>rj_manage_reels</td><td>Yes</td><td>Source URL host allow-listed per provider type</td><td>Embed URLs escaped as URLs</td><td>Video MIME verified by file content, not extension</td></tr>
+    <tr><td>Leads</td><td>Public create; rj_read_leads / rj_manage_leads</td><td>Yes + origin</td><td>Phone normalised, message plain-text</td><td>Escaped at output and at export</td><td>Honeypot, dwell time, rate limit, dedupe, formula guard</td></tr>
+    <tr><td>Customers</td><td>Own record; rj_read_customers</td><td>Yes</td><td>Email and phone validated</td><td>Profile fields escaped</td><td>Row-level ownership checks; enumeration blocked; app passwords off</td></tr>
+    <tr><td>Auth</td><td>—</td><td>State + PKCE</td><td>Return URL validated same-host</td><td>—</td><td>Subject-ID matching before email; confirmed linking; generic login errors; lockout after 5 failures</td></tr>
+    <tr><td>Notifications</td><td>manage_options</td><td>Yes</td><td>Payload schema-validated</td><td>Email bodies escaped</td><td>Signed unsubscribe links; credentials from constants; never logged</td></tr>
+    <tr><td>WhatsApp</td><td>rj_manage_settings</td><td>Yes</td><td>Numbers validated; template tokens allow-listed</td><td>Tokens escaped for URL context</td><td>Length cap; no app-scheme links</td></tr>
+    <tr><td>Media</td><td>upload_files + module cap</td><td>Yes</td><td>Declared type verified against file content, both allow-listed</td><td>Alt and captions escaped</td><td>Vector images disabled; filenames sanitised; execution prevented in the upload folder</td></tr>
+    <tr><td>Import / Export</td><td>rj_import_data / rj_export_data</td><td>Yes</td><td>Same validators as the UI</td><td>—</td><td>Formula guard on every cell; explicit column selection; sensitive fields unselectable</td></tr>
+    <tr><td>Settings</td><td>rj_manage_settings; manage_options for sensitive groups</td><td>Yes</td><td>Schema per group, then read-back comparison</td><td>Masked on render</td><td>Secrets from constants; redacted in logs and exports</td></tr>
+    <tr><td>REST</td><td>Per route, explicit</td><td>Header or nonce</td><td>Declared args</td><td>Schema-shaped responses</td><td>Rate limited; 404 for not-visible so existence is not disclosed</td></tr>
+    <tr><td>Visual editing</td><td>Matching module cap</td><td>Yes</td><td>Same REST path</td><td>Same</td><td>Bundle loads for capable users only; anonymous visitors download none of it</td></tr>
+  </tbody>
+</table>
+<h4>Gate 1 has two branches</h4>
+<p>The capability column above is the <strong>authenticated-write</strong> branch. Public endpoints have no logged-in user and therefore no capability to check; granting a capability to guests, or inventing a "public capability", is forbidden. Their gate is instead an <strong>endpoint-declared authorization and anti-abuse policy</strong>, declared once in <code>Rest\Permissions</code> and reused by the REST controller and every other entry point — never re-implemented per form.</p>
+<table>
+  <thead><tr><th style="width:22%">Public endpoint</th><th style="width:20%">Intent</th><th>Declared policy</th></tr></thead>
+  <tbody>
+    <tr><td><code>POST rj/v1/leads</code></td><td>Nonce + origin check</td><td>Honeypot · minimum dwell time · 5 per 10 min and 20 per day per IP hash · 3 per hour per phone · 30-minute duplicate suppression on phone + object · replay protection · field sanitisation · escaped at output and at export · every attempt logged · 429 with a retry hint. <strong>These are the gate, not features of the Leads service.</strong></td></tr>
+    <tr><td><code>POST rj/v1/notifications/subscribe</code></td><td>Nonce + origin check</td><td>Honeypot · minimum dwell time · 5 per hour per IP hash · per-address rate limit · duplicate suppression on address + event group · <strong>non-enumerating response — identical whether or not the address is already subscribed</strong> · signed confirmation link, so a subscription cannot be created for an address the requester does not control · logged. <strong>Previously undeclared; it does not inherit the leads policy by proximity.</strong></td></tr>
+    <tr><td>Chatbot lead handoff</td><td>Nonce + origin check</td><td><strong>Identical to <code>POST leads</code> — the same declared policy object, not a second authorization path.</strong> A handoff writes an ordinary lead with a chatbot source value and passes every control above.</td></tr>
+  </tbody>
+</table>
+<p>A public endpoint that declares no policy <strong>fails review</strong>. Adding a public write means adding a row to this table first.</p>
+
+<h4>Global</h4>
+<ul>
+  <li>Prepared statements everywhere; dynamic sort and limit values checked against an allow-list before use.</li>
+  <li>No dynamic evaluation, no shell execution, no variable include paths — enforced by a static-analysis rule in the build check.</li>
+  <li>Direct file access blocked at the top of every file; a stub index in every directory.</li>
+  <li>Error display forced off in production; a generic message to the client, detail to the log.</li>
+  <li>Security headers set on responses the plugin controls.</li>
+</ul>
+
+<h2 style="break-before:page">22 · Performance Checklist</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<table>
+  <thead><tr><th style="width:24%">Rule</th><th style="width:20%">Implemented in</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Versioned cache keys</td><td>Support\Cache</td><td>A group version bump invalidates a whole set in one write. No flush, ever.</td></tr>
+    <tr><td>Transient fallback</td><td>Support\Cache</td><td>Identical interface where no persistent cache exists. Degrades to slower, never wrong.</td></tr>
+    <tr><td>Menu tree cache</td><td>Services\MenuTree</td><td>Whole payload under one key, rebuilt hourly and on any term write. Under 50 ms at 1,000 terms.</td></tr>
+    <tr><td>Path and depth cache</td><td>Domain\Category</td><td>Rewritten inside the reparent transaction; nightly rebuild; live fallback if stale.</td></tr>
+    <tr><td>Deep count cache</td><td>Cron\TermCounts</td><td>Hourly, changed branches only. Nothing counts live.</td></tr>
+    <tr><td>Product index</td><td>Services\ProductIndex</td><td>Code, name and weight lookups leave post meta entirely.</td></tr>
+    <tr><td>Query discipline</td><td>Frontend\Query</td><td>Found-rows skipped where no count shows; only needed caches primed; IDs then hydrate; no unbounded result set anywhere; filtering by taxonomy, never meta.</td></tr>
+    <tr><td>Deferred writes</td><td>Cron + shutdown</td><td>View counts accumulate in cache and flush periodically. Enquiry counts denormalised on schedule.</td></tr>
+    <tr><td>Conditional assets</td><td>Support\Assets</td><td>Registered globally, enqueued only where a component renders.</td></tr>
+    <tr><td>Asset budget</td><td>Build check</td><td>Under 20 KB JavaScript and 45 KB CSS gzipped on the front end. The build fails above it.</td></tr>
+    <tr><td>Image sizes</td><td>Services\Media\Sizes</td><td>Five, never six. Each extra multiplies storage on every upload.</td></tr>
+    <tr><td>Video loading</td><td>Services\Media</td><td>No preload; poster always present; third-party players behind a facade that loads on interaction.</td></tr>
+    <tr><td>Lazy loading</td><td>Services\Media\Loading</td><td>Below-fold lazy, hero eager and prioritised, dimensions always declared.</td></tr>
+    <tr><td>Autoload discipline</td><td>Data\Options</td><td>Four small groups autoload; five do not.</td></tr>
+    <tr><td>Shared-host limits</td><td>Everywhere</td><td>Hard batch caps, no outbound request on any front-end request, no command-line requirement, memory-safe streaming for import and export.</td></tr>
+    <tr><td>Cron resilience</td><td>Cron\*</td><td>Every job idempotent, batched, resumable, manually runnable. Overdue jobs reported by Health.</td></tr>
+    <tr><td>CLI parity</td><td>rameshwari-tools</td><td>Every command has an admin-screen equivalent in core, so a host without a command line loses convenience, never capability.</td></tr>
+  </tbody>
+</table>
+
+<h2>23 · Testing Structure</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<table>
+  <thead><tr><th style="width:24%">Suite</th><th style="width:20%">Location</th><th>Covers</th></tr></thead>
+  <tbody>
+    <tr><td>Unit</td><td>tests/unit</td><td>Validators, sanitisers, phone normaliser, token resolver, differ, formula guard, transliteration, path-cache computation.</td></tr>
+    <tr><td>Integration</td><td>tests/integration</td><td>Repositories against a real database: save, read, filter, reorder, reparent, merge.</td></tr>
+    <tr><td>REST</td><td>tests/rest</td><td>Every route: arguments, schema, status codes, pagination, caching headers.</td></tr>
+    <tr><td>Security</td><td>tests/security</td><td>Injection attempts, unescaped output, upload bypasses, formula injection, open redirect, enumeration.</td></tr>
+    <tr><td>Permission</td><td>tests/security</td><td>Every route and screen attempted as each of the five actor types. The matrix is exhaustive, not sampled.</td></tr>
+    <tr><td>Migration</td><td>tests/migration</td><td>Fresh install, upgrade from each prior version, idempotency, failure rollback, four-byte Unicode preservation.</td></tr>
+    <tr><td>Import / export</td><td>tests/integration</td><td>Dry run accuracy, batch commit, rollback fidelity, conflict flagging, resume after timeout, round-trip encoding.</td></tr>
+    <tr><td>Theme independence</td><td>tests/regression</td><td>Stock theme, only core active: counts, rendering, editing, REST.</td></tr>
+    <tr><td>Elementor independence</td><td>tests/regression</td><td>Elementor deactivated: no fatal, catalogue intact.</td></tr>
+    <tr><td>Feature-off</td><td>tests/regression</td><td>Google login off, accounts off, notifications off, visual editing off — each independently.</td></tr>
+    <tr><td>Data integrity</td><td>tests/regression</td><td>Circular category, duplicate code, category reorder, visibility default, orphan sweep.</td></tr>
+    <tr><td>Media</td><td>tests/regression</td><td>Missing thumbnail, missing asset, reel without poster, unsupported format server.</td></tr>
+    <tr><td>Performance</td><td>tests/performance</td><td>Menu at 1,000 terms, product list at 20,000, query counts per page, asset budget.</td></tr>
+    <tr><td>Mobile</td><td>Manual, scripted</td><td>Real devices: iOS Safari, Android Chrome. Tap targets, drawer, reels, filters, forms.</td></tr>
+  </tbody>
+</table>
+<p><strong>Every historical failure has a named regression test</strong>, listed in §24. A fix without a test is not a fix — it is the same bug waiting for a different release.</p>
+
+<h2 style="break-before:page">24 · Critical Regression Tests</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<table>
+  <thead><tr><th style="width:5%">#</th><th style="width:26%">Test</th><th style="width:16%">Suite</th><th>Assertion</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Settings save reflects immediately</td><td>Integration</td><td>Every group: write, read back, compare. The rendered front end shows the new value on the next request. A mismatch fails the test.</td></tr>
+    <tr><td>2</td><td>No dependency on a browser-hosted login</td><td>Regression</td><td>All auth flows pass headless with no third-party cookie and no session storage.</td></tr>
+    <tr><td>3</td><td>No 404 for generated assets</td><td>Regression</td><td>Every enqueued handle resolves to a file that exists, in every enqueue context.</td></tr>
+    <tr><td>4</td><td>Reel plays without a thumbnail</td><td>Regression</td><td>A reel with no poster renders a generated frame and plays in grid and viewer.</td></tr>
+    <tr><td>5</td><td>Category visibility defaults correctly</td><td>Integration</td><td>Terms created via UI, REST, import and direct insert are all visible unless explicitly hidden.</td></tr>
+    <tr><td>6</td><td>Reorder does not hide categories</td><td>Integration</td><td>Before and after a full-branch reorder, the visible term count and the menu payload term count are identical.</td></tr>
+    <tr><td>7</td><td>Reparent rejects a cycle</td><td>Integration</td><td>Self-parent, descendant-parent and a deep chain are all rejected at model, UI and sweep.</td></tr>
+    <tr><td>8</td><td>Product code stays unique</td><td>Integration</td><td>Duplicate via UI, REST and import all rejected with 409 and the conflicting record named.</td></tr>
+    <tr><td>9</td><td>Google login disabled breaks nothing</td><td>Regression</td><td>Credentials removed: no button renders, email login works, no error surfaces, no console error.</td></tr>
+    <tr><td>10</td><td>Elementor <strong>Free-only</strong>, and disabled, both break nothing</td><td>Regression</td><td><strong>Run in two configurations: Elementor Free with Pro absent, and Elementor deactivated entirely.</strong> Both must pass for products, categories, resolver archives, hero, reels, collections, showrooms, testimonials, WhatsApp enquiry, wishlist, customer account, notification signup, and the chatbot when enabled. No core workflow may fail merely because Pro is absent. Deactivated: no fatal; products, categories, reels, collections, showrooms all render with images, names, specification and a working WhatsApp button.</td></tr>
+    <tr><td>11</td><td>Theme change preserves data</td><td>Regression</td><td>Switch to a stock theme: all counts identical, 20 sampled products render fully, no term becomes hidden, no sitemap URL 404s.</td></tr>
+    <tr><td>12</td><td>Host migration preserves data</td><td>Migration</td><td>Export, import to a clean installation: counts match, Devanagari intact, media resolves, WhatsApp links work, a test lead captures.</td></tr>
+    <tr><td>13</td><td>Missing provider fails gracefully</td><td>Regression</td><td>Unreachable push service, unreachable embed provider, unreachable mail server: each degrades with a logged warning and no visitor-facing error.</td></tr>
+    <tr><td>14</td><td>Failed notification does not block publishing</td><td>Integration</td><td>Driver throws: the product still publishes, the queue row marks failed, the retry schedule is set.</td></tr>
+    <tr><td>15</td><td>Failed lead write still opens WhatsApp</td><td>Integration</td><td>Lead insert throws: the endpoint still returns a valid WhatsApp URL and the client still redirects.</td></tr>
+    <tr><td><strong>16</strong></td><td>Hero media resolves <span style="font-size:10px;color:#2f6b3a">ADDED</span></td><td>Regression</td><td><strong>Setup:</strong> three <code>rj_page_section</code> records with <code>_rj_section_key</code> = <code>hero</code> — one active and dated open, one scheduled future, one expired. <strong>Action:</strong> render the homepage at desktop and mobile widths. <strong>Assert:</strong> the eligible campaign's <code>_rj_image_desktop</code> and <code>_rj_image_mobile</code> both resolve to a real attachment URL returning 200; desktop shows all eligible campaigns in <code>_rj_order</code>; mobile shows only the lowest-order eligible one. <strong>Fails if:</strong> any hero image 404s, resolves to an empty <code>src</code>, or falls back to a placeholder. <strong>Verified by:</strong> asserting each resolved URL's response status, not merely that the attachment ID is non-zero.</td></tr>
+    <tr><td><strong>17</strong></td><td>Category images resolve <span style="font-size:10px;color:#2f6b3a">ADDED</span></td><td>Regression</td><td><strong>Setup:</strong> the full 306-term tree loaded; <code>_rj_image_id</code> set on a sample spanning all five roots and depths 1–5, and deliberately absent on others. <strong>Action:</strong> render the mega menu and each sampled category archive. <strong>Assert:</strong> every set <code>_rj_image_id</code> resolves to a 200 at the <code>card</code> size; every absent one renders the designed empty mark and <strong>no <code>&lt;img&gt;</code> with an empty or broken <code>src</code> is emitted</strong>. <strong>Fails if:</strong> a set image 404s, or an absent image produces a broken element rather than the mark. <strong>Verified by:</strong> response status per URL plus a DOM assertion that no image element has an empty <code>src</code>.</td></tr>
+    <tr><td><strong>18</strong></td><td>Customer data survives theme switch <span style="font-size:10px;color:#2f6b3a">ADDED</span></td><td>Regression</td><td><strong>Setup:</strong> three customers with wishlist rows, recent-view rows, <code>_rj_notify_prefs</code>, <code>_rj_consent</code> and login-log entries; counts recorded. <strong>Action:</strong> switch to a stock theme, then switch back. <strong>Assert:</strong> <code>rj_wishlist</code>, <code>rj_recent_views</code> and <code>rj_login_log</code> row counts are identical; every preference, consent record and linked login method is byte-identical; each customer can still sign in and see their wishlist. <strong>Fails if:</strong> any row count changes or any preference is reset to default. <strong>Verified by:</strong> row-count and field-level comparison before and after, plus one real sign-in. Distinct from test 11, which covers catalogue data and does not name customer tables.</td></tr>
+    <tr><td><strong>19</strong></td><td>Unicode / Hindi content intact <span style="font-size:10px;color:#2f6b3a">ADDED</span></td><td>Regression</td><td><strong>Setup:</strong> a fixture exercising every Devanagari-bearing column — category <code>_rj_name_hi</code>, product <code>_rj_name_hi</code>, hero <code>_rj_title_hi</code>, lead <code>message</code>, WhatsApp template bodies, <code>_rj_name_alt</code> aliases — including conjuncts and combining marks (<code>क्ष</code>, <code>श्री</code>, <code>ज्ञ</code>) and the spelling pair <code>हथफूल</code> / <code>हथफुल</code>. <strong>Action:</strong> write, read, render, search, export to CSV, re-import. <strong>Assert:</strong> every value is byte-identical at every step; the two spellings remain distinct; search matches each; no double-escaping appears in rendered output. <strong>Fails if:</strong> any value changes by one byte, or the pair collapses. <strong>Verified by:</strong> byte comparison, not visual inspection. <strong>Runs independently</strong> of test 12, so a collation fault is caught without a host move.</td></tr>
+    <tr><td><strong>20</strong></td><td>CSV export guards formula injection <span style="font-size:10px;color:#2f6b3a">ADDED</span></td><td>Regression</td><td><strong>Setup:</strong> a lead whose <code>name</code>, <code>message</code> and <code>phone</code> each begin with a formula character — <code>=</code>, <code>+</code>, <code>-</code>, <code>@</code>, tab and carriage return — plus a product with the same in <code>_rj_name_en</code> and a Devanagari value prefixed with <code>=</code>. <strong>Action:</strong> export leads, customers and products. <strong>Assert:</strong> every affected cell is prefixed so a spreadsheet treats it as text; the byte-order marker is present; the Devanagari value is still readable after guarding; no password hash or session token appears in any column. <strong>Fails if:</strong> one cell opens as a formula, or guarding corrupts the Devanagari. <strong>Verified by:</strong> parsing the emitted bytes for the guard prefix on every matching cell, across all three exporters.</td></tr>
+  </tbody>
+</table>
+<p><strong>All twenty run in GitHub's hosted pipeline on every commit</strong> and are re-run manually in staging before every release. Tests 11, 12 and 18 are additionally run before and after every real theme change and every real host move. <strong>This registry is the sole source for the Stage 21 launch gate "20/20 regression tests green"</strong> — the numbering is 1–20 with no gaps and no duplicates.</p>
+
+<h2 style="break-before:page">25 · File-to-Feature Matrix</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<table>
+  <thead><tr><th style="width:11%">Feature</th><th style="width:17%">Plugin</th><th style="width:11%">Theme</th><th style="width:11%">Database</th><th style="width:11%">REST</th><th style="width:11%">Elementor</th><th style="width:11%">Admin</th><th>Security · Tests</th></tr></thead>
+  <tbody>
+    <tr><td>Products</td><td>Data\PostTypes, Domain\Product\*, Services\ProductIndex, Frontend\Renderer</td><td>single-product override (optional)</td><td>posts, postmeta, rj_product_index</td><td>products, by-code</td><td>Grid, Slider, 7 tags</td><td>List, edit, 4 meta boxes</td><td>Caps + nonce + registry sanitisers · 8, 11</td></tr>
+    <tr><td>Categories</td><td>Data\Taxonomies, Domain\Category\*, Services\MenuTree</td><td>taxonomy-category override</td><td>terms, termmeta</td><td>tree, children, reorder, visibility</td><td>Grid, Slider, Mega Menu, tags</td><td>Tree manager</td><td>Cycle guards, derived keys locked · 5, 6, 7</td></tr>
+    <tr><td>Reels</td><td>Domain\Reel\*, Services\Media\PosterExtractor</td><td>single-reel override</td><td>posts, postmeta</td><td>reels</td><td>Grid, Slider</td><td>List, edit, source box</td><td>Host allow-list, MIME check · 4</td></tr>
+    <tr><td>Collections</td><td>Domain\Collection\*</td><td>collection override</td><td>posts, postmeta, terms</td><td>collections</td><td>Grid</td><td>List, edit</td><td>Standard · integration</td></tr>
+    <tr><td>Showrooms</td><td>Domain\Showroom\*</td><td>showroom override</td><td>posts, postmeta</td><td>showrooms</td><td>Grid + preset</td><td>List, edit</td><td>Map host allow-list · integration</td></tr>
+    <tr><td>Customers</td><td>Domain\Customer\*, Services\Auth\*, Frontend\Account</td><td>Account link in chrome</td><td>users, usermeta, wishlist, recent_views, login_log</td><td>me/*, customers</td><td>Account, Wishlist widgets</td><td>List, detail, insights</td><td>Row ownership, enumeration block · 2, 9</td></tr>
+    <tr><td>Wishlist</td><td>Domain\Customer\Wishlist</td><td>Header icon</td><td>rj_wishlist</td><td>me/wishlist</td><td>Wishlist Button</td><td>Read in customer detail</td><td>Ownership · integration</td></tr>
+    <tr><td>Notifications</td><td>Services\Notifier\*, Drivers\*, Cron\NotificationWorker</td><td>None</td><td>rj_notification_queue, usermeta</td><td>subscribe</td><td>Signup widget</td><td>Settings, dead letters</td><td>Signed unsubscribe, masked creds · 13, 14</td></tr>
+    <tr><td>WhatsApp</td><td>Services\WhatsApp\*</td><td>rj_whatsapp_url() helper</td><td>rj_whatsapp option</td><td>Inside leads response</td><td>Button widget, URL tag</td><td>Contact &amp; WhatsApp screen</td><td>Token escaping, length cap · 15</td></tr>
+    <tr><td>Leads</td><td>Domain\Lead\*, Services\Leads</td><td>None</td><td>rj_leads</td><td>leads ×3</td><td>None</td><td>List, detail, export</td><td>Rate limit, honeypot, formula guard · 15</td></tr>
+    <tr><td>Media</td><td>Services\Media\*, Cron\MediaAudit</td><td>Logo and chrome art only</td><td>posts (attachments), postmeta</td><td>Core media routes</td><td>Via gallery tag</td><td>Bulk upload, replace, audit</td><td>Content-based MIME, no vectors · 3, 4</td></tr>
+    <tr><td>Import / Export</td><td>Services\Importer\*, Exporter\*</td><td>None</td><td>rj_import_ledger + all</td><td>import, rollback, export</td><td>None</td><td>Import/Export screen</td><td>Caps, lock, formula guard · integration</td></tr>
+    <tr><td>Activity log</td><td>Services\Activity\*</td><td>None</td><td>rj_activity_log</td><td>activity (read only)</td><td>None</td><td>Viewer + history panels</td><td>Append-only, secrets masked · integration</td></tr>
+    <tr><td>Search</td><td>Services\Search</td><td>search.php, searchform.php</td><td>rj_product_index, terms</td><td>search</td><td>Search widget</td><td>None</td><td>Rate limit, escaped echo · rest</td></tr>
+    <tr><td>Mega menu</td><td>Services\MenuTree, parts/mega-menu</td><td>Placement + skin, nav-walker</td><td>terms, termmeta</td><td>categories/tree</td><td>Mega Menu widget</td><td>Via tree manager</td><td>Visibility applied at repository · 6, performance</td></tr>
+    <tr><td>Visual editing</td><td>Frontend\VisualEdit</td><td>None</td><td>Via existing tables</td><td>Existing write routes</td><td>None</td><td>Feature flag</td><td>Capability-gated bundle · permission</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">26 · Dependency Graph</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<pre><code>                        ┌─────────────┐
+                        │   Support   │  permanent, depends on nothing
+                        └──────┬──────┘
+                               │
+                        ┌──────▼──────┐
+                        │    Data     │  permanent — CPTs, taxonomies,
+                        └──────┬──────┘  meta, options, schema, caps
+                               │
+                        ┌──────▼──────┐
+                        │   Domain    │  permanent — models, repositories,
+                        └──────┬──────┘  validators. Pure PHP, no output
+                               │
+                        ┌──────▼──────┐
+                        │  Services   │  permanent — WhatsApp, Leads,
+                        └──┬───┬───┬──┘  MenuTree, Media, Activity, Notifier
+                           │   │   │
+            ┌──────────────┘   │   └──────────────┐
+            │                  │                  │
+      ┌─────▼─────┐      ┌─────▼─────┐      ┌─────▼─────┐
+      │   Admin   │      │   REST    │      │ Frontend  │  required
+      └───────────┘      └─────┬─────┘      └─────┬─────┘
+                               │                  │
+                   ┌───────────┼──────────┬───────┴────────┐
+                   │           │          │                │
+             ┌─────▼────┐ ┌────▼─────┐ ┌──▼──────┐  ┌──────▼─────┐
+             │  Blocks  │ │Elementor │ │  Theme  │  │   Tools    │
+             └──────────┘ └──────────┘ └─────────┘  └────────────┘
+               optional     optional   replaceable     optional</code></pre>
+<table>
+  <thead><tr><th style="width:18%">Classification</th><th style="width:28%">Layers</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>Permanent</td><td>Support, Data, Domain, Services</td><td>Cannot be removed. Holds all business data and all business rules. Depends on nothing above it.</td></tr>
+    <tr><td>Required</td><td>Admin, REST, Frontend</td><td>Ships with core. Depends downward only. Contains no data.</td></tr>
+    <tr><td>Replaceable</td><td>Theme</td><td>Swap at any time. Holds presentation only, and the switch-safety checklist proves it.</td></tr>
+    <tr><td>Optional</td><td>Blocks, Elementor, Tools</td><td>Install and remove freely. Consumers of Services, never producers. None may register a post type, taxonomy, meta key, table, capability or setting.</td></tr>
+  </tbody>
+</table>
+<p><strong>The invariant:</strong> arrows point down only. No permanent layer knows the theme exists; none knows Elementor exists. Every property this platform claims about surviving theme changes, builder removal and host migration is a consequence of that single rule.</p>
+
+<h2 style="break-before:page">27 · Coding Order</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<p style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:11px 13px;font-size:13.5px"><strong>Superseded — the Implementation Master Plan's Stages 0–21 are authoritative.</strong> Retained as the record of the original order. Stage numbers elsewhere in this document (for example in §0) use this older numbering.</p>
+<table>
+  <thead><tr><th style="width:5%">#</th><th style="width:20%">Stage</th><th style="width:10%">Needs</th><th>Why here, and what it unblocks</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Plugin bootstrap</td><td>—</td><td>Container, module registry, autoloader, constants, guards. Everything mounts on it.</td></tr>
+    <tr><td>2</td><td>Database and migrations</td><td>1</td><td>Eight tables, the version router. Nothing may write before the schema exists.</td></tr>
+    <tr><td>3</td><td>CPT registration</td><td>2</td><td><strong>Six</strong> post types: the five approved plus <code>rj_page_section</code>. Names become permanent here. Unblocked.</td></tr>
+    <tr><td>4</td><td>Taxonomies</td><td>3</td><td><strong>Seven</strong>, exactly as §7.1. No additions. Unblocked.</td></tr>
+    <tr><td>5</td><td>Meta registry</td><td>3, 4</td><td>All keys with schema, sanitiser and authorisation. Every later stage reads through it.</td></tr>
+    <tr><td>6</td><td>Settings</td><td>2</td><td>Nine groups with schemas and read-back verification. WhatsApp and contact depend on it.</td></tr>
+    <tr><td>7</td><td>Repositories and models</td><td>5, 6</td><td>The domain layer. Everything above calls it; nothing bypasses it.</td></tr>
+    <tr><td>8</td><td>Validation</td><td>7</td><td>One rule, one place, used by UI, REST, importer and CLI alike.</td></tr>
+    <tr><td>9</td><td>WhatsApp</td><td>6, 8</td><td>Before leads, because a lead records a WhatsApp click.</td></tr>
+    <tr><td>10</td><td>Leads</td><td>9</td><td>The revenue path. Early on purpose.</td></tr>
+    <tr><td>11</td><td>Search</td><td>7</td><td>Needs the product index; used by admin pickers before the public site exists.</td></tr>
+    <tr><td>12</td><td>Category tree</td><td>7, 11</td><td>Path caches, cycle guards, menu service. Uses search for the picker.</td></tr>
+    <tr><td>13</td><td>REST API</td><td>7–12</td><td>Controllers are thin; they need the domain complete.</td></tr>
+    <tr><td>14</td><td>Admin UI</td><td>13</td><td>Screens consume the same routes. Building them first would mean writing the logic twice.</td></tr>
+    <tr><td>15</td><td>Customer system</td><td>13</td><td>Independent of theme and Elementor. Can run parallel to 20–22.</td></tr>
+    <tr><td>16</td><td>Notification queue</td><td>15</td><td>Needs an audience.</td></tr>
+    <tr><td>17</td><td>Media</td><td>7</td><td>Could start earlier; placed here because real photography arrives around now.</td></tr>
+    <tr><td>18</td><td>Import / export</td><td>8, 17</td><td>Needs validators and media handling. This is what loads the real taxonomy and the first 200 products.</td></tr>
+    <tr><td>19</td><td>Activity log</td><td>7</td><td>Written throughout from stage 7; the viewer and retention are completed here.</td></tr>
+    <tr><td>20</td><td>Gutenberg blocks</td><td>13</td><td>Blocks before widgets — the shortcode and block layers are the fallback Elementor rests on.</td></tr>
+    <tr><td>21</td><td>Elementor adapter</td><td>20</td><td>Fifteen Elementor-Free widgets. Zero required dynamic tags — the eleven are optional Pro enhancement. Authoritative set: Free-First Audit §2.</td></tr>
+    <tr><td>22</td><td>Theme</td><td>13, 20</td><td>Built against real content. A theme built on fake data hides every real edge case.</td></tr>
+    <tr><td>23</td><td>Visual editing</td><td>13, 22</td><td>Reuses existing write routes; adds no second write path.</td></tr>
+    <tr><td>24</td><td>Performance optimisation</td><td>22</td><td>After the surfaces exist. Optimising earlier is guesswork.</td></tr>
+    <tr><td>25</td><td>Security hardening</td><td>All</td><td>Controls are built in from stage 1; this is the audit pass against §21.</td></tr>
+    <tr><td>26</td><td>Regression testing</td><td>25</td><td>All fifteen tests in §24, plus the full suites.</td></tr>
+    <tr><td>27</td><td>Deployment</td><td>26</td><td>Content load, redirects, backup verification, rollback plan.</td></tr>
+  </tbody>
+</table>
+<p>Stages 15 and 16 are the only ones that may run in parallel with 20–22, because customers and notifications touch no presentation code. Everything else is strictly sequential.</p>
+
+<h2 style="break-before:page">28 · Development Rules</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<table>
+  <thead><tr><th style="width:26%">Rule</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>One module at a time</td><td>Complete it, validate it, test it, review its dependencies, then move on. Never two unrelated systems in flight.</td></tr>
+    <tr><td>A module is done when</td><td>It has a single responsibility, full validation, error handling, activity logging where it writes, and test coverage. Not before.</td></tr>
+    <tr><td>Single source per concern</td><td>One WhatsApp engine. One contact record. One category ordering implementation. One renderer per component. One validator per field.</td></tr>
+    <tr><td>No duplicate business logic</td><td>If a rule exists in two places it will differ within a month. Shortcodes, blocks, widgets, REST, admin and CLI all call the same domain method.</td></tr>
+    <tr><td>Dependencies point down</td><td>Enforced by the graph in §26 and checked in review. An upward reference is a review rejection, not a discussion.</td></tr>
+    <tr><td>No unregistered meta</td><td>Adding a field means adding a row to §9 first.</td></tr>
+    <tr><td>No hardcoded anything</td><td>No URLs, no paths, no phone numbers, no table names, no domain names.</td></tr>
+    <tr><td>Standards enforced by machine</td><td>Coding standards and static analysis run in the build check. The dangerous-function ban is a rule, not a convention.</td></tr>
+    <tr><td>Every commit</td><td>References a stage from the Implementation Master Plan (Stages 0–21), passes the full suite, and leaves the plugin activatable.</td></tr>
+    <tr><td>Every stage ends</td><td>With the theme-independence test and the Elementor-independence test, both green.</td></tr>
+    <tr><td>Never seed fake data</td><td>No demo products, no placeholder images, no sample videos, no stock photography. At any point, for any reason.</td></tr>
+    <tr><td>Decisions are written down</td><td>Any deviation becomes a dated file in <code>documentation/decisions/</code> before the code is written.</td></tr>
+  </tbody>
+</table>
+
+<h2>29 · Final Build Checklist</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<table>
+  <thead><tr><th style="width:22%">Gate</th><th style="width:10%">Stage</th><th>Ready when</th></tr></thead>
+  <tbody>
+    <tr><td>DATABASE READY</td><td>2</td><td>Eight tables created by migration on a clean install; version recorded; upgrade path tested from every prior version; four-byte Unicode verified.</td></tr>
+    <tr><td>PLUGIN READY</td><td>14</td><td>All post types, taxonomies, meta, settings, repositories, validators, REST and admin screens complete. Site fully operable on a stock theme with only core active.</td></tr>
+    <tr><td>THEME READY</td><td>22</td><td>All templates and chrome; tokens mirrored into every builder's settings; performance budgets met on a real phone; deleting <code>functions.php</code> loses no data.</td></tr>
+    <tr><td>ELEMENTOR READY</td><td>21</td><td>Fifteen Elementor-Free widgets, zero required dynamic tags; every widget has a block and shortcode equivalent; the removal test passes line by line.</td></tr>
+    <tr><td>CUSTOMERS READY</td><td>15</td><td>Signup, login, wishlist, views, guest merge, account area, admin panel, privacy tooling. Full browsing works with accounts off.</td></tr>
+    <tr><td>NOTIFICATIONS READY</td><td>16</td><td>Event bus, queue, worker, email and admin-notice drivers, digests, preference centre. Works with no paid service and no API key.</td></tr>
+    <tr><td>WHATSAPP READY</td><td>9</td><td>Five templates validated; numbers normalised; fallback and call-us degradation tested; changing the number in settings changes every link on the site.</td></tr>
+    <tr><td>LEADS READY</td><td>10</td><td>Capture from every surface; anti-spam and rate limiting; admin workflow; escaped export; a failed write still opens WhatsApp.</td></tr>
+    <tr><td>MEDIA READY</td><td>17</td><td>Five sizes; modern formats with fallback; bulk upload; replace; reorder; reference guard; daily audit clean.</td></tr>
+    <tr><td>IMPORT/EXPORT READY</td><td>18</td><td>Dry run accurate; commit batched and resumable; rollback verified within 30 days; exports streamed, escaped and Devanagari-safe.</td></tr>
+    <tr><td>SECURITY READY</td><td>25</td><td>Every row of §21 verified; permission matrix exhaustive and green; static analysis clean; no secret reachable over REST, in a log, or in an export.</td></tr>
+    <tr><td>PERFORMANCE READY</td><td>24</td><td>Every budget in the Technical Blueprint met and recorded; menu under 50 ms at 1,000 terms; admin list under 800 ms at 20,000 products.</td></tr>
+    <tr><td>MIGRATION READY</td><td>27</td><td>A full host move rehearsed in staging end to end; restore from backup verified; runbooks written.</td></tr>
+    <tr><td>TESTING READY</td><td>26</td><td>All fifteen regression tests green; every suite passing; mobile tested on real devices.</td></tr>
+    <tr><td>LAUNCH READY</td><td>27</td><td>Content loaded; redirects in place; sitemap submitted; backup verified; rollback plan written; Health clean; owner trained and publishing unaided.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">Index of Final Registries</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 18px"></div>
+<p>Each requested registry is held in one place. Nothing is duplicated — a registry repeated in two sections is a registry that will disagree with itself.</p>
+<table>
+  <thead><tr><th style="width:8%">#</th><th style="width:34%">Registry</th><th style="width:14%">Section</th><th>Contains</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Folder tree</td><td>§1, §2.1, §4.1</td><td>Project root, core plugin, theme</td></tr>
+    <tr><td>2</td><td>File registry</td><td>§2.2–2.7, §3, §4</td><td>Every file with purpose, responsibility, dependencies, and its data, theme and Elementor answers</td></tr>
+    <tr><td>3</td><td>Database tables</td><td>§5</td><td>Eight tables, every column, type, key, index, retention and access rule</td></tr>
+    <tr><td>4</td><td>Meta registry</td><td>§9</td><td>Every key with type, validation, default, visibility and index requirement</td></tr>
+    <tr><td>5</td><td>Taxonomy registry</td><td>§7, §8</td><td>Seven registered, three rejected; the real category data model</td></tr>
+    <tr><td>6</td><td>CPT registry</td><td>§6</td><td>Six post types, every registration argument</td></tr>
+    <tr><td>7</td><td>REST registry</td><td>§11</td><td>Twenty-eight routes with arguments, permission, nonce, rate limit, cache, audit and error shape</td></tr>
+    <tr><td>8</td><td>Elementor widgets</td><td>§12, §13</td><td>Fifteen Free widgets (Free-First Audit §2); zero required dynamic tags, eleven optional Pro</td></tr>
+    <tr><td>9</td><td>Admin screens</td><td>§17</td><td>Every screen with capability, source, actions, endpoint and audit</td></tr>
+    <tr><td>10</td><td>Implementation order</td><td>Implementation Master Plan</td><td><strong>Superseded here.</strong> §27's twenty-seven stages are retained as the original record; the Master Plan's Stages 0–21 are authoritative</td></tr>
+    <tr><td>11</td><td>Dependency graph</td><td>§26</td><td>Layers classified permanent, required, replaceable, optional</td></tr>
+    <tr><td>12</td><td>Testing matrix</td><td>§23, §24, §25</td><td>Fourteen suites, fifteen named regression tests, and the per-feature test column</td></tr>
+    <tr><td>13</td><td>Unresolved conflicts</td><td>§0</td><td>Three, all awaiting decision</td></tr>
+  </tbody>
+</table>
+
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:16px 18px;margin-top:24px;break-inside:avoid">
+  <h5 style="margin:0 0 6px;color:#8a6410">Before coding begins</h5>
+  <p style="margin:0 0 8px;font-size:15px">Two decisions remain. Neither blocks the schema.</p>
+  <table style="margin:0 0 8px">
+    <thead><tr><th style="width:10%">#</th><th style="width:34%">Decision</th><th style="width:18%">Blocks</th><th>Recommendation</th></tr></thead>
+    <tbody>
+      <tr><td>3</td><td><strong>Resolved.</strong> <code>rj_page_section</code> created with scheduled hero campaigns; five identifiers rejected</td><td>Nothing</td><td>—</td></tr>
+      <tr><td>1</td><td>Combined category terms — five entries or ten</td><td>Stage 2 <strong>import file only</strong> — not the schema, not taxonomy registration</td><td>Keep ten separate terms; use <code>_rj_name_alt</code> so both words are findable.</td></tr>
+      <tr><td>2</td><td>Elementor — <strong>RESOLVED.</strong> Free-first capability model: fifteen Free widgets, Mega Menu a theme component, sliders presets, zero required dynamic tags</td><td>Nothing</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <p style="margin:0 0 8px;font-size:15px"><strong>Stages 1 through 5 are unblocked.</strong> The final schema is fixed at <strong>6 post types · 7 taxonomies · 8 custom tables · 10 settings groups</strong>, with <strong>11 new permanent meta keys, all belonging to <code>rj_page_section</code></strong> (§9.6). Post type slugs, taxonomy slugs, table names and meta keys become database values on the first day of Stage 1 and cannot be changed afterwards without a migration.</p>
+  <p style="margin:0;font-size:14px;color:#595d6c"><strong>Conflict 3 — RESOLVED.</strong> Created: <code>rj_page_section</code>. Not created: <code>rj_hero</code>, <code>rj_reel_type</code>, <code>rj_location</code>, <code>rj_customer_segment</code>, <code>_rj_segment</code>, <code>rj_sections</code>.</p>
+</div>
+
+</doc-page>
+</x-dc>
+</body>
+</html>

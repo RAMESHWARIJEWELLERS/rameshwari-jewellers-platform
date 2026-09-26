@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15px; line-height: 1.58; }
+h1, h2, h3 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 36px; letter-spacing: -0.03em; }
+h2 { font-size: 22px; margin: 24px 0 4px; }
+h3 { font-size: 16px; margin: 18px 0 6px; }
+h5 { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 14px 0 6px; }
+p { margin: 0 0 10px; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 11px; padding-left: 20px; }
+li { margin: 0 0 4px; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 10px 0 15px; font-size: 11.4px; line-height: 1.4; }
+th { text-align: left; font-weight: 600; font-size: 8.8px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 7px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 5px 7px 5px 0; vertical-align: top; overflow-wrap: normal; word-break: keep-all; }
+td:nth-last-child(-n+2), td.wrap { overflow-wrap: anywhere; word-break: normal; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 3px; border-radius: 3px; color: #423a6a; overflow-wrap: anywhere; }
+pre { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.4px; line-height: 1.5; background: #f3f5fe; border-left: 2px solid #9184d9; padding: 11px 13px; margin: 11px 0 15px; border-radius: 0 8px 8px 0; white-space: pre-wrap; color: #292b31; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.7in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Elementor Free-First Audit</span>
+  <span>Pro optional · never required</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>No code written. No locked architecture changed.</span>
+  <span>OPEN-1 replaced by a capability model</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px">
+  <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Final OPEN-1 reassessment</div>
+  <h1 style="margin:0">Elementor Free-First Audit</h1>
+  <div style="font-size:17.5px;color:#595d6c;line-height:1.35">Verified against official documentation. The 17-vs-21 question turns out to be the wrong measure — and the reason is significant.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:14px 16px;margin-bottom:16px;break-inside:avoid">
+  <h5 style="margin:0 0 5px;color:#8a6410">The finding that matters most</h5>
+  <p style="margin:0 0 7px;font-size:14.5px"><strong>The architecture already assumed a Free-only baseline, and that assumption holds — but one document does not.</strong> The Development Blueprint §12.1 lists <strong>eleven dynamic tags</strong> as a deliverable, and the Technical Blueprint §5.2 makes dynamic tags the primary mechanism for exposing product fields to builders. <strong>Dynamic tags are a Pro feature.</strong> Elementor's own help documentation gives them the URL <code>elementor.com/help/dynamic-tags-pro/</code> — the suffix Elementor uses to mark Pro-only articles.</p>
+  <p style="margin:0;font-size:14px">Nothing breaks: the locked architecture already requires that <strong>shortcodes are the compatibility floor and every widget has a shortcode and block equivalent</strong> (Development Blueprint §5.1, §12.3). So the fix is a documentation correction, not a redesign — the dynamic-tag layer is reclassified from base deliverable to optional Pro enhancement. Detail in §7.</p>
+</div>
+
+<h2 style="margin-top:0">1 · Official Free vs Pro matrix</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<h5>Method, stated so you can check it</h5>
+<p style="font-size:12.5px;color:#595d6c">Elementor's knowledge base marks Pro-only articles with a <code>-pro</code> URL suffix — <code>login-widget-pro</code>, <code>dynamic-tags-pro</code>, <code>custom-code-pro</code>, <code>nav-menu-widget-pro</code> — while Free widgets carry none: <code>heading-widget</code>, <code>shortcode-widget</code>, <code>html-widget</code>. I read the full article index at <a href="https://elementor.com/help/elementor-pro-vs-free/">elementor.com/help/elementor-pro-vs-free/</a> and classified from those slugs. <strong>The convention is strong but not absolute</strong> — a few known-Pro features (Loop Grid, Form, Popups, Taxonomy Filter, Custom CSS) carry no suffix, so those are marked from corroborating sources or left UNCLEAR. Where a capability is UNCLEAR, the architecture does not depend on it, which makes the uncertainty harmless rather than a risk to carry.</p>
+<table>
+  <thead><tr><th style="width:19%">Capability</th><th style="width:11%">Free</th><th style="width:11%">Pro</th><th style="width:24%">Evidence</th><th>Architecture impact</th></tr></thead>
+  <tbody>
+    <tr><td>Drag-and-drop editor</td><td class="status" style="color:#2f6b3a"><strong>YES</strong></td><td class="status">YES</td><td>Documentation describes the core drag-and-drop editor as fully available in the free version.</td><td>Base composition layer. Use it.</td></tr>
+    <tr><td>Flexbox &amp; Grid containers</td><td class="status" style="color:#2f6b3a"><strong>YES</strong></td><td class="status">YES</td><td>Help articles <code>what-is-a-container</code>, <code>create-a-grid-container</code> — no <code>-pro</code></td><td>All page layout. Use it.</td></tr>
+    <tr><td>Responsive editing</td><td class="status" style="color:#2f6b3a"><strong>YES</strong></td><td class="status">YES</td><td>Free previews desktop, tablet and mobile without touching code.</td><td>Satisfies the UI/UX breakpoint requirements.</td></tr>
+    <tr><td>Heading · Image · Text Editor · Button · Video · Divider · Spacer · Icon · Icon Box · Icon List · Social Icons</td><td class="status" style="color:#2f6b3a"><strong>YES</strong></td><td class="status">YES</td><td><cite index="5-10">"Elementor Free includes 32 core widgets covering the basics"</cite> — headings, text, images, video, buttons, dividers, maps, icon boxes, carousels, testimonials, tabs, accordions, progress bars and counters.</td><td>Never recreate any of these as an RJ widget.</td></tr>
+    <tr><td>Basic Gallery</td><td class="status" style="color:#2f6b3a"><strong>YES</strong></td><td class="status">YES</td><td><code>basic-gallery-widget</code>, <code>gallery-widget</code></td><td>Usable for static galleries; cannot read <code>_rj_gallery</code>.</td></tr>
+    <tr><td>Image Carousel</td><td class="status" style="color:#2f6b3a"><strong>YES</strong></td><td class="status">YES</td><td><code>image-carousel-widget</code></td><td>Static carousels only.</td></tr>
+    <tr><td>Media Carousel</td><td class="status">—</td><td class="status" style="color:#8a3a2f"><strong>PRO</strong></td><td><code>media-carousel-widget-pro</code></td><td>Not used.</td></tr>
+    <tr><td>Testimonial (single)</td><td class="status" style="color:#2f6b3a"><strong>YES</strong></td><td class="status">YES</td><td><code>testimonial-widget</code></td><td>Static only; cannot read <code>rj_testimonial</code>.</td></tr>
+    <tr><td>Testimonial Carousel</td><td class="status">—</td><td class="status" style="color:#8a3a2f"><strong>PRO</strong></td><td><code>testimonial-carousel-pro</code></td><td>Not used.</td></tr>
+    <tr><td>Google Maps</td><td class="status" style="color:#2f6b3a"><strong>YES</strong></td><td class="status">YES</td><td><code>google-maps-widget</code></td><td>Usable for showroom maps; address still comes from RJ.</td></tr>
+    <tr><td><strong>HTML widget</strong></td><td class="status" style="color:#2f6b3a"><strong>YES</strong></td><td class="status">YES</td><td><code>html-widget</code></td><td>Escape hatch for arbitrary markup.</td></tr>
+    <tr><td><strong>Shortcode widget</strong></td><td class="status" style="color:#2f6b3a"><strong>YES</strong></td><td class="status">YES</td><td><code>shortcode-widget</code>; also <code>does-elementor-support-shortcodes</code></td><td><strong>The single most important Free capability for this project.</strong> It is how every RJ component reaches the Elementor canvas without Pro.</td></tr>
+    <tr><td>Template Library (page templates)</td><td class="status" style="color:#2f6b3a"><strong>Partial</strong></td><td class="status">Full</td><td>Free ships a handful of single-page templates; Pro adds complete multi-page website kits.</td><td>Irrelevant — we compose our own pages.</td></tr>
+    <tr><td>Template import / export</td><td class="status" style="color:#2f6b3a"><strong>YES</strong></td><td class="status">YES</td><td><code>import-and-export-elementor-website-templates</code></td><td>Useful for moving layouts between staging and production.</td></tr>
+    <tr><td><strong>Theme Builder</strong></td><td class="status" style="color:#8a3a2f"><strong>NO</strong></td><td class="status" style="color:#8a3a2f"><strong>PRO</strong></td><td><cite index="3-6">"Pro adds the Theme Builder (headers, footers, templates), the Form Builder, dozens more widgets"</cite>. Corroborated: Theme Builder, Popup Builder, Form Builder and WooCommerce integration are all absent from Free.</td><td><strong>Decisive.</strong> Header, footer, single and archive templates must be <strong>PHP theme templates</strong>. Already the locked design (Development Blueprint §4).</td></tr>
+    <tr><td>Header / Footer builder</td><td class="status" style="color:#8a3a2f"><strong>NO</strong></td><td class="status" style="color:#8a3a2f"><strong>PRO</strong></td><td>Part of Theme Builder. Free edits the content area of individual pages; Pro adds control of header and footer.</td><td><code>header.php</code> / <code>footer.php</code> own the chrome. Mega menu is an RJ component inside them.</td></tr>
+    <tr><td>Single Post / Archive templates</td><td class="status" style="color:#8a3a2f"><strong>NO</strong></td><td class="status" style="color:#8a3a2f"><strong>PRO</strong></td><td><code>create-archive-template</code> titled "…with Elementor Pro"; <code>archive-site-part</code>, <code>single-page-site-part</code> under Theme Builder</td><td>Product, category, reel, collection, showroom pages are plugin templates. <strong>Already locked.</strong></td></tr>
+    <tr><td><strong>Dynamic Tags</strong></td><td class="status" style="color:#8a3a2f"><strong>NO</strong></td><td class="status" style="color:#8a3a2f"><strong>PRO</strong></td><td><code>dynamic-tags-pro</code>, <code>dynamic-tags-pro-2</code>, <code>dynamic-shortcode-pro</code>, <code>dynamic-request-parameter-pro</code>, <code>dynamic-lightbox-pro</code>, <code>dynamic-contact-url-pro</code></td><td><strong>The correction in the amber box.</strong> The eleven dynamic tags become optional Pro enhancement, not base deliverable.</td></tr>
+    <tr><td>Post custom-field dynamic data</td><td class="status" style="color:#8a3a2f"><strong>NO</strong></td><td class="status" style="color:#8a3a2f"><strong>PRO</strong></td><td>A dynamic-tag capability. Pro supplies tags that display field data but no tooling to structure, relate or query it.</td><td>Product meta reaches the page through RJ rendering, never Elementor field binding.</td></tr>
+    <tr><td>CPT dynamic rendering</td><td class="status" style="color:#8a3a2f"><strong>NO</strong></td><td class="status" style="color:#8a3a2f"><strong>PRO</strong></td><td>Requires Loop Grid or Theme Builder, both Pro</td><td>RJ query layer renders all listings.</td></tr>
+    <tr><td>Loop Grid · Loop Carousel</td><td class="status" style="color:#8a3a2f"><strong>NO</strong></td><td class="status" style="color:#8a3a2f"><strong>PRO</strong></td><td>Help slug carries no suffix, but Pro is the documented tier for custom post types, relations and filtering, and for the expanded widget library.</td><td>Every RJ listing is an RJ renderer. <strong>Model B resolver archives never touch Loop Grid.</strong></td></tr>
+    <tr><td>Taxonomy Filter</td><td class="status" style="color:#d2a03c"><strong>UNCLEAR</strong></td><td class="status">YES</td><td><code>taxonomy-filter-widget</code> — no suffix, but it is a Loop companion</td><td>Not depended on. RJ filter panel serves the 306-term tree, which no generic filter widget could handle anyway.</td></tr>
+    <tr><td>Popup Builder</td><td class="status" style="color:#8a3a2f"><strong>NO</strong></td><td class="status" style="color:#8a3a2f"><strong>PRO (Advanced)</strong></td><td>Popups, custom code and WooCommerce widgets arrive on Elementor Advanced plans and above.</td><td>Reel viewer and quick view are RJ modals. Never Elementor popups.</td></tr>
+    <tr><td>Login widget</td><td class="status">—</td><td class="status" style="color:#8a3a2f"><strong>PRO</strong></td><td><code>login-widget-pro</code></td><td>RJ account screens handle sign-on.</td></tr>
+    <tr><td>Nav Menu widget</td><td class="status">—</td><td class="status" style="color:#8a3a2f"><strong>PRO</strong></td><td><code>nav-menu-widget-pro</code></td><td>Confirms the mega menu must be RJ-owned. <em>Menu</em> and <em>Menu Anchor</em> articles exist without the suffix — treated as UNCLEAR and not depended on.</td></tr>
+    <tr><td>Form widget · submissions</td><td class="status" style="color:#8a3a2f"><strong>NO</strong></td><td class="status" style="color:#8a3a2f"><strong>PRO</strong></td><td>Pro adds the Form Builder; Free has no form widget and no submissions store.</td><td><strong>Significant.</strong> Enquiry and notification-signup forms are RJ forms writing to <code>rj_leads</code> — which the locked architecture already requires, since a lead must be recorded server-side before the WhatsApp redirect.</td></tr>
+    <tr><td>Custom Code</td><td class="status" style="color:#8a3a2f"><strong>NO</strong></td><td class="status" style="color:#8a3a2f"><strong>PRO (Advanced)</strong></td><td><code>custom-code-pro</code>; same Advanced-tier note as popups above.</td><td>Nothing depends on it. Scripts come from the plugin and theme.</td></tr>
+    <tr><td>Custom CSS (per element)</td><td class="status" style="color:#d2a03c"><strong>UNCLEAR</strong></td><td class="status">YES</td><td>Slugs <code>how-to-add-custom-css</code>, <code>custom-css-in-elementor</code>, <code>global-custom-css</code> carry no suffix, yet secondary sources place the custom CSS editor and global settings in Pro.</td><td>Not depended on. All styling comes from the theme token sheet.</td></tr>
+    <tr><td>Global colours &amp; fonts</td><td class="status" style="color:#2f6b3a"><strong>YES</strong></td><td class="status">YES</td><td><code>view-and-edit-global-colors</code>, <code>view-and-edit-global-fonts</code></td><td>Mirror the RJ token values here, per Technical Blueprint §1.6.</td></tr>
+    <tr><td>Custom Fonts (upload)</td><td class="status">—</td><td class="status" style="color:#8a3a2f"><strong>PRO</strong></td><td><code>custom-fonts-pro</code></td><td>Theme self-hosts its fonts. No dependency.</td></tr>
+    <tr><td>Motion Effects · Sticky · 3D Tilt · Mouse Track</td><td class="status" style="color:#d2a03c"><strong>UNCLEAR</strong></td><td class="status">YES</td><td><code>sticky-scrolling-effect-pro</code> is Pro; <code>motion-effects</code> and <code>mouse-effects-3d-tilt</code> carry no suffix</td><td>Not depended on. UI/UX motion is CSS in the theme.</td></tr>
+    <tr><td>ACF / Pods integration</td><td class="status" style="color:#8a3a2f"><strong>NO</strong></td><td class="status" style="color:#8a3a2f"><strong>PRO</strong></td><td><code>elementor-acf</code> sits in the Pro-oriented set; it is a dynamic-tag bridge</td><td><strong>Irrelevant by design</strong> — RJ uses the native Meta API, not ACF. No third-party field plugin is introduced.</td></tr>
+    <tr><td><strong>Third-party plugins registering custom widgets</strong></td><td class="status" style="color:#2f6b3a"><strong>YES</strong></td><td class="status">YES</td><td><strong>Decisive.</strong> The Elementor Developers docs badge the widget-registration pages <strong>Elementor Core</strong> — the free plugin — and state that external developers may register new widgets. The official example plugin manifest declares <cite index="18-4">"Requires Plugins: elementor"</cite>, not elementor-pro. Registration hooks the widgets manager via <code>elementor/widgets/register</code>, and Elementor publishes a first-addon guide whose main plugin file registers the widgets.</td><td><strong>RJ may ship real Elementor widgets that work on Free.</strong> This is what makes a genuine editing experience possible without Pro.</td></tr>
+</tbody>
+</table>
+
+<h2 style="break-before:page">2 · 21-item Free-first audit</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:13%">Item</th><th style="width:9%">Free native</th><th style="width:8%">RJ admin</th><th style="width:8%">RJ bridge</th><th style="width:9%">Free widget</th><th style="width:8%">Pro needed</th><th style="width:9%">Elementor off</th><th>Final treatment</th></tr></thead>
+  <tbody>
+    <tr><td>Product Grid</td><td>No — Loop Grid is Pro</td><td>Yes</td><td>Shortcode</td><td><strong>Yes</strong></td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>RJ Free widget</strong> over the shared renderer. The tree picker for 306 terms is the value Free cannot supply.</td></tr>
+    <tr><td>Product Slider</td><td>No</td><td>Yes</td><td>Shortcode</td><td><strong>Yes</strong></td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>RJ Free widget.</strong> Same renderer, slider mode.</td></tr>
+    <tr><td>Category Grid</td><td>No</td><td>Yes</td><td>Shortcode</td><td><strong>Yes</strong></td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>RJ Free widget.</strong></td></tr>
+    <tr><td>Category Slider</td><td>No</td><td>Yes</td><td>Shortcode</td><td>Preset</td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>Preset of Category Grid</strong> — slider is a display mode, not a second data source.</td></tr>
+    <tr><td>Mega Menu</td><td>No — Nav Menu is Pro</td><td>Yes, tree manager</td><td>Shortcode</td><td>No</td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>Theme component</strong> in <code>header.php</code>. Not a widget — Free cannot build headers, so a header widget has nowhere to live.</td></tr>
+    <tr><td>Reel Grid</td><td>No</td><td>Yes</td><td>Shortcode</td><td><strong>Yes</strong></td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>RJ Free widget.</strong> Opens the viewer modal.</td></tr>
+    <tr><td>Reel Slider</td><td>No</td><td>Yes</td><td>Shortcode</td><td>Preset</td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>Preset of Reel Grid.</strong></td></tr>
+    <tr><td>Collection Grid</td><td>No</td><td>Yes</td><td>Shortcode</td><td><strong>Yes</strong></td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>RJ Free widget.</strong></td></tr>
+    <tr><td>Showroom Grid</td><td>Partly — Google Maps is Free</td><td>Yes</td><td>Shortcode</td><td><strong>Yes</strong></td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>RJ Free widget.</strong> Address, phone, WhatsApp and <code>_rj_timings</code> stay in RJ; the map may be the Free widget alongside.</td></tr>
+    <tr><td>Testimonial Grid</td><td>Single static only</td><td>Yes</td><td>Shortcode</td><td><strong>Yes</strong></td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>RJ Free widget.</strong> Free's Testimonial widget cannot read <code>rj_testimonial</code>, and duplicating records into Elementor is forbidden.</td></tr>
+    <tr><td>WhatsApp Button</td><td>Button exists but cannot build the URL</td><td>Yes</td><td>Shortcode</td><td><strong>Yes</strong></td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>RJ Free widget.</strong> Only the WhatsApp service may compose a URL — a Free Button with a typed link would break the single-source rule.</td></tr>
+    <tr><td>Contact Information</td><td>No</td><td>Yes</td><td>Shortcode</td><td><strong>Yes</strong></td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>RJ Free widget.</strong> Reads <code>rj_contact</code>. A typed phone number is the failure this prevents.</td></tr>
+    <tr><td>Search</td><td>Search Form is Free but core-only</td><td>Yes</td><td>Shortcode</td><td><strong>Yes</strong></td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>RJ Free widget.</strong> Free's form cannot search Hindi names, synonyms or product codes.</td></tr>
+    <tr><td>Wishlist Button</td><td>No</td><td>Yes</td><td>Shortcode</td><td><strong>Yes</strong></td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>RJ Free widget.</strong> Guest-local storage and guest-first merge stay locked.</td></tr>
+    <tr><td>Customer Account</td><td>No — Login is Pro</td><td>Yes</td><td>Shortcode</td><td><strong>Yes</strong></td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>RJ Free widget</strong> for the header entry point; the seven account screens remain rewrite-driven RJ templates. No WooCommerce My Account.</td></tr>
+    <tr><td>Hero</td><td>No</td><td>Yes</td><td>Shortcode</td><td><strong>Yes</strong></td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>RJ Free widget.</strong> <strong>RJ owns the conditional render</strong> — the widget outputs nothing at all when no campaign is eligible, so zero layout space is preserved. Free has no display-condition mechanism that could do this.</td></tr>
+    <tr><td>Notification Signup</td><td>No — Form is Pro</td><td>Yes</td><td>Shortcode</td><td><strong>Yes</strong></td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>RJ Free widget.</strong> An RJ form with consent wording; never an Elementor form.</td></tr>
+    <tr><td colspan="8" style="color:#5d5294;font-weight:600;font-size:10px;letter-spacing:0.06em">THE FOUR DISPUTED ITEMS — resolved the same way as before, now on capability grounds</td></tr>
+    <tr><td>Product Card</td><td>n/a</td><td>Yes</td><td>Shortcode</td><td>No</td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>Not a widget — a renderer.</strong> Product Grid with count 1.</td></tr>
+    <tr><td>Reel Viewer</td><td>n/a</td><td>Yes</td><td>n/a</td><td>No</td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>Not a widget — a modal</strong> the Reel Grid opens. Placing it on a page has no meaning, and Free has no popup mechanism to host it.</td></tr>
+    <tr><td>Store Locator</td><td>n/a</td><td>Yes</td><td>Shortcode</td><td>No</td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>Not a widget — a preset</strong> of Showroom Grid.</td></tr>
+    <tr><td>Featured Categories</td><td>n/a</td><td>Yes</td><td>Shortcode</td><td>No</td><td style="color:#2f6b3a">No</td><td>Works</td><td><strong>Not a widget — a filter</strong> already on Category Grid.</td></tr>
+  </tbody>
+</table>
+<p><strong>Count: fifteen RJ Elementor-Free widgets</strong> (the seventeen minus Mega Menu, which is a theme component, and minus Category Slider and Reel Slider, which are presets), plus four items that were never widgets. Every one works on Elementor Free, and every one has a shortcode equivalent so it survives Elementor's removal.</p>
+
+<h2 style="break-before:page">3 · RJ admin / business data matrix</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:22%">Function</th><th style="width:10%">RJ-owned</th><th style="width:10%">No-code admin</th><th style="width:26%">Admin surface</th><th>Elementor dependency</th></tr></thead>
+  <tbody>
+    <tr><td>Products</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Jewellery → Products list + editor, four meta boxes</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Categories · 306-term hierarchy</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Categories tree manager — drag reorder, reparent, hide</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Category SEO · images</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Term edit screen, per-term fields</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Resolver mappings</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Tree manager resolver field, 22 terms</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Search synonyms</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Term edit screen, <code>_rj_name_alt</code></td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Reels · sources · linked products</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Reels list + source meta box</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Collections</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Collections list + editor</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Showrooms · hours</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Showrooms editor, <code>_rj_timings</code> seven-day control</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Testimonials</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Testimonials list + editor</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Hero campaigns · scheduling</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td><code>rj_page_section</code> editor — dates, active flag, order, two crops</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Contact information</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Rameshwari → Contact &amp; WhatsApp</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>WhatsApp templates</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Same screen, five templates with token validation</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Weight visibility</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Rameshwari → Display, one switch</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Notifications</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Rameshwari → Notifications, queue and dead letters</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Media</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Media library + bulk upload, replace, reorder</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Import / export · rollback</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Rameshwari → Import/Export, dry run then commit</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Health · activity log</td><td style="color:#2f6b3a">YES</td><td style="color:#2f6b3a">YES</td><td>Rameshwari → Health, Activity Log</td><td style="color:#2f6b3a">None</td></tr>
+    <tr><td>Homepage section arrangement</td><td>Presentation</td><td style="color:#2f6b3a">YES</td><td>Elementor Free page editor, <em>or</em> the theme's block patterns</td><td><strong>Optional.</strong> Two independent paths; neither is required.</td></tr>
+  </tbody>
+</table>
+<p><strong>Every business function: RJ-owned, no-code manageable, zero Elementor dependency.</strong> The owner can run the business with Elementor deactivated.</p>
+
+<h2>4 · Fallback matrix</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:20%">Surface</th><th style="width:14%">Without Pro</th><th style="width:16%">Without Elementor</th><th>RJ fallback</th></tr></thead>
+  <tbody>
+    <tr><td>Header · mega menu · footer</td><td style="color:#2f6b3a">Works</td><td style="color:#2f6b3a">Works</td><td>Theme templates. <strong>Never built in Elementor</strong> — Free cannot, and depending on Pro is forbidden.</td></tr>
+    <tr><td>Product detail</td><td style="color:#2f6b3a">Works</td><td style="color:#2f6b3a">Works</td><td>Plugin <code>single-product</code> template.</td></tr>
+    <tr><td>Category archive · resolver archive</td><td style="color:#2f6b3a">Works</td><td style="color:#2f6b3a">Works</td><td>Plugin <code>taxonomy-category</code> template over the RJ query layer. <strong>Model B never touches a builder.</strong></td></tr>
+    <tr><td>Reel · collection · showroom pages</td><td style="color:#2f6b3a">Works</td><td style="color:#2f6b3a">Works</td><td>Plugin templates.</td></tr>
+    <tr><td>Account screens</td><td style="color:#2f6b3a">Works</td><td style="color:#2f6b3a">Works</td><td>Rewrite-driven virtual pages. No database Page to delete.</td></tr>
+    <tr><td>Search results</td><td style="color:#2f6b3a">Works</td><td style="color:#2f6b3a">Works</td><td>Theme <code>search.php</code> + RJ result component.</td></tr>
+    <tr><td>Homepage</td><td style="color:#2f6b3a">Works</td><td style="color:#2f6b3a">Works, plainer</td><td>Theme <code>front-page.php</code> with template parts calling RJ renderers. Elementor composition is a convenience.</td></tr>
+    <tr><td>Hero</td><td style="color:#2f6b3a">Works</td><td style="color:#2f6b3a">Works</td><td>Theme part + RJ conditional render. Zero layout space when ineligible, in both paths.</td></tr>
+    <tr><td>Enquiry / WhatsApp</td><td style="color:#2f6b3a">Works</td><td style="color:#2f6b3a">Works</td><td>RJ form and WhatsApp service. Lead written before redirect in every path.</td></tr>
+    <tr><td>Wishlist</td><td style="color:#2f6b3a">Works</td><td style="color:#2f6b3a">Works</td><td>RJ component + REST.</td></tr>
+    <tr><td>Admin, all of it</td><td style="color:#2f6b3a">Works</td><td style="color:#2f6b3a">Works</td><td>WordPress admin. Elementor is irrelevant to it.</td></tr>
+    <tr><td>Builder-composed page layouts</td><td style="color:#2f6b3a">Works</td><td style="color:#8a3a2f"><strong>Lost</strong></td><td>Falls back to the theme page template. <strong>Arrangement is lost; no data is.</strong> Rebuildable from block patterns in hours. Pixel-identical design after removal is not promised.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">5 · Minimum custom integration</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:26%">Layer</th><th style="width:14%">Count</th><th>Contents</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Shortcode / bridge</strong><br><span style="font-size:10px;color:#595d6c">The compatibility floor</span></td><td>15</td><td>One per renderer: product grid, product slider, category grid, mega menu, reel grid, collection grid, showroom grid, testimonial grid, whatsapp button, contact, search, wishlist button, account, hero, notification signup. <strong>Built first, in Stage 20.</strong> Usable inside Elementor Free's Shortcode widget, inside Gutenberg, inside any future builder, and directly in a template.</td></tr>
+    <tr><td><strong>Query integration</strong></td><td>1</td><td><code>Frontend\Query</code> + <code>Domain\Category</code> resolver resolution. Already locked; serves every layer above it. <strong>No builder ever resolves anything.</strong></td></tr>
+    <tr><td><strong>Theme components</strong></td><td>3</td><td>Mega menu, header chrome, footer chrome — because Free cannot build headers or footers and Pro must not be required.</td></tr>
+    <tr><td><strong>RJ Elementor-Free widgets</strong></td><td>15</td><td>Thin adapters over the same renderers, registered through <code>elementor/widgets/register</code> on Elementor Core. Each collects settings and calls the renderer — no markup, no query, no business rule. <strong>Category pickers, breakpoint column counts and live editor previews are the value; a shortcode string cannot offer them.</strong></td></tr>
+    <tr><td><strong>Gutenberg blocks</strong></td><td>15</td><td>Same renderers. Already locked as Stage 20, and the reason the site is not Elementor-dependent at all.</td></tr>
+    <tr><td><strong>Dynamic tags</strong></td><td style="color:#8a3a2f"><strong>0 in base</strong></td><td><strong>Removed from the base architecture.</strong> Pro-only. Optional enhancement — see §6.</td></tr>
+  </tbody>
+</table>
+<p><strong>Nothing here is new work.</strong> The locked architecture already required shortcodes, blocks, a query layer and thin widgets. What changes is the <em>count</em> — seventeen widgets becomes fifteen — and the removal of the eleven dynamic tags from the base deliverable.</p>
+
+<h2>6 · Optional Pro enhancements</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p>If Pro is bought later, these become available. <strong>None is required, and none may become the source of truth for anything.</strong></p>
+<table>
+  <thead><tr><th style="width:26%">Pro feature</th><th>What it would add · what it must never do</th></tr></thead>
+  <tbody>
+    <tr><td>Theme Builder</td><td>Lets the owner redesign header and footer visually instead of editing theme parts. <strong>Must not become the only header</strong> — the theme's own header stays functional, and the switch-safety checklist keeps proving it.</td></tr>
+    <tr><td>Dynamic Tags (eleven)</td><td>Lets the owner bind an RJ field into any Elementor element — a Heading showing a product's Hindi name. Convenient. <strong>The shortcode and widget paths remain the base, and the tags read through the domain layer, so weight visibility and resolver rules apply identically.</strong></td></tr>
+    <tr><td>Loop Grid</td><td>An alternative way to lay out RJ post types. <strong>Would not replace the RJ renderers</strong> — and cannot serve resolver terms, which is an accepted limitation already recorded as test R-8.</td></tr>
+    <tr><td>Popup Builder</td><td>Marketing popups. The reel viewer and quick view stay RJ modals.</td></tr>
+    <tr><td>Form Builder</td><td>Newsletter or contact forms. <strong>Must never handle enquiries</strong> — a lead must be written server-side before the WhatsApp redirect, which an Elementor form does not do.</td></tr>
+    <tr><td>Custom CSS · Custom Code</td><td>Convenience for one-off tweaks. Tokens stay in the theme.</td></tr>
+    <tr><td>Motion effects · sticky headers</td><td>Visual polish only.</td></tr>
+  </tbody>
+</table>
+
+<h2>7 · Final OPEN-1 status</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p style="font-size:17px;font-weight:500;color:#2f6b3a;margin:0 0 10px">C — OPEN-1 should be replaced by a Free-first capability/integration model.</p>
+<p>The evidence, not a preference. "17 or 21" measured <em>how many widgets to build</em>, which presumed the only question was scope. The audit shows the binding constraint is different: <strong>which capabilities exist in Elementor Free at all.</strong> Once that is settled, the widget count falls out as a consequence rather than a decision:</p>
+<table>
+  <thead><tr><th style="width:30%">Old framing</th><th>What the capability evidence shows</th></tr></thead>
+  <tbody>
+    <tr><td>21 widgets</td><td><strong>Not viable as stated.</strong> Four are duplicates or non-widgets, and Reel Viewer needs a popup mechanism Free does not have.</td></tr>
+    <tr><td>17 widgets</td><td><strong>Nearly right, two corrections.</strong> Mega Menu cannot be a widget — Free cannot build headers. Category Slider and Reel Slider are display modes, not data sources.</td></tr>
+    <tr><td>13 widgets</td><td><strong>Too few.</strong> Omits Hero, Wishlist, Account and Notification Signup, each of which needs a capability Free lacks entirely (display conditions, Login, Form).</td></tr>
+    <tr><td><strong>The capability model</strong></td><td><strong>15 Free widgets · 15 shortcodes · 15 blocks · 3 theme components · 0 base dynamic tags.</strong> Derived from what Free provides, not chosen from a list.</td></tr>
+  </tbody>
+</table>
+<h3>The specification change this implies</h3>
+<table>
+  <thead><tr><th style="width:24%">Document · §</th><th>Required change</th></tr></thead>
+  <tbody>
+    <tr><td>Dev Blueprint §12.1</td><td>Seventeen widgets → <strong>fifteen</strong>. Mega Menu becomes a theme component; Category Slider and Reel Slider become presets.</td></tr>
+    <tr><td>Dev Blueprint §12, §13</td><td>"eleven dynamic tags" → <strong>zero in base, eleven as optional Pro enhancement</strong>. The eleven tag definitions in §13 stay as the Pro specification.</td></tr>
+    <tr><td>Dev Blueprint §27, Stage 21</td><td>"Seventeen widgets, eleven tags" → "fifteen Elementor-Free widgets; dynamic tags deferred to an optional Pro phase".</td></tr>
+    <tr><td>Technical Blueprint §5.2</td><td>Dynamic tags are presented as the primary exposure mechanism. Reclassify: <strong>shortcodes and widgets are primary; dynamic tags are a Pro enhancement.</strong></td></tr>
+    <tr><td>Dev Blueprint §24</td><td>Add to test 10: verify every surface works with <strong>Elementor Free only</strong>, not merely with Elementor present.</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">These are documentation corrections following from your Free-only constraint. <strong>I have not applied them</strong> — they change a locked deliverable count, which is yours to approve.</p>
+
+<h2 style="break-before:page">8 · Exact owner decision required</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:15px 17px;margin-bottom:12px;break-inside:avoid">
+  <h5 style="margin:0 0 6px;color:#2f6b3a">RESOLVED — all three parts approved by owner decision. OPEN-1 is closed.</h5>
+  <table style="margin:0">
+    <thead><tr><th style="width:10%">#</th><th style="width:32%">Question</th><th>Recommendation and why</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Replace the 17-vs-21 widget question with the Free-first capability model?</td><td><strong>Yes.</strong> The count stops being a judgement call and becomes a consequence of what Free provides.</td></tr>
+      <tr><td>2</td><td>Build <strong>fifteen</strong> Elementor-Free widgets, with Mega Menu as a theme component and the two sliders as presets?</td><td><strong>Yes.</strong> A Mega Menu widget has nowhere to live without Pro's header builder.</td></tr>
+      <tr><td>3</td><td>Move the eleven dynamic tags out of the base architecture into the optional Pro layer?</td><td><strong>Yes.</strong> They are Pro-only, so keeping them in the base contradicts your non-negotiable rule. No capability is lost — shortcodes and widgets already cover everything.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p><strong>Nothing else is open.</strong> This decision blocks Stage 21 only; Stages 1 through 20 proceed unchanged.</p>
+
+<h2>9 · Verification</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:38%">Check</th><th style="width:10%">Result</th><th>Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>Elementor Free is the required baseline</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>Every item in §2 works on Free. §4 confirms every surface works without Pro.</td></tr>
+    <tr><td>Elementor Pro is optional</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>§6 lists Pro features as enhancements only; §4's "Without Pro" column is Works throughout.</td></tr>
+    <tr><td>No Pro-only feature is mandatory</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>Theme Builder, Dynamic Tags, Loop Grid, Popups, Forms, Login, Nav Menu, Custom Code and Custom Fonts are each identified as Pro and each has an RJ substitute. The one place the base architecture did depend on Pro — dynamic tags — is flagged in §7 for correction rather than left standing.</td></tr>
+    <tr><td>No business data is Elementor-only</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>§3: all eighteen functions RJ-owned. Widget settings are layout settings; deleting them loses an arrangement, never content.</td></tr>
+    <tr><td>No business functionality depends on Pro</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>§4. Enquiries, wishlist, search, resolver archives and admin all work on Free and with Elementor absent.</td></tr>
+    <tr><td>RJ plugin owns business data</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>6 post types, 7 taxonomies, 8 tables, 9 option groups — unchanged, plugin-registered.</td></tr>
+    <tr><td>RJ admin covers normal operations</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>§3: eighteen functions, each YES/YES with a named admin surface.</td></tr>
+    <tr><td>Category Master unchanged</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>File not opened for writing. 306 · 5 roots · 74/98/98.</td></tr>
+    <tr><td>Model B and <code>_rj_resolver</code> unchanged</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>Neither file modified. §4 and §5 confirm no builder resolves anything.</td></tr>
+    <tr><td>Schema counts unchanged</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>6 / 7 / 8 / 9. No taxonomy, table or option group added.</td></tr>
+    <tr><td>No WooCommerce introduced</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>Every WooCommerce widget classified Pro and unused. No WooCommerce My Account.</td></tr>
+    <tr><td>No unnecessary custom widgets</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>Fifteen, down from seventeen. Four disputed items resolved as renderer, modal and presets; Mega Menu moved to the theme.</td></tr>
+    <tr><td>Documentation, not memory</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>Method stated in §1. Four capabilities marked UNCLEAR rather than guessed, and none of the four is depended on.</td></tr>
+    <tr><td>Code written</td><td style="color:#2f6b3a"><strong>NO</strong></td><td>No PHP, JavaScript, CSS or WordPress file. No specification file modified in this pass.</td></tr>
+  </tbody>
+</table>
+
+<h2>10 · Final architecture statement</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:16px 18px;break-inside:avoid">
+  <p style="margin:0 0 10px;font-size:15px"><strong>FINAL ELEMENTOR ARCHITECTURE:</strong> Elementor Free/Core is the required baseline and Elementor Pro is an optional future enhancement that may never become a dependency; the <code>rameshwari-core</code> plugin owns all business data and all business logic — products, the 306-term category hierarchy, the Model B resolver, search synonyms, reels, collections, showrooms and their hours, testimonials, scheduled hero campaigns, contact details, the WhatsApp engine, wishlist, customers, notification preferences, weight visibility, import and export, the activity log and health checks — and exposes them through shortcodes, Gutenberg blocks, fifteen Elementor-Free-compatible widgets and its own theme templates; where Elementor Free lacks a capability the platform needs — a theme builder for header and footer, dynamic field binding, loop queries, forms, login, popups — RJ supplies it in the plugin or the theme rather than requiring Pro, and the owner manages every business operation from the WordPress and RJ admin screens without a developer; Elementor is therefore a presentation and editing layer over RJ data, never the system of record, so business continuity survives Elementor Free being disabled or removed, Pro never being purchased, Pro being installed or removed later, or Elementor being replaced entirely — with page <em>arrangement</em> the only thing lost, rebuildable from the theme's block patterns, and pixel-identical design after Elementor removal explicitly not promised.</p>
+  <table style="margin:0">
+    <tbody>
+      <tr><td style="width:40%"><strong>OPEN-1</strong></td><td style="color:#8a6410;font-weight:600">Replaced by the Free-first capability model — awaiting your yes to the three parts in §8</td></tr>
+      <tr><td><strong>Blocks</strong></td><td>Stage 21 only</td></tr>
+      <tr><td><strong>New finding</strong></td><td style="color:#8a6410;font-weight:600">Dynamic tags are Pro-only and must leave the base architecture — §7</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</doc-page>
+</x-dc>
+</body>
+</html>

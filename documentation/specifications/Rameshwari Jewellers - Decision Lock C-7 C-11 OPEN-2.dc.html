@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15px; line-height: 1.58; }
+h1, h2 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 36px; letter-spacing: -0.03em; }
+h2 { font-size: 22px; margin: 24px 0 4px; }
+h5 { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 14px 0 6px; }
+p { margin: 0 0 10px; orphans: 3; widows: 3; }
+ul { margin: 0 0 11px; padding-left: 20px; }
+li { margin: 0 0 4px; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 10px 0 15px; font-size: 11.8px; line-height: 1.42; }
+th { text-align: left; font-weight: 600; font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 8px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 5px 8px 5px 0; vertical-align: top; overflow-wrap: anywhere; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 3px; border-radius: 3px; color: #423a6a; overflow-wrap: anywhere; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.75in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Decision Lock</span>
+  <span>C-7 · C-11 · OPEN-2</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>No code written. No locked architecture changed.</span>
+  <span>OPEN-1 remains the only open decision</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px">
+  <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Owner decision lock</div>
+  <h1 style="margin:0">C-7 · C-11 · OPEN-2 Locked</h1>
+  <div style="font-size:17.5px;color:#595d6c;line-height:1.35">Three decisions applied and synchronized. One contradicted the existing hero specification — that contradiction is now removed.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:14px 16px;margin-bottom:16px;break-inside:avoid">
+  <h5 style="margin:0 0 5px;color:#8a6410">Finding during the scan — your OPEN-2 decision contradicted two existing rules</h5>
+  <p style="margin:0;font-size:14px">Development Blueprint §6.2 carried two fallback rules I had written earlier and which your decision overturns: a <strong>"Fallback"</strong> row making a dateless hero the evergreen default shown whenever no dated campaign was active, and a <strong>"Last-resort fallback"</strong> row stating "the theme renders its static heading-and-CTA band. A missing campaign never produces an empty page region." Both are gone. A dateless hero is now documented as an ordinary always-eligible campaign, not a default, and there is no theme-rendered substitute band. Without this, the spec would have instructed a developer to render exactly what you asked to suppress.</p>
+</div>
+
+<h2 style="margin-top:0">1 · C-7 final status</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p style="font-size:17px;font-weight:500;color:#2f6b3a;margin:0 0 10px">LOCKED — <code style="font-size:0.85em;background:none;padding:0;color:#2f6b3a">_rj_name_alt</code> retained as an optional search-synonym / search-alias field.</p>
+<table>
+  <thead><tr><th style="width:30%">It does</th><th>It does NOT</th></tr></thead>
+  <tbody>
+    <tr><td>Supply additional match terms to the search index, alongside the visible name and the bilingual names · hold <strong>multiple</strong> aliases, comma-separated in the one existing field · remain optional and empty by default</td><td>Define category identity · create a taxonomy term or relationship · alter a category URL · become an SEO canonical · produce a duplicate archive · replace <code>_rj_primary_term</code> · merge categories · create a global "Ring" category</td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:30%">Aspect</th><th>Rule as documented</th></tr></thead>
+  <tbody>
+    <tr><td>Schema</td><td><strong>No new field.</strong> The existing <code>string</code>, max 191, carries a comma-separated list. Smallest representation compatible with the existing architecture; no new key, no new table, no repeating meta.</td></tr>
+    <tr><td>Identity, unchanged</td><td>अंगूठी under Gold, Silver and Black Polish Silver remain <strong>three distinct terms</strong> — identity is still the full path. A shared synonym changes nothing about that.</td></tr>
+    <tr><td>Search behaviour</td><td>The search may match on visible name, bilingual names and <code>_rj_name_alt</code>. A synonym match surfaces the relevant category or product context. <strong>No ranking algorithm, no priority scores and no fuzzy-search infrastructure were defined</strong> — only the data responsibility of the field.</td></tr>
+    <tr><td>Synonym lists</td><td>None invented. The examples in your brief are illustrative; no mandatory synonym list is documented.</td></tr>
+  </tbody>
+</table>
+
+<h2>2 · C-11 final status</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p style="font-size:17px;font-weight:500;color:#2f6b3a;margin:0 0 10px">LOCKED — global public weight visibility controlled by <code style="font-size:0.85em;background:none;padding:0;color:#2f6b3a">rj_display.show_weight_publicly</code>, default OFF.</p>
+<table>
+  <thead><tr><th style="width:20%">Surface</th><th style="width:26%">OFF (current)</th><th>ON (future)</th></tr></thead>
+  <tbody>
+    <tr><td>Public UI — cards, detail pages, listings</td><td style="color:#8a3a2f"><strong>Hidden</strong></td><td style="color:#2f6b3a"><strong>Available</strong> when a valid value exists</td></tr>
+    <tr><td>Public REST / API — including mobile clients</td><td style="color:#8a3a2f"><strong>Hidden</strong> — the field is omitted from the response, not returned empty</td><td style="color:#2f6b3a"><strong>Available</strong> when a valid value exists</td></tr>
+    <tr><td>Authenticated admin interfaces</td><td style="color:#2f6b3a"><strong>Available</strong> — view and edit</td><td style="color:#2f6b3a"><strong>Available</strong> — view and edit</td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:30%">Rule</th><th>As documented</th></tr></thead>
+  <tbody>
+    <tr><td>Storage independent of exposure</td><td><code>_rj_weight</code> and <code>_rj_weight_unit</code> stay in the product schema. Turning the switch OFF <strong>never deletes stored data</strong>.</td></tr>
+    <tr><td>"Public: Yes" reinterpreted</td><td>The registry column now reads <strong>Conditional</strong>, not Yes. The storage field and the public exposure policy are separate concepts, and the column no longer implies permission.</td></tr>
+    <tr><td>Empty data</td><td>Permitted. No fake or default weight is ever substituted — stated explicitly in the validation column.</td></tr>
+    <tr><td>Turning it ON later</td><td>No schema migration, no database redesign. One settings change.</td></tr>
+    <tr><td>One switch only</td><td>No second weight setting created. The Elementor "show weight" widget control is documented as honoured only when the global switch is ON, so a builder control cannot override the policy.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">3 · OPEN-2 final status</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p style="font-size:17px;font-weight:500;color:#2f6b3a;margin:0 0 10px">LOCKED — conditional hero slot.</p>
+<table>
+  <thead><tr><th style="width:26%">State</th><th>Behaviour</th></tr></thead>
+  <tbody>
+    <tr><td>One or more campaigns eligible</td><td>Hero renders and occupies its normal layout space. Existing selection and order rules apply unchanged — desktop shows all active in <code>_rj_order</code>, mobile shows the single lowest-order one.</td></tr>
+    <tr><td><strong>No campaign eligible</strong> — <code>_rj_active</code> false, not yet started, or expired</td><td><strong>Hero section not rendered.</strong> Zero layout space. No wrapper, no reserved height, no blank band, no placeholder image, no placeholder text, no empty carousel, no default campaign. <strong>The next homepage section moves upward automatically</strong> — desktop, tablet and mobile.</td></tr>
+    <tr><td>A campaign becomes eligible</td><td>Hero appears by itself. No manual step.</td></tr>
+    <tr><td>A campaign becomes ineligible</td><td>Hero disappears by itself and the layout reflows.</td></tr>
+    <tr><td>Dateless hero section</td><td><strong>An ordinary always-eligible campaign</strong>, not a fallback — eligible whenever <code>_rj_active</code> is true, subject to the same order rules. Reclassified in this pass.</td></tr>
+    <tr><td>Official empty state</td><td><strong>HIDDEN / COLLAPSED / ZERO LAYOUT HEIGHT.</strong> The word "fallback" is no longer used for the hero, so nothing implies a default campaign.</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Unchanged, as instructed: <code>rj_page_section</code>, <code>_rj_section_key</code>, the scheduling architecture, the site-timezone rule, <code>_rj_starts_at</code>, <code>_rj_ends_at</code>, <code>_rj_active</code>, and the ordering and selection rules.</p>
+
+<h2>4 · Documents modified</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:10%">ID</th><th style="width:22%">Document · §</th><th>Change</th></tr></thead>
+  <tbody>
+    <tr><td>C-7</td><td>Dev Blueprint §9.3</td><td>Registry note replaced with "Search synonyms / search aliases only" plus the full does-not list; validation column gains "comma-separated — multiple aliases in one existing field, no new key". Marked C-7 LOCKED.</td></tr>
+    <tr><td>C-7</td><td>Dev Blueprint §8.1</td><td>Import <code>name_alt</code> field description replaced with the search-synonym meaning. Marked C-7 LOCKED.</td></tr>
+    <tr><td>C-7</td><td>Final Recon §1</td><td>The keep/remove row changed from NEEDS CLARIFICATION to <strong>LOCKED</strong> — "retained as a search-synonym field". The superseded-Decision-1-use row is retained.</td></tr>
+    <tr><td>C-7</td><td>Final Recon §6</td><td>Registry row purpose changed to "Search synonyms / search aliases", status <strong>REQUIRED · LOCKED (C-7)</strong>. Totals row now reads "16, all locked".</td></tr>
+    <tr><td>C-11</td><td>Dev Blueprint §9.2</td><td><code>_rj_weight</code> and <code>_rj_weight_unit</code> public column changed <strong>Yes → Conditional</strong>, with the OFF/ON REST rule and the admin-unaffected note. Validation column gains "Empty permitted — no fake or default value is ever substituted".</td></tr>
+    <tr><td>C-11</td><td>Dev Blueprint §10</td><td><code>rj_display</code> contents now name <code>show_weight_publicly</code> with <strong>default OFF</strong>, stating it governs public surfaces and public REST alike and that no second weight setting exists.</td></tr>
+    <tr><td>C-11</td><td>Dev Blueprint §12.1</td><td>RJ Product Grid "show weight" control annotated "honoured only when the global <code>rj_display.show_weight_publicly</code> switch is ON".</td></tr>
+    <tr><td>C-11</td><td>Final Recon §1, §6</td><td>Status changed from NEEDS CLARIFICATION to <strong>LOCKED</strong>; registry row notes conditional exposure.</td></tr>
+    <tr><td>OPEN-2</td><td>Dev Blueprint §6.2</td><td><strong>"Fallback" row replaced by "Empty state"</strong> — not rendered, zero layout space, next section collapses upward, marked OPEN-2 LOCKED. <strong>"Last-resort fallback" row replaced by "Evergreen campaign"</strong> — a dateless hero is an ordinary campaign, and there is no theme-rendered substitute band.</td></tr>
+    <tr><td>OPEN-2</td><td>Final Recon §1, §4, §9, §10</td><td>Status OPEN → <strong>LOCKED</strong>. §4's heading gains "CLOSED — LOCKED BY OWNER DECISION" with a green notice stating the rule; the analysis below it is retained as the reasoning record.</td></tr>
+    <tr><td>All three</td><td>Final Recon §9</td><td>Heading changed to "Clarifications — three closed by owner decision, one still open". Rows 1–3 now read CLOSED — LOCKED with Blocks = Nothing; row 4 (OPEN-1) marked "Still open".</td></tr>
+    <tr><td>All three</td><td>Final Recon §5</td><td>Contradiction rows updated from pre-decision to applied: the C-7 row's "remove or keep — owner call" replaced with <strong>DECISION APPLIED</strong>, and the C-11 row's "Clarification needed — options (a) or (b)" replaced with <strong>DECISION APPLIED — option (b)</strong>. Both dangling cross-references to labels that no longer exist (NON-BLOCKING-1, NEEDS-CLARIFICATION-2) removed.</td></tr>
+    <tr><td>All three</td><td>Final Recon headline box</td><td>"Four items remain unresolved" → <strong>"One item remains unresolved — OPEN-1"</strong>.</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12px;color:#595d6c">Eight edits to the Development Blueprint, fifteen to the Final Reconciliation — thirteen status changes, one duplicate-row repair and one heading change. Every one re-read in the file after editing.</p>
+
+<h2>5 · Hygiene scan</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:18%">Search area</th><th style="width:22%">Active contradictions</th><th style="width:28%">Historical references</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td><code>_rj_name_alt</code> · "alternate name" · "synonym"</td><td style="color:#2f6b3a"><strong>None.</strong> Both active references (Dev §9.3, §8.1) now describe it only as a search-synonym field. Final Recon §1, §5 and §6 agree.</td><td>Dev §0 Conflict 1 record; Final Recon §3 "as the Decision 1 resolution"; Category Master's statement</td><td><strong>LOCKED.</strong> Historical entries correctly scoped to the superseded <em>justification</em>, not to the key.</td></tr>
+    <tr><td><code>_rj_weight</code> · <code>_rj_weight_unit</code> · "show weight publicly" · <code>rj_display</code></td><td style="color:#2f6b3a"><strong>None.</strong> §9.2 reads Conditional, §10 states the switch and its OFF default, §12.1 subordinates the widget control. §11 public product reads carry no weight-specific override. Final Recon §5's C-11 row now records the decision as applied.</td><td>Final Recon §5 C-11 row, which records the original "Public: Yes" vs display-flag conflict and its resolution</td><td><strong>LOCKED.</strong></td></tr>
+    <tr><td>"hero fallback" · "no active campaign" · "default fallback"</td><td style="color:#2f6b3a"><strong>None.</strong> Both §6.2 fallback rows are replaced. Remaining uses of "fallback" in the Development Blueprint are unrelated — the autoloader, the cache transient, the WhatsApp number resolver, media formats, settings defaults, and the shortcode-and-block layer under Elementor.</td><td>Final Recon §4 OPEN-2 analysis, under a CLOSED — LOCKED notice</td><td><strong>LOCKED.</strong> Reasoning record retained and labelled.</td></tr>
+    <tr><td>"maximum three"</td><td style="color:#2f6b3a"><strong>None.</strong></td><td>Technical Blueprint §3.6, under its SUPERSEDED notice; Final Recon §3</td><td><strong>SUPERSEDED/HISTORICAL.</strong> Already handled in an earlier pass.</td></tr>
+    <tr><td>"hero collapsed" · "hero hidden" · "hero empty state"</td><td style="color:#2f6b3a"><strong>None contradicting.</strong> Dev §6.2's Empty state row is the single authority.</td><td>None</td><td><strong>LOCKED.</strong></td></tr>
+  </tbody>
+</table>
+
+<h2>6 · Unchanged open decision</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p style="font-size:15.5px;font-weight:500">OPEN-1 — Elementor widget count (17 vs 21) remains OPEN and was not modified.</p>
+<p style="font-size:12.5px;color:#595d6c">Verified: Dev Blueprint §0 Conflict 2 still records the 21-vs-17 question with its recommendation; §12.1 still lists seventeen; §12.2 still records the four dropped with reasons; Final Reconciliation §4 still holds the 13 / 17 / 21 side-by-side with the overlap evidence. No count was chosen. It blocks Stage 21 only.</p>
+
+<h2>7 · Final verification</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:40%">Check</th><th style="width:12%">Result</th><th>Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>C-7 verification</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>Both active references re-read after editing: Dev §9.3 line 860 and §8.1 line 751 both read "Search synonyms / search aliases". Neither defines identity; neither creates a term. Multiple aliases supported in the existing field.</td></tr>
+    <tr><td>C-11 verification</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>Dev §9.2 lines 836–837 read <strong>Conditional</strong> with the OFF/ON REST rule; §10 line 948 states the switch and its OFF default; §12.1 line 1052 subordinates the widget control. OFF hides UI and REST; ON permits valid stored values; admin retained.</td></tr>
+    <tr><td>OPEN-2 verification</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>Dev §6.2 line 667 reads "Empty state — None rendered … contributes zero layout space and the next homepage section collapses upward automatically"; line 668 reclassifies the dateless hero and states there is no last-resort fallback.</td></tr>
+    <tr><td>No new weight schema invented</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>Same two keys, same types. Only the public column changed, from Yes to Conditional.</td></tr>
+    <tr><td>No new C-7 field invented</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>One existing <code>string</code> field, comma-separated. No new key, no new table, no repeating meta.</td></tr>
+    <tr><td>Locked architecture unchanged</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>Category Master not opened for writing. 306 terms · 5 roots · 74/98/98 · Decision 1 · 1b · Model B · <code>_rj_resolver</code> · 22 mappings · 6 post types · 7 taxonomies · 8 tables · 9 options groups · guest wishlist · showroom timings · notification architecture · the six rejected identifiers — all untouched.</td></tr>
+    <tr><td>Elementor decision untouched</td><td style="color:#2f6b3a"><strong>PASS</strong></td><td>See §6. No widget count chosen.</td></tr>
+    <tr><td>Code written</td><td style="color:#2f6b3a"><strong>NO</strong></td><td>No PHP, JavaScript, CSS or WordPress file created or modified. Specification documents only.</td></tr>
+  </tbody>
+</table>
+
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:16px 18px;margin-top:18px;break-inside:avoid">
+  <h5 style="margin:0 0 8px;color:#2f6b3a">Specification status</h5>
+  <table style="margin:0 0 8px">
+    <tbody>
+      <tr><td style="width:40%"><strong>C-7</strong></td><td style="color:#2f6b3a;font-weight:600">LOCKED — search-synonym field</td></tr>
+      <tr><td><strong>C-11</strong></td><td style="color:#2f6b3a;font-weight:600">LOCKED — global <code>rj_display</code> switch, default OFF</td></tr>
+      <tr><td><strong>OPEN-2</strong></td><td style="color:#2f6b3a;font-weight:600">LOCKED — conditional hero slot, zero layout space</td></tr>
+      <tr><td><strong>OPEN-1</strong></td><td style="color:#8a6410;font-weight:600">OPEN — Elementor widget count, blocks Stage 21</td></tr>
+      <tr><td><strong>Critical blockers</strong></td><td style="color:#2f6b3a;font-weight:600">None</td></tr>
+    </tbody>
+  </table>
+  <p style="margin:0;font-size:13.5px;color:#595d6c">One decision remains, and it blocks only Stage 21. Everything needed for Stages 1 through 20 is now settled.</p>
+</div>
+
+</doc-page>
+</x-dc>
+</body>
+</html>

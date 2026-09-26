@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15.5px; line-height: 1.62; }
+h1, h2, h3, h4 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 38px; letter-spacing: -0.03em; }
+h2 { font-size: 26px; margin: 0 0 4px; }
+h3 { font-size: 18px; margin: 26px 0 6px; }
+h4 { font-size: 15px; font-weight: 600; margin: 18px 0 4px; letter-spacing: 0; }
+h5 { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 16px 0 6px; }
+p { margin: 0 0 11px; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 12px; padding-left: 20px; }
+li { margin: 0 0 4px; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 12px 0 18px; font-size: 12.4px; line-height: 1.45; }
+th { text-align: left; font-weight: 600; font-size: 9.5px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 10px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 6px 10px 6px 0; vertical-align: top; overflow-wrap: anywhere; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 4px; border-radius: 3px; color: #423a6a; overflow-wrap: anywhere; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.8in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Conflict 3 Resolution</span>
+  <span>Session 5A · Pre-code</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9.5px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>No code. No permanent identifiers created.</span>
+  <span>Awaiting owner decision</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:22px">
+  <div style="font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Session 5A</div>
+  <h1 style="margin:0">Conflict 3 — Resolution</h1>
+  <div style="font-size:18px;color:#595d6c;line-height:1.35">Five proposed permanent identifiers, tested against the approved architecture. Four are unnecessary.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:15px 17px;margin-bottom:20px;break-inside:avoid">
+  <h5 style="margin:0 0 6px;color:#8a6410">This revises my earlier recommendation</h5>
+  <p style="margin:0;font-size:14.5px">In the Development Blueprint I recommended approving all five. Applying your rules 3–5 — prefer existing structures, no new permanent object without a clear requirement, no redundant representations — that recommendation does not survive. <strong>One identifier is genuinely required. Four are not.</strong></p>
+</div>
+
+<h2>Decision table</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 16px"></div>
+
+<h3 style="margin-top:0">rj_page_section</h3>
+<table>
+  <tbody>
+    <tr><td style="width:24%"><strong>Required?</strong></td><td><strong style="color:#2f6b3a">YES</strong></td></tr>
+    <tr><td>Type proposed</td><td>Custom post type, private, <code>show_ui</code> true, REST true</td></tr>
+    <tr><td>Why required</td><td>The approved UI/UX Blueprint specifies frontend visual editing of Hero, About, Testimonials and Footer bands. Those bands need editable content that is not a Page, not theme markup, and not builder storage — because all three are lost on a theme change or builder removal, which the locked business rule forbids.</td></tr>
+    <tr><td>Can existing structure handle it?</td><td><strong>Partially, and badly.</strong> An options group could store the bands as JSON. That satisfies portability but loses three things the approved architecture already relies on elsewhere: post revisions (no undo on a mis-edit), scheduling (no festival or wedding-season band set in advance), and the media library's own picker UI per band. It would also mean the visual-edit layer writes to options for bands and to posts for everything else — two write paths where the architecture specifies one.</td></tr>
+    <tr><td>Alternative</td><td>Options group <code>rj_sections</code>. Workable. Meaningfully worse.</td></tr>
+    <tr><td>Migration cost</td><td><strong>Now: zero.</strong> Later, if bands start in options: a migration script plus re-entry of any scheduling. Small but real.</td></tr>
+    <tr><td><strong>Recommendation</strong></td><td><strong>Create it — and absorb hero into it.</strong> See below.</td></tr>
+    <tr><td>Owner decision required?</td><td><strong>Yes.</strong> This is the one identifier that should become permanent.</td></tr>
+  </tbody>
+</table>
+
+<h3>rj_hero</h3>
+<table>
+  <tbody>
+    <tr><td style="width:24%"><strong>Required?</strong></td><td><strong style="color:#8a3a2f">NO</strong> — as a separate type</td></tr>
+    <tr><td>Type proposed</td><td>Custom post type</td></tr>
+    <tr><td>Why proposed</td><td>Hero slides need an image, copy, a CTA and a schedule, surviving theme changes.</td></tr>
+    <tr><td>Can existing structure handle it?</td><td><strong>Yes — <code>rj_page_section</code> is the same thing.</strong> A hero slide is an editable presentation band with an image, a heading, a sub-line and a CTA. That is the exact shape of a page section. Two post types for roughly nine total records across the whole site is a redundant representation of one concept, which your rule 5 forbids.</td></tr>
+    <tr><td>Alternative</td><td><code>rj_page_section</code> with <code>section_key</code> = <code>hero_1</code>, <code>hero_2</code>, <code>hero_3</code>. Scheduling, revisions, media picker and ordering all come free, identically. The maximum-three rule is enforced in the UI on the hero keys.</td></tr>
+    <tr><td>Migration cost</td><td>Zero now. Merging two post types later would be a content migration.</td></tr>
+    <tr><td><strong>Recommendation</strong></td><td><strong>Do not create.</strong> Hero becomes a section key.</td></tr>
+    <tr><td>Owner decision required?</td><td>Yes — confirm the merge is acceptable.</td></tr>
+  </tbody>
+</table>
+
+<h3>rj_reel_type</h3>
+<table>
+  <tbody>
+    <tr><td style="width:24%"><strong>Required?</strong></td><td><strong style="color:#8a3a2f">NO</strong></td></tr>
+    <tr><td>Type proposed</td><td>Flat taxonomy on reels</td></tr>
+    <tr><td>Why proposed</td><td>Filtering the reel feed by Styling, Craftsmanship, Bridal, Store Tour, Customer.</td></tr>
+    <tr><td>Can existing structure handle it?</td><td><strong>Yes, twice over.</strong> <code>rj_tag</code> is already registered on reels and is already the taxonomy for free keywords. <code>rj_occasion</code> is also already registered on reels and already carries Bridal and Festive. A third reel taxonomy overlaps both.</td></tr>
+    <tr><td>Honest note</td><td>Filtered reel browsing is not in any approved requirement. It is a refinement I proposed. By your rule 4 it does not clear the bar for a permanent object.</td></tr>
+    <tr><td>Alternative</td><td><code>rj_tag</code> terms, with the reel screen offering the five as suggested tags. If a curated filter row is later wanted, it reads a fixed list of tag slugs from the display settings group — no schema change.</td></tr>
+    <tr><td>Migration cost</td><td>Adding the taxonomy later is cheap: register it, then bulk-assign from the existing tags. No data loss either way.</td></tr>
+    <tr><td><strong>Recommendation</strong></td><td><strong>Do not create.</strong> Revisit if the reel library passes ~200 and tag-based filtering proves inadequate.</td></tr>
+    <tr><td>Owner decision required?</td><td>No. Reversible later at low cost.</td></tr>
+  </tbody>
+</table>
+
+<h3>rj_location</h3>
+<table>
+  <tbody>
+    <tr><td style="width:24%"><strong>Required?</strong></td><td><strong style="color:#8a3a2f">NO</strong></td></tr>
+    <tr><td>Type proposed</td><td>Hierarchical taxonomy on showrooms</td></tr>
+    <tr><td>Why proposed</td><td>Structured local-SEO markup and a home for a future third branch.</td></tr>
+    <tr><td>Can existing structure handle it?</td><td><strong>Yes, fully.</strong> The approved showroom meta registry already carries <code>_rj_city</code>, <code>_rj_state</code>, <code>_rj_pincode</code>, <code>_rj_address</code>, <code>_rj_lat</code> and <code>_rj_lng</code>. Local-business structured data is generated from those fields directly — a taxonomy term adds nothing the markup needs.</td></tr>
+    <tr><td>Argument against creating it</td><td>A taxonomy would generate archive URLs such as <code>/location/jhotwara/</code>. With two branches, each archive lists exactly one showroom and duplicates that showroom's own page. That is thin duplicate content competing with the page you actually want ranking — an SEO liability, not an asset.</td></tr>
+    <tr><td>Alternative</td><td>The existing meta fields. A third branch is a third showroom post; nothing needs to change.</td></tr>
+    <tr><td>Migration cost</td><td>Adding it later costs nothing — terms are derived from meta already present.</td></tr>
+    <tr><td><strong>Recommendation</strong></td><td><strong>Do not create.</strong> Reconsider at five or more branches across multiple cities, where archives stop being duplicates.</td></tr>
+    <tr><td>Owner decision required?</td><td>No.</td></tr>
+  </tbody>
+</table>
+
+<h3>rj_customer_segment</h3>
+<table>
+  <tbody>
+    <tr><td style="width:24%"><strong>Required?</strong></td><td><strong style="color:#8a3a2f">NO</strong> — as a taxonomy</td></tr>
+    <tr><td>Type proposed</td><td>Flat taxonomy on the user object</td></tr>
+    <tr><td>Why the capability is required</td><td>The approved Notification Architecture routes bridal collection announcements to a Bridal Interest audience. Segments are an approved concept; the storage mechanism is what is in question.</td></tr>
+    <tr><td>Can existing structure handle it?</td><td><strong>Yes, and better.</strong> User meta with one row per segment — key <code>_rj_segment</code>, one row per value — is directly queryable by the notification audience resolver on an indexed key/value pair.</td></tr>
+    <tr><td>Argument against the taxonomy</td><td>Taxonomies on the user object are not first-class in WordPress: no built-in admin UI, term counts are unreliable for non-post objects, and several REST and export behaviours assume post objects. It would mean building a custom management screen to replicate what a meta field gives for free, on a mechanism WordPress supports less well. This weakens rather than strengthens portability and future API compatibility.</td></tr>
+    <tr><td>Alternative</td><td>Multi-row user meta <code>_rj_segment</code>, added to the approved meta registry §9.5. Values: <code>bridal_interest</code>, <code>silver_buyer</code>, <code>high_intent</code>, <code>dormant</code>, <code>staff_contact</code>. Private, never public, excluded from REST.</td></tr>
+    <tr><td>Migration cost</td><td>Zero now. Meta to taxonomy later, if ever needed, is a short one-way script.</td></tr>
+    <tr><td><strong>Recommendation</strong></td><td><strong>Do not create the taxonomy.</strong> Add one user meta key instead.</td></tr>
+    <tr><td>Owner decision required?</td><td>Yes — this adds a key to the approved meta registry, which is itself a locked document.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">A · Final proposed resolution</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 16px"></div>
+<p>Of five proposed permanent identifiers, <strong>one is created, four are not.</strong> Every capability the five were meant to provide is preserved:</p>
+<table>
+  <thead><tr><th style="width:26%">Capability</th><th style="width:26%">Was to be provided by</th><th>Now provided by</th></tr></thead>
+  <tbody>
+    <tr><td>Editable homepage bands, theme-independent, with revisions and scheduling</td><td>rj_page_section</td><td><strong>rj_page_section</strong> — created</td></tr>
+    <tr><td>Hero slides, same properties</td><td>rj_hero</td><td><code>rj_page_section</code> with <code>section_key</code> = <code>hero_1…3</code></td></tr>
+    <tr><td>Reel feed filtering</td><td>rj_reel_type</td><td><code>rj_tag</code>, already registered on reels</td></tr>
+    <tr><td>Showroom local-SEO structure</td><td>rj_location</td><td>Existing showroom address meta, already approved</td></tr>
+    <tr><td>Notification audiences</td><td>rj_customer_segment</td><td>User meta <code>_rj_segment</code>, multi-row</td></tr>
+  </tbody>
+</table>
+<p>Theme independence, Elementor independence, shared-host portability and future API compatibility are all preserved or improved — user meta and post meta are better supported by the REST layer than a user taxonomy would be.</p>
+
+<h2>B · Identifiers that should become permanent</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 16px"></div>
+<table>
+  <thead><tr><th style="width:22%">Identifier</th><th style="width:14%">Kind</th><th>Definition</th></tr></thead>
+  <tbody>
+    <tr><td><code>rj_page_section</code></td><td>Post type</td><td><code>public</code> false · <code>show_ui</code> true · <code>show_in_rest</code> true · <code>rest_base</code> <code>page-sections</code> · <code>has_archive</code> false · no rewrite · supports title, editor, thumbnail, revisions, custom-fields · <code>capability_type</code> <code>rj_section</code>/<code>rj_sections</code> · <code>map_meta_cap</code> true · manage capability <code>rj_manage_settings</code></td></tr>
+    <tr><td><code>_rj_section_key</code></td><td>Post meta</td><td>String, from a registered allow-list. Launch values: <code>hero_1</code>, <code>hero_2</code>, <code>hero_3</code>, <code>about</code>, <code>bridal_band</code>, <code>trust_strip</code>, <code>footer_note</code>. Extending the list is a code change, not a schema change.</td></tr>
+    <tr><td><code>_rj_section_fields</code></td><td>Post meta</td><td>The remaining band fields, per the shape already listed in Development Blueprint §6.2: eyebrow, subline, cta_label, cta_url, image_desktop, image_mobile, order, active_from, active_to, enabled.</td></tr>
+    <tr><td><code>_rj_segment</code></td><td>User meta</td><td>Multi-row, one row per segment. Allow-listed values. Private, no REST exposure, admin-write only. Added to meta registry §9.5.</td></tr>
+  </tbody>
+</table>
+
+<h2>C · Identifiers that should NOT be created</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 16px"></div>
+<table>
+  <thead><tr><th style="width:26%">Identifier</th><th style="width:20%">Reversible later?</th><th>Cost of adding later</th></tr></thead>
+  <tbody>
+    <tr><td><code>rj_hero</code></td><td>Yes, but avoid</td><td>Would require splitting section records. Merging two representations of one concept is the thing to prevent, not the thing to defer.</td></tr>
+    <tr><td><code>rj_reel_type</code></td><td>Yes, cheaply</td><td>Register the taxonomy, bulk-assign from existing tags. No data loss.</td></tr>
+    <tr><td><code>rj_location</code></td><td>Yes, cheaply</td><td>Terms derive from address meta already present. One script.</td></tr>
+    <tr><td><code>rj_customer_segment</code></td><td>Yes, cheaply</td><td>Meta rows convert to terms in one script. Unlikely to ever be worth it.</td></tr>
+  </tbody>
+</table>
+<p>All four are cheap to add later and expensive to remove once live. That asymmetry is the whole argument for leaving them out now.</p>
+
+<h2>D · Remaining owner decisions</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 16px"></div>
+<table>
+  <thead><tr><th style="width:8%">#</th><th style="width:30%">Decision</th><th style="width:16%">Blocks</th><th>Recommendation</th></tr></thead>
+  <tbody>
+    <tr><td>3a</td><td>Approve <code>rj_page_section</code> as the one new post type, with hero merged into it</td><td><strong>Stage 3</strong></td><td>Approve</td></tr>
+    <tr><td>3b</td><td>Approve <code>_rj_segment</code> user meta — an addition to the locked meta registry</td><td>Stage 5</td><td>Approve</td></tr>
+    <tr><td>3c</td><td>Confirm the four rejections above</td><td>Stages 3–4</td><td>Confirm</td></tr>
+    <tr><td>1</td><td><strong>Still open.</strong> Combined category terms: ten separate terms, or five slash-joined</td><td>Stage 2 import</td><td>Ten separate; second word in <code>_rj_name_alt</code></td></tr>
+    <tr><td>2</td><td><strong>Still open.</strong> Elementor widgets: seventeen or twenty-one</td><td>Stage 21</td><td>Seventeen</td></tr>
+  </tbody>
+</table>
+<p>Decisions 3a–3c and 1 are the only ones on the near-term critical path. Decision 2 can wait until Stage 20.</p>
+
+<h2>E · Updated implementation order</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 16px"></div>
+<p>The twenty-seven-stage order in Development Blueprint §27 is unchanged. Three stages change in content:</p>
+<table>
+  <thead><tr><th style="width:8%">Stage</th><th style="width:26%">Was</th><th>Now</th></tr></thead>
+  <tbody>
+    <tr><td>3</td><td>Register 7 post types (5 approved + 2 pending)</td><td><strong>Register 6:</strong> <code>rj_product</code>, <code>rj_reel</code>, <code>rj_collection</code>, <code>rj_showroom</code>, <code>rj_testimonial</code>, <code>rj_page_section</code></td></tr>
+    <tr><td>4</td><td>Register 10 taxonomies (7 approved + 3 pending)</td><td><strong>Register 7</strong>, exactly as approved in §7.1. No additions.</td></tr>
+    <tr><td>5</td><td>Meta registry as written</td><td>Add <code>_rj_section_key</code>, <code>_rj_section_fields</code> (post) and <code>_rj_segment</code> (user). No other change.</td></tr>
+  </tbody>
+</table>
+<p>Stages 1, 2 and 6 onward are untouched. Once decisions 3a–3c are given, <strong>Stages 1 through 4 are fully unblocked</strong> and Stage 2 waits only on decision 1, which is needed before the category import file is written rather than before the schema is.</p>
+
+<div style="background:#f5f4ff;border:1px solid #d2cefd;border-radius:8px;padding:15px 17px;margin-top:22px;break-inside:avoid">
+  <h5 style="margin:0 0 6px">One thing to weigh against this recommendation</h5>
+  <p style="margin:0;font-size:14.5px">Being conservative now means four capabilities arrive as conventions rather than as structure — suggested tags instead of a reel taxonomy, address fields instead of location terms. Conventions drift where schema does not. The mitigation is that each of the four is a cheap, one-script addition later, and each has a stated trigger for revisiting. That trade is the right one only because the triggers are written down; if they are not honoured, the conventions quietly decay.</p>
+</div>
+
+</doc-page>
+</x-dc>
+</body>
+</html>

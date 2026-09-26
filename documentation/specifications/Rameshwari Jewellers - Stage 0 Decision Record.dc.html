@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15px; line-height: 1.58; }
+h1, h2 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 34px; letter-spacing: -0.03em; }
+h2 { font-size: 21px; margin: 24px 0 4px; }
+h5 { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 14px 0 6px; }
+p { margin: 0 0 10px; }
+table { width: 100%; table-layout: fixed; border-collapse: collapse; margin: 10px 0 15px; font-size: 11.8px; line-height: 1.42; }
+th { text-align: left; font-weight: 600; font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 8px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 5px 8px 5px 0; vertical-align: top; overflow-wrap: normal; word-break: keep-all; }
+td:nth-last-child(-n+2) { overflow-wrap: anywhere; word-break: normal; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 3px; border-radius: 3px; color: #423a6a; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.7in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Stage 0 Decision Record</span>
+  <span>4 edits · 3 documents</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>Documentation only. No code. Schema unchanged.</span>
+  <span>Stage 0 decisions recorded</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px">
+  <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Stage 0 setup decisions</div>
+  <h1 style="margin:0">Stage 0 Decision Record</h1>
+  <div style="font-size:17px;color:#595d6c;line-height:1.35">Three owner decisions and one clarification written into the implementation documents. Four edits, each matched exactly once and verified by reading the file back.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<h2 style="margin-top:0">Decisions recorded</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:28%">Decision</th><th style="width:30%">Approved value</th><th>Recorded in</th></tr></thead>
+  <tbody>
+    <tr><td>Git hosting</td><td><strong>GitHub</strong></td><td>Master Plan Stage 0 · Technical Blueprint §15.4</td></tr>
+    <tr><td>Branching model</td><td><strong><code>main</code> + <code>develop</code></strong></td><td>Master Plan Stage 0 · Technical Blueprint §15.4</td></tr>
+    <tr><td>Automated test runner</td><td><strong>GitHub hosted pipeline</strong></td><td>Master Plan Stage 0 · Development Blueprint §24</td></tr>
+    <tr><td>Release deployment</td><td><strong>From the release tag on <code>main</code></strong></td><td>Technical Blueprint §15.2</td></tr>
+  </tbody>
+</table>
+
+<h2>Changelog</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:5%">#</th><th style="width:17%">Document · §</th><th style="width:30%">Old wording</th><th style="width:30%">New wording</th><th>Verified</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Master Plan · Stage 0 deliverables</td><td>"Git repository with the directory skeleton of §3 ·"</td><td>"Git repository <strong>hosted on GitHub</strong>, with branches <strong><code>main</code></strong> (releases) and <strong><code>develop</code></strong> (integration), holding the directory skeleton of §3 · <strong>GitHub's hosted pipeline configured to run the coding-standard check, static analysis and the test suites on every push</strong> ·"</td><td>Both phrases present ×1</td></tr>
+    <tr><td>2</td><td>Technical Blueprint §15.4 · Code versioning</td><td>"… a tag per release, a changelog per release."</td><td>Appended: "<strong>Repository hosted on GitHub. Branching model: <code>develop</code> receives all work; <code>develop</code> merges to <code>main</code> at release time; release tags are placed on <code>main</code> only.</strong>"</td><td>Present ×1</td></tr>
+    <tr><td>3</td><td>Development Blueprint §24 · closing line</td><td>"All twenty run in continuous integration on every commit"</td><td>"All twenty run in <strong>GitHub's hosted pipeline</strong> on every commit"</td><td>New ×1 · old ×0</td></tr>
+    <tr><td>4</td><td>Technical Blueprint §15.2 · release step 4</td><td>"Files deployed; migration runner triggered; version number confirmed."</td><td>"Files deployed <strong>from the release tag on <code>main</code></strong>; migration runner triggered; version number confirmed."</td><td>New ×1 · old ×0</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Four rows, four edits. Every edit adds wording; none removes a requirement.</p>
+
+<h2>Verification</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:44%">Check</th><th style="width:12%">Result</th><th>Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>Each new wording present exactly once</td><td style="color:#2f6b3a">PASS</td><td>Five phrases searched across the three files after writing, each returned ×1</td></tr>
+    <tr><td>Replaced wording no longer present</td><td style="color:#2f6b3a">PASS</td><td>"run in continuous integration on every commit" ×0 · "Files deployed; migration" ×0</td></tr>
+    <tr><td>No contradictory wording</td><td style="color:#2f6b3a">PASS</td><td>GitLab, Bitbucket, trunk, feature branch, hotfix: 0 in all three documents</td></tr>
+    <tr><td>Counts unchanged</td><td style="color:#2f6b3a">PASS</td><td>None of the four edits contains a count. 6 · 7 · 8 · 10 · 306 · 22 · 21 · 15 · 20 untouched</td></tr>
+    <tr><td>Stage numbering unchanged</td><td style="color:#2f6b3a">PASS</td><td>No stage heading edited; stages 0–21 as before</td></tr>
+    <tr><td>Dependency graph unchanged</td><td style="color:#2f6b3a">PASS</td><td>No dependency row or diagram edited</td></tr>
+    <tr><td>Architecture unchanged</td><td style="color:#2f6b3a">PASS</td><td>No post type, taxonomy, table, option, meta key, route or widget touched</td></tr>
+  </tbody>
+</table>
+
+<h2>Status</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:15px 17px;break-inside:avoid">
+  <table style="margin:0">
+    <tbody>
+      <tr><td style="width:46%"><strong>GitHub recorded</strong></td><td style="color:#2f6b3a;font-weight:600">YES</td></tr>
+      <tr><td><strong>main + develop recorded</strong></td><td style="color:#2f6b3a;font-weight:600">YES</td></tr>
+      <tr><td><strong>Hosted pipeline recorded</strong></td><td style="color:#2f6b3a;font-weight:600">YES</td></tr>
+      <tr><td><strong>Release tag deployment recorded</strong></td><td style="color:#2f6b3a;font-weight:600">YES</td></tr>
+      <tr><td><strong>Contradictions remaining</strong></td><td style="color:#2f6b3a;font-weight:600">NO</td></tr>
+      <tr><td><strong>Stage 0 decisions locked</strong></td><td style="color:#2f6b3a;font-weight:600">YES</td></tr>
+      <tr><td><strong>Remaining owner action</strong></td><td>Delete <code>Platform Architecture copy.dc.html</code> before the first commit</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<h2 style="break-before:page">Addendum · Version floor record — 23 Sep 2026</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 12px"></div>
+<p>Owner approved <strong><code>RJ_MIN_PHP</code> = 8.2</strong> and <strong><code>RJ_MIN_WP</code> = 6.5</strong>, and the Implementation Master Plan as the stage-numbering authority. This supersedes the 8.1 / 6.4 pair given earlier in chat, which was never written into any document: WordPress 6.4 is below Elementor Free's minimum of 6.5, and PHP 8.1 is past end of life.</p>
+<table>
+  <thead><tr><th style="width:5%">#</th><th style="width:19%">Document</th><th style="width:17%">Section</th><th style="width:27%">Old</th><th>New</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Implementation Master Plan</td><td>Stage 1 deliverables</td><td>Constants listed without values</td><td><code>RJ_MIN_PHP</code> = 8.2, <code>RJ_MIN_WP</code> = 6.5</td></tr>
+    <tr><td>2</td><td>Development Blueprint</td><td>§2.2 bootstrap row</td><td>Constants listed without values</td><td><code>RJ_MIN_PHP</code> (8.2), <code>RJ_MIN_WP</code> (6.5)</td></tr>
+    <tr><td>3</td><td>Development Blueprint</td><td>§3.1 blocks plugin</td><td>"WordPress 5.8 or later"</td><td>"WordPress 6.5 or later — the core plugin's floor"</td></tr>
+    <tr><td>4</td><td>Platform Architecture</td><td>Output layer table</td><td>"WordPress 5.8+"</td><td>"WordPress 6.5+"</td></tr>
+    <tr><td>5</td><td>Development Blueprint</td><td>§28 "Every commit"</td><td>"References a stage from §27"</td><td>"References a stage from the Implementation Master Plan (Stages 0–21)"</td></tr>
+    <tr><td>6</td><td>Development Blueprint</td><td>Registry index, row 10</td><td>"§27 · Twenty-seven stages with dependencies"</td><td>Points to the Master Plan; §27 marked superseded and retained as the record</td></tr>
+    <tr><td>7</td><td>Development Blueprint</td><td>§27 heading</td><td>No status note</td><td>Superseded note: Master Plan Stages 0–21 are authoritative; stage numbers elsewhere in the document (e.g. §0) use the older numbering</td></tr>
+    <tr><td>8</td><td>Implementation Master Plan</td><td>Host checks table</td><td>No version check</td><td>New row: confirm the host offers PHP 8.2+ and WordPress 6.5+ before the first deploy, on the live control panel</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c"><strong>Unchanged:</strong> stage numbers, dependencies, the 20-test regression registry, the release procedure, and every schema count. The Stage 1 gate now reads its values from these constants: test on PHP 8.2 and current PHP, WordPress 6.5 and current WordPress. <strong>Known expiry:</strong> PHP 8.2 security support ends 31 Dec 2026; revisit the floor then.</p>
+
+<h2 style="break-before:page">Addendum · Pre-commit synchronization — 23 Sep 2026</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 12px"></div>
+<p>Six wording corrections applied before the documentation baseline commit. No count, schema, stage, dependency, security or deployment rule changed.</p>
+<table>
+  <thead><tr><th style="width:6%">#</th><th style="width:20%">Document</th><th style="width:16%">Section</th><th style="width:26%">Old</th><th>New</th></tr></thead>
+  <tbody>
+    <tr><td>C1</td><td>Development Blueprint</td><td>§1 tree</td><td>Four <code>.md</code> specification files</td><td><code>specifications/</code> — the specification set (<code>.dc.html</code>)</td></tr>
+    <tr><td>C2</td><td>Implementation Master Plan</td><td>§3 tree</td><td>"the 20 specs"</td><td>"the specification set"</td></tr>
+    <tr><td>C3</td><td>Technical Blueprint</td><td>§15.4</td><td>"Git from Phase 1"</td><td>"Git from Stage 0"</td></tr>
+    <tr><td>C4</td><td>Technical Blueprint</td><td>§16 heading</td><td>No status note</td><td>Superseded by the Master Plan's Stages 0–21; names the six places using the old phase numbers; row 4's counts superseded by 15 widgets / 0 required tags</td></tr>
+    <tr><td>C5</td><td>Platform Architecture</td><td>Builder integration</td><td>"13 widgets and 7 dynamic tags"</td><td>"15 Elementor-Free widgets; dynamic tags are the optional Pro layer (0 required)"</td></tr>
+    <tr><td>C6</td><td>Platform Architecture</td><td>§14 heading</td><td>No status note</td><td>Superseded by the Master Plan; "Phase" labels are the original feature phasing</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">Addendum · Architecture lock corrections — 23 Sep 2026</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 12px"></div>
+<p>Owner-approved. No new capability, table, post type, taxonomy or option was created; <code>rj_manage_reels</code> was already one of the eleven capabilities.</p>
+<table>
+  <thead><tr><th style="width:6%">#</th><th style="width:22%">Document · section</th><th style="width:30%">Old</th><th>New</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Development Blueprint §6.1, Manage cap</td><td>One merged cell gave <code>rj_reel</code> <code>rj_manage_catalogue</code></td><td><code>rj_reel</code> → <code>rj_manage_reels</code>, matching Dev §17, Dev §21, the Master Plan and Platform Architecture</td></tr>
+    <tr><td>2</td><td>Implementation Master Plan §5 graph and principles</td><td>"19 import/export (8,19←7)"</td><td>19 ← 7 · 8 · 10 · 11 · 17, with the reason for each. Stage 19 now waits for Stage 17.</td></tr>
+    <tr><td>3</td><td>Implementation Master Plan §5 principles</td><td>No statement of where Stages 7–21 declare dependencies</td><td>The graph is the single authoritative source for Stages 7–21; it governs where a stage table differs</td></tr>
+  </tbody>
+</table>
+</doc-page>
+</x-dc>
+</body>
+</html>

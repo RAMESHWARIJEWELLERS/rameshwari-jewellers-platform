@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15.5px; line-height: 1.6; }
+h1, h2, h3, h4 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 38px; letter-spacing: -0.03em; }
+h2 { font-size: 25px; margin: 0 0 4px; }
+h3 { font-size: 17.5px; margin: 24px 0 6px; }
+h5 { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 16px 0 6px; }
+p { margin: 0 0 10px; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 11px; padding-left: 20px; }
+li { margin: 0 0 4px; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 11px 0 17px; font-size: 12.2px; line-height: 1.44; }
+th { text-align: left; font-weight: 600; font-size: 9.5px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 9px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 6px 9px 6px 0; vertical-align: top; overflow-wrap: anywhere; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 4px; border-radius: 3px; color: #423a6a; overflow-wrap: anywhere; }
+pre { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.4px; line-height: 1.55; background: #f3f5fe; border-left: 2px solid #9184d9; padding: 11px 13px; margin: 11px 0 16px; border-radius: 0 8px 8px 0; white-space: pre-wrap; overflow-wrap: anywhere; color: #292b31; }
+pre code { background: none; padding: 0; color: inherit; font-size: 1em; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.75in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Category Master</span>
+  <span>LOCKED · Source of truth</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9.5px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>306 terms · No deduplication · No merging</span>
+  <span>Verification: PASS</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px">
+  <div style="font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Category Master · LOCKED</div>
+  <h1 style="margin:0">Category Master</h1>
+  <div style="font-size:18px;color:#595d6c;line-height:1.35">Every category, materialized in full. Gold, Silver and Black Polish Silver written out separately — no cross-references, nothing summarized.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:15px 17px;margin-bottom:16px;break-inside:avoid">
+  <h5 style="margin:0 0 6px;color:#2f6b3a">This master settles three open questions</h5>
+  <table style="margin:0">
+    <thead><tr><th style="width:22%">Question</th><th>Settled as</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Decision 1</strong></td><td><strong>Separate terms.</strong> The master lists झुमका and झूमर, जंजीर and सांकली, कड़ा and कड़ी, चुटकी and बिछिया as individual siblings. लौंग sits under Nose Jewellery and लूंग under Ear Jewellery — two different terms, not one word spelled two ways. The <code>_rj_name_alt</code> approach is not needed and is not used.</td></tr>
+      <tr><td><strong>Decision 1b</strong></td><td><strong>Black Polish Silver carries the full Silver structure</strong>, including कमर के आभूषण, पेर के आभूषण and बच्चो के आभूषण.</td></tr>
+      <tr><td><strong>Conflict 4</strong></td><td><strong>Five real <code>rj_category</code> roots.</strong> Rule 13 forbids an alternative category system, so the composed-menu resolution is off the table. METALS, WEDDING and FOR are category terms. The consequence is recorded below under "Accepted consequence" — it is not re-argued.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>Category identity</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<table>
+  <thead><tr><th style="width:24%">Rule</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Identity is the path</td><td>Two terms with the same visible name under different parents are two different categories. <code>Gold Jewellery › महिला के आभूषण › कलाई के आभूषण › कड़ा</code>, the same path under Silver Jewellery, and the same under Black Polish Silver are <strong>three distinct terms</strong>.</td></tr>
+    <tr><td>Names are never altered</td><td>No capitalization change, no spelling normalisation, no transliteration of a Hindi name, no merging. Where the master uses English group names (Ear Jewellery, Nose Jewellery, Neck Jewellery) they stay English; where it uses Hindi (सिर के आभूषण, कलाई के आभूषण) they stay Hindi.</td></tr>
+    <tr><td>Spelling variants preserved</td><td>हथफूल under कलाई के आभूषण and हथफुल under अंगुली के आभूषण differ by one vowel and are kept exactly as supplied. बच्चो के आभूषण is spelled as the master spells it.</td></tr>
+    <tr><td>Slugs are path-derived</td><td>WordPress requires a unique slug per taxonomy. The importer generates one deterministically from the full ancestor path, so the visible name is untouched: <code>gold-mahila-kalai-kada</code>, <code>silver-mahila-kalai-kada</code>, <code>bps-mahila-kalai-kada</code>. Latin only — Devanagari slugs percent-encode badly on some shared hosts.</td></tr>
+    <tr><td>Import match key</td><td>The full slug path. Re-running the import updates rather than duplicates, so the file can be loaded repeatedly as the taxonomy is refined.</td></tr>
+    <tr><td>Deduplication</td><td><strong>Disabled.</strong> The importer never merges on name. Duplicate display names are expected and valid.</td></tr>
+    <tr><td>Nesting</td><td>Unbounded. This master reaches depth 5; nothing in the model special-cases a level. The depth-20 guard is a cycle detector, not a business limit.</td></tr>
+    <tr><td>Scale</td><td>306 terms today, designed to 1,500, practical ceiling ~5,000 where the menu moves to on-demand level loading. Path and depth caches carry the load; counts are written hourly, never computed live.</td></tr>
+  </tbody>
+</table>
+
+<h2>The five roots</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<pre><code>CATEGORIES  (label only — not a term)
+├── JEWELLERY        order 10
+├── METALS           order 20
+├── WEDDING          order 30
+├── FOR              order 40
+└── OTHERS           order 50
+
+JEWELLERY                     METALS              WEDDING
+├── Gold Jewellery            ├── Gold            ├── Bridal Set
+├── Silver Jewellery          ├── Diamond         ├── Mangalsutra
+├── Black Polish Silver       ├── Silver          ├── Couple Rings
+├── Gold Jewellery Set        ├── Platinum        ├── Engagement Rings
+└── Silver Jewellery Set      ├── Gemstone        ├── Bridal Nath
+                              ├── White Gold      ├── Maang Tikka
+                              └── Rose Gold       └── Anniversary
+
+FOR                           OTHERS
+├── Baby                      ├── Antique
+├── Kids                      ├── Traditional
+├── Girls                     ├── Navaratna
+├── Boys                      ├── Temple Jewellery
+├── Men                       ├── Lakshmi Jewellery
+├── Women                     ├── Name Rings
+├── Bride                     └── Gold Coin
+└── Groom</code></pre>
+
+<h2 style="break-before:page">Gold Jewellery — full hierarchy</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<pre><code>JEWELLERY › Gold Jewellery
+├── महिला के आभूषण (Women's)
+│   ├── सिर के आभूषण
+│   │   ├── शीशफूल
+│   │   ├── सिरमांग
+│   │   ├── बोरला
+│   │   ├── रखड़ी
+│   │   ├── टिका
+│   │   ├── टीडीभलको
+│   │   └── सिरपेच
+│   ├── Ear Jewellery
+│   │   ├── कर्णफूल
+│   │   ├── झुमका
+│   │   ├── झूमर
+│   │   ├── झुमकी
+│   │   ├── बाली
+│   │   ├── झेला
+│   │   ├── लूंग
+│   │   ├── टॉप्स
+│   │   ├── कुंडला
+│   │   └── छेलकडी
+│   ├── Nose Jewellery
+│   │   ├── नथ
+│   │   ├── कांटा
+│   │   ├── लौंग
+│   │   ├── नथड़ी
+│   │   ├── नाक की बाली
+│   │   ├── लटकन
+│   │   └── नकफूल
+│   ├── Neck Jewellery
+│   │   ├── चन्द्रहार
+│   │   ├── कण्ठहार
+│   │   ├── रानीहार
+│   │   ├── झालरा
+│   │   ├── हालरो
+│   │   ├── कंठी
+│   │   ├── चैन
+│   │   ├── माणिक्य माला
+│   │   ├── आड़
+│   │   ├── मंगलसूत्र
+│   │   ├── मांदलियो
+│   │   ├── लॉकेट
+│   │   ├── टेवटा
+│   │   ├── पंचमणियो
+│   │   └── बंगड़ी
+│   ├── बाजू के आभूषण
+│   │   └── बाजूबंद
+│   ├── कलाई के आभूषण
+│   │   ├── हथफूल
+│   │   ├── पुँची
+│   │   ├── कड़ा
+│   │   ├── चुडिया
+│   │   ├── बंगड़ी
+│   │   ├── नोगरी
+│   │   ├── छेलकड़ो
+│   │   └── ब्रेसलेट
+│   └── अंगुली के आभूषण
+│       ├── अंगूठी
+│       ├── दामणा
+│       ├── छल्ला
+│       └── हथफुल
+└── पुरुषों के आभूषण (Men's)
+    ├── कान के
+    │   ├── बालियां
+    │   ├── मुरकियाँ
+    │   └── लोंग
+    ├── गले के
+    │   └── चेन
+    ├── कलाई के
+    │   ├── कड़ा
+    │   └── ब्रेसलेट
+    └── अंगुली के
+        ├── अंगूठी
+        └── छल्ला
+
+Gold Jewellery branch total: 74 terms</code></pre>
+
+<h2 style="break-before:page">Silver Jewellery — full hierarchy</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<pre><code>JEWELLERY › Silver Jewellery
+├── महिला के आभूषण (Women's)
+│   ├── सिर के आभूषण
+│   │   ├── शीशफूल
+│   │   ├── सिरमांग
+│   │   ├── बोरला
+│   │   ├── रखड़ी
+│   │   ├── टिका
+│   │   ├── टीडीभलको
+│   │   └── सिरपेच
+│   ├── Ear Jewellery
+│   │   ├── कर्णफूल
+│   │   ├── झुमका
+│   │   ├── झूमर
+│   │   ├── झुमकी
+│   │   ├── बाली
+│   │   ├── झेला
+│   │   ├── लूंग
+│   │   ├── टॉप्स
+│   │   ├── कुंडला
+│   │   └── छेलकडी
+│   ├── Nose Jewellery
+│   │   ├── नथ
+│   │   ├── कांटा
+│   │   ├── लौंग
+│   │   ├── नथड़ी
+│   │   ├── नाक की बाली
+│   │   ├── लटकन
+│   │   └── नकफूल
+│   ├── Neck Jewellery
+│   │   ├── चन्द्रहार
+│   │   ├── कण्ठहार
+│   │   ├── रानीहार
+│   │   ├── झालरा
+│   │   ├── हालरो
+│   │   ├── कंठी
+│   │   ├── चैन
+│   │   ├── माणिक्य माला
+│   │   ├── आड़
+│   │   ├── मंगलसूत्र
+│   │   ├── मांदलियो
+│   │   ├── लॉकेट
+│   │   ├── टेवटा
+│   │   ├── पंचमणियो
+│   │   └── बंगड़ी
+│   ├── बाजू के आभूषण
+│   │   └── बाजूबंद
+│   ├── कलाई के आभूषण
+│   │   ├── हथफूल
+│   │   ├── पुँची
+│   │   ├── कड़ा
+│   │   ├── चुडिया
+│   │   ├── बंगड़ी
+│   │   ├── नोगरी
+│   │   ├── छेलकड़ो
+│   │   └── ब्रेसलेट
+│   └── अंगुली के आभूषण
+│       ├── अंगूठी
+│       ├── दामणा
+│       ├── छल्ला
+│       └── हथफुल
+├── पुरुषों के आभूषण (Men's)
+│   ├── कान के
+│   │   ├── बालियां
+│   │   ├── मुरकियाँ
+│   │   └── लोंग
+│   ├── गले के
+│   │   └── चेन
+│   ├── कलाई के
+│   │   ├── कड़ा
+│   │   └── ब्रेसलेट
+│   └── अंगुली के
+│       ├── अंगूठी
+│       └── छल्ला
+├── कमर के आभूषण
+│   ├── कणकती
+│   ├── सटका
+│   ├── जंजीर
+│   ├── सांकली
+│   └── कमरबन्द
+├── पेर के आभूषण
+│   ├── कड़ा
+│   ├── कड़ी
+│   ├── आंवला
+│   ├── टणका
+│   ├── पायल
+│   ├── चीड़ की पायल
+│   ├── झाँझर
+│   ├── घुंगरू
+│   ├── जोड़
+│   ├── चुटकी
+│   ├── बिछिया
+│   └── गुंठला
+└── बच्चो के आभूषण
+    ├── कड़ा
+    ├── ताबीज
+    ├── नजरिया
+    └── पेर के कड़े
+
+Silver Jewellery branch total: 98 terms</code></pre>
+
+<h2 style="break-before:page">Black Polish Silver — full hierarchy</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<pre><code>JEWELLERY › Black Polish Silver
+├── महिला के आभूषण (Women's)
+│   ├── सिर के आभूषण
+│   │   ├── शीशफूल
+│   │   ├── सिरमांग
+│   │   ├── बोरला
+│   │   ├── रखड़ी
+│   │   ├── टिका
+│   │   ├── टीडीभलको
+│   │   └── सिरपेच
+│   ├── Ear Jewellery
+│   │   ├── कर्णफूल
+│   │   ├── झुमका
+│   │   ├── झूमर
+│   │   ├── झुमकी
+│   │   ├── बाली
+│   │   ├── झेला
+│   │   ├── लूंग
+│   │   ├── टॉप्स
+│   │   ├── कुंडला
+│   │   └── छेलकडी
+│   ├── Nose Jewellery
+│   │   ├── नथ
+│   │   ├── कांटा
+│   │   ├── लौंग
+│   │   ├── नथड़ी
+│   │   ├── नाक की बाली
+│   │   ├── लटकन
+│   │   └── नकफूल
+│   ├── Neck Jewellery
+│   │   ├── चन्द्रहार
+│   │   ├── कण्ठहार
+│   │   ├── रानीहार
+│   │   ├── झालरा
+│   │   ├── हालरो
+│   │   ├── कंठी
+│   │   ├── चैन
+│   │   ├── माणिक्य माला
+│   │   ├── आड़
+│   │   ├── मंगलसूत्र
+│   │   ├── मांदलियो
+│   │   ├── लॉकेट
+│   │   ├── टेवटा
+│   │   ├── पंचमणियो
+│   │   └── बंगड़ी
+│   ├── बाजू के आभूषण
+│   │   └── बाजूबंद
+│   ├── कलाई के आभूषण
+│   │   ├── हथफूल
+│   │   ├── पुँची
+│   │   ├── कड़ा
+│   │   ├── चुडिया
+│   │   ├── बंगड़ी
+│   │   ├── नोगरी
+│   │   ├── छेलकड़ो
+│   │   └── ब्रेसलेट
+│   └── अंगुली के आभूषण
+│       ├── अंगूठी
+│       ├── दामणा
+│       ├── छल्ला
+│       └── हथफुल
+├── पुरुषों के आभूषण (Men's)
+│   ├── कान के
+│   │   ├── बालियां
+│   │   ├── मुरकियाँ
+│   │   └── लोंग
+│   ├── गले के
+│   │   └── चेन
+│   ├── कलाई के
+│   │   ├── कड़ा
+│   │   └── ब्रेसलेट
+│   └── अंगुली के
+│       ├── अंगूठी
+│       └── छल्ला
+├── कमर के आभूषण
+│   ├── कणकती
+│   ├── सटका
+│   ├── जंजीर
+│   ├── सांकली
+│   └── कमरबन्द
+├── पेर के आभूषण
+│   ├── कड़ा
+│   ├── कड़ी
+│   ├── आंवला
+│   ├── टणका
+│   ├── पायल
+│   ├── चीड़ की पायल
+│   ├── झाँझर
+│   ├── घुंगरू
+│   ├── जोड़
+│   ├── चुटकी
+│   ├── बिछिया
+│   └── गुंठला
+└── बच्चो के आभूषण
+    ├── कड़ा
+    ├── ताबीज
+    ├── नजरिया
+    └── पेर के कड़े
+
+Black Polish Silver branch total: 98 terms</code></pre>
+
+<h2 style="break-before:page">Verification report</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+
+<h3 style="margin-top:0">Structural checks</h3>
+<table>
+  <thead><tr><th style="width:44%">Check</th><th style="width:14%">Required</th><th style="width:14%">Actual</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td>Root count</td><td>5</td><td>5</td><td>PASS</td></tr>
+    <tr><td>JEWELLERY direct children</td><td>5</td><td>5</td><td>PASS</td></tr>
+    <tr><td>METALS direct children</td><td>7</td><td>7</td><td>PASS</td></tr>
+    <tr><td>WEDDING direct children</td><td>7</td><td>7</td><td>PASS</td></tr>
+    <tr><td>FOR direct children</td><td>8</td><td>8</td><td>PASS</td></tr>
+    <tr><td>OTHERS direct children</td><td>7</td><td>7</td><td>PASS</td></tr>
+    <tr><td>Gold structure materialized in full</td><td>Yes</td><td>Yes, 74 terms written out</td><td>PASS</td></tr>
+    <tr><td>Silver structure materialized in full</td><td>Yes</td><td>Yes, 98 terms written out</td><td>PASS</td></tr>
+    <tr><td>Black Polish Silver materialized in full</td><td>Yes</td><td>Yes, 98 terms written out</td><td>PASS</td></tr>
+    <tr><td>No "same as Gold/Silver" shorthand</td><td>None</td><td>None — each branch printed independently</td><td>PASS</td></tr>
+    <tr><td>Categories removed</td><td>0</td><td>0</td><td>PASS</td></tr>
+    <tr><td>Categories merged</td><td>0</td><td>0</td><td>PASS</td></tr>
+    <tr><td>Categories deduplicated</td><td>0</td><td>0</td><td>PASS</td></tr>
+    <tr><td>Categories invented</td><td>0</td><td>0</td><td>PASS</td></tr>
+    <tr><td>New root taxonomy created</td><td>No</td><td>No — <code>rj_category</code> only</td><td>PASS</td></tr>
+  </tbody>
+</table>
+
+<h3>Group-level leaf counts, all three branches</h3>
+<table>
+  <thead><tr><th style="width:34%">Group</th><th style="width:14%">Leaves</th><th style="width:16%">Gold</th><th style="width:16%">Silver</th><th>Black Polish Silver</th></tr></thead>
+  <tbody>
+    <tr><td>सिर के आभूषण</td><td>7</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Ear Jewellery</td><td>10</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Nose Jewellery</td><td>7</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Neck Jewellery</td><td>15</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>बाजू के आभूषण</td><td>1</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>कलाई के आभूषण</td><td>8</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>अंगुली के आभूषण</td><td>4</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>पुरुषों › कान के</td><td>3</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>पुरुषों › गले के</td><td>1</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>पुरुषों › कलाई के</td><td>2</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>पुरुषों › अंगुली के</td><td>2</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>कमर के आभूषण</td><td>5</td><td>—</td><td>✓</td><td>✓</td></tr>
+    <tr><td>पेर के आभूषण</td><td>12</td><td>—</td><td>✓</td><td>✓</td></tr>
+    <tr><td>बच्चो के आभूषण</td><td>4</td><td>—</td><td>✓</td><td>✓</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Gold carries no waist, foot or children's group — the master specifies those as Silver-only, and they are therefore absent from Gold and present in both Silver and Black Polish Silver. Nothing was added to Gold to make the three symmetrical.</p>
+
+<h3>Term count</h3>
+<table>
+  <thead><tr><th style="width:44%">Branch</th><th style="width:18%">Terms</th><th>Composition</th></tr></thead>
+  <tbody>
+    <tr><td>JEWELLERY root</td><td>1</td><td>—</td></tr>
+    <tr><td>Gold Jewellery</td><td>74</td><td>1 + महिला 60 + पुरुषों 13</td></tr>
+    <tr><td>Silver Jewellery</td><td>98</td><td>1 + महिला 60 + पुरुषों 13 + कमर 6 + पेर 13 + बच्चो 5</td></tr>
+    <tr><td>Black Polish Silver</td><td>98</td><td>Same composition as Silver</td></tr>
+    <tr><td>Gold Jewellery Set · Silver Jewellery Set</td><td>2</td><td>Leaf each</td></tr>
+    <tr><td>METALS · WEDDING · FOR · OTHERS</td><td>33</td><td>8 + 8 + 9 + 8, each including its root</td></tr>
+    <tr><td><strong>TOTAL</strong></td><td><strong>306</strong></td><td>Clears the 300+ requirement</td></tr>
+  </tbody>
+</table>
+
+<h3>Intentional duplicates preserved</h3>
+<table>
+  <thead><tr><th style="width:20%">Name</th><th style="width:14%">Instances</th><th>Distinct paths</th></tr></thead>
+  <tbody>
+    <tr><td>कड़ा</td><td>10</td><td>Gold 2 (महिला›कलाई, पुरुषों›कलाई) · Silver 4 (महिला›कलाई, पुरुषों›कलाई, पेर, बच्चो) · Black Polish Silver 4 (same). कड़ी and पेर के कड़े are separate names, counted separately.</td></tr>
+    <tr><td>ब्रेसलेट</td><td>6</td><td>महिला›कलाई and पुरुषों›कलाई in all three branches</td></tr>
+    <tr><td>अंगूठी</td><td>6</td><td>महिला›अंगुली and पुरुषों›अंगुली in all three</td></tr>
+    <tr><td>छल्ला</td><td>6</td><td>महिला›अंगुली and पुरुषों›अंगुली in all three</td></tr>
+    <tr><td>बंगड़ी</td><td>6</td><td>Neck Jewellery and कलाई के आभूषण in all three</td></tr>
+    <tr><td>हथफूल / हथफुल</td><td>3 + 3</td><td>Two different spellings under two different parents. Both preserved verbatim.</td></tr>
+    <tr><td>पुरुषों के आभूषण</td><td>3</td><td>Once per metal branch</td></tr>
+    <tr><td>बच्चो के आभूषण</td><td>2</td><td>Silver and Black Polish Silver</td></tr>
+    <tr><td>Every महिला group</td><td>3 each</td><td>Once per metal branch</td></tr>
+  </tbody>
+</table>
+<p><strong>No duplicate was removed.</strong> Identity is the path; the importer matches on path and never on name, so a re-run cannot collapse them.</p>
+
+<h2>Mismatches found</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<p>Four differences between this master and the earlier documents. All are resolved in favour of the master, which is the source of truth.</p>
+<table>
+  <thead><tr><th style="width:22%">Item</th><th style="width:30%">Earlier documents</th><th>Master — authoritative</th></tr></thead>
+  <tbody>
+    <tr><td>Women's group names</td><td>Hindi throughout: कान के आभूषण, नाक के आभूषण, गले के आभूषण</td><td><strong>English:</strong> Ear Jewellery, Nose Jewellery, Neck Jewellery. Adopted as supplied.</td></tr>
+    <tr><td>Children's group spelling</td><td>बच्चों के आभूषण</td><td><strong>बच्चो के आभूषण</strong>. Adopted as supplied.</td></tr>
+    <tr><td>Term count</td><td>Variously ≈306, 284+22, 309</td><td><strong>Exactly 306</strong>, counted from this master.</td></tr>
+    <tr><td>Slash-joined pairs</td><td>Open question — five joined or ten separate</td><td><strong>Separate.</strong> Decision 1 is closed by the master itself.</td></tr>
+  </tbody>
+</table>
+
+<h3>Accepted consequence — the facet overlap</h3>
+<p>Recorded once, not re-argued. METALS duplicates the <code>rj_metal</code> taxonomy term for term, and FOR duplicates <code>rj_audience</code>; WEDDING partially duplicates <code>rj_occasion</code> and places Mangalsutra, Maang Tikka and Bridal Nath as roots-level children while मंगलसूत्र, टिका and नथ also exist deeper in the tree. Rule 13 requires the five real roots, so this stands as an accepted consequence of a locked decision.</p>
+<p><strong>What it means in practice:</strong> a product may need filing in two places, category counts under METALS and the metal facet can differ, and two pages can compete for the same query. <strong>Mitigation, to be specified before Stage 4:</strong> treat the METALS, WEDDING and FOR branches as navigational — products are assigned to the facet taxonomies, and those three root branches resolve to filtered archives rather than holding their own product assignments. That keeps one storage location per fact while leaving the five-root structure exactly as the master specifies. This needs your confirmation but does not block the import file, since the terms are created either way.</p>
+
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:16px 18px;margin-top:20px;break-inside:avoid">
+  <h5 style="margin:0 0 6px;color:#2f6b3a">Verification result</h5>
+  <p style="margin:0 0 8px;font-size:19px;font-weight:600;color:#2f6b3a">PASS</p>
+  <p style="margin:0 0 8px;font-size:14.5px">All fifteen structural checks pass. Every supplied category exists, every parent-child relationship is preserved, nothing was removed, merged, deduplicated or invented, and Gold, Silver and Black Polish Silver are each written out in full.</p>
+  <p style="margin:0;font-size:14px;color:#595d6c"><strong>Remaining before the import file is generated:</strong> confirm the navigational treatment of METALS, WEDDING and FOR described above. <strong>Remaining before Stage 21:</strong> Decision 2, the Elementor widget count.</p>
+</div>
+
+</doc-page>
+</x-dc>
+</body>
+</html>

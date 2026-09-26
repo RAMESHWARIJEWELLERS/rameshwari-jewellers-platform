@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15px; line-height: 1.58; }
+h1, h2, h3 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 36px; letter-spacing: -0.03em; }
+h2 { font-size: 22px; margin: 26px 0 4px; }
+h3 { font-size: 15.5px; margin: 18px 0 6px; }
+h5 { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 14px 0 6px; }
+p { margin: 0 0 10px; orphans: 3; widows: 3; }
+ul { margin: 0 0 11px; padding-left: 20px; }
+li { margin: 0 0 4px; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 10px 0 15px; font-size: 11.6px; line-height: 1.42; }
+th { text-align: left; font-weight: 600; font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 8px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 5px 8px 5px 0; vertical-align: top; overflow-wrap: normal; word-break: keep-all; }
+td:nth-last-child(-n+2), td.wrap { overflow-wrap: anywhere; word-break: normal; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 3px; border-radius: 3px; color: #423a6a; }
+blockquote { margin: 8px 0; padding: 8px 12px; border-left: 2px solid #9184d9; background: #f3f5fe; font-size: 13px; color: #423a6a; border-radius: 0 6px 6px 0; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.7in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Implementation Plan Audit</span>
+  <span>Adversarial review · Pre-coding</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>Review only. Plan not modified. No code.</span>
+  <span>3 must-fix · 2 should-fix</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px">
+  <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Hostile architecture review</div>
+  <h1 style="margin:0">Implementation Plan Audit</h1>
+  <div style="font-size:17.5px;color:#595d6c;line-height:1.35">Nine findings against the Implementation Master Plan. Three must be fixed before Stage 0 — one is a security model that does not exist, one is a launch gate that cannot be satisfied as written, and one is a dependency rule that contradicts itself.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<h2 style="margin-top:0">1 · Executive verdict</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:15px 17px;margin-bottom:12px;break-inside:avoid">
+  <p style="margin:0 0 7px;font-size:19px;font-weight:600;color:#8a6410">B. IMPLEMENTATION READY AFTER MINOR CORRECTIONS</p>
+  <p style="margin:0 0 7px;font-size:14.5px">The plan is structurally sound: the sixteen-layer dependency rule is acyclic as written, the database map matches the locked schema, and no hidden Elementor Pro dependency survives. <strong>But three findings would force an engineering team to invent a missing decision</strong>, which is the specific failure this audit tested for.</p>
+  <p style="margin:0;font-size:14px;color:#595d6c">All three are wording-level corrections to the plan. None requires reopening a locked business decision, and none changes the schema. <strong>Verdict is B rather than A because S-1 leaves the revenue path's authorization model undefined</strong> — an engineer reaching Stage 10 would have to design it themselves.</p>
+</div>
+<table>
+  <thead><tr><th style="width:30%">Audit area</th><th style="width:18%">Result</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td>Dependency graph</td><td style="color:#8a3a2f">CONTRADICTION</td><td>A-1 — two incompatible ordering rules</td></tr>
+    <tr><td>Security model</td><td style="color:#8a3a2f">GAP</td><td>S-1 — public writes cannot satisfy gate 1</td></tr>
+    <tr><td>Test registry</td><td style="color:#8a3a2f">UNFALSIFIABLE GATE</td><td>T-1 — the 20-test registry does not exist</td></tr>
+    <tr><td>Admin / REST boundary</td><td style="color:#8a6410">AMBIGUOUS</td><td>A-2 — one phrase contradicts the layer table</td></tr>
+    <tr><td>Performance targets</td><td style="color:#8a6410">UNREPRODUCIBLE</td><td>P-1 — no reference device or seed fixture</td></tr>
+    <tr><td>Hidden assumptions</td><td style="color:#8a6410">INCOMPLETE</td><td>HA-1 — mail and outbound HTTPS unlisted</td></tr>
+    <tr><td>Layer cycles</td><td style="color:#2f6b3a">NONE FOUND</td><td>Verified against all 16 rows</td></tr>
+    <tr><td>Database / migration map</td><td style="color:#2f6b3a">SOUND</td><td>One absolute needs softening (D-1)</td></tr>
+    <tr><td>Category / resolver</td><td style="color:#2f6b3a">SOUND</td><td>No duplicate source of truth found</td></tr>
+    <tr><td>Elementor Free-first</td><td style="color:#2f6b3a">SOUND</td><td>No surviving Pro dependency</td></tr>
+    <tr><td>Chatbot</td><td style="color:#2f6b3a">SOUND</td><td>No new dependency introduced</td></tr>
+    <tr><td>Zero-data-loss</td><td style="color:#2f6b3a">SOUND</td><td>Presentation loss correctly separated</td></tr>
+  </tbody>
+</table>
+
+<h2>2 · Critical findings</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+
+<h3>S-1 · Public writes cannot pass gate 1 — the security model has no public branch</h3>
+<p><strong>Severity CRITICAL · Category SECURITY · Must fix before Stage 0: YES</strong></p>
+<p>The plan's §13 states the gate order and gate 1 without qualification:</p>
+<blockquote>"Every write passes four gates in this order." … "1 · Capability · <code>Rest\Permissions</code> · Admin · A specific capability with the object where relevant. <strong>Never a screen check standing in for a permission check.</strong>"</blockquote>
+<p>Gate 2 then acknowledges that public writes exist:</p>
+<blockquote>"2 · Intent · Nonce on forms and AJAX, header nonce on REST, <strong>origin check on public writes.</strong>"</blockquote>
+<p><strong>The collision:</strong> Development Blueprint §11.3 documents two writes whose permission column reads <strong>Public</strong> — <code>POST /rj/v1/leads</code> and <code>POST /rj/v1/notifications/subscribe</code>. An unauthenticated visitor holds no capability of any kind. So for those two endpoints gate 1 is either <em>unsatisfiable</em> (the enquiry form is dead) or <em>silently skipped</em> (an engineer decides on their own what replaces it). The plan does not say which, and "never a screen check standing in for a permission check" gives no guidance for a request with no user.</p>
+<p><strong>Why it matters:</strong> lead capture is the revenue path. Every WhatsApp click writes a lead server-side before redirecting. An engineer implementing Stage 10 must invent the public-write authorization policy, and the two obvious inventions are both wrong — treating gate 1 as optional removes the architectural requirement to think about abuse, and requiring a capability breaks the form.</p>
+<p><strong>Aggravating detail:</strong> the anti-abuse controls that <em>should</em> constitute the public branch appear exactly once in the whole plan, inside Stage 10's deliverables — <em>"honeypot, dwell time, rate limit, 30-minute dedupe"</em> — described as features of the leads module rather than as a gate every public write must pass. Notification subscribe therefore inherits none of them by rule.</p>
+<h5>Exact correction wording</h5>
+<p>Replace the §13 preamble and gate 1 row with a two-branch model:</p>
+<blockquote><strong>Every write passes four gates. Gate 1 has two branches, and which branch applies is a property of the endpoint, declared once in <code>Rest\Permissions</code>.</strong><br><br><strong>1a · Authenticated write — capability.</strong> A specific capability with the object where relevant. Never a screen check standing in for a permission check.<br><br><strong>1b · Public write — endpoint authorization policy.</strong> There is no user, so there is no capability; the gate is instead the declared anti-abuse policy, and a public endpoint that does not declare one fails review. The policy is: origin check, honeypot, minimum dwell time, per-IP-hash and per-identifier rate limits, replay and duplicate suppression, non-enumerating responses, and no open redirect. Applies to <strong>every</strong> public write — currently <code>POST leads</code> and <code>POST notifications/subscribe</code> — not only to leads.</blockquote>
+<p><strong>Affected stages:</strong> 10 (leads), 11 (REST), 19 (notification subscribe), 20 (chatbot handoff writes a lead), 21 (security hardening audit).</p>
+
+<h3>T-1 · The launch gate cites a 20-test registry that does not exist</h3>
+<p><strong>Severity CRITICAL · Category TESTING · Must fix before Stage 0: YES</strong></p>
+<p>The plan asserts the figure three times, including as the final gate of the entire project:</p>
+<blockquote>"All 20 regression tests green." · "21 · Hardening, testing, launch ── gate: <strong>20/20 regression</strong>; tested restore" · Read scope for Stage 21: "Dev §21, §24 · this plan §14 → <strong>'20/20 regression tests green'</strong>"</blockquote>
+<p><strong>The collision:</strong> the cited source, Development Blueprint §24, is titled "Critical Regression Tests" and contains <strong>15</strong> numbered rows, not 20. The plan's own internal citations use that 15-row registry correctly — it refers to <em>"Regression 15: a lead insert that throws still returns a valid WhatsApp URL"</em> and <em>"Regression 12: export, import to a clean installation"</em>, both of which match §24's numbering. So the plan simultaneously cites a 15-test registry and gates on 20 tests.</p>
+<p><strong>Where 20 came from:</strong> the Session 5 brief listed 20 mandatory regression tests. §24 codified 15 of them. The five that were never carried across are identifiable:</p>
+<table>
+  <thead><tr><th style="width:8%">#</th><th style="width:38%">In the owner's 20, absent from §24's 15</th><th>Nearest existing coverage</th></tr></thead>
+  <tbody>
+    <tr><td>a</td><td>Hero media resolves</td><td>Partially — §18 media audit covers missing media, but no test asserts a hero campaign's two crops resolve</td></tr>
+    <tr><td>b</td><td>Category images resolve</td><td>Same — audited daily, not asserted by test</td></tr>
+    <tr><td>c</td><td>Customer data survives theme switch</td><td>§24 test 11 covers business data; it does not name wishlist, views or login history</td></tr>
+    <tr><td>d</td><td>Unicode / Hindi content remains intact</td><td>§24 test 12 covers it inside host migration only, not as an independent test</td></tr>
+    <tr><td>e</td><td>CSV export safe from formula injection</td><td>Covered by the security suite, but not as a numbered regression test</td></tr>
+  </tbody>
+</table>
+<p><strong>Why it matters:</strong> a gate that names a count with no registry behind it cannot be passed or failed honestly. At Stage 21 an engineer either counts 15 and declares 20/20 — which is a false claim — or invents five tests of their own. Both outcomes defeat the gate.</p>
+<h5>Exact correction wording</h5>
+<p>Two options; the first is better because the owner asked for 20.</p>
+<blockquote><strong>Preferred.</strong> Add rows 16–20 to Development Blueprint §24 using the five items above, each with a suite and an assertion in §24's existing column format. Then the plan's "20/20" becomes true and the gate is falsifiable. <strong>This is a Development Blueprint edit, not a plan edit</strong> — and it is the only must-fix finding that touches a document other than the plan.<br><br><strong>Alternative.</strong> If the five are genuinely covered elsewhere and the owner accepts 15, change all three occurrences to "15/15 regression tests green (Dev §24)" and record in §14 that the owner's other five are covered by the media audit and security suite rather than by numbered regression tests.</blockquote>
+<p><strong>Affected stages:</strong> 21. Also §14's testing strategy and §16's read-scope table.</p>
+
+<h3>A-1 · Two incompatible stage-ordering rules</h3>
+<p><strong>Severity HIGH, must-fix · Category ARCHITECTURE · Must fix before Stage 0: YES</strong></p>
+<p>§17 states the rule as strict predecessor ordering:</p>
+<blockquote>"<strong>Stage N can begin only after Stage N−1's verification gate passes.</strong>"</blockquote>
+<p>§5 states something incompatible:</p>
+<blockquote>"First parallel opportunity — <strong>After Stage 6, stages 7, 8, 9, 10, 11 touch different aggregates and may run in parallel</strong> with enough people — though <strong>9 needs 7's media pipeline.</strong>"</blockquote>
+<p><strong>The collision, precisely:</strong> under §17's rule Stage 9 may not begin until Stage 8's gate passes, even though §5 says Stage 9's only real prerequisite is Stage 7. And under §5's rule Stage 11 may begin as soon as Stage 6 passes, which §17 forbids. Neither rule is a superset of the other, so a team cannot follow both. Worse, the parenthetical "though 9 needs 7's media pipeline" shows the parallel set is not internally independent either — so "all five in parallel" is also wrong.</p>
+<p><strong>Why it matters:</strong> this is the sequencing contract for the whole build. A team that follows §17 serialises work that could be parallel and pays weeks for nothing. A team that follows §5 may start Stage 9 before the media pipeline exists and discover it mid-stage.</p>
+<h5>Exact correction wording</h5>
+<blockquote>Replace the §17 line with: <strong>"Stage N may begin once every stage in its declared dependency list has passed its verification gate. Dependencies are listed per stage in §6 and drawn in §5; they are not implied by stage numbering."</strong><br><br>Then, in §5, replace "stages 7, 8, 9, 10, 11 … may run in parallel" with the explicit dependency list, since the prose already contradicts itself: <strong>7 ← 6 · 8 ← 6 · 9 ← 7 · 10 ← 6 · 11 ← 6.</strong> That preserves the parallelism the plan intends while making Stage 9's real prerequisite binding.</blockquote>
+<p><strong>Affected stages:</strong> all, as the governing rule. Materially 7 through 11 and 12 through 16.</p>
+
+<h2 style="break-before:page">3 · High and medium findings</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+
+<h3>A-2 · "REST-backed service methods" contradicts the plan's own layer table</h3>
+<p><strong>Severity HIGH · Category ARCHITECTURE · Must fix before Stage 0: NO — fix before Stage 12</strong></p>
+<p>The anti-pattern table in §3 reads:</p>
+<blockquote>"Admin duplicating repository logic — <strong>Screens call the same REST-backed service methods.</strong> A screen with its own query is a review rejection."</blockquote>
+<p>The intent is right and the second sentence is exactly the correct rule. But "REST-backed service methods" admits two readings, and they have very different consequences:</p>
+<table>
+  <thead><tr><th style="width:30%">Reading</th><th style="width:30%">Consequence</th><th>Verdict</th></tr></thead>
+  <tbody>
+    <tr><td><strong>(a)</strong> Admin screens call the REST API over internal HTTP</td><td>Every admin save becomes a loopback request — authentication re-established per call, doubled latency, and it breaks on shared hosts that block loopback to themselves</td><td style="color:#8a3a2f">Wrong, and plausible enough that an engineer may build it</td></tr>
+    <tr><td><strong>(b)</strong> Admin and REST both call one shared service layer</td><td>One implementation of each operation, two thin adapters over it</td><td style="color:#2f6b3a">Correct, and what §2 already mandates</td></tr>
+  </tbody>
+</table>
+<p><strong>The plan's own layer table settles it against reading (a)</strong> — layer 8 Admin is listed as depending on layers 1–5, and REST is layer 7. An Admin→REST call would be a dependency on a lower-numbered-but-later layer, violating the one-directional rule the plan calls "that single constraint is what produces every portability property." So the phrase contradicts the architecture two sections earlier.</p>
+<h5>Exact correction wording</h5>
+<blockquote>"Admin duplicating repository logic — <strong>Screens and REST controllers both call the same application services; neither calls the other, and no admin screen issues an internal HTTP request.</strong> A screen with its own query is a review rejection."</blockquote>
+<p><strong>Affected stages:</strong> 11, 12. <strong>Also check:</strong> §17's Stage 12 gate says "No screen queries directly" — correct, and should be extended to "and no screen calls REST over HTTP."</p>
+
+<h3>HA-1 · Two host capabilities the plan depends on are not in its unknowns table</h3>
+<p><strong>Severity MEDIUM · Category HOSTING · Must fix before Stage 0: NO — before Stage 15</strong></p>
+<p><strong>Credit first, because it is deserved:</strong> the plan has a "Genuine unknowns — stated rather than assumed" table with five correctly-classified rows, and it handles WebP/AVIF and persistent object cache exactly as this audit would demand — naming the resolving stage and the degradation path. That is the right pattern. Two dependencies of equal weight are missing from it.</p>
+<table>
+  <thead><tr><th style="width:24%">Dependency</th><th style="width:16%">Status</th><th>What breaks, and why it is not merely a performance question</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Outbound mail delivery</strong> (<code>wp_mail</code>)</td><td style="color:#8a3a2f">ASSUMED</td><td>Password reset, account verification, and the sole required notification channel all depend on it. On InfinityFree, mail is commonly blocked or silently dropped. If it fails, <strong>every email account is permanently locked out</strong> — there is no second reset path by design, and the plan states so. Unlike WebP, there is no graceful degradation: the account system stops working.</td></tr>
+    <tr><td><strong>Outbound HTTPS</strong> from PHP</td><td style="color:#8a3a2f">ASSUMED</td><td>Google OAuth's token exchange is a server-to-server call, and so is any AI provider request. Free hosts frequently restrict outbound requests. The plan's rule "no outbound request on any front-end request" is a <em>performance</em> rule and does not establish that outbound requests are <em>possible</em> — which Google login and the chatbot both require.</td></tr>
+  </tbody>
+</table>
+<h5>Exact correction wording — add two rows to the unknowns table</h5>
+<blockquote><strong>Whether the host delivers outbound mail reliably</strong> — Stage 15, by sending a real reset to a real inbox before the auth work is gated. If mail is unreliable, email/password registration must not be enabled on that host: Google login and the catalogue still work, and the SMTP transport swap in the notification architecture is the remedy. This is a <strong>blocker for the account system</strong>, not a performance question.<br><br><strong>Whether the host permits outbound HTTPS from PHP</strong> — Stage 15 for Google, Stage 20 for the chatbot. Both degrade to unavailable-and-not-rendered, which the architecture already supports; the catalogue is unaffected.</blockquote>
+
+<h3>P-1 · Performance gates name numbers without a reproducible environment</h3>
+<p><strong>Severity MEDIUM · Category PERFORMANCE · Must fix before Stage 0: NO — before Stage 14</strong></p>
+<p>The plan's targets are specific and, in one case, admirably concrete about conditions:</p>
+<blockquote>"LCP under 2.5 s, INP under 200 ms, CLS under 0.05 <strong>on a mid-range Android on 4G in Jaipur</strong>; JS under 20 KB and CSS under 45 KB gzipped; mega menu under 50 ms at 1,000 terms" · "Admin product list under <strong>800 ms at 20,000 products</strong>"</blockquote>
+<p>Classified against the audit's four questions:</p>
+<table>
+  <thead><tr><th style="width:26%">Metric</th><th style="width:16%">A · Requirement?</th><th style="width:14%">B · Test target?</th><th>C · Reproducible as written?</th></tr></thead>
+  <tbody>
+    <tr><td>JS 20 KB · CSS 45 KB gzipped</td><td>Yes — an architecture constraint</td><td>Yes</td><td style="color:#2f6b3a">Yes. A build-step assertion, environment-independent</td></tr>
+    <tr><td>Mega menu 50 ms at 1,000 terms</td><td>Yes</td><td>Yes</td><td style="color:#8a6410">Partly — needs the cache state named (cold, warm, transient-only)</td></tr>
+    <tr><td>Query count under 40</td><td>Yes</td><td>Yes</td><td style="color:#8a6410">Partly — needs the page and the cache state named</td></tr>
+    <tr><td>Admin list 800 ms at 20,000</td><td>No — a test target</td><td>Yes</td><td style="color:#8a3a2f">No. No seed fixture defined, no hardware baseline, no PHP version</td></tr>
+    <tr><td>LCP · INP · CLS</td><td>No — test targets</td><td>Yes</td><td style="color:#8a3a2f">No. "Mid-range Android" is not a device; no throttle profile, no cold/warm state</td></tr>
+  </tbody>
+</table>
+<p><strong>Why it matters, and why not to weaken the targets:</strong> the numbers are reasonable and should stay. The risk is the opposite of laxity — an unreproducible gate gets measured on whatever laptop is nearest, passes, and the real phone in Jaipur is never tested. <strong>D · Could a target create an unrealistic constraint?</strong> Only the 20,000-product figure, and the plan already disarms it by listing real launch volume as an unknown and calling the load test "cheap insurance."</p>
+<h5>Exact correction wording — add to §14 once</h5>
+<blockquote><strong>Reference environment.</strong> Field metrics are measured on a named reference device — a mid-tier Android of the class the shop's customers carry, recorded by model in the test log — throttled to 4G (roughly 9 Mbps down, 170 ms RTT) with a cold cache, three runs, median reported. Admin timings are measured against a seeded fixture of 20,000 products and 1,500 terms generated by the Stage 18 importer, on the target production host, with the object cache in the state that host actually provides. A target measured anywhere else is not a passed gate.</blockquote>
+
+<h3>D-1 · "Nothing is added later" forbids a future the architecture reserves</h3>
+<p><strong>Severity MEDIUM · Category DATABASE · Must fix before Stage 0: NO</strong></p>
+<blockquote>"All eight tables are created by migration 001 in Stage 3; <strong>nothing is added later.</strong>"</blockquote>
+<p>The first clause is right and valuable. The second is an absolute the architecture does not need and cannot honour: the locked specification reserves OTP login, webhook delivery and a future analytics decision, and the migration router exists precisely so numbered migrations can follow. As written, a conscientious engineer reading this would believe a ninth table is forbidden by architecture rather than simply unnecessary today.</p>
+<h5>Exact correction wording</h5>
+<blockquote>"All eight tables are created by migration 001 in Stage 3. <strong>No further table is required by the current specification; the numbered migration router exists so that a future approved decision can add one without disturbing these eight.</strong>"</blockquote>
+
+<h3>D-2 · Rollback vocabulary is used for four different operations</h3>
+<p><strong>Severity MEDIUM · Category DATA-INTEGRITY · Must fix before Stage 0: NO — before Stage 21</strong></p>
+<p>The two statements below are not contradictory, and I want to be precise about that — the plan is describing different things and is right about each:</p>
+<blockquote>"Migrations are reversible or additive-only, numbered, idempotent, run behind a lock" · "Migration 001 is reversible <strong>in staging</strong>. In production, take the pre-release backup first — <strong>dropping tables is the one genuinely destructive step in the whole plan.</strong>"</blockquote>
+<p><strong>The real problem is vocabulary, not logic.</strong> The word "rollback" is used across §15 for four operations with different risk profiles, and the reader must infer which is meant:</p>
+<table>
+  <thead><tr><th style="width:22%">Operation</th><th style="width:20%">Reverses</th><th style="width:16%">Data risk</th><th>Example in the plan</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Code rollback</strong></td><td>Plugin version</td><td style="color:#2f6b3a">None</td><td>"Redeploy the previous plugin version"</td></tr>
+    <tr><td><strong>Data rollback</strong></td><td>Written rows</td><td style="color:#8a6410">Bounded</td><td>Import ledger, 30-day window</td></tr>
+    <tr><td><strong>Config rollback</strong></td><td>A setting</td><td style="color:#2f6b3a">None</td><td>"the cleanest rollback in the plan — one boolean" (chatbot)</td></tr>
+    <tr><td><strong>Cache rebuild</strong></td><td>Nothing — regenerates</td><td style="color:#2f6b3a">None</td><td>"Drop and rebuild" (product index)</td></tr>
+    <tr><td><strong>Restore</strong></td><td>The database</td><td style="color:#8a3a2f">Total, if absent</td><td>Stage 3 migration failure</td></tr>
+  </tbody>
+</table>
+<p><strong>Why it matters:</strong> turning a feature flag off is called a rollback in the same table as restoring a database. Under incident pressure that flattening is how someone reaches for the wrong instrument — or believes they have a rollback for Stage 3 when what they actually have is a backup they must have taken in advance.</p>
+<h5>Exact correction wording — add to the head of §15</h5>
+<blockquote><strong>Four distinct operations, named separately throughout this section.</strong> <strong>Code rollback</strong> redeploys the previous version and touches no data. <strong>Config rollback</strong> changes a setting and touches no data. <strong>Cache rebuild</strong> discards derived data and regenerates it — never a loss. <strong>Data rollback</strong> reverses written rows and exists only where a ledger records prior values: imports, within 30 days. Everything else requires <strong>restore</strong> from the pre-release backup, which is why that backup is mandatory rather than advisory. <strong>Stage 3 has no data rollback</strong> — only restore.</blockquote>
+
+<h2 style="break-before:page">4 · Verified as sound — with the reason</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p>These were tested adversarially and held. Stated with the evidence, not as praise.</p>
+<table>
+  <thead><tr><th style="width:24%">Claim tested</th><th style="width:14%">Result</th><th>Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>No layer cycle</td><td style="color:#2f6b3a">HELD</td><td>All sixteen rows carry an explicit "May depend on" and "Must NOT depend on". Support depends on "nothing but WordPress core"; Domain forbids builders and theme; Security is cross-cutting with "nothing may bypass it". I looked specifically for Domain→Services→Domain, Admin→REST→Admin, Chatbot→Frontend→Chatbot, Theme→Domain and Elementor→Domain. <strong>None is constructible from the table.</strong> The one apparent exception, A-2, is a prose error contradicting the table rather than a cycle in it.</td></tr>
+    <tr><td>Chatbot adds no hidden dependency</td><td style="color:#2f6b3a">HELD</td><td>Knowledge access is repository-only; the anti-pattern row explicitly forbids <code>get_post_meta</code> — "its only inputs are repository methods". Provider choice is deferred to Stage 20 as a named unknown, resolved by "one class". No Elementor or theme coupling appears in the chatbot layer.</td></tr>
+    <tr><td>No surviving Elementor Pro dependency</td><td style="color:#2f6b3a">HELD</td><td>Zero required dynamic tags; Mega Menu is a theme component with the plugin supplying the data layer; sliders are presets; Reel Viewer is a modal. The Theme Builder, Popup and Loop Grid paths — the four places Pro usually creeps in — each have a named Free-compatible substitute.</td></tr>
+    <tr><td>Weight visibility respected by the chatbot</td><td style="color:#2f6b3a">HELD</td><td>The knowledge layer reads through repositories, and <code>rj_display.show_weight_publicly</code> gates public exposure at that layer — so the chatbot inherits the rule rather than re-implementing it. This is the correct place for it.</td></tr>
+    <tr><td>Lead write cannot block the enquiry</td><td style="color:#2f6b3a">HELD</td><td>"lead written server-side before the redirect" paired with "Regression 15: a lead insert that throws still returns a valid WhatsApp URL". The ordering and the failure mode are both specified, and they are the right way round.</td></tr>
+    <tr><td>Data loss separated from presentation loss</td><td style="color:#2f6b3a">HELD</td><td>The failure table's data-risk column reads "None" for plugin update, theme change, Elementor removal and failed update; "None within 30 days" for a bad import. Originals always kept for media. The one row with real exposure — mid-migration failure — is named as such rather than softened.</td></tr>
+    <tr><td>Codebase inventory not assumed</td><td style="color:#2f6b3a">HELD</td><td>"I listed the project tree rather than assuming" — and the conflict list is empty "for a verifiable reason, not an optimistic one". The duplicate Platform Architecture file is flagged as the single UNKNOWN. <strong>This is the correct handling of an empty-repository audit</strong> and the reason Part 1 of this audit found nothing to add.</td></tr>
+    <tr><td>Unknowns stated rather than assumed</td><td style="color:#2f6b3a">MOSTLY HELD</td><td>Five unknowns, each with a resolving stage and a degradation path. Two are missing (HA-1), but the pattern is right and the two additions slot into the existing format.</td></tr>
+  </tbody>
+</table>
+
+<h2>5 · Findings matrix</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:6%">ID</th><th style="width:11%">Section</th><th style="width:22%">Finding</th><th style="width:10%">Severity</th><th style="width:16%">Category</th><th style="width:10%">Fix before Stage 0</th><th style="width:25%">Affected stages</th></tr></thead>
+  <tbody>
+    <tr><td><strong>S-1</strong></td><td>§13</td><td>Public writes cannot satisfy gate 1; no public-write authorization branch exists</td><td style="color:#8a3a2f">CRITICAL</td><td>SECURITY</td><td style="color:#8a3a2f"><strong>YES</strong></td><td>10, 11, 19, 20, 21</td></tr>
+    <tr><td><strong>T-1</strong></td><td>§14, §16, §17</td><td>"20/20 regression" gate cites a registry holding 15 tests</td><td style="color:#8a3a2f">CRITICAL</td><td>TESTING</td><td style="color:#8a3a2f"><strong>YES</strong></td><td>21</td></tr>
+    <tr><td><strong>A-1</strong></td><td>§5, §17</td><td>Strict N−1 ordering contradicts the declared parallel chains</td><td style="color:#8a3a2f">HIGH</td><td>ARCHITECTURE</td><td style="color:#8a3a2f"><strong>YES</strong></td><td>All; materially 7–11, 12–16</td></tr>
+    <tr><td><strong>A-2</strong></td><td>§3</td><td>"REST-backed service methods" admits an Admin→REST-over-HTTP reading the layer table forbids</td><td style="color:#8a6410">HIGH</td><td>ARCHITECTURE</td><td>No — before 12</td><td>11, 12</td></tr>
+    <tr><td><strong>HA-1</strong></td><td>§19</td><td>Outbound mail and outbound HTTPS assumed, not listed as unknowns</td><td style="color:#8a6410">MEDIUM</td><td>HOSTING</td><td>No — before 15</td><td>15, 19, 20</td></tr>
+    <tr><td><strong>P-1</strong></td><td>§14, §17</td><td>Field and admin metrics have no reference device, throttle profile, cache state or seed fixture</td><td style="color:#8a6410">MEDIUM</td><td>PERFORMANCE</td><td>No — before 14</td><td>12, 14, 21</td></tr>
+    <tr><td><strong>D-1</strong></td><td>§7</td><td>"nothing is added later" forbids the future the migration router reserves</td><td style="color:#8a6410">MEDIUM</td><td>DATABASE</td><td>No</td><td>3</td></tr>
+    <tr><td><strong>D-2</strong></td><td>§15</td><td>One word, "rollback", covers five operations of very different risk</td><td style="color:#8a6410">MEDIUM</td><td>DATA-INTEGRITY</td><td>No — before 21</td><td>3, 18, 21</td></tr>
+    <tr><td><strong>I-1</strong></td><td>§1</td><td>Duplicate specification file — already flagged by the plan itself; noted here only so it is not lost</td><td style="color:#595d6c">INFO</td><td>DOCUMENTATION</td><td>Trivial</td><td>0</td></tr>
+  </tbody>
+</table>
+
+<h2>6 · Implementation blockers</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:26%">Classification</th><th style="width:14%">Count</th><th>Items</th></tr></thead>
+  <tbody>
+    <tr><td style="color:#8a3a2f"><strong>MUST FIX BEFORE CODING</strong></td><td><strong>3</strong></td><td><strong>S-1</strong> — an engineer would otherwise invent the public-write security model, on the revenue path. <strong>T-1</strong> — the final gate of the project is otherwise unfalsifiable. <strong>A-1</strong> — the sequencing contract otherwise contradicts itself on day one. All three are wording changes; two touch only the plan, T-1 touches Development Blueprint §24.</td></tr>
+    <tr><td style="color:#8a6410">SHOULD FIX BEFORE CODING</td><td>2</td><td><strong>A-2</strong> — cheap now, and an expensive habit to unwind after twenty-one screens exist. <strong>D-1</strong> — one clause, and it prevents a false constraint being honoured for years.</td></tr>
+    <tr><td>CAN FIX DURING IMPLEMENTATION</td><td>3</td><td><strong>HA-1</strong> before Stage 15, when auth is built and the host is known. <strong>P-1</strong> before Stage 14, when the first budget is measured. <strong>D-2</strong> before Stage 21, when the runbooks are written.</td></tr>
+    <tr><td style="color:#2f6b3a">SAFE AS-IS</td><td>—</td><td>Layer model · database map · category and resolver plan · product domain · Elementor Free-first architecture · chatbot plan · WhatsApp and lead engine · zero-data-loss analysis · codebase inventory method · context-efficiency scoping</td></tr>
+  </tbody>
+</table>
+<p><strong>Not inflated into blockers:</strong> the "Sixteen layers / 23 table rows" discrepancy is headers and sub-rows, not a miscount. The 22-stage count against your 21-stage example is a deliberate, explained deviation. Neither is a finding.</p>
+
+<h2>7 · Stage impact matrix</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:14%">Stage</th><th style="width:20%">Findings landing here</th><th>Consequence if uncorrected</th></tr></thead>
+  <tbody>
+    <tr><td>0 — baseline</td><td>A-1, I-1</td><td>Team adopts one of two incompatible ordering rules; a duplicate spec file starts drifting</td></tr>
+    <tr><td>3 — schema</td><td>D-1, D-2</td><td>A future table believed forbidden; "reversible" read as meaning Stage 3 has a rollback when it has only a restore</td></tr>
+    <tr><td>7–11 — parallel set</td><td>A-1</td><td>Stage 9 begun before Stage 7's media pipeline exists, or five stages needlessly serialised</td></tr>
+    <tr><td>10 — WhatsApp, leads</td><td><strong>S-1</strong></td><td><strong>Either a dead enquiry form or an unprotected public endpoint.</strong> The single highest-consequence finding</td></tr>
+    <tr><td>11 — REST</td><td>S-1, A-2</td><td>Notification subscribe ships without the leads module's anti-abuse controls</td></tr>
+    <tr><td>12 — admin</td><td>A-2, P-1</td><td>Twenty-one screens built on loopback HTTP; the 800 ms gate measured on a developer laptop</td></tr>
+    <tr><td>14 — theme, budgets</td><td>P-1</td><td>Budgets pass in a lab and fail on the customer's phone</td></tr>
+    <tr><td>15 — accounts</td><td>HA-1</td><td>Email accounts created that can never reset a password, because mail delivery was never verified</td></tr>
+    <tr><td>20 — chatbot</td><td>HA-1</td><td>Provider unreachable for a host reason mistaken for a provider outage</td></tr>
+    <tr><td>21 — launch</td><td><strong>T-1</strong>, D-2</td><td><strong>The launch gate cannot be honestly passed.</strong> Five tests either invented or falsely claimed</td></tr>
+  </tbody>
+</table>
+
+<h2>8 · Final readiness</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:16px 18px;break-inside:avoid">
+  <table style="margin:0">
+    <tbody>
+      <tr><td style="width:44%"><strong>VERDICT</strong></td><td style="color:#8a6410;font-weight:600">B — IMPLEMENTATION READY AFTER MINOR CORRECTIONS</td></tr>
+      <tr><td><strong>MUST-FIX FINDINGS</strong></td><td style="font-weight:600">3 — S-1, T-1, A-1</td></tr>
+      <tr><td><strong>DOCUMENTS TO EDIT</strong></td><td>Implementation Master Plan (§3, §5, §7, §13, §14, §15, §17, §19) · Development Blueprint §24 (T-1 only)</td></tr>
+      <tr><td><strong>SCHEMA CHANGES REQUIRED</strong></td><td style="color:#2f6b3a;font-weight:600">0</td></tr>
+      <tr><td><strong>LOCKED DECISIONS AFFECTED</strong></td><td style="color:#2f6b3a;font-weight:600">0</td></tr>
+      <tr><td><strong>PLAN MODIFIED THIS PASS</strong></td><td style="color:#2f6b3a;font-weight:600">NO — review only</td></tr>
+      <tr><td><strong>PRODUCTION CODE WRITTEN</strong></td><td style="color:#2f6b3a;font-weight:600">NO</td></tr>
+    </tbody>
+  </table>
+  <p style="margin:12px 0 0;font-size:14px">The honest summary: a competent team could start Stage 0 today and would not hit a wall until Stage 10 — where they would stop and ask how a visitor with no capability submits a lead. That question has no answer in the current plan, and it is the reason for verdict B rather than A. The three corrections are perhaps an hour of editing.</p>
+</div>
+<p style="margin-top:12px;font-size:12.5px;color:#595d6c"><strong>Method note.</strong> Every quoted string in this audit was read out of the plan file during this pass, not recalled. Where I expected a contradiction and did not find one — the migration reversibility wording, the layer cycles, the Pro dependency hunt — I have said so and given the evidence, because an audit that only reports hits is not an audit.</p>
+
+</doc-page>
+</x-dc>
+</body>
+</html>

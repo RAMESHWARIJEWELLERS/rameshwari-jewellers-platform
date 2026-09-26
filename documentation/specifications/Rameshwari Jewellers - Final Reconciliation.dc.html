@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15px; line-height: 1.58; }
+h1, h2, h3 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 37px; letter-spacing: -0.03em; }
+h2 { font-size: 22px; margin: 24px 0 4px; }
+h3 { font-size: 16px; margin: 18px 0 6px; }
+h5 { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 14px 0 6px; }
+p { margin: 0 0 10px; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 11px; padding-left: 20px; }
+li { margin: 0 0 4px; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 10px 0 15px; font-size: 11.6px; line-height: 1.42; }
+th { text-align: left; font-weight: 600; font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 8px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 5px 8px 5px 0; vertical-align: top; overflow-wrap: anywhere; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 3px; border-radius: 3px; color: #423a6a; overflow-wrap: anywhere; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.7in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Final Reconciliation &amp; Fix List</span>
+  <span>Pre-code · Authoritative checklist</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>Specification only. No implementation.</span>
+  <span>0 critical blockers · 12 contradictions</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px">
+  <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Final pre-code pass</div>
+  <h1 style="margin:0">Final Reconciliation &amp; Fix List</h1>
+  <div style="font-size:17.5px;color:#595d6c;line-height:1.35">Ten documents cross-checked. Twelve contradictions found, all traced to an authoritative statement. No critical blockers remain.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:14px 16px;margin-bottom:16px;break-inside:avoid">
+  <h5 style="margin:0 0 5px;color:#8a6410">Headline finding</h5>
+  <p style="margin:0 0 6px;font-size:14.5px">Nine of the twelve contradictions were <strong>stale references to identifiers the owner later rejected</strong>. The Development Blueprint's taxonomy register (§7.3) was correctly amended after Conflict 3, but the amendment was not propagated — its CPT table, REST arguments, widget controls, admin screens and notification audiences still named <code>rj_reel_type</code>, <code>rj_location</code> and <code>rj_customer_segment</code>. <strong>Each was corrected in the Correction Pass</strong>; §5 records the exact replacement applied.</p>
+  <p style="margin:0;font-size:13.5px;color:#595d6c">One item remains unresolved — OPEN-1, the Elementor widget count, blocking Stage 21. C-7, C-11 and OPEN-2 were closed by owner decision. Everything else is settled and traceable.</p>
+</div>
+
+<h2 style="margin-top:0">1 · Executive status</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:26%">Area</th><th style="width:26%">Status</th><th>Final source</th></tr></thead>
+  <tbody>
+    <tr><td>Category hierarchy, names, counts</td><td>LOCKED</td><td>Category Master</td></tr>
+    <tr><td>Category roots (5)</td><td>LOCKED</td><td>Category Master</td></tr>
+    <tr><td>Decision 1 — separate terms</td><td>LOCKED</td><td>Category Master</td></tr>
+    <tr><td>Decision 1b — Black Polish Silver</td><td>LOCKED</td><td>Category Master</td></tr>
+    <tr><td>Model B navigation/facet</td><td>LOCKED</td><td>Navigation Facet Decision</td></tr>
+    <tr><td><code>_rj_resolver</code> schema and rules</td><td>LOCKED</td><td>Resolver Approval &amp; Lock</td></tr>
+    <tr><td>Shape B portable paths</td><td>LOCKED</td><td>Resolver Approval &amp; Lock §4</td></tr>
+    <tr><td><code>rj_page_section</code> + 11 meta keys</td><td>LOCKED</td><td>Owner decision 3a; Conflict 3 Validation A–G</td></tr>
+    <tr><td>Hero open-ended, scheduled</td><td>LOCKED</td><td>Owner decision 3a</td></tr>
+    <tr><td>Six rejected identifiers</td><td>LOCKED</td><td>Owner decision 3b</td></tr>
+    <tr><td>Global schema 6/7/8/9</td><td>LOCKED</td><td>Development Blueprint, as amended</td></tr>
+    <tr><td>Guest wishlist behaviour</td><td>LOCKED</td><td>Development Blueprint §14</td></tr>
+    <tr><td>Showroom timings source</td><td>LOCKED</td><td>Development Blueprint §9.4</td></tr>
+    <tr><td>Product weight visibility</td><td>LOCKED</td><td>C-11 owner decision — global <code>rj_display.show_weight_publicly</code>, default OFF, governing public UI and public REST alike</td></tr>
+    <tr><td>Elementor widget count</td><td>OPEN</td><td>Decision 2, never decided</td></tr>
+    <tr><td>Hero empty state — no eligible campaign</td><td>LOCKED</td><td>OPEN-2 owner decision — conditional slot, not rendered, zero layout space</td></tr>
+    <tr><td>Hero timezone</td><td>LOCKED</td><td>Development Blueprint §9.6 — WordPress site timezone, the single source for hero scheduling</td></tr>
+    <tr><td><code>rj_reel_type</code> references in Blueprint</td><td>SUPERSEDED</td><td>Owner decision 3b</td></tr>
+    <tr><td><code>rj_location</code> references in Blueprint</td><td>SUPERSEDED</td><td>Owner decision 3b</td></tr>
+    <tr><td><code>rj_customer_segment</code> references in Blueprint</td><td>SUPERSEDED</td><td>Owner decision 3b</td></tr>
+    <tr><td><code>_rj_name_alt</code> — original Decision 1 use</td><td>SUPERSEDED</td><td>Category Master — "not needed and is not used"</td></tr>
+    <tr><td><code>_rj_name_alt</code> — retained as a search-synonym field</td><td>LOCKED</td><td>C-7 owner decision</td></tr>
+    <tr><td><code>rj_sections</code> options group</td><td>SUPERSEDED</td><td>Owner decision 3a</td></tr>
+    <tr><td>Hero "maximum three"</td><td>SUPERSEDED</td><td>Owner decision 3a — open-ended</td></tr>
+    <tr><td>Gutenberg query-loop limitation</td><td>IMPLEMENTATION TEST REQUIRED</td><td>Navigation Facet Decision §12</td></tr>
+    <tr><td>Resolver Health verification</td><td>IMPLEMENTATION TEST REQUIRED</td><td>Resolver Approval §14</td></tr>
+    <tr><td>Fifteen regression tests</td><td>IMPLEMENTATION TEST REQUIRED</td><td>Development Blueprint §24</td></tr>
+  </tbody>
+</table>
+
+<h2>2 · Locked decisions</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:22%">Final rule</th><th style="width:20%">Authoritative doc</th><th style="width:26%">Earlier conflicting rule</th><th>Why the earlier rule must not be used</th></tr></thead>
+  <tbody>
+    <tr><td>306 terms · 5 roots · Gold 74 · Silver 98 · BPS 98</td><td>Category Master</td><td>Platform Architecture ≈306; Decision 1 doc 284+22 and 309</td><td>The master was counted from the supplied tree term by term; the earlier figures were estimates made before the tree was fully written out.</td></tr>
+    <tr><td>Group names: Ear Jewellery, Nose Jewellery, Neck Jewellery (English)</td><td>Category Master</td><td>Earlier docs used कान के आभूषण, नाक के आभूषण, गले के आभूषण</td><td>The master is the supplied business taxonomy. Rule 14 forbids changing supplied names.</td></tr>
+    <tr><td>बच्चो के आभूषण</td><td>Category Master</td><td>बच्चों के आभूषण</td><td>Same — spelling as supplied.</td></tr>
+    <tr><td>Pairs are separate terms</td><td>Category Master</td><td>Decision 1 open: five slash-joined or ten separate</td><td>The master lists them as individual siblings, which closes the question by content.</td></tr>
+    <tr><td>Model B — 22 resolver terms hold no product relationships</td><td>Navigation Facet Decision §15–16</td><td>Model A, and the earlier "composed menu" proposal</td><td>Model A stores each fact twice. The composed menu breaches Category Master rule 13.</td></tr>
+    <tr><td>Shape A stores slugs; Shape B stores IDs plus portable paths</td><td>Resolver Approval §4</td><td>Navigation Facet §6 showed Shape B as IDs only</td><td>IDs alone are unportable; three leaves share the name मंगलसूत्र, so slugs alone are ambiguous.</td></tr>
+    <tr><td><code>rj_page_section</code> created; hero is <code>_rj_section_key</code> = <code>hero</code>, open-ended</td><td>Owner decision 3a</td><td>Technical Blueprint: <code>rj_hero</code> + max 3. Conflict 3 Validation: <code>rj_sections</code> options group</td><td>Scheduled campaigns are an approved requirement, which justifies the post type; fixed keys would cap campaigns at three.</td></tr>
+    <tr><td>Six identifiers rejected: <code>rj_hero</code>, <code>rj_reel_type</code>, <code>rj_location</code>, <code>rj_customer_segment</code>, <code>_rj_segment</code>, <code>rj_sections</code></td><td>Owner decision 3b</td><td>Technical Blueprint proposed the first four as PENDING</td><td>Explicit owner rejection supersedes a pending proposal.</td></tr>
+    <tr><td>Guest wishlist in browser storage, merged guest-first on first login, never overwriting</td><td>Development Blueprint §14, §11.3</td><td>None found. No document disables guest wishlist.</td><td>—</td></tr>
+    <tr><td>Showroom timings from <code>_rj_timings</code> post meta, seven days, open-or-closed per day</td><td>Development Blueprint §9.4</td><td>UI/UX Blueprint §9 showed literal hours in the mockup</td><td>A mockup is a rendering, not a storage decision. Locked rule: no hardcoded business data in templates.</td></tr>
+    <tr><td>Breadcrumbs always follow <code>_rj_primary_term</code>, always editorial</td><td>Resolver Approval §10</td><td>None</td><td>—</td></tr>
+    <tr><td>Resolution only in <code>Domain\Category</code> and <code>Frontend\Query</code></td><td>Resolver Approval §8, clause 6</td><td>None</td><td>—</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">3 · Superseded decisions</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:20%">Old rule</th><th style="width:20%">Later final rule</th><th style="width:16%">Old source</th><th style="width:16%">Final source</th><th>Action</th></tr></thead>
+  <tbody>
+    <tr><td><code>rj_hero</code> post type</td><td><code>rj_page_section</code> with <code>_rj_section_key</code> = <code>hero</code></td><td>Technical Blueprint §3.6</td><td>Owner 3a/3b</td><td>DO NOT IMPLEMENT OLD RULE</td></tr>
+    <tr><td>Hero maximum three published</td><td>Open-ended scheduled campaigns</td><td>Technical Blueprint §3.6</td><td>Owner 3a</td><td>DO NOT IMPLEMENT OLD RULE</td></tr>
+    <tr><td><code>rj_sections</code> options group</td><td><code>rj_page_section</code> post type</td><td>Conflict 3 Validation §1, B</td><td>Owner 3a</td><td>DO NOT IMPLEMENT OLD RULE</td></tr>
+    <tr><td><code>rj_reel_type</code> taxonomy</td><td>Rejected. <code>rj_tag</code> is already on reels.</td><td>Technical Blueprint §4.1; Dev Blueprint §6.1, §12.1, §17</td><td>Owner 3b</td><td>DO NOT IMPLEMENT OLD RULE</td></tr>
+    <tr><td><code>rj_location</code> taxonomy</td><td>Rejected. Showroom address meta is the source.</td><td>Technical Blueprint §4.1; Dev Blueprint §6.1, §11.2</td><td>Owner 3b</td><td>DO NOT IMPLEMENT OLD RULE</td></tr>
+    <tr><td><code>rj_customer_segment</code> taxonomy</td><td>Rejected. Audiences come from <code>_rj_notify_prefs</code>.</td><td>Technical Blueprint §4.1; Dev Blueprint §6.1, §8.3, §17</td><td>Owner 3b</td><td>DO NOT IMPLEMENT OLD RULE</td></tr>
+    <tr><td><code>_rj_segment</code> user meta</td><td>Rejected.</td><td>Conflict 3 Resolution</td><td>Owner 3b</td><td>DO NOT IMPLEMENT OLD RULE</td></tr>
+    <tr><td><code>_rj_name_alt</code> as the Decision 1 resolution</td><td>Pairs are separate terms; the key has no remaining consumer</td><td>Dev Blueprint §8.1, §9.3</td><td>Category Master</td><td>DO NOT IMPLEMENT unless separately approved for search synonyms — see C-7</td></tr>
+    <tr><td>Slash-joined category pairs</td><td>Ten separate terms</td><td>Session 4 brief §8</td><td>Category Master</td><td>DO NOT IMPLEMENT OLD RULE</td></tr>
+    <tr><td>Hindi group names for Ear/Nose/Neck</td><td>English as supplied</td><td>Platform Architecture App. A; Dev Blueprint §8.3</td><td>Category Master</td><td>DO NOT IMPLEMENT OLD RULE</td></tr>
+    <tr><td>Term count ≈306 / 284+22 / 309</td><td>Exactly 306</td><td>Platform Architecture; Decision 1 doc</td><td>Category Master</td><td>DO NOT IMPLEMENT OLD RULE</td></tr>
+    <tr><td>Shape B as bare ID array</td><td>IDs plus portable <code>paths</code></td><td>Navigation Facet §6</td><td>Resolver Approval §4</td><td>DO NOT IMPLEMENT OLD RULE</td></tr>
+    <tr><td>Composed menu from three sources</td><td>Five real <code>rj_category</code> roots</td><td>Decision 1 Category Roots</td><td>Category Master rule 13</td><td>DO NOT IMPLEMENT OLD RULE</td></tr>
+    <tr><td>METALS/WEDDING/FOR as "navigational" without a stored mapping</td><td><code>_rj_resolver</code></td><td>Category Master closing note</td><td>Resolver Approval</td><td>DO NOT IMPLEMENT OLD RULE</td></tr>
+  </tbody>
+</table>
+
+<h2>4 · Open decisions</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+
+<h3 style="margin-top:0">OPEN-1 · Elementor widget count</h3>
+<table>
+  <thead><tr><th style="width:24%">Aspect</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Question</td><td>Seventeen widgets or twenty-one?</td></tr>
+    <tr><td>Why still open</td><td>Raised as Conflict 2 in the Development Blueprint and never answered by an owner decision. Session 5's Phase 7 brief re-listed twenty-one, which restates the question rather than settling it.</td></tr>
+    <tr><td>Documented alternatives</td><td><strong>13</strong> — Platform/WordPress Architecture, mapped section-by-section in UI/UX §16.1. <strong>17</strong> — Dev Blueprint §12.1: the 13 plus Wishlist Button, Customer Account, Hero, Notification Signup. <strong>21</strong> — Session 4 and Session 5 briefs: the 17 plus Product Card, Reel Viewer, Store Locator, Featured Categories.</td></tr>
+    <tr><td>Smallest decision required</td><td>"Build 17" or "build 21". Nothing else.</td></tr>
+    <tr><td>Blocks</td><td>Stage 21 only. Stages 1–20 proceed.</td></tr>
+  </tbody>
+</table>
+<h5>Side-by-side inventory</h5>
+<table>
+  <thead><tr><th style="width:24%">Widget</th><th style="width:10%">In 13</th><th style="width:10%">In 17</th><th style="width:10%">In 21</th><th>Overlap evidence</th></tr></thead>
+  <tbody>
+    <tr><td>Product Grid</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+    <tr><td>Product Slider</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+    <tr><td>Category Grid</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+    <tr><td>Category Slider</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+    <tr><td>Mega Menu</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+    <tr><td>Reel Grid</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+    <tr><td>Reel Slider</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+    <tr><td>Collection Grid</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+    <tr><td>Showroom Grid</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+    <tr><td>Testimonial Grid</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+    <tr><td>WhatsApp Button</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+    <tr><td>Contact Information</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+    <tr><td>Search</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
+    <tr><td>Wishlist Button</td><td>—</td><td>✓</td><td>✓</td><td>New. No existing widget renders it.</td></tr>
+    <tr><td>Customer Account</td><td>—</td><td>✓</td><td>✓</td><td>New.</td></tr>
+    <tr><td>Hero</td><td>—</td><td>✓</td><td>✓</td><td>New. Now backed by <code>rj_page_section</code>, so no longer pending.</td></tr>
+    <tr><td>Notification Signup</td><td>—</td><td>✓</td><td>✓</td><td>New.</td></tr>
+    <tr><td>Product Card</td><td>—</td><td>—</td><td>✓</td><td><strong>Overlap:</strong> Product Grid with count 1. Same renderer.</td></tr>
+    <tr><td>Reel Viewer</td><td>—</td><td>—</td><td>✓</td><td><strong>Not placeable:</strong> Dev Blueprint §12.2 records it as a modal the Reel Grid opens.</td></tr>
+    <tr><td>Store Locator</td><td>—</td><td>—</td><td>✓</td><td><strong>Overlap:</strong> Showroom Grid, which already carries a <code>preset: Store Locator</code> control (§12.1).</td></tr>
+    <tr><td>Featured Categories</td><td>—</td><td>—</td><td>✓</td><td><strong>Overlap:</strong> Category Grid, which already has a <code>featured only</code> control (§12.1).</td></tr>
+  </tbody>
+</table>
+<p style="font-size:11.5px;color:#595d6c"><strong>Evidence, not a choice:</strong> all four disputed widgets have a documented equivalent in the 17-widget set, and Reel Viewer is documented as non-placeable. No document establishes a capability that the 17 cannot deliver. That is the state of the evidence; the count remains an owner decision.</p>
+
+<h3>OPEN-2 · Hero empty state <span style="font-size:11px;color:#2f6b3a;letter-spacing:0.08em">CLOSED — LOCKED BY OWNER DECISION</span></h3>
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:13px 15px;margin:10px 0 14px;break-inside:avoid">
+  <p style="margin:0;font-size:14px"><strong>Resolved.</strong> The hero is a conditional layout section. With no eligible campaign it is <strong>not rendered</strong> and contributes <strong>zero layout space</strong>; the next homepage section collapses upward automatically on desktop, tablet and mobile. No wrapper, no reserved height, no placeholder, no empty carousel, no default campaign. Authoritative: <em>Development Blueprint</em> §6.2. The analysis below is the reasoning record.</p>
+</div>
+<table>
+  <thead><tr><th style="width:24%">Aspect</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Question</td><td>What renders in the hero slot when every campaign is inactive or outside its date window?</td></tr>
+    <tr><td>Status</td><td><strong>NOT ESTABLISHED IN SUPPLIED DOCUMENTS.</strong> The owner's decision 3a requires that scheduling "fall back safely", which states the requirement without defining the behaviour. No document names the fallback content.</td></tr>
+    <tr><td>Documented alternatives</td><td>None. No supplied document proposes a specific fallback.</td></tr>
+    <tr><td>Smallest decision required</td><td>One sentence naming what the hero shows with no active campaign.</td></tr>
+    <tr><td>Blocks</td><td>Stage 22 (theme homepage). Stage 3 registration and Stage 5 meta are unaffected — the fields exist either way.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">5 · Contradictions found</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+
+<h5>C-1 to C-2 · Rejected taxonomies still referenced in the CPT table</h5>
+<table>
+  <thead><tr><th style="width:8%">ID</th><th style="width:20%">Earlier statement</th><th style="width:20%">Later statement</th><th style="width:22%">Authoritative</th><th>Required specification change</th></tr></thead>
+  <tbody>
+    <tr><td>C-1</td><td>Dev Blueprint §6.1 lists <code>reel_type</code> among <code>rj_reel</code>'s taxonomies</td><td>Owner 3b: <code>rj_reel_type</code> — DO NOT CREATE</td><td>Owner 3b</td><td>Amend §6.1 to <code>category, collection_tax, tag</code>. Remove <code>reel_type</code>.</td></tr>
+    <tr><td>C-2</td><td>Dev Blueprint §6.1 lists <code>location</code> as <code>rj_showroom</code>'s taxonomy</td><td>Owner 3b: <code>rj_location</code> — DO NOT CREATE</td><td>Owner 3b</td><td>Amend §6.1 to "—". <code>rj_showroom</code> carries no taxonomy; <code>_rj_city</code>, <code>_rj_state</code>, <code>_rj_pincode</code> are the location source.</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12px;color:#595d6c"><strong>Not a contradiction:</strong> Development Blueprint §7.3 already reads "Rejected taxonomies — NOT CREATED, Conflict 3 resolved", and records for each one the structure that delivers the capability instead plus a trigger for revisiting. <strong>Retain it as written.</strong> It is the only record of why each was rejected and what replaces it — and it is the justification behind the C-4 and C-6 fixes below. An earlier draft of this document listed it as a contradiction requiring deletion; that was wrong, and the contradiction count is twelve, not thirteen.</p>
+
+<h5>C-3 to C-7 · Downstream references to rejected identifiers</h5>
+<table>
+  <thead><tr><th style="width:8%">ID</th><th style="width:22%">Earlier statement</th><th style="width:20%">Conflict</th><th style="width:20%">Authoritative</th><th>Required change</th></tr></thead>
+  <tbody>
+    <tr><td>C-3</td><td>Dev Blueprint §12.1: Reel Grid and Reel Slider carry a "reel type" control</td><td>The taxonomy it filters does not exist</td><td>Owner 3b; §7.3 names <code>rj_tag</code> as the replacement</td><td>Replace the control with "tag", which <code>rj_tag</code> already supports on reels.</td></tr>
+    <tr><td>C-4</td><td>Dev Blueprint §11.2: <code>GET reels</code> accepts a <code>reel_type</code> argument</td><td>Same</td><td>Owner 3b</td><td>Replace with <code>tag</code>. Also <code>GET showrooms</code>: drop the <code>location</code> argument.</td></tr>
+    <tr><td>C-5</td><td>Dev Blueprint §8.3: bridal collection audience is "Bridal Interest segment"</td><td>The segment taxonomy does not exist</td><td>Owner 3b; §7.3 names <code>_rj_notify_prefs</code> as the replacement</td><td>Replace with "customers whose <code>_rj_notify_prefs</code> include the bridal event group". Apply to the Technical Blueprint §8.3 row as well.</td></tr>
+    <tr><td>C-6</td><td>Dev Blueprint §17: Customers screen has "assign segment" and "bulk segment"; §14 lists "segment assignment"</td><td>No storage exists for a segment</td><td>Owner 3b</td><td>Remove both actions and the segment column from the customer list. Filtering by notification preference replaces it.</td></tr>
+    <tr><td>C-7</td><td>Dev Blueprint §9.3 registers <code>_rj_name_alt</code>; §8.1 describes it as the Decision 1 resolution</td><td>Decision 1 was resolved as separate terms, so the key has no consumer</td><td>Category Master: "not needed and is not used"</td><td><strong>DECISION APPLIED.</strong> Retained as an optional search-synonym / search-alias field, with that purpose stated in both registries. It never defines identity, creates a term, alters a URL or canonical, or replaces <code>_rj_primary_term</code>. C-7 — LOCKED.</td></tr>
+  </tbody>
+</table>
+
+<h5>C-8 to C-12 · Remaining</h5>
+<table>
+  <thead><tr><th style="width:8%">ID</th><th style="width:22%">Earlier statement</th><th style="width:20%">Conflict</th><th style="width:20%">Authoritative</th><th>Required change</th></tr></thead>
+  <tbody>
+    <tr><td>C-8</td><td>Navigation Facet §6: Shape B is <code>{"terms":[id,id,id]}</code></td><td>Omits the portable <code>paths</code> array</td><td>Resolver Approval §4</td><td>Amend Navigation Facet §6 and §16 to state IDs plus <code>paths</code>. The Resolver Approval wording is correct as written.</td></tr>
+    <tr><td>C-9</td><td>Navigation Facet §4: Maang Tikka resolves to "the three टिका leaves" without a parent</td><td>Implies Neck Jewellery by proximity; टिका is under सिर के आभूषण</td><td>Resolver Approval §5</td><td>Already corrected in the Resolver Approval. Amend Navigation Facet §4 to match.</td></tr>
+    <tr><td>C-10</td><td>Technical Blueprint §3.6 and §4.1 present five PENDING identifiers</td><td>One approved, four rejected</td><td>Owner 3a/3b</td><td>Mark both sections superseded, pointing to the Conflict 3 Validation A–G sections.</td></tr>
+    <tr><td>C-11</td><td>Dev Blueprint §9.2 marks <code>_rj_weight</code> <strong>Public: Yes</strong>; §10 gives <code>rj_display</code> a "show weight publicly" flag</td><td>A public REST field cannot be hidden by a display flag — the value is readable regardless of the setting</td><td>Resolved by owner decision — option (b)</td><td><strong>DECISION APPLIED.</strong> The flag gates <strong>both</strong> rendering and the REST field. §9.2 now marks weight <em>Conditional</em> rather than Public: Yes; §10 names <code>show_weight_publicly</code> with default OFF as the single switch governing public surfaces and public REST alike; §12.1 subordinates the widget control to it. Admin access is unaffected in both states. C-11 — LOCKED.</td></tr>
+    <tr><td>C-12</td><td>This document's first draft recorded the hero scheduling timezone as undefined</td><td><strong>False finding.</strong> Development Blueprint §9.6 already carried the rule</td><td>Development Blueprint §9.6</td><td><strong>CLARIFICATION APPLIED.</strong> Hero campaign start and end windows are evaluated in the WordPress site timezone — the single timezone source for hero scheduling, which for this business is Asia/Kolkata. No second hero-specific timezone setting exists. Notification quiet hours (§8.4) remain governed by their own rule. §9.6's wording was strengthened in the Correction Pass; no contradicting rule was added.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">6 · Final consolidated meta registry</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p style="font-size:12px;color:#595d6c">Every key traced to a supplied document. Nothing invented, nothing merged. "New" means added after Session 4's Development Blueprint.</p>
+
+<h5>rj_product — post meta · 14 keys · Dev Blueprint §9.2</h5>
+<table>
+  <thead><tr><th style="width:24%">Key</th><th style="width:40%">Purpose</th><th style="width:12%">New</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td><code>_rj_code</code></td><td>Product code, unique</td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_name_hi</code> · <code>_rj_name_en</code></td><td>Bilingual names</td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_weight</code> · <code>_rj_weight_unit</code></td><td>Weight and unit. <strong>Conditional public exposure</strong> — governed by <code>rj_display.show_weight_publicly</code> (C-11)</td><td>No</td><td>REQUIRED · LOCKED</td></tr>
+    <tr><td><code>_rj_gallery</code></td><td>Ordered attachment IDs, max 12</td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_stone_details</code></td><td>Stone description</td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_making_note</code></td><td>Internal note, private</td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_whatsapp_message</code></td><td>Per-piece template override</td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_visibility</code></td><td>public · hidden · archived</td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_featured</code></td><td>Featured flag</td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_primary_term</code></td><td>Canonical and breadcrumb driver. <strong>Must be editorial</strong></td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_view_count</code> · <code>_rj_enquiry_count</code></td><td>Counters, private, deferred writes</td><td>No</td><td>REQUIRED</td></tr>
+  </tbody>
+</table>
+
+<h5>rj_category — term meta · 16 keys · Dev Blueprint §9.3 + Resolver Approval §3</h5>
+<table>
+  <thead><tr><th style="width:24%">Key</th><th style="width:40%">Purpose</th><th style="width:12%">New</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td><code>_rj_order</code></td><td>Sibling order, gapped by 10</td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_visible</code></td><td>Visibility. <strong>Defaults true</strong></td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_featured</code></td><td>Featured column in the mega menu</td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_name_hi</code> · <code>_rj_name_en</code></td><td>Bilingual names</td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_name_alt</code></td><td><strong>Search synonyms / search aliases.</strong> Comma-separated additional match terms for the search index. Never defines identity, never creates a term.</td><td>No</td><td>REQUIRED · LOCKED (C-7)</td></tr>
+    <tr><td><code>_rj_image_id</code> · <code>_rj_icon_id</code></td><td>Category imagery</td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_seo_title</code> · <code>_rj_seo_desc</code> · <code>_rj_seo_noindex</code></td><td>Per-term SEO</td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_menu_columns</code></td><td>Root terms only</td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_depth_cache</code> · <code>_rj_path_cache</code> · <code>_rj_count_deep</code></td><td>Derived. Write-blocked over REST</td><td>No</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_resolver</code></td><td>Model B mapping. 22 terms, empty on 284</td><td><strong>YES</strong></td><td>REQUIRED · LOCKED</td></tr>
+  </tbody>
+</table>
+<p style="font-size:11.5px;color:#595d6c">Flat taxonomies (<code>rj_metal</code>, <code>rj_purity</code>, <code>rj_occasion</code>, <code>rj_audience</code>) carry the same keys minus the cache, menu and resolver fields, per §9.3. <code>rj_tag</code> carries names and SEO title only.</p>
+
+<h5>rj_page_section — post meta · 11 keys · Owner 3a, Conflict 3 Validation D</h5>
+<table>
+  <thead><tr><th style="width:24%">Key</th><th style="width:40%">Purpose</th><th style="width:12%">New</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td><code>_rj_section_key</code></td><td>Allow-listed slot. <code>hero</code> is one value carrying many dated campaigns</td><td>YES</td><td>REQUIRED · LOCKED</td></tr>
+    <tr><td><code>_rj_title_hi</code> · <code>_rj_title_en</code></td><td>Bilingual titles</td><td>YES</td><td>REQUIRED · LOCKED</td></tr>
+    <tr><td><code>_rj_description</code></td><td>Body copy</td><td>YES</td><td>REQUIRED · LOCKED</td></tr>
+    <tr><td><code>_rj_cta_label</code> · <code>_rj_cta_url</code></td><td>Call to action</td><td>YES</td><td>REQUIRED · LOCKED</td></tr>
+    <tr><td><code>_rj_image_desktop</code> · <code>_rj_image_mobile</code></td><td>Two art-directed crops</td><td>YES</td><td>REQUIRED · LOCKED</td></tr>
+    <tr><td><code>_rj_active</code></td><td>Active flag, independent of dates</td><td>YES</td><td>REQUIRED · LOCKED</td></tr>
+    <tr><td><code>_rj_starts_at</code> · <code>_rj_ends_at</code></td><td>Campaign window. Evaluated in the WordPress site timezone (C-12)</td><td>YES</td><td>REQUIRED · LOCKED</td></tr>
+  </tbody>
+</table>
+<p style="font-size:11.5px;color:#595d6c"><code>_rj_order</code> is reused from the existing registry for display order and is <strong>not</strong> a twelfth key — consistent with the Conflict 3 Validation section D note.</p>
+
+<h5>rj_reel · 9 · rj_collection · 4 · rj_showroom · 11 · rj_testimonial · 6 — Dev Blueprint §9.4</h5>
+<table>
+  <thead><tr><th style="width:16%">Object</th><th style="width:52%">Keys</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>rj_reel</td><td><code>_rj_source_type</code>, <code>_rj_source_url</code>, <code>_rj_video_id</code>, <code>_rj_attachment_id</code>, <code>_rj_poster_id</code>, <code>_rj_linked_products</code>, <code>_rj_caption</code>, <code>_rj_visibility</code>, <code>_rj_expires_at</code></td><td>REQUIRED. <code>_rj_source_type</code> records <em>where the video came from</em>, not what it is about — it does not replace the rejected <code>rj_reel_type</code>, and no substitute is created.</td></tr>
+    <tr><td>rj_collection</td><td><code>_rj_cover_id</code>, <code>_rj_badge</code>, <code>_rj_order</code>, <code>_rj_auto_rule</code></td><td>REQUIRED</td></tr>
+    <tr><td>rj_showroom</td><td><code>_rj_address</code>, <code>_rj_city</code>, <code>_rj_state</code>, <code>_rj_pincode</code>, <code>_rj_phone</code>, <code>_rj_whatsapp</code>, <code>_rj_timings</code>, <code>_rj_map_url</code>, <code>_rj_lat</code>, <code>_rj_lng</code>, <code>_rj_gallery</code></td><td>REQUIRED. <code>_rj_timings</code> is the sole source of opening hours — no hours in any template.</td></tr>
+    <tr><td>rj_testimonial</td><td><code>_rj_author</code>, <code>_rj_rating</code>, <code>_rj_photo_id</code>, <code>_rj_context</code>, <code>_rj_source</code>, <code>_rj_order</code></td><td>REQUIRED</td></tr>
+  </tbody>
+</table>
+
+<h5>Customer — user meta · 10 keys · Dev Blueprint §9.5</h5>
+<table>
+  <thead><tr><th style="width:26%">Key</th><th style="width:44%">Purpose</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td><code>_rj_phone</code> · <code>_rj_phone_verified</code></td><td>Contact, OTP-ready</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_signup_source</code> · <code>_rj_signup_context</code></td><td>Attribution, immutable source</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_last_login</code> · <code>_rj_login_methods</code></td><td>Session and provider record</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_identity_google</code></td><td>Provider subject ID. Never exposed over REST</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_fav_collections</code></td><td>Followed collections</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_notify_prefs</code></td><td>Per channel and event group. <strong>The sole notification-audience source</strong> (C-6)</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_consent</code></td><td>Append-only consent record</td><td>REQUIRED</td></tr>
+    <tr><td><code>_rj_segment</code></td><td>Admin-assigned segment</td><td><strong>REJECTED — never create</strong></td></tr>
+  </tbody>
+</table>
+<p style="font-size:11.5px;color:#595d6c">Wishlist and recent views are tables, not user meta (§9.5). Settings are nine option groups, not meta (§10) — <code>rj_contact</code>, <code>rj_whatsapp</code>, <code>rj_display</code>, <code>rj_features</code>, <code>rj_auth_providers</code>, <code>rj_notifications</code>, <code>rj_seo</code>, <code>rj_db_version</code>, <code>rj_install_state</code>. <code>rj_sections</code> is rejected.</p>
+<h5>Totals</h5>
+<table>
+  <thead><tr><th style="width:44%">Count</th><th>Value</th></tr></thead>
+  <tbody>
+    <tr><td>Post meta keys</td><td>14 product + 11 page section + 9 reel + 4 collection + 11 showroom + 6 testimonial = <strong>55</strong></td></tr>
+    <tr><td>Term meta keys on <code>rj_category</code></td><td><strong>16</strong>, all locked — <code>_rj_name_alt</code> retained as a search-synonym field per C-7</td></tr>
+    <tr><td>User meta keys</td><td><strong>10</strong></td></tr>
+    <tr><td>New permanent keys since Session 4</td><td><strong>12</strong> — 11 on <code>rj_page_section</code>, 1 on <code>rj_category</code></td></tr>
+    <tr><td>Rejected keys, never to be created</td><td><strong>1</strong> — <code>_rj_segment</code></td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">7 · Category / facet consistency check</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:34%">Item</th><th style="width:16%">Expected</th><th style="width:16%">Documented</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td>Roots</td><td>5</td><td>5</td><td>PASS</td></tr>
+    <tr><td>Total terms</td><td>306</td><td>306</td><td>PASS</td></tr>
+    <tr><td>Gold Jewellery</td><td>74</td><td>74</td><td>PASS</td></tr>
+    <tr><td>Silver Jewellery</td><td>98</td><td>98</td><td>PASS</td></tr>
+    <tr><td>Black Polish Silver</td><td>98</td><td>98</td><td>PASS</td></tr>
+    <tr><td>Resolver terms</td><td>22</td><td>22 — METALS 7 + FOR 8 + WEDDING 7</td><td>PASS</td></tr>
+    <tr><td>Taxonomies</td><td>7</td><td>7 in §7.1 · §7.3 correctly records the three rejected · <strong>§6.1 still names <code>reel_type</code> and <code>location</code></strong></td><td>FAIL — C-1, C-2</td></tr>
+    <tr><td>Post types</td><td>6</td><td>6</td><td>PASS</td></tr>
+    <tr><td>Custom tables</td><td>8</td><td>8</td><td>PASS</td></tr>
+    <tr><td>Option groups</td><td>9</td><td>9</td><td>PASS</td></tr>
+    <tr><td><code>_rj_resolver</code></td><td>Defined, two shapes, validated</td><td>Resolver Approval §3–4, 12 clauses</td><td>PASS</td></tr>
+    <tr><td><code>_rj_primary_term</code> always editorial</td><td>Enforced</td><td>Resolver Approval §7, §10</td><td>PASS</td></tr>
+    <tr><td>Model B — no products on resolver terms</td><td>Five enforcement layers</td><td>Resolver Approval §7 — six listed</td><td>PASS</td></tr>
+    <tr><td>Shape B portability</td><td>IDs + paths</td><td>Resolver Approval §4 · <strong>Navigation Facet §6 still shows IDs only</strong></td><td>FAIL — C-8</td></tr>
+  </tbody>
+</table>
+<p><strong>Twelve PASS, two FAIL.</strong> Both failures are stale wording in earlier documents, not defects in the locked decisions. Both have a named specification edit.</p>
+
+<h2>8 · Implementation-ready rules</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p style="font-size:12px;color:#595d6c">Settled rules only. Each traceable to a locked source.</p>
+<ol>
+  <li><strong>Schema:</strong> 6 post types, 7 taxonomies, 8 tables, 9 option groups. No others.</li>
+  <li><strong>Post types:</strong> <code>rj_product</code>, <code>rj_reel</code>, <code>rj_collection</code>, <code>rj_showroom</code>, <code>rj_testimonial</code>, <code>rj_page_section</code>.</li>
+  <li><strong>Taxonomies:</strong> <code>rj_category</code>, <code>rj_metal</code>, <code>rj_purity</code>, <code>rj_occasion</code>, <code>rj_audience</code>, <code>rj_collection_tax</code>, <code>rj_tag</code>. <code>rj_reel_type</code>, <code>rj_location</code> and <code>rj_customer_segment</code> are never registered.</li>
+  <li><strong>Categories:</strong> import 306 terms from the Category Master. Names exactly as written, including English group names, बच्चो spelling, and both हथफूल / हथफुल. Match key is the full slug path. Deduplication disabled. <code>_rj_visible</code> defaults true.</li>
+  <li><strong>Slugs:</strong> Latin, derived deterministically from the ancestor path. Visible names never altered.</li>
+  <li><strong>Resolvers:</strong> 22 terms carry <code>_rj_resolver</code>. Shape A = <code>tax</code> + <code>slug</code>, targeting only <code>rj_metal</code>, <code>rj_purity</code>, <code>rj_occasion</code>, <code>rj_audience</code>. Shape B = <code>terms</code> + portable <code>paths</code>, IDs re-resolved from paths on load.</li>
+  <li><strong>No product on a resolver term or the three roots.</strong> Enforced in the editor, the domain repository, REST (409), the importer dry run, the primary-term validator and the weekly sweep.</li>
+  <li><strong>Resolution</strong> in <code>Domain\Category</code> and <code>Frontend\Query</code> only. Counts use the same logic, in the hourly job.</li>
+  <li><strong>URLs:</strong> resolver archives at <code>/c/…</code>. Facet archives noindex, canonical to the category path.</li>
+  <li><strong>Breadcrumbs</strong> always from <code>_rj_primary_term</code>.</li>
+  <li><code>Couple</code> is added to <code>rj_occasion</code> as an ordinary term.</li>
+  <li><strong>Hero:</strong> <code>rj_page_section</code> records with <code>_rj_section_key</code> = <code>hero</code>. Unlimited campaigns. Desktop may show multiple; <strong>mobile shows only the currently active campaign and loads no carousel payload</strong> (owner 3a).</li>
+  <li><strong>Notification audiences</strong> come from <code>_rj_notify_prefs</code>. No segment storage exists.</li>
+  <li><strong>Contact data</strong> has one source: <code>rj_contact</code>. Showroom hours have one source: <code>_rj_timings</code>. No phone, address or opening hour in any template.</li>
+  <li><strong>Guest wishlist</strong> is browser-local, merged guest-first on first login, never overwriting. Browsing never requires an account.</li>
+  <li><strong>Every write</strong> passes capability → intent → sanitise → escape, in that order.</li>
+  <li><strong>Never seed fake data.</strong> No demo products, placeholder images or sample videos, at any stage.</li>
+</ol>
+
+<h2>9 · Pre-code blockers</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+
+<h5>Critical blockers — both discharged</h5>
+<table>
+  <thead><tr><th style="width:8%">#</th><th style="width:30%">Item</th><th style="width:16%">Blocks</th><th>Resolution required</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Specification edits C-1 to C-6 and C-8 to C-10.</strong> <span style="color:#2f6b3a;font-weight:600">DISCHARGED — APPLIED.</span> Nine stale references to rejected identifiers and superseded wording across the Development, Technical and Navigation Facet documents. All nine edits were applied in the Correction Pass — see the <em>Correction Pass Report</em> §1 and its 15/15 consistency check. <strong>C-7 was excluded — it needs a decision, not an edit. Development Blueprint §7.3 was also excluded: it is already correct and was retained.</strong></td><td>Nothing</td><td>None</td></tr>
+    <tr><td>2</td><td><strong>C-12 — hero scheduling timezone.</strong> <span style="color:#2f6b3a;font-weight:600">DISCHARGED — CLARIFICATION APPLIED.</span> Not a blocker: Development Blueprint §9.6 already carried the rule, and its wording was strengthened in the Correction Pass. Hero windows are evaluated in the WordPress site timezone, the single source for hero scheduling (Asia/Kolkata for this business). No second timezone setting.</td><td>Nothing</td><td>None</td></tr>
+  </tbody>
+</table>
+
+<h5>Clarifications — three closed by owner decision, one still open</h5>
+<table>
+  <thead><tr><th style="width:8%">#</th><th style="width:30%">Item</th><th style="width:16%">Needed by</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>C-7 — <code>_rj_name_alt</code>.</strong> <span style="color:#2f6b3a;font-weight:600">CLOSED — LOCKED.</span> Retained as an optional search-synonym field. It never defines identity and never creates a term.</td><td>Nothing</td><td>None</td></tr>
+    <tr><td>2</td><td><strong>C-11 — weight visibility.</strong> <span style="color:#2f6b3a;font-weight:600">CLOSED — LOCKED.</span> One global <code>rj_display.show_weight_publicly</code> switch, default OFF, gating public UI <em>and</em> public REST alike. Admin access unaffected.</td><td>Nothing</td><td>None</td></tr>
+    <tr><td>3</td><td><strong>OPEN-2 — hero empty state.</strong> <span style="color:#2f6b3a;font-weight:600">CLOSED — LOCKED.</span> Not rendered, zero layout space, next section collapses upward.</td><td>Nothing</td><td>None</td></tr>
+    <tr><td>4</td><td><strong>OPEN-1 — widget count.</strong> 17 or 21. <strong>Still open.</strong></td><td>Stage 21</td><td>Evidence in §4. Owner decision.</td></tr>
+  </tbody>
+</table>
+
+<h5>Runtime test requirements — added to the Stage 26 suite</h5>
+<table>
+  <thead><tr><th style="width:8%">#</th><th style="width:34%">Test</th><th>Assertion</th></tr></thead>
+  <tbody>
+    <tr><td>R-1</td><td>Category import fidelity</td><td>After import: exactly 306 terms; 5 roots; Gold 74, Silver 98, BPS 98; the 10 duplicate-name groups present at their expected instance counts; no term merged.</td></tr>
+    <tr><td>R-2</td><td>Re-import idempotency</td><td>Running the same file twice leaves 306 terms, not 612.</td></tr>
+    <tr><td>R-3</td><td>Resolver integrity</td><td>All 22 resolve. No resolver targets <code>rj_category</code> via Shape A. No Shape B target carries its own resolver.</td></tr>
+    <tr><td>R-4</td><td>Resolver product prohibition</td><td>Assignment attempted through editor, REST, importer and direct repository call — all four rejected.</td></tr>
+    <tr><td>R-5</td><td>Shape B portability</td><td>Export, import into a clean installation with different term IDs, verify all three unions still resolve from paths.</td></tr>
+    <tr><td>R-6</td><td>Count / archive agreement</td><td>For all 22, the cached count equals the archive's actual result count.</td></tr>
+    <tr><td>R-7</td><td>Broken resolver behaviour</td><td>Delete a target term: Health warns and the archive 404s. It must not render empty.</td></tr>
+    <tr><td>R-8</td><td>Gutenberg query-loop limitation</td><td>Documented and confirmed: a native query loop on a resolver term returns empty without error. Our block returns products. <strong>Recorded as an accepted limitation, not a defect.</strong></td></tr>
+    <tr><td>R-9</td><td>Hero scheduling</td><td>A campaign appears at its start, disappears at its end, respects <code>_rj_active</code>, and mobile loads one campaign only.</td></tr>
+    <tr><td>R-10</td><td>Devanagari round trip</td><td>Import, export, re-import: every Hindi name byte-identical. Both हथफूल and हथफुल distinct.</td></tr>
+    <tr><td>R-11</td><td>Contact and hours single source</td><td>Change a number in <code>rj_contact</code> and hours in <code>_rj_timings</code>; every surface updates. A Tools scan finds no phone-shaped string in any template.</td></tr>
+    <tr><td>R-12</td><td>Rejected identifiers absent</td><td>No <code>rj_reel_type</code>, <code>rj_location</code>, <code>rj_customer_segment</code> registered; no <code>_rj_segment</code> or <code>rj_sections</code> written. Development Blueprint §7.3 is the reference list.</td></tr>
+  </tbody>
+</table>
+<p style="font-size:11.5px;color:#595d6c">These twelve are additional to the fifteen regression tests in Development Blueprint §24, which remain required.</p>
+
+<h2 style="break-before:page">10 · Final reconciliation summary</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:32%">Item</th><th style="width:26%">Final status</th><th>Action before coding</th></tr></thead>
+  <tbody>
+    <tr><td>Category Master — 306 terms</td><td>LOCKED</td><td>None. Import file generated from it once the resolver column is populated.</td></tr>
+    <tr><td>Five roots</td><td>LOCKED</td><td>None</td></tr>
+    <tr><td>Decision 1 / 1b</td><td>LOCKED</td><td>None</td></tr>
+    <tr><td>Model B</td><td>LOCKED</td><td>None</td></tr>
+    <tr><td><code>_rj_resolver</code></td><td>LOCKED</td><td>None</td></tr>
+    <tr><td><code>rj_page_section</code> + 11 keys</td><td>LOCKED</td><td>None</td></tr>
+    <tr><td>Six rejected identifiers</td><td>LOCKED</td><td>None</td></tr>
+    <tr><td>Global schema 6/7/8/9</td><td>LOCKED</td><td>None</td></tr>
+    <tr><td>Guest wishlist</td><td>LOCKED</td><td>None</td></tr>
+    <tr><td>Showroom timings source</td><td>LOCKED</td><td>None</td></tr>
+    <tr><td>C-1 … C-6, C-8 … C-10</td><td>SUPERSEDED</td><td><strong>None — nine specification edits applied</strong> in the Correction Pass. Development Blueprint §7.3 was <strong>not</strong> among them — retained as written.</td></tr>
+    <tr><td>C-12 hero timezone</td><td>LOCKED</td><td>None — clarification applied. WordPress site timezone is the single source.</td></tr>
+    <tr><td>C-7 <code>_rj_name_alt</code></td><td>LOCKED</td><td>None — retained as a search-synonym field. Owner decision applied.</td></tr>
+    <tr><td>C-11 weight visibility</td><td>LOCKED</td><td>None — global <code>rj_display</code> switch, default OFF, governing UI and REST. Owner decision applied.</td></tr>
+    <tr><td>OPEN-1 widget count</td><td>OPEN</td><td>Owner decision. Blocks Stage 21 only.</td></tr>
+    <tr><td>OPEN-2 hero empty state</td><td>LOCKED</td><td>None — conditional slot, zero layout space. Owner decision applied.</td></tr>
+    <tr><td>Gutenberg query loop</td><td>IMPLEMENTATION TEST REQUIRED</td><td>R-8. Accepted limitation; do not convert to a feature.</td></tr>
+    <tr><td>Twelve new runtime tests</td><td>IMPLEMENTATION TEST REQUIRED</td><td>Add R-1 … R-12 to the Stage 26 suite.</td></tr>
+  </tbody>
+</table>
+
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:15px 17px;margin-top:18px;break-inside:avoid">
+  <h5 style="margin:0 0 6px;color:#2f6b3a">What stands between here and Stage 1</h5>
+  <p style="margin:0 0 7px;font-size:14.5px"><strong>Nothing.</strong> Both critical blockers are discharged — the nine specification edits were applied in the Correction Pass, and C-12 was a false finding whose rule already existed. C-7 and C-11 are non-blocking clarifications; OPEN-1 blocks Stage 21 and OPEN-2 blocks Stage 22.</p>
+  <p style="margin:0;font-size:13.5px;color:#595d6c">No locked decision was reopened. No new architecture was proposed. Every rule in §8 traces to a supplied document, and everything unsupported is marked NOT ESTABLISHED rather than filled in.</p>
+</div>
+
+</doc-page>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15px; line-height: 1.58; }
+h1, h2, h3 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 36px; letter-spacing: -0.03em; }
+h2 { font-size: 22px; margin: 26px 0 4px; }
+h3 { font-size: 16px; margin: 18px 0 6px; }
+h5 { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 14px 0 6px; }
+p { margin: 0 0 10px; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 11px; padding-left: 20px; }
+li { margin: 0 0 4px; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 10px 0 15px; font-size: 11.6px; line-height: 1.42; }
+th { text-align: left; font-weight: 600; font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 8px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 5px 8px 5px 0; vertical-align: top; overflow-wrap: normal; word-break: keep-all; }
+td:nth-last-child(-n+2), td.wrap { overflow-wrap: anywhere; word-break: normal; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 3px; border-radius: 3px; color: #423a6a; }
+pre { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.6px; line-height: 1.5; background: #f3f5fe; border-left: 2px solid #9184d9; padding: 11px 13px; margin: 11px 0 15px; border-radius: 0 8px 8px 0; white-space: pre-wrap; color: #292b31; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.7in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Admin UX · Accounts · Chatbot Lock</span>
+  <span>Reconciliation pass</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>No code written. No locked architecture changed.</span>
+  <span>2 document updates · 2 open decisions · 1 new finding</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px">
+  <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Specification lock</div>
+  <h1 style="margin:0">Admin UX, Accounts &amp; AI Chatbot</h1>
+  <div style="font-size:17.5px;color:#595d6c;line-height:1.35">Audited against the existing document set. Most of what you asked to lock is already specified — four things are not, and the chatbot needs one decision from you.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:14px 16px;margin-bottom:16px;break-inside:avoid">
+  <h5 style="margin:0 0 5px;color:#8a6410">What the audit actually found</h5>
+  <p style="margin:0 0 7px;font-size:14.5px">I read the relevant sections rather than recalling them. <strong>Development Blueprint §17 has eighteen admin screens, and two of the six you listed are missing from it</strong> — there is no Hero/Campaigns screen and no Search Synonyms screen. Both objects exist in the schema (<code>rj_page_section</code> §6.2 and §9.6; <code>_rj_name_alt</code> §9.4) but neither has a registered management screen. That is precisely the failure mode your Part 1 names: fields existing is not an admin requirement being met.</p>
+  <p style="margin:0 0 7px;font-size:14.5px"><strong>Forgot password and persistent session are not documented anywhere.</strong> Technical Blueprint §6.2 states the authentication layers and §7.2 lists the providers, but neither covers password reset or how long a login lasts. Two genuine gaps, both closable with WordPress's own mechanisms.</p>
+  <p style="margin:0;font-size:14px"><strong>The chatbot needs one decision.</strong> Its ON/OFF flag fits the existing <code>rj_features</code> group at no cost. Its configuration — welcome and fallback messages, provider credentials, knowledge-source toggles — does not fit any of the nine locked groups, and putting credentials in the autoloaded <code>rj_features</code> would be wrong. See Part 6.</p>
+</div>
+
+<h2 style="margin-top:0">Part 1 · Admin management UI</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p><strong>The locked principle, stated once:</strong> an admin requirement is met only when a no-code WordPress screen exists for the object. A CPT, a meta key, a taxonomy or a REST route is necessary and not sufficient. The RJ plugin owns the business-management experience; Elementor is not the business-data administration system.</p>
+<h3>Audit against Development Blueprint §17</h3>
+<table>
+  <thead><tr><th style="width:20%">Requirement</th><th style="width:14%">§17 status</th><th>Finding</th></tr></thead>
+  <tbody>
+    <tr><td><strong>A. Products</strong></td><td style="color:#2f6b3a">LOCKED</td><td>Products list + Product edit rows exist, with four meta boxes (§2.7): ProductIdentity, ProductSpec, ProductGallery, ProductWhatsApp. Category and primary-category assignment via CategoryPicker. Every field you listed maps to an approved key in §9.2 — no new field is needed, and none is invented here.</td></tr>
+    <tr><td><strong>B. Categories</strong></td><td style="color:#2f6b3a">LOCKED</td><td>Categories row: create, edit, drag reorder, reparent, hide, reassign-then-delete, bulk visibility, over <code>rj/v1/categories/*</code>. Tree manager with core UI and quick-edit disabled (§7.1) — 1,500 checkboxes is unusable. Resolver mappings are edited inside this screen per Resolver Approval &amp; Lock §5, not a separate screen.</td></tr>
+    <tr><td><strong>C. Hero / campaigns</strong></td><td style="color:#8a3a2f">NEEDS DOCUMENT UPDATE</td><td><strong>Missing from §17.</strong> <code>rj_page_section</code> is fully specified — six post types include it, eleven meta keys registered, lifecycle and eligibility rules locked — but no admin screen row exists. Without one the owner cannot create a campaign.</td></tr>
+    <tr><td><strong>D. Reels</strong></td><td style="color:#2f6b3a">LOCKED</td><td>Reels row: edit, replace source, regenerate poster, visibility, expiry. ReelSource meta box handles all four source types. <code>rj_reel_type</code> is not reintroduced — filtering uses <code>rj_tag</code>, per correction C-3.</td></tr>
+    <tr><td><strong>E. Showrooms</strong></td><td style="color:#2f6b3a">LOCKED</td><td>Showrooms row: edit, set timings, set primary. Timings are <code>_rj_timings</code> (§9.4) — a seven-day JSON structure, schema-validated. Public display reads that field; no mock timings anywhere.</td></tr>
+    <tr><td><strong>F. Search synonyms</strong></td><td style="color:#8a3a2f">NEEDS DOCUMENT UPDATE</td><td><strong>Missing from §17.</strong> <code>_rj_name_alt</code> is locked with its full semantics — comma-separated, max 191, search-only, creates no term, alters no URL — but has no management surface. See Part 2 for where it should live.</td></tr>
+    <tr><td><strong>G. Other modules</strong></td><td style="color:#2f6b3a">LOCKED</td><td>Collections, Testimonials, Metals/Purity/Occasions/Audience/Tags, Enquiries, Customers, Dashboard, Contact &amp; WhatsApp, Display · Features · SEO (weight visibility sits in Display), Accounts, Notifications, Import/Export with rollback, Activity Log, Health. Media is the WordPress library plus §18's bulk upload, replace, reorder and audit. <strong>Fifteen of the eighteen §17 rows already cover your Part 1 G list.</strong></td></tr>
+  </tbody>
+</table>
+
+<h2>Part 2 · The two missing screens</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p>Both are additions to the existing §17 registry. Neither adds a post type, taxonomy, table, meta key or options group — each manages storage that is already locked.</p>
+<table>
+  <thead><tr><th style="width:14%">Screen</th><th style="width:18%">Capability</th><th style="width:16%">Data source</th><th style="width:22%">Actions</th><th>Endpoint · audit</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Hero &amp; Sections</strong></td><td>rj_manage_settings</td><td><code>rj_page_section</code> repository</td><td>Campaign list with computed status (draft · scheduled · active · expired); add, edit, duplicate, delete; desktop and mobile image; Hindi and English title; description; CTA label and URL; start and end date; active flag; order. Bulk: activate, deactivate, delete.</td><td><code>wp/v2/page-sections</code> · logged with diff</td></tr>
+    <tr><td><strong>Search Synonyms</strong></td><td>rj_manage_categories</td><td><code>_rj_name_alt</code> across <code>rj_category</code></td><td>A filterable list of terms showing path, visible name and current aliases; edit aliases inline; save. A term with no aliases is the normal case and is not flagged.</td><td><code>wp/v2</code> term meta · logged with diff</td></tr>
+  </tbody>
+</table>
+<h3>Rules these screens inherit — restated, not newly decided</h3>
+<table>
+  <thead><tr><th style="width:22%">Concern</th><th>Rule</th></tr></thead>
+  <tbody>
+    <tr><td>Hero status column</td><td>Computed at read from <code>_rj_active</code> and the date window in the WordPress site timezone (§6.2, correction C-12). Never stored, never written by cron.</td></tr>
+    <tr><td>Hero empty state</td><td>No eligible campaign means the hero section is not rendered and contributes zero layout space; the next homepage section moves up. A dateless campaign is an ordinary always-eligible campaign, not a fallback. The screen must not offer a "default campaign" control, because none exists.</td></tr>
+    <tr><td>Hero overlap</td><td>Permitted. Desktop shows all active campaigns in order; mobile shows the single lowest-order one. The screen shows how many are currently active so the owner can see the consequence.</td></tr>
+    <tr><td>Synonym semantics</td><td>Optional; multiple aliases comma-separated in the one existing field; 191 characters maximum. A synonym is a search match term only — it creates no taxonomy term, alters no category URL or canonical, merges no categories, does not replace <code>_rj_primary_term</code>, and does not create a global "Ring" category. No ranking or fuzzy-matching algorithm is specified.</td></tr>
+    <tr><td>Both screens</td><td>Server-side validation with the same validators REST uses; field-level errors beside the field; submitted values preserved on a failed save; activity entry with diff on every save.</td></tr>
+  </tbody>
+</table>
+<h3>Category edits must not break what points at categories</h3>
+<p>Your Part 1 B asks that drag, reparent and reorder not break resolver mappings, product relationships, canonical URLs, primary category references, breadcrumbs or path identity. <strong>Every one of these is already guaranteed by a locked mechanism</strong> — recorded here so the guarantee is traceable, not re-decided:</p>
+<table>
+  <thead><tr><th style="width:26%">At risk</th><th>Guarantee</th></tr></thead>
+  <tbody>
+    <tr><td>Resolver mappings</td><td>Shape B stores portable <code>paths</code> alongside derived <code>terms</code> IDs (Resolver Approval §4, correction C-8). A reparent changes a path; the mapping is re-resolved from paths, and a mapping whose target no longer resolves raises a Health warning and a 404 rather than an empty archive.</td></tr>
+    <tr><td>Product relationships</td><td>Term relationships survive reparenting — the product stays attached to the same term ID wherever that term moves.</td></tr>
+    <tr><td>Canonical URLs · breadcrumbs</td><td>Both derive from <code>_rj_primary_term</code> and the cached ancestor path, rewritten inside the same transaction as the reparent (§9.3, §22).</td></tr>
+    <tr><td>Path identity</td><td>Identity is the path, and the path cache is derived, never authored. Nightly rebuild plus live fallback if stale.</td></tr>
+    <tr><td>Cycles</td><td>Three independent guards: model validation, a UI that refuses the drop, and a weekly sweep. Regression test 7.</td></tr>
+    <tr><td>Visibility</td><td>Defaults to shown; reorder cannot hide a term. Regression tests 5 and 6.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">Part 3 · Customer accounts</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:22%">Requirement</th><th style="width:16%">Status</th><th>Finding</th></tr></thead>
+  <tbody>
+    <tr><td>Browsing never requires login</td><td style="color:#2f6b3a">LOCKED</td><td>Technical Blueprint §7.1: no catalogue capability is ever gated behind an account. With accounts switched off the site loses cross-device wishlist and notifications and nothing else. Regression test 9.</td></tr>
+    <tr><td>Google login</td><td style="color:#2f6b3a">LOCKED</td><td>§7.2: authorisation code with PKCE, state verified, matched on provider subject ID before verified email, linking to an existing password account requires ownership confirmation. Optional — if credentials are absent the button does not render.</td></tr>
+    <tr><td>Email + password login</td><td style="color:#2f6b3a">LOCKED</td><td>§7.2: core sign-on with double opt-in verification. Works with no external service.</td></tr>
+    <tr><td><strong>Forgot password / reset</strong></td><td style="color:#8a3a2f">NEEDS DOCUMENT UPDATE</td><td><strong>Not documented.</strong> Neither blueprint mentions password reset. The locked wording below closes it using WordPress's own flow — no custom mechanism.</td></tr>
+    <tr><td><strong>Persistent session</strong></td><td style="color:#8a3a2f">NEEDS DOCUMENT UPDATE</td><td><strong>Not documented.</strong> §6.2 establishes cookie-plus-nonce as the authentication layer and states "no custom session layer and no bespoke token scheme", which is the right foundation but does not say a login persists across pages. Closed below.</td></tr>
+    <tr><td>Logout from all devices</td><td style="color:#5d5294">ARCHITECTURE RESERVED</td><td>WordPress's own session-token store supports destroying all sessions for a user. Nothing in the design prevents it; the account screen control is not specified now.</td></tr>
+    <tr><td>Future OTP / passwordless</td><td style="color:#2f6b3a">LOCKED</td><td>§7.2: both are provider slots behind the existing <code>AuthProvider</code> interface. The verified-phone field and the <code>rj_auth_providers</code> group already exist.</td></tr>
+    <tr><td>Customer profile</td><td style="color:#2f6b3a">LOCKED</td><td>§9.5 user meta and §7.3's seven account screens are unchanged. No new customer field is added by this pass.</td></tr>
+  </tbody>
+</table>
+<h3>Final locked wording — password reset</h3>
+<p>Password reset uses WordPress's own lost-password and reset flow: a single-use, time-limited, hashed reset key mailed to the account's verified address, redeemed once to set a new password, invalidated on use and on any subsequent request. The reset form is an RJ account-area template so the customer never sees <code>wp-login.php</code>, but the key generation, storage and verification are WordPress's — no parallel reset mechanism is built. Requests are rate limited (§6.4 registration and login limits apply), the response is identical whether or not the address is registered so the form cannot enumerate accounts, and every attempt and success is written to <code>rj_login_log</code>. A Google-only identity has no local password: the reset screen states that sign-in is managed by Google and offers no reset. A customer who wants both methods sets a password from the profile screen while authenticated, which is credential creation under an existing session rather than a second reset path.</p>
+<h3>Final locked wording — persistent session</h3>
+<p>A successful login establishes a normal WordPress authentication cookie, and the customer stays signed in across pages and visits until something ends it. Nothing asks them to log in again to browse. The session ends on explicit logout, on a password change or reset, on administrative or all-device revocation, on WordPress's own authentication invalidation, or at cookie expiry — WordPress's standard two-day life, extended to fourteen days when the customer chooses "remember me". No authentication token is ever written to <code>localStorage</code> or <code>sessionStorage</code>, and no permanent token is minted. Logout is nonce-protected (Technical Blueprint §10.2) and destroys the session token server-side, not only the cookie. Regression test 2 already requires every auth flow to pass headless with no third-party cookie and no session storage, which this wording satisfies rather than amends.</p>
+
+<h2>Part 4 · Authentication security</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p>Your Part 3 list checked against §10.2 and §21. <strong>No new control is required</strong> — every item is already specified. Recorded for traceability:</p>
+<table>
+  <thead><tr><th style="width:30%">Control</th><th>Where it is already locked</th></tr></thead>
+  <tbody>
+    <tr><td>WordPress-native session mechanism</td><td>§6.2 — cookie plus nonce; no custom session layer, no bespoke token scheme</td></tr>
+    <tr><td>Password reset security</td><td>Part 3 above — WordPress key flow, rate limited, non-enumerating</td></tr>
+    <tr><td>Nonce validation</td><td>§10.1 gate 2 — nonces on every state-changing request including logout</td></tr>
+    <tr><td>Capability checks</td><td>§10.1 gate 1 — a specific capability with the object, never a screen check standing in</td></tr>
+    <tr><td>Rate limiting · brute force</td><td>§6.4 — login 5 failures per 15 minutes then lockout; registration 3 per hour</td></tr>
+    <tr><td>Safe Google account linking</td><td>§10.2 — state and PKCE verified, subject ID before email, ownership confirmation, secret from a configuration constant</td></tr>
+    <tr><td>No credential leakage</td><td>§10.2 — secrets masked in UI, redacted in logs and exports, never in a REST response; §7.4 — password hashes and session tokens can never be selected for export</td></tr>
+    <tr><td>Sanitisation · escaping</td><td>§10.1 gates 3 and 4 — typed sanitiser per field at input, escape at output</td></tr>
+    <tr><td>Safe redirect handling</td><td>§21 — return URL validated same-host</td></tr>
+    <tr><td>Privacy-conscious storage</td><td>§14.3 — salted IP hash only, raw address never stored; §7.3 — download and delete wired to WordPress privacy tools; §9.5 — consent record append-only</td></tr>
+    <tr><td>Customer role hardening</td><td>§10.2 — read-only capability, admin redirected, application passwords disabled, own-record-only REST, author enumeration blocked</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">Part 5 · AI chatbot architecture</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p>Entirely new — the term appears in no existing document. It is specified as optional, off by default, and provider-independent.</p>
+<pre><code>Customer
+  └─ RJ Chatbot UI          (frontend component, loads only when enabled)
+      └─ RJ Chatbot Engine   (Services\Chatbot — orchestration)
+          ├─ RJ Business Knowledge Layer
+          │     reads the EXISTING repositories only:
+          │     Product · Category · Collection · Reel · Showroom
+          │     rj_contact · rj_whatsapp · rj_display
+          │     approved FAQ / policy content
+          └─ AI Provider Adapter  (Chatbot\Provider interface)
+                └─ AI Provider    (swappable, none named at architecture level)</code></pre>
+<table>
+  <thead><tr><th style="width:24%">Component</th><th style="width:22%">Class / interface</th><th>Responsibility</th></tr></thead>
+  <tbody>
+    <tr><td>Feature gate</td><td><code>rj_features.chatbot</code></td><td>One boolean in the existing feature-flag group. <strong>No new options group needed for the switch.</strong></td></tr>
+    <tr><td>Engine</td><td><code>Services\Chatbot\Engine</code></td><td>Receives a question, asks the knowledge layer, decides whether a verified answer exists, calls the provider adapter for phrasing, returns an answer or a handoff.</td></tr>
+    <tr><td>Knowledge layer</td><td><code>Services\Chatbot\Knowledge</code></td><td>Reads through the domain repositories, never post meta directly — so visibility rules, the weight-visibility setting and resolver rules apply identically. <strong>Adds no storage of its own.</strong></td></tr>
+    <tr><td>Provider contract</td><td><code>Services\Chatbot\Provider</code> (interface)</td><td><code>id()</code>, <code>is_available()</code>, <code>complete()</code>. Deliberately the same shape as the locked notification <code>Driver</code> interface, which is the precedent for provider independence in this architecture.</td></tr>
+    <tr><td>Handoff</td><td><code>Services\WhatsApp</code></td><td>Reuses the locked engine. A handoff is an existing template with conversation context as tokens — <strong>no sixth template, no second URL builder.</strong></td></tr>
+    <tr><td>Lead bridge</td><td><code>Services\Leads</code></td><td>A chatbot enquiry is an ordinary lead with <code>source</code> recording the chatbot. The <code>source</code> column is <code>VARCHAR(32)</code> with an application-level vocabulary, so adding a value needs no migration.</td></tr>
+  </tbody>
+</table>
+<h3>Behaviour rules</h3>
+<table>
+  <thead><tr><th style="width:20%">Rule</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Off by default</td><td>Disabled on a fresh install. When off, no chatbot UI renders and <strong>no chatbot script or stylesheet is enqueued</strong> — consistent with the conditional-asset rule in §22. The business is fully functional with AI absent; nothing else degrades.</td></tr>
+    <tr><td>Verified data first</td><td>The engine answers from RJ data where RJ data exists.</td></tr>
+    <tr><td>Never fabricate</td><td>The chatbot must not state a price, stock level, showroom timing, purity, policy, availability or product specification that is not in RJ's approved data. <strong>Price and stock are structurally impossible to fabricate correctly — the platform stores neither</strong> (catalogue-only, no checkout), so both are permanent refusals rather than missing data.</td></tr>
+    <tr><td>Weight respects the setting</td><td>When <code>rj_display.show_weight_publicly</code> is off, the knowledge layer does not receive weight and the chatbot cannot disclose it. The C-11 lock applies to the chatbot exactly as it applies to public REST.</td></tr>
+    <tr><td>No outbound call on a page render</td><td>Provider calls happen on customer interaction only. The locked portability rule — no outbound request on any front-end request — is preserved, which is what keeps InfinityFree viable.</td></tr>
+    <tr><td>Fallback</td><td>When no verified answer exists: the configured fallback message, then WhatsApp handoff or human support. Never a guess.</td></tr>
+    <tr><td>Provider unavailable</td><td>Degrades to the fallback message and handoff. A provider outage must not break the page, and must not block enquiry — the same principle as regression tests 13 and 14.</td></tr>
+  </tbody>
+</table>
+<h3>Capabilities the architecture supports — future, not now</h3>
+<p>Product discovery, category discovery, collection discovery, showroom information and timings, jewellery FAQs, product enquiry, WhatsApp handoff with context, human support fallback, multilingual responses, and provider replacement. <strong>Each reads an existing repository or reuses an existing service.</strong> None is specified for immediate implementation, and none introduces a new business feature.</p>
+
+<h2>Part 6 · Chatbot admin controls — and the one decision</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p>The enable/disable flag fits <code>rj_features</code> at no architectural cost. The rest of the configuration does not fit anywhere clean, and I am not resolving that silently.</p>
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:14px 16px;margin-bottom:12px;break-inside:avoid">
+  <h5 style="margin:0 0 5px;color:#2f6b3a">RESOLVED — Option A approved. <code>rj_chatbot</code> is a locked tenth options group; secrets live in server-side configuration, never in the group.</h5>
+  <p style="margin:0 0 8px;font-size:14px">The locked schema fixes <strong>nine options groups</strong>. A chatbot needs a welcome message, a fallback message, knowledge-source toggles, capability toggles, a human-support message, provider credentials and privacy controls. Two candidate homes:</p>
+  <table style="margin:0 0 8px">
+    <thead><tr><th style="width:8%">#</th><th style="width:26%">Option</th><th>Consequence</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td><strong>A tenth group, <code>rj_chatbot</code></strong> — not autoloaded, <code>manage_options</code> to write, no REST read, credentials from configuration constants</td><td>Follows the <code>rj_notifications</code> precedent exactly: a subsystem with its own messages and its own provider credentials gets its own non-autoloaded group. <strong>Changes the locked count from nine to ten.</strong></td></tr>
+      <tr><td>B</td><td><strong>Reuse existing groups</strong> — flag in <code>rj_features</code>, messages in <code>rj_display</code>, credentials in <code>rj_auth_providers</code></td><td>Keeps the count at nine, but puts chatbot copy into an autoloaded public-read group and AI credentials into a group named for login providers. <strong>Both are misplacements that a future developer would have to work around.</strong></td></tr>
+    </tbody>
+  </table>
+  <p style="margin:0;font-size:14px"><strong>Recommendation: A.</strong> The nine-group count is a description of the current schema, not a constraint the architecture depends on — unlike the post-type and taxonomy counts, an options group creates no term IDs, no URLs and no migration risk. B saves a number at the cost of storing credentials in a group whose name lies about its contents. <strong>Your call; nothing else in this pass depends on it.</strong></p>
+</div>
+<h3>Admin screen — Rameshwari → AI Chatbot</h3>
+<table>
+  <thead><tr><th style="width:24%">Control</th><th>Behaviour</th></tr></thead>
+  <tbody>
+    <tr><td>Enable / Disable</td><td>The single master switch. Off by default.</td></tr>
+    <tr><td>Welcome message · Fallback message · Human support message</td><td>Plain text, sanitised, length-capped. Hindi and English.</td></tr>
+    <tr><td>Knowledge sources</td><td>Per-source toggles: products, categories, collections, reels, showrooms, contact, FAQ, policies. Off means the engine cannot see that source at all.</td></tr>
+    <tr><td>Capability toggles</td><td>Product search, category search, showroom information, WhatsApp handoff.</td></tr>
+    <tr><td>FAQ entries</td><td>Question and answer pairs, owner-authored. <strong>No new post type</strong> — a repeatable field within the settings group, which is what a handful of owner-written pairs warrants.</td></tr>
+    <tr><td>Provider configuration</td><td>Provider selection and credentials. <strong>Sensitive</strong> — masked in the UI, redacted in the activity log with a changed flag only, excluded from every export, never returned by REST.</td></tr>
+    <tr><td>Privacy controls</td><td>Whether conversations are retained at all, and for how long. Default: not retained.</td></tr>
+    <tr><td>Usage / logging</td><td>Counters only by default. <strong>Conversation transcript storage is ARCHITECTURE RESERVED, not built</strong> — it would need a ninth table and a consent question, and neither is established by the requirements.</td></tr>
+    <tr><td>Capability · audit</td><td><code>manage_options</code>; every save logged with secrets masked; schema-validated then read back and compared, like the other groups.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">Part 7 · Elementor Free-first compatibility</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:22%">System</th><th style="width:16%">Pro required?</th><th>Reasoning</th></tr></thead>
+  <tbody>
+    <tr><td>Admin screens</td><td style="color:#2f6b3a">No</td><td>WordPress admin. Elementor is irrelevant to it, active or not.</td></tr>
+    <tr><td>Hero &amp; Sections screen</td><td style="color:#2f6b3a">No</td><td>Admin screen plus the RJ Hero renderer. Free's Shortcode widget and the RJ Hero widget both reach it; Free has no display-condition mechanism, which is exactly why RJ owns the conditional render.</td></tr>
+    <tr><td>Search synonyms</td><td style="color:#2f6b3a">No</td><td>Term meta plus RJ search. No builder involvement at all.</td></tr>
+    <tr><td>Customer accounts</td><td style="color:#2f6b3a">No</td><td>Elementor's Login widget is Pro; RJ account screens are rewrite-driven plugin templates. The RJ Customer Account widget works on Free.</td></tr>
+    <tr><td>Password reset</td><td style="color:#2f6b3a">No</td><td>WordPress flow in an RJ template.</td></tr>
+    <tr><td>Chatbot</td><td style="color:#2f6b3a">No</td><td>A plugin-rendered component with a shortcode. Not an Elementor popup — Popup Builder is Pro.</td></tr>
+    <tr><td>Data survival</td><td style="color:#2f6b3a">n/a</td><td>Removing Elementor, replacing the theme or migrating hosts loses page <em>arrangement</em> only. Chatbot settings, hero campaigns, synonyms and customer accounts are plugin-owned and survive all three.</td></tr>
+  </tbody>
+</table>
+
+<h2>Part 8 · Reconciliation table</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:16%">Requirement</th><th style="width:14%">Current document</th><th style="width:13%">Status</th><th style="width:9%">Conflict</th><th>Action · final locked wording</th></tr></thead>
+  <tbody>
+    <tr><td>Product admin</td><td>Dev §17, §2.7</td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>None. Every listed field maps to an approved §9.2 key.</td></tr>
+    <tr><td>Category tree admin</td><td>Dev §17, §7.1</td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>None. Reparent safety guaranteed by Shape B paths, path cache and cycle guards.</td></tr>
+    <tr><td>Hero admin</td><td>Dev §6.2, §9.6 — <strong>absent from §17</strong></td><td style="color:#8a3a2f">NEEDS UPDATE</td><td>No</td><td>Add the Hero &amp; Sections row of Part 2 to §17.</td></tr>
+    <tr><td>Reels admin</td><td>Dev §17</td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>None. <code>rj_reel_type</code> stays rejected; filtering is <code>rj_tag</code>.</td></tr>
+    <tr><td>Showroom admin · timings</td><td>Dev §17, §9.4</td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>None. Public timings read <code>_rj_timings</code>.</td></tr>
+    <tr><td>Search synonym admin</td><td>Dev §9.4, §8.1 — <strong>absent from §17</strong></td><td style="color:#8a3a2f">NEEDS UPDATE</td><td>No</td><td>Add the Search Synonyms row of Part 2 to §17.</td></tr>
+    <tr><td>Other admin modules</td><td>Dev §17, §18</td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>None. Fifteen existing rows cover the list.</td></tr>
+    <tr><td>Optional accounts</td><td>Tech §7.1</td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>None.</td></tr>
+    <tr><td>Google login</td><td>Tech §7.2, §10.2</td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>None.</td></tr>
+    <tr><td>Email + password</td><td>Tech §7.2</td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>None.</td></tr>
+    <tr><td>Forgot / reset password</td><td><strong>Nowhere</strong></td><td style="color:#8a3a2f">NEEDS UPDATE</td><td>No</td><td>Add the Part 3 reset wording to Tech §7.2 and the reset screen to §7.3's account list.</td></tr>
+    <tr><td>Persistent session</td><td>Tech §6.2 (partial)</td><td style="color:#8a3a2f">NEEDS UPDATE</td><td>No</td><td>Add the Part 3 session wording to Tech §6.2. Compatible with what is there — it states the consequence §6.2 leaves implicit.</td></tr>
+    <tr><td>Logout all devices</td><td>Implicit in §6.2</td><td style="color:#5d5294">RESERVED</td><td>No</td><td>Note the reservation in Tech §7.3. No control specified now.</td></tr>
+    <tr><td>Auth security controls</td><td>Tech §10.2, Dev §21, §6.4</td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>None. All eleven items already present.</td></tr>
+    <tr><td>Chatbot architecture</td><td><strong>Nowhere</strong></td><td style="color:#2f6b3a">LOCKED here</td><td>No</td><td>Parts 5 and 6 of this document are the specification.</td></tr>
+    <tr><td>Chatbot ON/OFF</td><td>Fits <code>rj_features</code></td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>One boolean in the existing group.</td></tr>
+    <tr><td>Chatbot configuration storage</td><td>Dev §10 fixes nine groups</td><td style="color:#8a6410">OPEN DECISION</td><td><strong>Yes</strong></td><td>Part 6. Recommendation A, a tenth non-autoloaded group.</td></tr>
+    <tr><td>Conversation logging</td><td><strong>Nowhere</strong></td><td style="color:#5d5294">RESERVED</td><td>No</td><td>Not built. Would need a ninth table and a consent decision; neither is established.</td></tr>
+    <tr><td>Knowledge layer</td><td>Reads existing repositories</td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>No new storage. Reads through the domain layer so every visibility rule applies.</td></tr>
+    <tr><td>Provider adapter</td><td>Mirrors notification <code>Driver</code></td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>No provider named at architecture level.</td></tr>
+    <tr><td>No fabricated facts</td><td>New rule</td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>Part 5. Price and stock are permanent refusals — the platform stores neither.</td></tr>
+    <tr><td>WhatsApp / human handoff</td><td>Reuses locked engine</td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>No sixth template. Lead <code>source</code> gains a value, not a column.</td></tr>
+    <tr><td>Elementor Pro never required</td><td>Free-First Audit</td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>Part 7 confirms all three new systems.</td></tr>
+    <tr><td>RJ owns business data</td><td>Dev §26, Free-First Audit §10</td><td style="color:#2f6b3a">LOCKED</td><td>No</td><td>None. Chatbot settings, campaigns and synonyms are all plugin-owned.</td></tr>
+  </tbody>
+</table>
+<p><strong>One conflict found</strong> — the options-group count, Part 6. Nothing else in this pass contradicts a locked decision; the four gaps are silences, not disagreements.</p>
+
+<h2 style="break-before:page">Part 9 · Document update map</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p>Four wording updates across two documents. <strong>No document is rewritten, and I have not applied these</strong> — three touch a locked registry and one waits on Part 6.</p>
+<table>
+  <thead><tr><th style="width:16%">Document</th><th style="width:12%">Section</th><th style="width:22%">Old concept</th><th style="width:26%">Replacement</th><th>Reason</th></tr></thead>
+  <tbody>
+    <tr><td>Development Blueprint</td><td>§17</td><td>Eighteen admin screens; no Hero row</td><td>Add <strong>Hero &amp; Sections</strong> per Part 2 → nineteen rows</td><td><code>rj_page_section</code> has schema but no management surface. The owner cannot create a campaign without it.</td></tr>
+    <tr><td>Development Blueprint</td><td>§17</td><td>No synonym row</td><td>Add <strong>Search Synonyms</strong> per Part 2 → twenty rows</td><td><code>_rj_name_alt</code> is locked but unmanageable. Part 1 F requires an actual screen.</td></tr>
+    <tr><td>Technical Blueprint</td><td>§7.2, §7.3</td><td>Providers listed; no reset flow; seven account screens</td><td>Add the reset wording; add the reset screen and note the logout-all reservation</td><td>Password reset was never documented. Locked as a business requirement by this pass.</td></tr>
+    <tr><td>Technical Blueprint</td><td>§6.2</td><td>"No custom session layer" — foundation without consequence</td><td>Add the persistent-session wording of Part 3</td><td>States explicitly that a login persists and exactly what ends it. Compatible with §6.2 as written.</td></tr>
+    <tr><td>Development Blueprint</td><td>§10, §17</td><td>Nine options groups</td><td><strong>APPLIED.</strong> Option A approved; <code>rj_chatbot</code> is the tenth group and the three screens are registered — §17 now holds twenty-one rows</td><td>Changes a locked count. Yours to approve first.</td></tr>
+  </tbody>
+</table>
+
+<h2>NEW FINDING — <span style="color:#2f6b3a">RESOLVED</span> in the Final Specification Lock</h2>
+<p style="font-size:13.5px;color:#595d6c">Reported here, corrected there. Both references are now gone from Technical Blueprint §7.4 — the Detail row phrase was deleted rather than replaced (the row already listed notification preferences), and a <strong>second occurrence this section did not catch</strong>, "segment" in the Filters row, was also corrected. Retained as the record of the finding.</p>
+<div style="height:2px;background:#d2a03c;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:20%">Aspect</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Location</td><td><strong>Technical Blueprint §7.4</strong>, admin customer dashboard, Detail row</td></tr>
+    <tr><td>Current text</td><td>"Profile, wishlist, recently viewed, their leads, login history, notification preferences, consent record, <strong>segment assignment</strong>."</td></tr>
+    <tr><td>Problem</td><td><code>rj_customer_segment</code> and <code>_rj_segment</code> are both rejected and not created. This is an active implementation section describing a feature whose storage does not exist. Correction C-5 covered Technical Blueprint §8.3 and C-6 covered Development Blueprint §17 — <strong>§7.4 was in neither list</strong>, so it survived both passes.</td></tr>
+    <tr><td>Impact</td><td>Low and non-blocking. A developer reading §7.4 would look for segment storage and find none. It does not affect schema, counts or any locked decision.</td></tr>
+    <tr><td>Proposed fix</td><td>Replace "segment assignment" with "notification preferences" — which the same row already lists — or delete the phrase. The audience mechanism is <code>_rj_notify_prefs</code>.</td></tr>
+    <tr><td>Status</td><td><strong>Reported, not changed.</strong> Outside the scope of this pass's locks.</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Housekeeping, unrelated: the project root contains <code>Rameshwari Jewellers - Platform Architecture copy.dc.html</code> alongside the original. If that duplicate was not deliberate it should be deleted, so the document set has one Platform Architecture rather than two that can drift.</p>
+
+<h2>Part 10 · Final lock register</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:6%"></th><th style="width:34%">Item</th><th style="width:20%">Status</th><th>Basis</th></tr></thead>
+  <tbody>
+    <tr><td>A</td><td>Admin Management UI</td><td style="color:#2f6b3a">LOCKED</td><td>Principle in Part 1; §17 covers all but two, both specified in Part 2</td></tr>
+    <tr><td>B</td><td>Customer Google Login</td><td style="color:#2f6b3a">LOCKED</td><td>Already locked, Tech §7.2</td></tr>
+    <tr><td>C</td><td>Email + Password Login</td><td style="color:#2f6b3a">LOCKED</td><td>Already locked, Tech §7.2</td></tr>
+    <tr><td>D</td><td>Forgot / Reset Password</td><td style="color:#2f6b3a">LOCKED</td><td><strong>New.</strong> Part 3 wording; WordPress key flow</td></tr>
+    <tr><td>E</td><td>Persistent Secure Login Session</td><td style="color:#2f6b3a">LOCKED</td><td><strong>New.</strong> Part 3 wording; WordPress auth cookie, no client-side token</td></tr>
+    <tr><td>F</td><td>Logout-All-Sessions</td><td style="color:#5d5294">ARCHITECTURE RESERVED</td><td>WordPress session-token store supports it; no control specified</td></tr>
+    <tr><td>G</td><td>Optional AI Chatbot</td><td style="color:#2f6b3a">LOCKED</td><td><strong>New.</strong> Part 5</td></tr>
+    <tr><td>H</td><td>Chatbot Admin ON/OFF</td><td style="color:#2f6b3a">LOCKED</td><td><code>rj_features.chatbot</code>, off by default, no assets when off</td></tr>
+    <tr><td>I</td><td>RJ Business Knowledge Layer</td><td style="color:#2f6b3a">LOCKED</td><td>Reads existing repositories; no new storage</td></tr>
+    <tr><td>J</td><td>AI Provider Adapter</td><td style="color:#2f6b3a">LOCKED</td><td>Interface mirroring the notification <code>Driver</code>; no provider named</td></tr>
+    <tr><td>K</td><td>No fabricated business facts</td><td style="color:#2f6b3a">LOCKED</td><td>Part 5; price and stock permanently unavailable</td></tr>
+    <tr><td>L</td><td>WhatsApp / Human handoff</td><td style="color:#2f6b3a">LOCKED</td><td>Reuses the locked engine; no sixth template</td></tr>
+    <tr><td>M</td><td>Elementor Pro NOT required</td><td style="color:#2f6b3a">LOCKED</td><td>Part 7; all three new systems Free-compatible</td></tr>
+    <tr><td>N</td><td>Business data RJ Plugin-owned</td><td style="color:#2f6b3a">LOCKED</td><td>Dev §26 dependency graph unchanged</td></tr>
+  </tbody>
+</table>
+
+<h3>1 · Now fully locked</h3>
+<p>All fourteen register items. Four are new specification: password reset, persistent session, the chatbot architecture, and the two admin screens. The other ten were already locked and are confirmed by citation rather than re-decided.</p>
+<h3>2 · Documentation that must be updated</h3>
+<p>Development Blueprint §17 — two screen rows. Technical Blueprint §6.2 — session wording; §7.2 and §7.3 — reset flow, reset screen, logout-all reservation. A third Development Blueprint update to §10 and §17 waits on the Part 6 decision. <strong>None applied</strong>; three touch locked registries.</p>
+<h3>3 · Genuine remaining open decisions</h3>
+<table>
+  <thead><tr><th style="width:26%">Decision</th><th style="width:16%">Blocks</th><th>Recommendation</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Chatbot configuration storage</strong> — tenth options group, or reuse existing</td><td>Chatbot implementation only. Nothing in Stages 1–20.</td><td><strong>A</strong> — a tenth non-autoloaded <code>rj_chatbot</code> group, following the <code>rj_notifications</code> precedent.</td></tr>
+    <tr><td><strong>OPEN-1</strong> — Elementor widget count, carried forward unchanged</td><td>Stage 21 only</td><td>The Free-First Audit's capability model: fifteen Free widgets, dynamic tags moved to optional Pro. Untouched by this pass.</td></tr>
+  </tbody>
+</table>
+<h3>4 · Code written</h3>
+<p style="font-size:16px;font-weight:500;color:#2f6b3a;margin:0 0 6px">NO.</p>
+<p style="margin:0">No PHP, JavaScript, CSS, SQL, plugin file, theme file, Elementor widget, Gutenberg block or migration. No existing specification file was modified in this pass — this document is the only file written. No post type, taxonomy, table, meta key or provider was added beyond what the requirements establish: the chatbot's classes are specification, not code, and its one settings flag fits an existing group.</p>
+
+</doc-page>
+</x-dc>
+</body>
+</html>
