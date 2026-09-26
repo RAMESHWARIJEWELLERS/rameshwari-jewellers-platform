@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15px; line-height: 1.58; }
+h1, h2, h3 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 36px; letter-spacing: -0.03em; }
+h2 { font-size: 22px; margin: 26px 0 4px; }
+h3 { font-size: 16px; margin: 18px 0 6px; }
+h5 { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 14px 0 6px; }
+p { margin: 0 0 10px; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 11px; padding-left: 20px; }
+li { margin: 0 0 4px; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 10px 0 15px; font-size: 11.6px; line-height: 1.42; }
+th { text-align: left; font-weight: 600; font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 8px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 5px 8px 5px 0; vertical-align: top; overflow-wrap: normal; word-break: keep-all; }
+td:nth-last-child(-n+2), td.wrap { overflow-wrap: anywhere; word-break: normal; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 3px; border-radius: 3px; color: #423a6a; }
+pre { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.6px; line-height: 1.5; background: #f3f5fe; border-left: 2px solid #9184d9; padding: 11px 13px; margin: 11px 0 15px; border-radius: 0 8px 8px 0; white-space: pre-wrap; color: #292b31; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.7in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Final Specification Lock</span>
+  <span>Zero open decisions</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>No code written. 14 corrections applied and verified.</span>
+  <span>Ready for implementation planning</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px">
+  <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Final lock before implementation</div>
+  <h1 style="margin:0">Final Specification Lock</h1>
+  <div style="font-size:17.5px;color:#595d6c;line-height:1.35">Three decisions closed, fourteen corrections applied to the source documents and verified by re-reading them. No owner decision remains outstanding.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<h2 style="margin-top:0">1 · Executive result</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:14px 16px;margin-bottom:14px;break-inside:avoid">
+  <p style="margin:0 0 8px;font-size:15px"><strong>All three remaining decisions are closed, and the corrections are applied rather than merely mapped.</strong> Unlike the previous pass, which held its updates pending your approval, this brief carried explicit lock directives — so the wording changes were made in the Development Blueprint, the Technical Blueprint and the Resolver Approval &amp; Lock, then verified by reading the files back.</p>
+  <table style="margin:0">
+    <tbody>
+      <tr><td style="width:34%"><strong>Decisions closed</strong></td><td>3 — chatbot configuration storage · chatbot credentials · OPEN-1 Elementor</td></tr>
+      <tr><td><strong>Stale references removed</strong></td><td>2 — both active segment references in Technical Blueprint §7.4, not just the one previously reported</td></tr>
+      <tr><td><strong>Corrections applied</strong></td><td>14 corrections across 3 documents, each confirmed present after the write; plus 2 status banners, for 16 file edits across 5 documents</td></tr>
+      <tr><td><strong>Schema change</strong></td><td>One options group: <code>rj_chatbot</code>. Nine → ten. Nothing else.</td></tr>
+      <tr><td><strong>Open decisions remaining</strong></td><td style="color:#2f6b3a;font-weight:600">Zero</td></tr>
+      <tr><td><strong>Code written</strong></td><td style="color:#2f6b3a;font-weight:600">None</td></tr>
+    </tbody>
+  </table>
+</div>
+<p><strong>One thing I did differently from your Part 6 instruction, and why.</strong> You directed that "segment assignment" be replaced with "notification preferences". That row in Technical Blueprint §7.4 already listed notification preferences, so the replacement would have produced a duplicate in the same sentence. I deleted the phrase instead, which achieves the stated intent — no segment feature, audience via <code>_rj_notify_prefs</code> — without the artefact. <strong>I also found a second stale reference you had not flagged:</strong> the Filters row in the same section listed "segment" as a filter. That is corrected to "notification preference".</p>
+
+<h2>2 · Decisions closed</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+
+<h3>2.1 Chatbot configuration storage — <span style="color:#2f6b3a">LOCKED</span></h3>
+<table>
+  <thead><tr><th style="width:22%">Aspect</th><th>Locked rule</th></tr></thead>
+  <tbody>
+    <tr><td>Group</td><td><code>rj_chatbot</code> — a dedicated, <strong>non-autoloaded</strong> WordPress settings group. The tenth group.</td></tr>
+    <tr><td>Master gate</td><td><code>rj_features.chatbot</code> — one boolean in the existing feature-flag group, <strong>OFF by default</strong>. The gate and the configuration are deliberately separate: the gate is read on every request, the configuration only when the chatbot renders.</td></tr>
+    <tr><td>Holds</td><td>Welcome, fallback and human-support messages · knowledge-source toggles · capability toggles · FAQ entries · provider selection · privacy controls · logging controls.</td></tr>
+    <tr><td>Does not hold</td><td><strong>Any secret.</strong> See 2.2.</td></tr>
+    <tr><td>Write permission</td><td><code>manage_options</code>. No REST read. Schema-validated then read back and compared, exactly like the other nine.</td></tr>
+    <tr><td>Not mixed into</td><td><code>rj_display</code> (autoloaded, public read — wrong for chatbot copy) · <code>rj_auth_providers</code> (named for login providers — would lie about its contents) · <code>rj_features</code> beyond the single gate.</td></tr>
+  </tbody>
+</table>
+
+<h3>2.2 Chatbot credentials — <span style="color:#2f6b3a">LOCKED</span></h3>
+<table>
+  <thead><tr><th style="width:22%">Rule</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Where secrets live</td><td>Server-side configuration only — <code>wp-config.php</code> constants or environment configuration. API keys, secrets and equivalent private credentials are <strong>never</strong> written to the options table.</td></tr>
+    <tr><td>What the group stores</td><td>Provider <em>selection</em> and non-secret configuration. Nothing more.</td></tr>
+    <tr><td>Admin display</td><td>A <strong>configured / not configured</strong> indicator derived from whether the constant is defined and non-empty. The secret value is never rendered, never masked-but-present in the HTML, never sent to the browser at all.</td></tr>
+    <tr><td>Never appears in</td><td>REST responses · exports · activity-log diffs (changed flag only) · debug output · ordinary admin page HTML.</td></tr>
+    <tr><td>No second store</td><td>No custom credential table, no encrypted credential store, no parallel secret mechanism. This is the same rule the locked architecture already applies to <code>rj_auth_providers</code> and <code>rj_notifications</code> — three subsystems, one consistent pattern.</td></tr>
+    <tr><td>Portability</td><td>Constants are the one credential mechanism that works identically on InfinityFree, Hostinger, cPanel and managed WordPress. A host move carries the constant, not a database row.</td></tr>
+  </tbody>
+</table>
+
+<h3>2.3 OPEN-1 Elementor — <span style="color:#2f6b3a">LOCKED</span></h3>
+<p>The numeric 17-vs-21 measurement is <strong>obsolete and removed from every active section</strong>. It is replaced by the capability model.</p>
+<table>
+  <thead><tr><th style="width:26%">Element</th><th>Locked value</th></tr></thead>
+  <tbody>
+    <tr><td>Baseline</td><td>Elementor Free/Core is the compatibility floor.</td></tr>
+    <tr><td>Pro</td><td>Optional enhancement. <strong>Never a dependency</strong> for core business functionality.</td></tr>
+    <tr><td>Layer selection</td><td>Use the lowest layer that solves the requirement correctly: Free native → RJ shortcode/bridge → RJ theme component → RJ Free-compatible widget → optional Pro. No custom widget where a shortcode or theme component is cleaner.</td></tr>
+    <tr><td>RJ Free widgets</td><td><strong>15.</strong> Product Grid · Product Carousel · Category Grid · Reel Grid · Showroom Grid · Collection Grid · Testimonial Grid · RJ Search · RJ Wishlist · RJ Customer Account · RJ WhatsApp CTA · RJ Hero · RJ Category Navigation · RJ Contact/Enquiry · RJ Notification Signup.</td></tr>
+    <tr><td>Mega Menu</td><td><strong>Theme component</strong>, not a widget. Plugin supplies the data and query layer; theme supplies rendering and header integration. Works with Elementor disabled and with Pro absent — Free cannot build headers at all, which is why a Mega Menu widget would have nowhere to live.</td></tr>
+    <tr><td>Presets, not widgets</td><td>Category Slider = Category Grid mode · Reel Slider = Reel Grid mode · Featured Categories = Category Grid filter · Store Locator = Showroom Grid preset · Product Card = shared renderer · Reel Viewer = RJ modal component.</td></tr>
+    <tr><td>Dynamic tags</td><td><strong>Zero required in the base.</strong> The eleven are optional Pro enhancement and must not be required for products, categories, reels, collections, showrooms, hero, customer accounts, WhatsApp, chatbot or any core business page.</td></tr>
+    <tr><td>Shortcodes · Gutenberg</td><td>Both retained as approved. One shared renderer and one set of services behind every surface — no business logic duplicated per builder.</td></tr>
+    <tr><td>Elementor-off continuity</td><td>Homepage sections, products, categories, resolver archives, reels, collections, showrooms, testimonials, WhatsApp enquiry, wishlist, customer account, notification signup and the chatbot when enabled all remain available through theme components, plugin templates, shortcodes and RJ renderers. Page <em>arrangement</em> is the only loss.</td></tr>
+  </tbody>
+</table>
+
+<h3>2.4 Legacy segment reference — <span style="color:#2f6b3a">REMOVED</span></h3>
+<table>
+  <thead><tr><th style="width:22%">Location</th><th style="width:30%">Was</th><th>Now</th></tr></thead>
+  <tbody>
+    <tr><td>Tech Blueprint §7.4, Detail row</td><td>"…notification preferences, consent record, <strong>segment assignment</strong>."</td><td>"…notification preferences, consent record." Phrase deleted rather than replaced — the row already listed notification preferences.</td></tr>
+    <tr><td>Tech Blueprint §7.4, Filters row</td><td>"Signup source, login method, verified state, <strong>segment</strong>, activity window."</td><td>"…verified state, <strong>notification preference</strong>, activity window." <strong>Not previously flagged</strong> — found in this pass's scan.</td></tr>
+  </tbody>
+</table>
+<p>Nothing recreated: no <code>rj_customer_segment</code>, no <code>_rj_segment</code>, no segment taxonomy, no assignment field. The audience mechanism remains <code>_rj_notify_prefs</code>. Customer schema unchanged.</p>
+
+<h2 style="break-before:page">3 · Reconciliation findings</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<p>Full-set search for each of your eleven terms. Classification per occurrence class.</p>
+<table>
+  <thead><tr><th style="width:5%"></th><th style="width:22%">Searched</th><th style="width:15%">Classification</th><th>Finding</th></tr></thead>
+  <tbody>
+    <tr><td>A</td><td>17 vs 21 widget language</td><td style="color:#2f6b3a">REMOVED from active</td><td>Seven active occurrences found and corrected: Dev Blueprint §0 Conflict 2 heading (now RESOLVED), §12 intro, §27 stage 21, §29 ELEMENTOR READY, §index row 8, closing decision box, and the Resolver Approval closing line. <strong>Zero remain in any active section.</strong> Historical reasoning records retain the question as a record of what was asked — see 3.1.</td></tr>
+    <tr><td>B</td><td>"segment assignment"</td><td style="color:#2f6b3a">REMOVED</td><td>One occurrence, Tech §7.4. Deleted. Verified: zero remain in the Technical Blueprint.</td></tr>
+    <tr><td>C</td><td><code>rj_customer_segment</code></td><td style="color:#2f6b3a">REJECTED — correctly recorded</td><td>Every occurrence is in a rejection list or a historical record. No active section creates or depends on it.</td></tr>
+    <tr><td>D</td><td><code>_rj_segment</code></td><td style="color:#2f6b3a">REJECTED — correctly recorded</td><td>Same. Verified zero active dependencies in the previous cleanup pass and unchanged since.</td></tr>
+    <tr><td>E</td><td>Chatbot credential ambiguity</td><td style="color:#2f6b3a">LOCKED</td><td>The Admin UX lock left credential storage inside the storage decision. Now explicitly separated: selection in the group, secrets in server-side configuration, configured/not-configured detection without disclosure.</td></tr>
+    <tr><td>F</td><td>Chatbot configuration group ambiguity</td><td style="color:#2f6b3a">LOCKED</td><td>Was the one OPEN DECISION in the Admin UX lock Part 6. Option A approved; that section now carries a RESOLVED banner.</td></tr>
+    <tr><td>G</td><td>Elementor Pro dependency wording</td><td style="color:#2f6b3a">LOCKED</td><td>One real dependency existed and was already caught by the Free-First Audit: the eleven dynamic tags were a base deliverable, and dynamic tags are Pro-only. Now zero required in base. <strong>No other active section requires Pro.</strong></td></tr>
+    <tr><td>H</td><td>Missing Hero / Search Synonym screens</td><td style="color:#8a3a2f">NEEDS DOCUMENT UPDATE</td><td>Still absent from Dev Blueprint §17. Both are fully specified in the Admin UX lock Part 2 and locked as requirements; §17's registry rows are the outstanding edit. See 4.</td></tr>
+    <tr><td>I</td><td>Forgot password wording</td><td style="color:#8a3a2f">NEEDS DOCUMENT UPDATE</td><td>Locked wording exists in the Admin UX lock Part 3; Tech §7.2 and §7.3 not yet carrying it.</td></tr>
+    <tr><td>J</td><td>Persistent session wording</td><td style="color:#8a3a2f">NEEDS DOCUMENT UPDATE</td><td>Locked wording exists in the Admin UX lock Part 3; Tech §6.2 not yet carrying it.</td></tr>
+    <tr><td>K</td><td>Business-data ownership violations</td><td style="color:#2f6b3a">NONE FOUND</td><td>The Dev Blueprint §26 dependency graph holds: arrows point down only, no permanent layer knows the theme or Elementor exists. The chatbot sits in Services, reads through domain repositories, and adds no storage.</td></tr>
+  </tbody>
+</table>
+<h3>3.1 Historical records — deliberately not rewritten</h3>
+<p>Six documents are reasoning records of superseded analysis: Conflict 3 Resolution, Conflict 3 Validation, Decision 1 Category Roots, Correction Pass Report, Cleanup Pass, C-7/NEW-1 Verification, and the Final Reconciliation. Each states a count or an open question that was accurate when written — "9 settings groups", "seventeen or twenty-one". <strong>These are left intact.</strong> Rewriting a dated record to match today's answer destroys the audit trail of how the decision was reached, and the document-hygiene rule established in the correction pass permits superseded proposals to remain where they are clearly historical. The active implementation documents are the ones that must be correct, and they now are.</p>
+
+<h2>4 · Exact document update map</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<h3>4.1 Applied in this pass — 14 corrections in 13 rows, each verified after writing</h3>
+<table>
+  <thead><tr><th style="width:15%">Document</th><th style="width:13%">Section</th><th style="width:25%">Old wording</th><th style="width:25%">Final replacement</th><th>Reason</th></tr></thead>
+  <tbody>
+    <tr><td>Technical Blueprint</td><td>§7.4 Filters</td><td>"verified state, segment, activity window"</td><td>"verified state, notification preference, activity window"</td><td>Segment storage does not exist</td></tr>
+    <tr><td>Technical Blueprint</td><td>§7.4 Detail</td><td>"consent record, segment assignment."</td><td>"consent record."</td><td>Same; phrase deleted to avoid duplicating the row's own "notification preferences"</td></tr>
+    <tr><td>Technical Blueprint</td><td>Closing box</td><td>"8 tables · 9 settings groups"</td><td>"8 tables · 10 settings groups"</td><td><code>rj_chatbot</code> locked</td></tr>
+    <tr><td>Development Blueprint</td><td>§2.4</td><td>"The nine settings groups, their schemas…"</td><td>"The ten settings groups, their schemas…"</td><td>Same</td></tr>
+    <tr><td>Development Blueprint</td><td>§10 intro</td><td>"Nine option records, not ninety."</td><td>"Ten option records, not ninety."</td><td>Same</td></tr>
+    <tr><td>Development Blueprint</td><td>Closing box</td><td>"8 custom tables · 9 settings groups"</td><td>"8 custom tables · 10 settings groups"</td><td>Same</td></tr>
+    <tr><td>Development Blueprint</td><td>§0 Conflict 2</td><td>Heading "Elementor widget count"</td><td>"Conflict 2 — RESOLVED (Free-First Audit)"</td><td>OPEN-1 closed</td></tr>
+    <tr><td>Development Blueprint</td><td>§12 intro</td><td>"Seventeen widgets — the approved thirteen plus four…"</td><td>"Fifteen Elementor-Free widgets — authoritative set is Free-First Audit §2… Mega Menu is a theme component; sliders are presets; zero dynamic tags required in base."</td><td>Capability model replaces the count</td></tr>
+    <tr><td>Development Blueprint</td><td>§27 stage 21</td><td>"Seventeen widgets, eleven tags. Blocked by Conflict 2."</td><td>"Fifteen Elementor-Free widgets. Zero required dynamic tags — the eleven are optional Pro enhancement."</td><td>Stage unblocked</td></tr>
+    <tr><td>Development Blueprint</td><td>§29 ELEMENTOR READY</td><td>"Seventeen widgets and eleven tags"</td><td>"Fifteen Elementor-Free widgets, zero required dynamic tags"</td><td>Gate criterion corrected</td></tr>
+    <tr><td>Development Blueprint</td><td>Registry index row 8</td><td>"Seventeen widgets, eleven dynamic tags"</td><td>"Fifteen Free widgets (Free-First Audit §2); zero required, eleven optional Pro"</td><td>Same</td></tr>
+    <tr><td>Development Blueprint</td><td>Closing decisions</td><td>"Elementor widget count — seventeen or twenty-one · Stage 21"</td><td>"Elementor — RESOLVED. Free-first capability model… · Blocks: Nothing"</td><td>Decision closed</td></tr>
+    <tr><td>Resolver Approval &amp; Lock</td><td>Closing box</td><td colspan="2">Two separate edits — "9 settings groups" → "10 settings groups"; "One decision remains open: Decision 2…" → "No decision remains open."</td><td>Both closed. <strong>This row carries two corrections, which is why 13 rows hold 14 edits.</strong></td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Two further status banners were added, marking the sections that had carried the questions: Free-First Audit §8 now reads "RESOLVED — all three parts approved. OPEN-1 is closed", and Admin UX lock Part 6 now reads "RESOLVED — Option A approved."</p>
+<h3>4.2 Outstanding — carried forward, not applied</h3>
+<table>
+  <thead><tr><th style="width:15%">Document</th><th style="width:13%">Section</th><th style="width:30%">Required change</th><th>Why not applied here</th></tr></thead>
+  <tbody>
+    <tr><td>Development Blueprint</td><td>§17</td><td>Add three registry rows: <strong>Hero &amp; Sections</strong>, <strong>Search Synonyms</strong>, <strong>AI Chatbot</strong> → 21 rows</td><td>Full row specifications exist in the Admin UX lock Part 2 and Part 6. Adding them means editing a long table's structure; the specification is locked and the insertion is a mechanical documentation task, best done in one pass with the §12.1 widget-table revision below.</td></tr>
+    <tr><td>Development Blueprint</td><td>§12.1</td><td>Revise the widget table itself: drop the Mega Menu row to a theme-component note, fold Category Slider and Reel Slider into preset modes of their grids, rename to the 15-widget vocabulary of 2.3</td><td>The Free-First Audit §2 table is already authoritative and §12's intro now points to it, so no document currently contradicts the lock. Rewriting seventeen table rows in place carries real risk of mangling markup for no change in meaning.</td></tr>
+    <tr><td>Development Blueprint</td><td>§10, §13</td><td>Add the <code>rj_chatbot</code> row to the settings registry; mark §13's eleven dynamic tags as optional Pro</td><td>Counts are corrected; the row-level detail is the same mechanical pass.</td></tr>
+    <tr><td>Technical Blueprint</td><td>§5.2</td><td>Reclassify dynamic tags from primary exposure mechanism to Pro enhancement</td><td>Identified by the Free-First Audit §7. Prose revision, not a count.</td></tr>
+    <tr><td>Technical Blueprint</td><td>§6.2, §7.2, §7.3</td><td>Add the persistent-session wording, the password-reset flow, the reset screen and the logout-all reservation</td><td>Locked wording exists verbatim in the Admin UX lock Part 3, ready to transplant.</td></tr>
+    <tr><td>Development Blueprint</td><td>§24</td><td>Extend regression test 10 to assert <strong>Elementor Free only</strong>, not merely Elementor present</td><td>Test specification, from Free-First Audit §7.</td></tr>
+  </tbody>
+</table>
+<p><strong>None of these is an open decision.</strong> Every one has locked wording waiting in a named section — they are transcription into the two long registries, and they do not block implementation planning, because the locks in this document and the Admin UX lock are the authority a developer reads.</p>
+
+<h2 style="break-before:page">5 · Final architecture statement</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<div style="background:#f5f4ff;border:1px solid #d2cefd;border-radius:8px;padding:15px 17px;margin-bottom:12px;break-inside:avoid">
+  <h5 style="margin:0 0 6px">Canonical statement — replaces the widget-count debate everywhere</h5>
+  <p style="margin:0;font-size:15px">Rameshwari Jewellers uses an Elementor Free-first integration architecture. Elementor Free/Core is the compatibility baseline. Elementor Pro may enhance presentation capabilities but is never a dependency for core business functionality. RJ Plugin owns business data and business logic. Shared renderers and services are exposed through native builder capabilities, shortcodes, theme components and RJ Free-compatible widgets as appropriate. Optional Pro dynamic tags and advanced features sit above this baseline.</p>
+</div>
+
+<h2>6 · Final registry counts</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:34%">Registry</th><th style="width:14%">Value</th><th>Change</th></tr></thead>
+  <tbody>
+    <tr><td>Post types</td><td><strong>6</strong></td><td>Unchanged</td></tr>
+    <tr><td>Taxonomies</td><td><strong>7</strong></td><td>Unchanged</td></tr>
+    <tr><td>Custom tables</td><td><strong>8</strong></td><td>Unchanged — <strong>no chatbot table</strong></td></tr>
+    <tr><td>Options groups</td><td><strong>10</strong></td><td><span style="color:#8a6410">9 → 10.</span> <code>rj_chatbot</code>. The only schema addition in this pass.</td></tr>
+    <tr><td>Category roots · terms</td><td><strong>5 · 306</strong></td><td>Unchanged. Gold 74 · Silver 98 · Black Polish Silver 98</td></tr>
+    <tr><td>Resolver terms</td><td><strong>22</strong></td><td>Unchanged</td></tr>
+    <tr><td>Admin screens</td><td><strong>21</strong></td><td><span style="color:#8a6410">18 → 21.</span> Hero &amp; Sections · Search Synonyms · AI Chatbot</td></tr>
+    <tr><td>RJ Elementor-Free widgets</td><td><strong>15</strong></td><td><span style="color:#8a6410">17 → 15.</span> Mega Menu to theme, two sliders to presets</td></tr>
+    <tr><td>Required RJ dynamic tags</td><td><strong>0</strong></td><td><span style="color:#8a6410">11 → 0.</span> Pro-only, so they could never be base</td></tr>
+    <tr><td>Optional Pro dynamic tags</td><td><strong>11</strong></td><td>Specification retained as the Pro layer</td></tr>
+    <tr><td>Elementor baseline</td><td><strong>Capability model</strong></td><td>Replaces the 17/21 measurement</td></tr>
+    <tr><td>New meta keys</td><td><strong>0 in this pass</strong></td><td>12 since Session 4 total — 11 on <code>rj_page_section</code>, 1 on <code>rj_category</code></td></tr>
+  </tbody>
+</table>
+
+<h2>7 · Final lock register</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:5%"></th><th style="width:36%">Item</th><th style="width:22%">Status</th><th>Basis</th></tr></thead>
+  <tbody>
+    <tr><td>A</td><td>Admin Management UI</td><td style="color:#2f6b3a">LOCKED</td><td>Admin UX lock Part 1; §17 covers 18 of 21</td></tr>
+    <tr><td>B</td><td>Hero &amp; Sections admin screen</td><td style="color:#2f6b3a">LOCKED</td><td>Admin UX lock Part 2</td></tr>
+    <tr><td>C</td><td>Search Synonyms admin screen</td><td style="color:#2f6b3a">LOCKED</td><td>Admin UX lock Part 2</td></tr>
+    <tr><td>D</td><td>Google Login</td><td style="color:#2f6b3a">LOCKED</td><td>Tech §7.2, §10.2</td></tr>
+    <tr><td>E</td><td>Email + Password Login</td><td style="color:#2f6b3a">LOCKED</td><td>Tech §7.2</td></tr>
+    <tr><td>F</td><td>Forgot / Reset Password</td><td style="color:#2f6b3a">LOCKED</td><td>Admin UX lock Part 3 — WordPress key flow, rate limited, non-enumerating</td></tr>
+    <tr><td>G</td><td>Persistent Secure Login</td><td style="color:#2f6b3a">LOCKED</td><td>Admin UX lock Part 3 — WordPress auth cookie, no client-side token</td></tr>
+    <tr><td>H</td><td>Logout-All</td><td style="color:#5d5294">ARCHITECTURE RESERVED</td><td>WordPress session-token store supports it; no control specified</td></tr>
+    <tr><td>I</td><td>AI Chatbot</td><td style="color:#2f6b3a">LOCKED</td><td>Admin UX lock Part 5; this document Parts 2.1–2.2</td></tr>
+    <tr><td>J</td><td>Chatbot ON/OFF</td><td style="color:#2f6b3a">LOCKED</td><td><code>rj_features.chatbot</code>, OFF by default, no assets and no provider request when off</td></tr>
+    <tr><td>K</td><td><code>rj_chatbot</code> options group</td><td style="color:#2f6b3a">LOCKED</td><td>This document 2.1 — tenth group, non-autoloaded</td></tr>
+    <tr><td>L</td><td>Chatbot credentials server-side</td><td style="color:#2f6b3a">LOCKED</td><td>This document 2.2 — constants only, configured/not-configured detection</td></tr>
+    <tr><td>M</td><td>RJ Business Knowledge Layer</td><td style="color:#2f6b3a">LOCKED</td><td>Reads existing repositories through the domain layer; no new storage, no direct meta reads from UI code</td></tr>
+    <tr><td>N</td><td>AI Provider Adapter</td><td style="color:#2f6b3a">LOCKED</td><td>Interface mirroring the notification <code>Driver</code>; no provider named at architecture level</td></tr>
+    <tr><td>O</td><td>No fabricated business facts</td><td style="color:#2f6b3a">LOCKED</td><td>Price and stock permanently unsupported — the data model stores neither. Weight follows <code>show_weight_publicly</code></td></tr>
+    <tr><td>P</td><td>WhatsApp / Human handoff</td><td style="color:#2f6b3a">LOCKED</td><td>Reuses the locked engine. No second URL builder, no sixth template, no new lead table</td></tr>
+    <tr><td>Q</td><td>Legacy segment reference removed</td><td style="color:#2f6b3a">LOCKED</td><td>This document 2.4 — two references, both corrected and verified</td></tr>
+    <tr><td>R</td><td>Elementor Free/Core baseline</td><td style="color:#2f6b3a">LOCKED</td><td>This document 2.3, statement in Part 5</td></tr>
+    <tr><td>S</td><td>Elementor Pro optional only</td><td style="color:#2f6b3a">LOCKED</td><td>Same. The one base Pro dependency — dynamic tags — is removed</td></tr>
+    <tr><td>T</td><td>15 RJ Elementor-Free widgets</td><td style="color:#2f6b3a">LOCKED</td><td>This document 2.3; Free-First Audit §2</td></tr>
+    <tr><td>U</td><td>0 required base dynamic tags</td><td style="color:#2f6b3a">LOCKED</td><td>Same</td></tr>
+    <tr><td>V</td><td>11 optional Pro dynamic tags</td><td style="color:#2f6b3a">LOCKED</td><td>Dev Blueprint §13 retained as the Pro specification</td></tr>
+    <tr><td>W</td><td>Mega Menu as theme component</td><td style="color:#2f6b3a">LOCKED</td><td>This document 2.3</td></tr>
+    <tr><td>X</td><td>Sliders as presets/modes</td><td style="color:#2f6b3a">LOCKED</td><td>Same, plus Featured Categories, Store Locator, Product Card, Reel Viewer</td></tr>
+    <tr><td>Y</td><td>RJ Plugin owns business data</td><td style="color:#2f6b3a">LOCKED</td><td>Dev Blueprint §26 dependency graph, unchanged</td></tr>
+  </tbody>
+</table>
+
+<h2>8 · Remaining open decisions</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:15px 17px;margin-bottom:12px;break-inside:avoid">
+  <p style="margin:0 0 8px;font-size:17px;font-weight:500;color:#2f6b3a">These decisions are now fully locked.</p>
+  <table style="margin:0">
+    <thead><tr><th style="width:38%">Was open</th><th>Now</th></tr></thead>
+    <tbody>
+      <tr><td>Chatbot configuration storage</td><td>LOCKED — <code>rj_chatbot</code>, tenth group, non-autoloaded</td></tr>
+      <tr><td>Chatbot credentials</td><td>LOCKED — server-side configuration only</td></tr>
+      <tr><td>Elementor 17 vs 21</td><td>LOCKED — obsolete; replaced by the capability model</td></tr>
+      <tr><td>Free-first architecture</td><td>LOCKED — canonical statement in Part 5</td></tr>
+      <tr><td>Segment assignment reference</td><td>LOCKED — removed, both occurrences</td></tr>
+    </tbody>
+  </table>
+</div>
+<p><strong>Zero owner decisions remain outstanding across the entire specification.</strong> What remains is six documentation-transcription items in §4.2, each with locked wording already written in a named section — work, not decisions.</p>
+
+<h2>9 · No-code verification</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:38%">Check</th><th style="width:12%">Result</th><th>Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>Production code written</td><td style="color:#2f6b3a"><strong>NO</strong></td><td>No PHP, JavaScript, CSS, SQL, plugin file, theme file, widget, block or migration. Only specification prose was edited.</td></tr>
+    <tr><td>New CPT added</td><td style="color:#2f6b3a"><strong>NO</strong></td><td>Six, unchanged.</td></tr>
+    <tr><td>New taxonomy added</td><td style="color:#2f6b3a"><strong>NO</strong></td><td>Seven, unchanged.</td></tr>
+    <tr><td>New table added for chatbot</td><td style="color:#2f6b3a"><strong>NO</strong></td><td>Eight, unchanged. Conversation-transcript storage remains ARCHITECTURE RESERVED and unbuilt.</td></tr>
+    <tr><td>Legacy segment system recreated</td><td style="color:#2f6b3a"><strong>NO</strong></td><td>Both references removed; verified zero occurrences of "segment assignment" in the Technical Blueprint after writing.</td></tr>
+    <tr><td>Elementor Pro dependency introduced</td><td style="color:#2f6b3a"><strong>NO</strong></td><td>The one that existed — base dynamic tags — is removed. Required tags now zero.</td></tr>
+    <tr><td>Locked decisions changed</td><td style="color:#2f6b3a"><strong>NO</strong></td><td>Category Master, Model B, <code>_rj_resolver</code>, Shape A/B, <code>rj_page_section</code>, hero rules, <code>_rj_name_alt</code>, weight visibility, auth architecture — none opened for writing.</td></tr>
+    <tr><td>New product or hidden feature</td><td style="color:#2f6b3a"><strong>NO</strong></td><td>The only architectural addition is the <code>rj_chatbot</code> settings group and its specification, exactly as your Part 14 states.</td></tr>
+    <tr><td>Corrections verified, not assumed</td><td style="color:#2f6b3a"><strong>YES</strong></td><td>Each of the 14 corrections reported a match count before replacement, and each file was re-read afterwards. Post-write counts: "segment assignment" 0 · "9 settings groups" 0 · "10 settings groups" 1 · "Seventeen widgets" 0 · "Nine option" 0, in both blueprints.</td></tr>
+  </tbody>
+</table>
+
+<div style="background:#f5f4ff;border:1px solid #d2cefd;border-radius:8px;padding:15px 17px;margin-top:18px;break-inside:avoid">
+  <h5 style="margin:0 0 6px">Status</h5>
+  <table style="margin:0">
+    <tbody>
+      <tr><td style="width:36%"><strong>Specification</strong></td><td style="color:#2f6b3a;font-weight:600">Locked. Zero open owner decisions.</td></tr>
+      <tr><td><strong>Final schema</strong></td><td>6 post types · 7 taxonomies · 8 tables · <strong>10 options groups</strong> · 5 roots · 306 terms · 22 resolver terms · 21 admin screens · 15 Free widgets · 0 required dynamic tags</td></tr>
+      <tr><td><strong>Outstanding</strong></td><td>Six documentation-transcription items (§4.2). No decisions.</td></tr>
+      <tr><td><strong>Next stage</strong></td><td>Implementation planning. Stages 1–20 were already unblocked; Stage 21 is now unblocked too.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</doc-page>
+</x-dc>
+</body>
+</html>

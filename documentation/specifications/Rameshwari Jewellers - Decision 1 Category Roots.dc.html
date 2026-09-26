@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15.5px; line-height: 1.6; }
+h1, h2, h3, h4 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 38px; letter-spacing: -0.03em; }
+h2 { font-size: 25px; margin: 0 0 4px; }
+h3 { font-size: 17.5px; margin: 24px 0 6px; }
+h4 { font-size: 14.5px; font-weight: 600; margin: 18px 0 4px; letter-spacing: 0; }
+h5 { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 16px 0 6px; }
+p { margin: 0 0 10px; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 11px; padding-left: 20px; }
+li { margin: 0 0 4px; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 11px 0 17px; font-size: 12.2px; line-height: 1.44; }
+th { text-align: left; font-weight: 600; font-size: 9.5px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 9px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 6px 9px 6px 0; vertical-align: top; overflow-wrap: anywhere; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 4px; border-radius: 3px; color: #423a6a; overflow-wrap: anywhere; }
+pre { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.6px; line-height: 1.5; background: #f3f5fe; border-left: 2px solid #9184d9; padding: 11px 13px; margin: 11px 0 16px; border-radius: 0 8px 8px 0; white-space: pre-wrap; overflow-wrap: anywhere; break-inside: avoid; color: #292b31; }
+pre code { background: none; padding: 0; color: inherit; font-size: 1em; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.8in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Category Root Structure</span>
+  <span>Session 5B · Pre-import</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9.5px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>No code. No category records created.</span>
+  <span>Awaiting owner decision</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:18px">
+  <div style="font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Session 5B</div>
+  <h1 style="margin:0">Category Root Structure</h1>
+  <div style="font-size:18px;color:#595d6c;line-height:1.35">Five roots, as the business specified. One conflict surfaced that must be settled before the import file is written.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:15px 17px;margin-bottom:16px;break-inside:avoid">
+  <h5 style="margin:0 0 6px;color:#8a6410">SUPERSEDED — see Category Master</h5>
+  <p style="margin:0 0 7px;font-size:14.5px">The locked <strong>Category Master</strong> is now the source of truth for category content and counts. It settles Decision 1 (pairs are <strong>separate</strong> terms), Decision 1b (Black Polish Silver carries the full Silver structure) and Conflict 4 (<strong>five real <code>rj_category</code> roots</strong> — the composed-menu resolution recommended below is not adopted). Final count: <strong>306 terms</strong>. The analysis here is retained as the reasoning record.</p>
+  <p style="margin:0;font-size:14.5px"><strong>2. The analysis surfaced a conflict</strong> between the business taxonomy and the approved facet taxonomies. It is set out below as <strong>Conflict 4</strong> rather than resolved silently.</p>
+</div>
+
+<h2>The business requirement is not ambiguous</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<p>The original brief supplied a section headed <strong>PRIMARY CATEGORY STRUCTURE</strong> containing exactly five headings: JEWELLERY, METALS, WEDDING, FOR, OTHERS. Option A is therefore not a simplification proposed by me — <strong>it is the owner's own structure, transcribed.</strong> Option B does not exist in any source document; producing a ten-root structure would mean inventing one, which the brief forbids.</p>
+<p>The analysis below is still worth doing, because "the business said five" settles what the roots are without settling whether all five belong in the same taxonomy. That is where Conflict 4 lives.</p>
+
+<h2>Comparison</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<table>
+  <thead><tr><th style="width:16%">Criterion</th><th style="width:28%">A · Five roots (as specified)</th><th style="width:28%">B · Ten roots (JEWELLERY's children promoted)</th><th>C · Two roots (facets extracted)</th></tr></thead>
+  <tbody>
+    <tr><td>Root terms</td><td>JEWELLERY · METALS · WEDDING · FOR · OTHERS</td><td>Gold Jewellery · Silver Jewellery · Black Polish Silver · Gold Set · Silver Set · METALS · WEDDING · FOR · OTHERS (+JEWELLERY)</td><td>JEWELLERY · OTHERS in <code>rj_category</code>; METALS, FOR, WEDDING rendered from the facet taxonomies</td></tr>
+    <tr><td>Advantages</td><td>Verbatim the owner's structure. Five menu columns fit a desktop panel and a mobile drill-down. One mental model for staff filing products.</td><td>One click less to Gold Jewellery, the busiest branch.</td><td>No duplicate representation. Each concept has exactly one home. Counts can never diverge.</td></tr>
+    <tr><td>Disadvantages</td><td>Three of the five roots duplicate approved facet taxonomies — see Conflict 4.</td><td><strong>Invents a structure the business did not specify.</strong> Ten columns is unusable on mobile and crowded on desktop. Loses the JEWELLERY grouping the owner uses when speaking about the catalogue.</td><td>The menu still shows five roots, but <code>rj_category</code> has two. A developer or a future owner reading the taxonomy screen sees a structure that does not match the menu.</td></tr>
+    <tr><td>Taxonomy fidelity</td><td><strong>Exact</strong></td><td>Poor — regrouped without instruction</td><td>Exact in the interface; indirect in the data</td></tr>
+    <tr><td>Mega menu</td><td>Five columns, each opening its own panel. Matches UI/UX §3.</td><td>Ten root items overflow the bar; mobile drill-down gains a redundant level.</td><td>Five columns, composed from three sources. Identical to A for the visitor.</td></tr>
+    <tr><td>SEO</td><td>Clean paths under each root. Risk: near-duplicate landing pages for <code>/c/metals/gold/</code> and the metal facet archive.</td><td>Shorter paths; loses the topical grouping search engines read from the hierarchy.</td><td>One canonical page per concept. Strongest of the three.</td></tr>
+    <tr><td>Import complexity</td><td>Lowest — one file, path-matched</td><td>Same file, different paths</td><td>Two files: a category tree and a facet term list</td></tr>
+    <tr><td>Scalability to 1,000+</td><td>Good. Depth is unbounded; caches carry the load.</td><td>Good, but the root row keeps growing as branches are promoted.</td><td>Best. Facets stay flat and small while the tree grows.</td></tr>
+    <tr><td>Duplicate risk</td><td><strong>High</strong> until Conflict 4 is settled</td><td>High, same cause</td><td>None</td></tr>
+    <tr><td><strong>Recommendation</strong></td><td colspan="3"><strong>Option A for the navigation — the owner's five roots, unchanged. Conflict 4 decides how the data behind three of them is stored.</strong> Option B is rejected: it invents structure. Option C is the data model that Conflict 4 Resolution 1 arrives at.</td></tr>
+    <tr><td>Owner decision?</td><td colspan="3">Not on the five roots — that is settled by the brief. <strong>Yes on Conflict 4.</strong></td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">Conflict 4 — three roots duplicate approved facet taxonomies</h2>
+<div style="height:2px;background:#d2a03c;width:52px;margin:8px 0 14px"></div>
+<h4>Existing decision</h4>
+<p>Development Blueprint §7.1 registers <code>rj_metal</code>, <code>rj_audience</code> and <code>rj_occasion</code> as flat facet taxonomies on products. §8.2 separately lists METALS, WEDDING and FOR as roots of <code>rj_category</code>.</p>
+<h4>The conflict</h4>
+<table>
+  <thead><tr><th style="width:18%">Category root</th><th style="width:34%">Its children, per the brief</th><th>Approved facet taxonomy</th></tr></thead>
+  <tbody>
+    <tr><td>METALS</td><td>Gold · Diamond · Silver · Platinum · Gemstone · White Gold · Rose Gold</td><td><code>rj_metal</code> — <strong>the identical seven terms</strong></td></tr>
+    <tr><td>FOR</td><td>Baby · Kids · Girls · Boys · Men · Women · Bride · Groom</td><td><code>rj_audience</code> — <strong>the identical eight terms</strong></td></tr>
+    <tr><td>WEDDING</td><td>Bridal Set · Mangalsutra · Couple Rings · Engagement Rings · Bridal Nath · Maang Tikka · Anniversary</td><td><code>rj_occasion</code> partially (Bridal, Anniversary). The other five are <em>product types</em> that already exist deeper in the Hindi tree — मंगलसूत्र under Neck, टिका under Head, नथ under Nose</td></tr>
+  </tbody>
+</table>
+<h4>Why it matters</h4>
+<p>If both exist and both are assigned, every gold ring is filed twice — once at <code>METALS → Gold</code> and once as <code>rj_metal: Gold</code>. Two records of one fact means two counts that drift apart, two sets of filter results that disagree, and two pages competing for the same search query. It is exactly the redundant representation the locked rules forbid, and it would be discovered six months in, after 3,000 products had been filed.</p>
+<p>WEDDING is worse than a duplicate: <code>Mangalsutra</code> as a category root child and <code>मंगलसूत्र</code> under Gold → Women's → Neck are the same product type in two places in the same taxonomy. A product must be filed in one, and whichever the staff member picks, the other page is empty.</p>
+<h4>Affected</h4>
+<p><code>Data\Taxonomies</code> · <code>Domain\Category</code> · <code>Services\MenuTree</code> · the category import file · Development Blueprint §7.1, §8.2 and §8.5 · UI/UX §3 mega menu · the filter panel.</p>
+<h4>Migration impact</h4>
+<p><strong>Now: none.</strong> No term exists yet. After products are filed: re-filing every product and rewriting every URL under three roots. This is the cheapest moment by a wide margin to settle it.</p>
+
+<h3>Resolutions</h3>
+<table>
+  <thead><tr><th style="width:8%">#</th><th style="width:26%">Resolution</th><th style="width:30%">What happens</th><th>Trade</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Composed menu</strong> — recommended</td><td>The mega menu shows all five roots. JEWELLERY and OTHERS read from <code>rj_category</code>; METALS reads <code>rj_metal</code>; FOR reads <code>rj_audience</code>; WEDDING reads <code>rj_occasion</code> plus a short curated list of links to existing leaves. The visitor sees exactly the five-root menu the business asked for.</td><td>The taxonomy admin screen shows two roots, not five. Needs a clear note on that screen explaining where the other three live. One extra concept for whoever maintains it.</td></tr>
+    <tr><td>2</td><td>Five real roots; drop the facet taxonomies</td><td>METALS, FOR and WEDDING become ordinary branches of <code>rj_category</code>. <code>rj_metal</code>, <code>rj_audience</code> and <code>rj_occasion</code> are not registered.</td><td><strong>Loses faceted filtering.</strong> A visitor could no longer narrow "Gold" by "22K" and "Women" together — the filter panel in UI/UX §5 depends on facets being separate axes from the tree. For a jewellery catalogue this is a significant loss.</td></tr>
+    <tr><td>3</td><td>Five real roots; keep facets; accept the duplication</td><td>Both exist. Staff file products in both.</td><td><strong>Not recommended.</strong> Guarantees divergent counts and duplicate landing pages, and doubles filing work on every product. The failure is slow and expensive to reverse.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">A · Final root structure</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<table>
+  <thead><tr><th style="width:10%">Order</th><th style="width:16%">Root</th><th style="width:24%">Data source under Resolution 1</th><th>Children</th></tr></thead>
+  <tbody>
+    <tr><td>10</td><td>JEWELLERY</td><td><code>rj_category</code> root</td><td>Gold Jewellery · Silver Jewellery · Black Polish Silver · Gold Jewellery Set · Silver Jewellery Set</td></tr>
+    <tr><td>20</td><td>METALS</td><td><code>rj_metal</code></td><td>Gold · Diamond · Silver · Platinum · Gemstone · White Gold · Rose Gold</td></tr>
+    <tr><td>30</td><td>WEDDING</td><td><code>rj_occasion</code> + curated leaf links</td><td>Bridal Set · Mangalsutra · Couple Rings · Engagement Rings · Bridal Nath · Maang Tikka · Anniversary</td></tr>
+    <tr><td>40</td><td>FOR</td><td><code>rj_audience</code></td><td>Baby · Kids · Girls · Boys · Men · Women · Bride · Groom</td></tr>
+    <tr><td>50</td><td>OTHERS</td><td><code>rj_category</code> root</td><td>Antique · Traditional · Navaratna · Temple Jewellery · Lakshmi Jewellery · Name Rings · Gold Coin</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Under Resolution 2 all five are <code>rj_category</code> roots with the same orders and the same children. The visitor-facing structure is identical either way; only the storage differs.</p>
+
+<h2>B–F · Placement of the five named branches</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<table>
+  <thead><tr><th style="width:20%">Branch</th><th style="width:10%">Depth</th><th style="width:30%">Path</th><th>Contents</th></tr></thead>
+  <tbody>
+    <tr><td><strong>B ·</strong> Gold Jewellery</td><td>2</td><td><code>jewellery/gold-jewellery</code></td><td>The full Hindi hierarchy: महिला के आभूषण with seven groups (सिर, कान, नाक, गले, बाजू, कलाई, अंगुली) and पुरुषों के आभूषण with four (कान, गले, कलाई, अंगुली). ~74 terms.</td></tr>
+    <tr><td><strong>C ·</strong> Silver Jewellery</td><td>2</td><td><code>jewellery/silver-jewellery</code></td><td>The Gold hierarchy in full, <strong>plus</strong> कमर के आभूषण (waist), पेर के आभूषण (foot) and बच्चों के आभूषण (children's). ~98 terms.</td></tr>
+    <tr><td><strong>D ·</strong> Black Polish Silver</td><td>2</td><td><code>jewellery/black-polish-silver</code></td><td>The Silver hierarchy in full — the superset, including waist, foot and children's. Produced by the importer's branch-clone mode so the three stay in step as one grows. ~98 terms.</td></tr>
+    <tr><td><strong>E ·</strong> Gold Jewellery Set</td><td>2</td><td><code>jewellery/gold-jewellery-set</code></td><td>Leaf at launch. A set is a merchandising grouping of finished pieces, not a body-location branch, so it does not take the Hindi hierarchy. Extend later if the shop wants set sub-types.</td></tr>
+    <tr><td><strong>F ·</strong> Silver Jewellery Set</td><td>2</td><td><code>jewellery/silver-jewellery-set</code></td><td>Leaf at launch, same reasoning.</td></tr>
+  </tbody>
+</table>
+<div style="background:#f5f4ff;border:1px solid #d2cefd;border-radius:8px;padding:13px 15px;margin:10px 0 4px">
+  <p style="margin:0;font-size:14px"><strong>One point to confirm:</strong> the brief says Black Polish Silver uses "the same approved jewellery hierarchy" without saying Gold's or Silver's. I have assumed <strong>Silver's</strong>, since black polish is a silver finish and the shop would carry polished payal, bichiya and children's pieces. If Black Polish Silver should instead follow the shorter Gold structure, say so — it is a difference of 21 terms.</p>
+</div>
+
+<h2>G · Nothing requested is lost</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<table>
+  <thead><tr><th style="width:30%">Required</th><th style="width:14%">Present</th><th>Where</th></tr></thead>
+  <tbody>
+    <tr><td>Gold Jewellery</td><td>Yes</td><td><code>jewellery/gold-jewellery</code></td></tr>
+    <tr><td>Silver Jewellery</td><td>Yes</td><td><code>jewellery/silver-jewellery</code></td></tr>
+    <tr><td>Black Polish Silver</td><td>Yes</td><td><code>jewellery/black-polish-silver</code></td></tr>
+    <tr><td>Gold Jewellery Set</td><td>Yes</td><td><code>jewellery/gold-jewellery-set</code></td></tr>
+    <tr><td>Silver Jewellery Set</td><td>Yes</td><td><code>jewellery/silver-jewellery-set</code></td></tr>
+    <tr><td>Metals</td><td>Yes</td><td>Root 20 — all seven terms</td></tr>
+    <tr><td>Wedding</td><td>Yes</td><td>Root 30 — all seven terms</td></tr>
+    <tr><td>For</td><td>Yes</td><td>Root 40 — all eight terms</td></tr>
+    <tr><td>Others</td><td>Yes</td><td>Root 50 — all seven terms</td></tr>
+    <tr><td>Detailed Hindi hierarchy</td><td>Yes</td><td>Every term from the brief, at depth 3–5 under Gold, Silver and Black Polish Silver</td></tr>
+    <tr><td>Women's jewellery</td><td>Yes</td><td>महिला के आभूषण under all three metal branches</td></tr>
+    <tr><td>Men's jewellery</td><td>Yes</td><td>पुरुषों के आभूषण under all three</td></tr>
+    <tr><td>Children's jewellery</td><td>Yes</td><td>बच्चों के आभूषण under Silver and Black Polish Silver, as the brief specifies</td></tr>
+    <tr><td>Silver waist jewellery</td><td>Yes</td><td>कमर के आभूषण — कणकती, सटका, जंजीर, सांकली, कमरबन्द</td></tr>
+    <tr><td>Silver foot jewellery</td><td>Yes</td><td>पेर के आभूषण — twelve terms including पायल, झाँझर, बिछिया, गुंठला</td></tr>
+    <tr><td>Black Polish Silver hierarchy</td><td>Yes</td><td>Full clone of Silver</td></tr>
+  </tbody>
+</table>
+<p><strong>No term from the brief is dropped, merged or renamed.</strong> The only open question about term identity is the original Decision 1 — whether five slash-joined pairs are one term or two.</p>
+
+<h2 style="break-before:page">H · Final import hierarchy</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<p style="font-size:13.5px;color:#595d6c"><strong>The tree below is Resolution&nbsp;2 shaped</strong> — all five roots in one <code>rj_category</code> tree. Under the recommended Resolution&nbsp;1 the same visitor-facing structure is produced from two sources, and the import is two files. Both figures are given after the tree.</p>
+<pre><code>JEWELLERY                                    depth 1      1 term
+├── Gold Jewellery                           depth 2
+│   ├── महिला के आभूषण                        depth 3
+│   │   ├── सिर के आभूषण          → 7 leaves  depth 4–5
+│   │   ├── कान के आभूषण          → 10 leaves
+│   │   ├── नाक के आभूषण          → 8 leaves
+│   │   ├── गले के आभूषण          → 15 leaves
+│   │   ├── बाजू के आभूषण         → 1 leaf
+│   │   ├── कलाई के आभूषण         → 8 leaves
+│   │   └── अंगुली के आभूषण        → 4 leaves
+│   └── पुरुषों के आभूषण           depth 3
+│       ├── कान के → 3 · गले के → 1 · कलाई के → 2 · अंगुली के → 2
+│                                                75 terms
+├── Silver Jewellery                         depth 2
+│   ├── [the Gold structure in full]
+│   ├── कमर के आभूषण              → 5 leaves
+│   ├── पेर के आभूषण              → 12 leaves
+│   └── बच्चों के आभूषण            → 4 leaves
+│                                                99 terms
+├── Black Polish Silver     [clone of Silver]    99 terms
+├── Gold Jewellery Set                            1 term
+└── Silver Jewellery Set                          1 term
+                                          ──────────────
+                              JEWELLERY subtotal   276 terms
+
+OTHERS    → 7 children                             8 terms
+                              rj_category TOTAL    284 terms
+
+METALS    → 7 · WEDDING → 7 · FOR → 8        facet terms  22
+                              ────────────────────────
+                              ALL OBJECTS         306 terms</code></pre>
+<p style="font-size:13.5px;color:#595d6c">Under <strong>Resolution 2</strong>, METALS, WEDDING and FOR become <code>rj_category</code> roots with a root term each, giving a single tree of <strong>309 terms</strong> and no facet taxonomies.</p>
+<table>
+  <thead><tr><th style="width:26%">Property</th><th>Value</th></tr></thead>
+  <tbody>
+    <tr><td>Terms at launch</td><td><strong>Resolution 1:</strong> 284 <code>rj_category</code> terms + 22 facet terms = 306 objects. <strong>Resolution 2:</strong> 309 <code>rj_category</code> terms, no facets. Both figures assume the five slash-joined pairs are <strong>separate</strong> terms, per the Decision 1 recommendation.</td></tr>
+    <tr><td>If the pairs are joined instead</td><td><strong>Twelve fewer terms:</strong> 272 + 22 under Resolution 1, or 297 under Resolution 2. The pairs sit in ear and nose across all three metal branches (6 terms) and in waist and foot across Silver and Black Polish Silver (6 terms). Worth noting that only the separate-term option clears the stated "300+ categories" requirement.</td></tr>
+    <tr><td>Maximum depth</td><td>5. Nothing in the model special-cases a level; the depth-20 ceiling is a cycle detector, not a business limit.</td></tr>
+    <tr><td>Match key</td><td>Full slug path. Re-running the import updates rather than duplicates, so the file can be loaded three times as the taxonomy is refined.</td></tr>
+    <tr><td>Expected duplicate leaf names</td><td>Correct and intentional. कड़ा appears under wrist, foot and children's; बंगड़ी under neck and wrist; अंगूठी under men's and women's. Paths disambiguate them and the importer matches on path, never on name.</td></tr>
+    <tr><td>Ordering</td><td>Gapped by 10 within siblings, in the order the brief lists them.</td></tr>
+    <tr><td>Visibility</td><td>Every term <code>_rj_visible</code> true. Defaulting to false is the historic disappearing-category bug.</td></tr>
+    <tr><td>Images</td><td>None at import. The media audit reports which terms lack one; the owner fills them over time.</td></tr>
+  </tbody>
+</table>
+
+<h2>I · Remaining owner decisions</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<table>
+  <thead><tr><th style="width:8%">#</th><th style="width:32%">Decision</th><th style="width:18%">Blocks</th><th>Recommendation</th></tr></thead>
+  <tbody>
+    <tr><td><strong>4</strong></td><td><strong>New.</strong> METALS, WEDDING and FOR duplicate <code>rj_metal</code>, <code>rj_occasion</code> and <code>rj_audience</code>. Composed menu, drop the facets, or accept the duplication?</td><td><strong>Import file and Stage 4</strong></td><td><strong>Resolution 1 — composed menu.</strong> The visitor sees the five-root menu the business specified; each concept is stored once.</td></tr>
+    <tr><td><strong>1</strong></td><td><strong>Still open.</strong> झुमका/झूमर, लौंग/लूंग, जंजीर/सांकली, कड़ा/कड़ी, चुटकी/बिछिया — ten terms or five?</td><td>Import file</td><td>Ten separate terms; put the second word in <code>_rj_name_alt</code> so both are findable in one search.</td></tr>
+    <tr><td>1b</td><td>Does Black Polish Silver clone Silver's hierarchy (with waist, foot, children's) or Gold's shorter one?</td><td>Import file</td><td>Silver's. Difference of 21 terms.</td></tr>
+    <tr><td>5</td><td>Root structure itself</td><td>Nothing</td><td><strong>Settled.</strong> Five roots, as the business specified. Option B rejected — it would invent structure.</td></tr>
+    <tr><td>2</td><td>Elementor widget count — seventeen or twenty-one</td><td>Stage 21</td><td>Seventeen</td></tr>
+  </tbody>
+</table>
+<p><strong>Conflict 4 is the one that matters now.</strong> It is free to settle today and expensive after products are filed — the same asymmetry that made Conflict 3 worth three sessions. Decisions 1 and 1b are term-level and affect only the import file; Stage 4 taxonomy registration does not wait on them.</p>
+
+</doc-page>
+</x-dc>
+</body>
+</html>

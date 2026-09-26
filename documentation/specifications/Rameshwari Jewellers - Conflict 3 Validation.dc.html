@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15.5px; line-height: 1.6; }
+h1, h2, h3, h4 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 38px; letter-spacing: -0.03em; }
+h2 { font-size: 25px; margin: 0 0 4px; }
+h3 { font-size: 17.5px; margin: 24px 0 6px; }
+h5 { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 16px 0 6px; }
+p { margin: 0 0 10px; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 11px; padding-left: 20px; }
+li { margin: 0 0 4px; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 11px 0 17px; font-size: 12.2px; line-height: 1.44; }
+th { text-align: left; font-weight: 600; font-size: 9.5px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 9px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 6px 9px 6px 0; vertical-align: top; overflow-wrap: anywhere; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 4px; border-radius: 3px; color: #423a6a; overflow-wrap: anywhere; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.8in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Conflict 3 Validation</span>
+  <span>Session 5A.1 · Pre-code</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9.5px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>No code. No identifier registered.</span>
+  <span>Awaiting owner decision</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px">
+  <div style="font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Session 5A.1</div>
+  <h1 style="margin:0">Conflict 3 — Second-Level Validation</h1>
+  <div style="font-size:18px;color:#595d6c;line-height:1.35">Five proposals tested against the approved architecture. One post type created, six identifiers rejected.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:15px 17px;margin-bottom:14px;break-inside:avoid">
+  <h5 style="margin:0 0 6px;color:#2f6b3a">Conflict 3 — RESOLVED by owner decision</h5>
+  <p style="margin:0 0 7px;font-size:14.5px"><strong>Scheduled hero campaigns are an approved business requirement.</strong> That answers the open question in §1 and reverses this document's recommendation on storage: <code>rj_page_section</code> is created as a post type, and the <code>rj_sections</code> options group is not created. All other rejections stand.</p>
+  <p style="margin:0;font-size:13.5px;color:#595d6c">Sections 1–7 below are preserved as the reasoning record. Sections A–G carry the final decision and are authoritative where the two differ.</p>
+</div>
+
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:15px 17px;margin-bottom:20px;break-inside:avoid">
+  <h5 style="margin:0 0 6px;color:#8a6410">Two findings from the validation — one held, one was overtaken</h5>
+  <p style="margin:0 0 7px;font-size:14.5px"><strong>1. OVERTAKEN by the owner decision.</strong> The validation argued that adding a tenth options group would <em>use</em> the approved architecture where a post type would <em>extend</em> it, and that revisions and scheduling were refinements I had introduced rather than approved requirements. The second half is now false: <strong>scheduled hero campaigns are an approved business requirement</strong>, and that justifies the permanent identifier. The argument is preserved because its first half still holds — a new post type is the heavier step and needed a requirement behind it. It now has one.</p>
+  <p style="margin:0;font-size:14.5px"><strong>2. HELD.</strong> Notification audiences can come from <code>_rj_notify_prefs</code> — what the customer explicitly opted into — rather than from an admin-assigned segment inferred about them. That is both simpler and better on consent. <code>_rj_segment</code> is therefore not required, and is not created.</p>
+</div>
+
+<h2>1 · rj_page_section — deep validation</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+
+<h3 style="margin-top:0">What it would actually hold</h3>
+<p style="font-size:13.5px;color:#595d6c"><strong>Superseded assumption:</strong> the analysis below assumed a bounded hero of at most three fixed slides. The approved requirement is open-ended — scheduled campaigns that accumulate over time. That changes the shape of the record set and, with it, the verdict.</p>
+<table>
+  <thead><tr><th style="width:20%">Record</th><th style="width:16%">Cardinality</th><th>Shape</th></tr></thead>
+  <tbody>
+    <tr><td><code>hero</code> — one key</td><td><strong>Many, scheduled</strong></td><td>Two image crops, Hindi and English titles, description, CTA label, CTA URL, start and end dates, active flag, order</td></tr>
+    <tr><td>about</td><td>Singleton</td><td>Heading, body, image, CTA</td></tr>
+    <tr><td>bridal_band</td><td>Singleton</td><td>Heading, body, image, CTA</td></tr>
+    <tr><td>trust_strip</td><td>Singleton</td><td>Three to four short claims</td></tr>
+    <tr><td>footer_note</td><td>Singleton</td><td>Short text</td></tr>
+  </tbody>
+</table>
+<p><strong style="color:#8a3a2f">This paragraph reflects the superseded assumption.</strong> On a bounded three-slide hero it would read: seven records, six of them singletons with fixed keys — configuration-shaped, not collection-shaped, and the wrong case for a post type. <strong>With open-ended scheduled campaigns the hero set grows without limit, which is collection-shaped, and the post type is correct.</strong> The four static bands remain singletons and sit in the same post type as keyed records.</p>
+<p>Testimonials and collections are not candidates to absorb this: <code>rj_testimonial</code> is a quotation with an author and a rating, and <code>rj_collection</code> is a merchandising group with members. Neither is an editable page band, and forcing bands into either would be the duplication your rule 5 forbids.</p>
+
+<h3>Comparison</h3>
+<table>
+  <thead><tr><th style="width:17%">Criterion</th><th style="width:28%">A · New CPT <code>rj_page_section</code></th><th style="width:28%">B · Options group <code>rj_sections</code></th><th>C · Theme markup / builder page</th></tr></thead>
+  <tbody>
+    <tr><td>Data owner</td><td>Plugin</td><td>Plugin</td><td>Theme or Elementor</td></tr>
+    <tr><td>Advantages</td><td>Revisions; native scheduling; media library UI per record; one write path with all other content</td><td>Uses approved architecture as-is; schema validation and read-back verification already built; no new permanent identifier; simplest possible model for seven slots</td><td>No storage at all</td></tr>
+    <tr><td>Disadvantages</td><td>A permanent identifier for seven records; an admin list table nobody needs; empty archive and REST surface to suppress</td><td>No revisions; scheduling needs a date field the worker reads, not post status; edit UI is a settings screen, not the post editor</td><td><strong>Disqualified.</strong> Lost on theme change and on Elementor removal</td></tr>
+    <tr><td>Duplication risk</td><td>Moderate — overlaps what options already does for configuration content</td><td>None</td><td>High</td></tr>
+    <tr><td>Theme independence</td><td>Yes</td><td>Yes</td><td><strong>No</strong></td></tr>
+    <tr><td>Elementor independence</td><td>Yes</td><td>Yes</td><td><strong>No</strong></td></tr>
+    <tr><td>REST support</td><td>Automatic via <code>show_in_rest</code></td><td>Existing routes: public read on chosen groups, <code>PUT /rj/v1/settings/{group}</code> for write</td><td>None</td></tr>
+    <tr><td>Mobile app support</td><td>Good</td><td>Good — one request returns all bands, which is fewer round trips than seven post reads</td><td>None</td></tr>
+    <tr><td>Maintenance cost</td><td>Registration, capability mapping, admin screen suppression, list table, meta boxes</td><td>One schema and one settings screen</td><td>—</td></tr>
+  </tbody>
+</table>
+
+<h3>Verdict</h3>
+<p><strong>Option A — the post type — by owner decision.</strong> The validation favoured Option B on the grounds that revisions and scheduling were refinements I had introduced rather than approved requirements. The owner has since confirmed that scheduled hero campaigns <em>are</em> a business requirement: multiple campaigns set in advance with start and end dates, active state and display order. That makes the record set collection-shaped rather than configuration-shaped, and native post scheduling and revisions are the correct mechanism.</p>
+<div style="background:#f5f4ff;border:1px solid #d2cefd;border-radius:8px;padding:13px 15px;margin:12px 0 4px">
+  <p style="margin:0;font-size:14px"><strong>This was the deciding question, and it was answered YES.</strong> Hero slides are scheduled in advance for Diwali, Karva Chauth and wedding season — images set in September, appearing and retiring on their own dates. Option A is therefore correct.</p>
+</div>
+
+<h2 style="break-before:page">2 · rj_hero</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<p>A hero slide is an editable presentation band with an image, copy and a CTA — structurally identical to the other bands. Whichever container is chosen, hero belongs in it as three keyed records. A separate <code>rj_hero</code> identifier creates two representations of one concept.</p>
+<p><strong>NO NEW <code>rj_hero</code>.</strong> Hero campaigns are records inside <code>rj_page_section</code> carrying <code>_rj_section_key</code> = <code>hero</code> — a <strong>single</strong> allow-list value, with any number of dated campaigns under it. Not <code>hero_1</code>/<code>hero_2</code>/<code>hero_3</code>: fixed keys would cap campaigns at three, which the approved requirement forbids. Authoritative definition: Development Blueprint §6.2.</p>
+
+<h2>3 · rj_reel_type</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<p>The conclusion stands, but I should correct the premise in your brief rather than agree with it. <strong><code>_rj_source_type</code> does not cover this.</strong> They are different axes:</p>
+<table>
+  <thead><tr><th style="width:26%">Field</th><th style="width:26%">Axis</th><th>Values</th></tr></thead>
+  <tbody>
+    <tr><td><code>_rj_source_type</code></td><td><em>Where the video comes from</em> — a technical field the player reads to decide how to embed</td><td>upload · instagram · youtube · url</td></tr>
+    <tr><td>The proposed <code>rj_reel_type</code></td><td><em>What the video is about</em> — an editorial field a visitor would filter by</td><td>Styling · Craftsmanship · Bridal · Store Tour · Customer</td></tr>
+  </tbody>
+</table>
+<p>A customer browsing reels does not care whether a video was uploaded or embedded from Instagram. So <code>_rj_source_type</code> cannot stand in for editorial categorisation.</p>
+<p>The rejection holds for a different reason: <strong><code>rj_tag</code> and <code>rj_occasion</code> are both already registered on reels</strong>, and either can carry these five values today. More importantly, filtered reel browsing appears in no approved requirement — it is a refinement I proposed, and by your rule 4 it does not clear the bar for a permanent identifier.</p>
+<p><strong>NO NEW <code>rj_reel_type</code>.</strong> Use <code>rj_tag</code>. Revisit if the reel library passes roughly 200 items and tag-based filtering proves inadequate.</p>
+
+<h2>4 · rj_location</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<p>Confirmed. <code>rj_showroom</code> already carries <code>_rj_address</code>, <code>_rj_city</code>, <code>_rj_state</code>, <code>_rj_pincode</code>, <code>_rj_lat</code> and <code>_rj_lng</code> in the approved meta registry. Local-business structured data is generated from those fields directly; a term adds nothing the markup reads.</p>
+<p>A location taxonomy would also duplicate showroom data by definition — the term value would be a copy of the city and locality already stored on the post — and would generate archive URLs such as <code>/location/jhotwara/</code> that list exactly one showroom and duplicate that showroom's own page. Thin duplicate content competing with the page you want ranking.</p>
+<p><strong>NO NEW <code>rj_location</code>.</strong> Reconsider at five or more branches across multiple cities.</p>
+
+<h2>5 · Customer segment</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<h3 style="margin-top:0">Is it an approved requirement?</h3>
+<p>Partly. The approved Notification Architecture states that a bridal collection announcement goes to a <em>Bridal Interest audience</em>. The <strong>audience</strong> is approved. <strong>Admin-assigned segmentation as the mechanism for producing it is not</strong> — that was my implementation choice.</p>
+<table>
+  <thead><tr><th style="width:20%">Option</th><th style="width:22%">Semantics</th><th>Assessment</th></tr></thead>
+  <tbody>
+    <tr><td>A · <code>rj_customer_segment</code> taxonomy</td><td>Admin-assigned classification</td><td>Rejected. User taxonomies are not first-class in WordPress: no built-in admin UI, unreliable term counts for non-post objects, weaker REST behaviour. Would need a custom screen to replicate what meta gives free.</td></tr>
+    <tr><td>B · <code>_rj_segment</code> user meta</td><td>Admin-assigned classification</td><td>Technically sound, but see below — the requirement it was meant to serve is already met.</td></tr>
+    <tr><td>C · <code>_rj_notify_prefs</code></td><td><strong>Customer-declared interest</strong></td><td><strong>Already approved, already in the meta registry §9.5, already the field the notification worker reads.</strong> A customer who wants bridal announcements ticks bridal. That is a better audience than one the shop inferred — more accurate, and consent-based rather than profiling-based.</td></tr>
+    <tr><td>D · Existing customer architecture</td><td>—</td><td>Wishlist, recent views and lead history already let the admin panel answer "who has shown bridal interest" as a filtered report, without storing a classification on the person.</td></tr>
+  </tbody>
+</table>
+<h3>Verdict</h3>
+<p><strong>NO NEW <code>rj_customer_segment</code>, and no <code>_rj_segment</code> either.</strong> Option C meets the approved requirement using a field that already exists. Option D covers the admin's reporting need without storing anything new.</p>
+<p>This also removes a privacy question that was not worth carrying: a stored label such as <em>High Intent</em> or <em>Dormant</em> is personal data the customer never agreed to and would see in a data-export request. Not storing it is simpler and cleaner.</p>
+<p>Segments remain available later as a pure marketing feature if the shop starts running campaigns that opt-in preferences genuinely cannot target. At that point it is one meta key and a short backfill.</p>
+
+<h2 style="break-before:page">7 · Final decision table</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<table>
+  <thead><tr><th style="width:15%">Identifier</th><th style="width:11%">Status</th><th style="width:10%">Type</th><th style="width:20%">Reason</th><th style="width:16%">Replaced by</th><th style="width:10%">Dup. risk</th><th>Migration cost · Permanent? · Owner decision?</th></tr></thead>
+  <tbody>
+    <tr><td><code>rj_page_section</code></td><td><strong style="color:#2f6b3a">CREATE</strong></td><td>Post type</td><td>Scheduled hero campaigns are an approved requirement; native scheduling and revisions are the right mechanism</td><td>Nothing — options cannot schedule without a cron check</td><td>None</td><td>n/a · <strong>Yes</strong> · Decided</td></tr>
+    <tr><td><code>rj_hero</code></td><td><strong>REJECT</strong></td><td>Post type</td><td>Structurally identical to a page band; a second post type would be two representations of one concept</td><td><code>_rj_section_key</code> = <code>hero</code> on <code>rj_page_section</code>, one key with many dated campaigns</td><td>High</td><td>n/a · No · No</td></tr>
+    <tr><td><code>rj_reel_type</code></td><td><strong>REJECT</strong></td><td>Taxonomy</td><td>No approved requirement for filtered reel browsing</td><td><code>rj_tag</code>, already on reels</td><td>Moderate</td><td>Cheap: register + bulk assign · No · No</td></tr>
+    <tr><td><code>rj_location</code></td><td><strong>REJECT</strong></td><td>Taxonomy</td><td>Showroom address meta already carries everything the SEO markup reads</td><td><code>_rj_city</code>, <code>_rj_state</code>, <code>_rj_pincode</code></td><td>High</td><td>Cheap: derive from meta · No · No</td></tr>
+    <tr><td><code>rj_customer_segment</code></td><td><strong>REJECT</strong></td><td>Taxonomy</td><td>User taxonomies poorly supported; requirement met elsewhere</td><td><code>_rj_notify_prefs</code></td><td>High</td><td>Cheap · No · No</td></tr>
+    <tr><td><code>_rj_segment</code></td><td><strong>REJECT</strong></td><td>User meta</td><td>Consent-based preferences are a better audience than inferred segments, and avoid storing unrequested personal labels</td><td><code>_rj_notify_prefs</code> + admin filtered reports</td><td>Moderate</td><td>Cheap: one key + backfill · No · No</td></tr>
+  </tbody>
+</table>
+
+<h2>A · Final Conflict 3 resolution</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<p><strong>One new post type, with eleven meta keys. No new taxonomy, no new table, no new options group.</strong></p>
+<table>
+  <thead><tr><th style="width:34%">Final schema totals</th><th>Count</th></tr></thead>
+  <tbody>
+    <tr><td>Post types</td><td><strong>6</strong> — rj_product, rj_reel, rj_collection, rj_showroom, rj_testimonial, <strong>rj_page_section</strong></td></tr>
+    <tr><td>Taxonomies</td><td><strong>7</strong> — exactly as approved. No additions.</td></tr>
+    <tr><td>Custom tables</td><td><strong>8</strong> — unchanged.</td></tr>
+    <tr><td>New permanent meta keys</td><td><strong>11</strong>, all belonging to <code>rj_page_section</code>. Registered in Development Blueprint §9.6.</td></tr>
+    <tr><td>New options groups</td><td><strong>0</strong> — the nine approved groups are unchanged.</td></tr>
+  </tbody>
+</table>
+<p>Every capability the five proposals were meant to deliver is preserved:</p>
+<table>
+  <thead><tr><th style="width:34%">Capability</th><th>Delivered by</th></tr></thead>
+  <tbody>
+    <tr><td>Editable homepage bands, theme- and builder-independent</td><td><code>rj_page_section</code></td></tr>
+    <tr><td>Hero slides, scheduled</td><td><code>rj_page_section</code> with <code>_rj_section_key</code> = <code>hero</code></td></tr>
+    <tr><td>Reel filtering</td><td><code>rj_tag</code>, already registered on reels</td></tr>
+    <tr><td>Showroom local SEO</td><td>Existing showroom address meta</td></tr>
+    <tr><td>Notification audiences</td><td><code>_rj_notify_prefs</code>, already in the meta registry</td></tr>
+  </tbody>
+</table>
+
+<h2>B · Identifiers to create</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<table>
+  <thead><tr><th style="width:20%">Identifier</th><th style="width:14%">Kind</th><th>Definition</th></tr></thead>
+  <tbody>
+    <tr><td><code>rj_page_section</code></td><td>Post type</td><td><code>public</code> false · <code>show_ui</code> true · <code>show_in_rest</code> true · <code>rest_base</code> <code>page-sections</code> · no archive, no rewrite · supports title, thumbnail, revisions, custom-fields, page-attributes · <code>capability_type</code> <code>rj_section</code>/<code>rj_sections</code> · <code>map_meta_cap</code> true · manage capability <code>rj_manage_settings</code>. Full definition in Development Blueprint §6.2.</td></tr>
+    <tr><td>Eleven meta keys</td><td>Post meta</td><td><code>_rj_section_key</code>, <code>_rj_title_hi</code>, <code>_rj_title_en</code>, <code>_rj_description</code>, <code>_rj_cta_label</code>, <code>_rj_cta_url</code>, <code>_rj_image_desktop</code>, <code>_rj_image_mobile</code>, <code>_rj_active</code>, <code>_rj_starts_at</code>, <code>_rj_ends_at</code>. Registered in §9.6. <code>_rj_order</code> is reused from the existing registry, not new.</td></tr>
+  </tbody>
+</table>
+
+<h2>C · Identifiers NOT to create</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<p><code>rj_hero</code> · <code>rj_reel_type</code> · <code>rj_location</code> · <code>rj_customer_segment</code> · <code>_rj_segment</code> · <code>rj_sections</code> options group</p>
+<p>Hero is a section key on <code>rj_page_section</code>, not a second post type. The other four have a written trigger for revisiting, recorded above. Each is cheap to add later and expensive to remove once live — that asymmetry is the whole argument for leaving them out now. The risk to accept honestly: three capabilities now arrive as conventions rather than as schema, and conventions drift where schema does not. The triggers are the mitigation, and they only work if they are honoured.</p>
+
+<h2>D · New meta keys</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<p><strong>Eleven</strong>, all on <code>rj_page_section</code> and all a direct consequence of the approved hero field list: <code>_rj_section_key</code>, <code>_rj_title_hi</code>, <code>_rj_title_en</code>, <code>_rj_description</code>, <code>_rj_cta_label</code>, <code>_rj_cta_url</code>, <code>_rj_image_desktop</code>, <code>_rj_image_mobile</code>, <code>_rj_active</code>, <code>_rj_starts_at</code>, <code>_rj_ends_at</code>. Registered as Development Blueprint §9.6. No key is added to any existing object type; <code>_rj_segment</code> is not created.</p>
+
+<h2>E · Remaining owner decisions</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<table>
+  <thead><tr><th style="width:8%">#</th><th style="width:34%">Decision</th><th style="width:16%">Blocks</th><th>Recommendation</th></tr></thead>
+  <tbody>
+    <tr><td>3a</td><td><strong>Decided.</strong> <code>rj_page_section</code> post type, with scheduled hero campaigns</td><td>Nothing</td><td>—</td></tr>
+    <tr><td>3b</td><td><strong>Decided.</strong> Six rejections confirmed</td><td>Nothing</td><td>—</td></tr>
+    <tr><td>1</td><td><strong>Still open.</strong> Category terms: ten separate, or five slash-joined</td><td>Stage 2 import file</td><td>Ten separate; second word in <code>_rj_name_alt</code></td></tr>
+    <tr><td>2</td><td><strong>Still open.</strong> Elementor widgets: seventeen or twenty-one</td><td>Stage 21</td><td>Seventeen</td></tr>
+  </tbody>
+</table>
+
+<h2>F · What is now safe to code</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<table>
+  <thead><tr><th style="width:12%">Stage</th><th style="width:26%">Work</th><th>Why it is safe</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Plugin bootstrap, container, module registry, autoloader, constants, guards</td><td>Contains no permanent business identifier</td></tr>
+    <tr><td>2</td><td>All eight database tables and the migration runner</td><td>Table names were never in dispute</td></tr>
+    <tr><td>3</td><td><strong>Six</strong> post types: <code>rj_product</code>, <code>rj_reel</code>, <code>rj_collection</code>, <code>rj_showroom</code>, <code>rj_testimonial</code>, <code>rj_page_section</code></td><td>All final. Conflict 3 resolved.</td></tr>
+    <tr><td>4</td><td><strong>Seven</strong> taxonomies, exactly as approved in Development Blueprint §7.1</td><td>No additions, no changes</td></tr>
+    <tr><td>5</td><td>Meta registry as written in §9, unchanged</td><td>No new keys</td></tr>
+  </tbody>
+</table>
+<p>Stages 1 through 5 are unblocked. Stage 3 registers six post types; Stage 4 registers seven taxonomies; Stage 5 includes the eleven §9.6 keys.</p>
+
+<h2>G · What must remain blocked</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:8px 0 14px"></div>
+<table>
+  <thead><tr><th style="width:20%">Blocked</th><th style="width:20%">Blocked by</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td>Category import file</td><td>Decision 1</td><td>Schema is unaffected — Stage 2 tables and Stage 4 taxonomy registration proceed. Only the import data file and the category seeding wait.</td></tr>
+    <tr><td>Elementor adapter</td><td>Decision 2</td><td>Stage 21. Far out; no need to answer now.</td></tr>
+    <tr><td>All coding, in this environment</td><td>Environment</td><td>Nothing here can execute PHP, create a database, or run a test. These documents are the specification; the build belongs in a real WordPress environment with Git, WP-CLI and PHPUnit.</td></tr>
+  </tbody>
+</table>
+
+</doc-page>
+</x-dc>
+</body>
+</html>

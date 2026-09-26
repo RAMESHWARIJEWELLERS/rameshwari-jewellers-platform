@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15.5px; line-height: 1.62; }
+h1, h2, h3, h4, h5, h6 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.14; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 40px; letter-spacing: -0.03em; }
+h2 { font-size: 27px; margin: 0 0 4px; }
+h3 { font-size: 19px; margin: 30px 0 6px; }
+h4 { font-size: 15.5px; font-weight: 600; margin: 22px 0 4px; letter-spacing: 0; }
+h5 { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 20px 0 6px; }
+p { margin: 0 0 11px; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 12px; padding-left: 20px; }
+li { margin: 0 0 4px; orphans: 3; widows: 3; }
+a { color: #5d5294; text-underline-offset: 3px; }
+a:hover { color: #796cbf; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 12px 0 20px; font-size: 12.8px; line-height: 1.45; }
+th { text-align: left; font-weight: 600; font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 12px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 6px 12px 6px 0; vertical-align: top; overflow-wrap: anywhere; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 4px; border-radius: 3px; color: #423a6a; overflow-wrap: anywhere; }
+hr { border: 0; height: 1px; background: #cfd3e5; margin: 26px 0; }
+</style>
+</helmet>
+<doc-page margin="0.8in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — UI/UX Blueprint</span>
+  <span>v1.0 · Design documentation</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9.5px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>Companion to the approved Platform Architecture v1.0</span>
+  <span>Design only. No implementation.</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:30px">
+  <div style="font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Gold • Silver • Bridal Kundan · Jaipur</div>
+  <h1 style="margin:0">UI/UX Blueprint</h1>
+  <div style="font-size:19px;color:#595d6c;line-height:1.3">A luxury black-and-gold catalogue experience, designed mobile-first and built to survive every theme, builder and redesign the business will go through.</div>
+  <div style="height:2px;background:#9184d9;width:96px;margin-top:14px"></div>
+</div>
+
+<div style="background:#f5f4ff;border:1px solid #d2cefd;border-radius:8px;padding:16px 18px;margin-bottom:24px;break-inside:avoid">
+  <h5 style="margin:0 0 6px">Standing on the approved architecture</h5>
+  <p style="margin:0;font-size:15px">Nothing in this document changes the business architecture, the post type names, the database structure, the taxonomy or the customer model. Those are settled. This is the layer above them: what a customer sees, in what order, and what happens when they touch it. Where a screen needs data, it names the approved field — it never invents one.</p>
+</div>
+
+<h3 style="margin-top:0">Contents</h3>
+<div style="columns:2;column-gap:34px;font-size:13.5px;line-height:1.8">
+  <div>1 · Homepage</div>
+  <div>2 · Header</div>
+  <div>3 · Mega Menu</div>
+  <div>4 · Hero</div>
+  <div>5 · Category Showcase</div>
+  <div>6 · Product Card System</div>
+  <div>7 · Collection Sections</div>
+  <div>8 · Reels Experience</div>
+  <div>9 · Store Locator</div>
+  <div>10 · About the Brand</div>
+  <div>11 · Testimonials</div>
+  <div>12 · Footer</div>
+  <div>13 · Black Gold Design System</div>
+  <div>14 · Responsive Rules</div>
+  <div>15 · Accessibility Rules</div>
+  <div>16 · Elementor Layout Strategy</div>
+</div>
+
+<h4>The four design principles</h4>
+<table>
+  <thead><tr><th style="width:24%">Principle</th><th>What it rules out</th></tr></thead>
+  <tbody>
+    <tr><td>Restraint is the luxury</td><td>No gradient floods, no gold-filled buttons, no drop shadows on everything. The jewellery is the only ornament on the page. Gold appears as a line, a hairline border and a small mark.</td></tr>
+    <tr><td>Black is a stage, not a mood</td><td>The near-black ground exists so gold photography glows against it. Nothing else may be bright enough to compete with a product image.</td></tr>
+    <tr><td>Every screen ends in WhatsApp</td><td>No screen is a dead end. If a customer can see a piece, a reel or a showroom, they can start a conversation about it in one tap.</td></tr>
+    <tr><td>Mobile is the real site</td><td>Desktop is the derivative. Every layout is designed at 390&nbsp;px first and widened, never the reverse.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">1 · Homepage</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">1.1 Section order and why</h3>
+<table>
+  <thead><tr><th style="width:6%">#</th><th style="width:24%">Section</th><th style="width:20%">Job</th><th>Rationale</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Hero</td><td>Establish the brand in one glance</td><td>One piece, one line, one action. A customer decides in under two seconds whether this is a serious jeweller.</td></tr>
+    <tr><td>2</td><td>Featured categories</td><td>Route the visitor</td><td>Customers arrive knowing the <em>kind</em> of thing they want — नथ, झुमका, मंगलसूत्र — not a specific piece. Routing beats browsing.</td></tr>
+    <tr><td>3</td><td>New Arrivals</td><td>Give a reason to return</td><td>The only section that changes weekly. Placed high so returning customers see change immediately.</td></tr>
+    <tr><td>4</td><td>Reels strip</td><td>Hold attention</td><td>Highest engagement surface on the site. Positioned on the second scroll, where scroll momentum is highest.</td></tr>
+    <tr><td>5</td><td>Bridal band</td><td>Capture the biggest enquiry</td><td>Full-bleed, single CTA. Bridal is the highest-value conversation the shop has.</td></tr>
+    <tr><td>6</td><td>Trending / Best Sellers</td><td>Social proof through product</td><td>Two rows, no more. This is reinforcement, not a second catalogue.</td></tr>
+    <tr><td>7</td><td>About, since 2018</td><td>Establish trust</td><td>Hallmark, craftsmanship, family trade. Short — three sentences and three marks.</td></tr>
+    <tr><td>8</td><td>Testimonials</td><td>Confirm the decision</td><td>Real customers, placed immediately before the showrooms.</td></tr>
+    <tr><td>9</td><td>Showrooms</td><td>Convert to a visit</td><td>The real conversion for a local jeweller. Both branches, both with directions.</td></tr>
+    <tr><td>10</td><td>Footer</td><td>Catch everything else</td><td>Navigation, contact, social, trust marks.</td></tr>
+  </tbody>
+</table>
+<p>Ten sections and no more. Every additional homepage section costs scroll depth on the sections that convert, so anything not on this list belongs on its own page.</p>
+
+<h3>1.2 Desktop layout</h3>
+<div style="border:1px solid #9397ab;border-radius:8px;padding:9px;font-size:9.5px;color:#595d6c;break-inside:avoid;display:flex;flex-direction:column;gap:5px">
+  <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:4px;display:flex;justify-content:space-between"><span>8290260806 · 7742109937</span><span>Jhotwara · Mukandpura · Jaipur</span><span>rameshwarijewellers01@gmail.com</span></div>
+  <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:7px;display:flex;gap:18px;align-items:center"><span>LOGO</span><span>Home</span><span>Categories ▾</span><span>About</span><span>Contact</span><span style="margin-left:auto">⌕ &nbsp; ♡ &nbsp; ▢</span></div>
+  <div style="border:1px dashed #9397ab;background:#e4e7f5;padding:52px 10px;text-align:center">HERO · full-bleed image right, copy left, one outlined CTA</div>
+  <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:3px;text-align:center">Featured categories · 6-up</div>
+  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px">
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:18px 2px;text-align:center">cat</div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:18px 2px;text-align:center">cat</div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:18px 2px;text-align:center">cat</div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:18px 2px;text-align:center">cat</div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:18px 2px;text-align:center">cat</div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:18px 2px;text-align:center">cat</div>
+  </div>
+  <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:3px;display:flex;justify-content:space-between"><span>NEW ARRIVALS</span><span>View all →</span></div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px">
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:28px 2px;text-align:center">product</div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:28px 2px;text-align:center">product</div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:28px 2px;text-align:center">product</div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:28px 2px;text-align:center">product</div>
+  </div>
+  <div style="border:1px dashed #9397ab;background:#e4e7f5;padding:6px"><div style="margin-bottom:4px">REELS · 5 visible, horizontal scroll</div><div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px"><div style="border:1px dashed #9397ab;padding:26px 2px;text-align:center">9:16</div><div style="border:1px dashed #9397ab;padding:26px 2px;text-align:center">9:16</div><div style="border:1px dashed #9397ab;padding:26px 2px;text-align:center">9:16</div><div style="border:1px dashed #9397ab;padding:26px 2px;text-align:center">9:16</div><div style="border:1px dashed #9397ab;padding:26px 2px;text-align:center">9:16</div></div></div>
+  <div style="border:1px solid #9184d9;background:#f5f4ff;padding:24px 10px;text-align:center">BRIDAL BAND · full-bleed · one CTA</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px">
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:24px 2px;text-align:center">trending</div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:24px 2px;text-align:center">trending</div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:24px 2px;text-align:center">trending</div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:24px 2px;text-align:center">trending</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:5px"><div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:20px 8px">ABOUT · since 2018 · 3 trust marks</div><div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:20px 8px;text-align:center">image</div></div>
+  <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:14px 8px;text-align:center">TESTIMONIALS · 3-up</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px"><div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:18px 8px;text-align:center">Jhotwara branch</div><div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:18px 8px;text-align:center">Mukandpura branch</div></div>
+  <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:16px 8px;text-align:center">FOOTER</div>
+</div>
+<p style="font-size:13px;color:#595d6c">Content max-width 1280&nbsp;px, centred, with three full-bleed exceptions: hero, bridal band and footer. The alternation between contained and full-bleed is what gives a long page rhythm without needing a second background colour.</p>
+
+<h3>1.3 Mobile layout</h3>
+<table>
+  <thead><tr><th style="width:24%">Section</th><th style="width:26%">Mobile treatment</th><th>Changed from desktop</th></tr></thead>
+  <tbody>
+    <tr><td>Top bar</td><td>Single line, tap-to-call icons</td><td>Email and locality collapse into the footer</td></tr>
+    <tr><td>Header</td><td>Hamburger · logo · search · wishlist</td><td>Nav links move into the drawer</td></tr>
+    <tr><td>Hero</td><td>Image above, copy below, full-width CTA</td><td>Side-by-side becomes stacked; height capped at 78% of viewport so the next section peeks</td></tr>
+    <tr><td>Featured categories</td><td>2 columns, 6 visible</td><td>6-up row becomes a 2×3 grid — a horizontal scroll here hides half the routes</td></tr>
+    <tr><td>New Arrivals</td><td>Horizontal scroll, 1.4 cards visible</td><td>Grid becomes a rail; the half-card edge signals more</td></tr>
+    <tr><td>Reels</td><td>Horizontal scroll, 2.2 tiles visible</td><td>Same pattern, taller tiles</td></tr>
+    <tr><td>Bridal band</td><td>Full-bleed, stacked, CTA full width</td><td>Unchanged in intent</td></tr>
+    <tr><td>Trending</td><td>2-column grid, 4 items</td><td>Cut from 8 to 4</td></tr>
+    <tr><td>About</td><td>Image, then text, then trust marks in a row of 3</td><td>Stacked</td></tr>
+    <tr><td>Testimonials</td><td>Swipe carousel, 1 visible, dots</td><td>3-up becomes swipe</td></tr>
+    <tr><td>Showrooms</td><td>Two stacked cards, directions button full width</td><td>Map collapses to a static image that opens Maps on tap</td></tr>
+    <tr><td>Footer</td><td>Accordion groups, contact block always open</td><td>Four columns become three collapsed groups</td></tr>
+  </tbody>
+</table>
+<p><strong>What mobile drops entirely:</strong> nothing. Every section survives; only density changes. A section worth cutting on mobile was not worth having on desktop.</p>
+
+<h3>1.4 Visual hierarchy</h3>
+<table>
+  <thead><tr><th style="width:12%">Level</th><th style="width:26%">Carried by</th><th>Appears</th></tr></thead>
+  <tbody>
+    <tr><td>Primary</td><td>Product photography on near-black</td><td>Hero, every card, every reel. The brightest thing on any screen is always a piece of jewellery.</td></tr>
+    <tr><td>Secondary</td><td>Display serif at 44–64&nbsp;px</td><td>Hero line, section headings. One per section, never two.</td></tr>
+    <tr><td>Tertiary</td><td>Gold hairline and short gold rule</td><td>Under section headings, around the primary CTA, on card hover.</td></tr>
+    <tr><td>Quaternary</td><td>Muted sans at 14&nbsp;px</td><td>Product codes, weights, counts, meta lines.</td></tr>
+  </tbody>
+</table>
+<p>The rule that keeps it honest: on any screenshot of any screen, squint. Three things should be legible — a product image, one heading and one gold-outlined button. If a fourth competes, something is too loud.</p>
+
+<h3>1.5 CTA placement</h3>
+<table>
+  <thead><tr><th style="width:24%">Section</th><th style="width:30%">Primary action</th><th>Placement</th></tr></thead>
+  <tbody>
+    <tr><td>Hero</td><td>Explore Collections</td><td>Below the hero line, left-aligned on desktop, full-width on mobile</td></tr>
+    <tr><td>Featured categories</td><td>The card itself</td><td>Whole card is the target; no separate button</td></tr>
+    <tr><td>New Arrivals</td><td>WhatsApp per card · View all</td><td>Per card on hover (desktop) or always visible (mobile); "View all" sits in the section header</td></tr>
+    <tr><td>Reels</td><td>Enquire on WhatsApp</td><td>Inside the fullscreen viewer, fixed above the safe area</td></tr>
+    <tr><td>Bridal band</td><td>Talk to us about bridal</td><td>Centred, single, no secondary</td></tr>
+    <tr><td>Showrooms</td><td>Get Directions · WhatsApp</td><td>Two equal buttons per branch card</td></tr>
+    <tr><td>Global</td><td>Floating WhatsApp</td><td>Bottom-right on every page, above the iOS home indicator</td></tr>
+  </tbody>
+</table>
+<p>One primary CTA per section. Where a secondary action exists it is a text link with a gold underline, never a second button — two buttons of equal weight halve the click rate of both.</p>
+
+<h2 style="break-before:page">2 · Header</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">2.1 Top bar</h3>
+<table>
+  <thead><tr><th style="width:22%">Element</th><th style="width:26%">Content</th><th>Behaviour</th></tr></thead>
+  <tbody>
+    <tr><td>Phone numbers</td><td>8290260806 · 7742109937</td><td>Tap-to-call. Both shown on desktop; on mobile one call icon opens a chooser.</td></tr>
+    <tr><td>Locality</td><td>Jhotwara · Mukandpura · Jaipur</td><td>Links to the store locator. Hidden below 768&nbsp;px.</td></tr>
+    <tr><td>Email</td><td>rameshwarijewellers01@gmail.com</td><td>Mailto. Hidden below 1024&nbsp;px.</td></tr>
+    <tr><td>Height</td><td>36&nbsp;px desktop, 32&nbsp;px mobile</td><td>Scrolls away and never returns. It is an introduction, not navigation.</td></tr>
+  </tbody>
+</table>
+<p>Visually the top bar is one shade lighter than the page ground with a gold hairline beneath, text at 12&nbsp;px muted. Every value on it comes from the one contact record in the approved settings — nothing here is typed into a template.</p>
+
+<h3>2.2 Main header</h3>
+<table>
+  <thead><tr><th style="width:22%">Element</th><th style="width:22%">Position</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Primary logo</td><td>Left</td><td>Wordmark in gold on black, capped at 52&nbsp;px tall. Links home.</td></tr>
+    <tr><td>Navigation</td><td>Left of centre, after the logo</td><td>Home · Categories ▾ · About Us · Contact Us. 15&nbsp;px, letter-spaced, sentence case.</td></tr>
+    <tr><td>Second logo area</td><td>Centre-right</td><td>Reserved for the hallmark or heritage mark. Renders nothing if empty — never a placeholder box.</td></tr>
+    <tr><td>Search</td><td>Right</td><td>Icon; expands to an overlay. Section 2.4.</td></tr>
+    <tr><td>Wishlist</td><td>Right</td><td>Heart with a count badge when non-zero. Section 2.5.</td></tr>
+    <tr><td>Cart icon</td><td>Right</td><td>Present in the layout as an enquiry list, not a cart. Section 2.6.</td></tr>
+    <tr><td>Height</td><td>—</td><td>84&nbsp;px desktop, 64&nbsp;px mobile. Icons are 24&nbsp;px inside 44&nbsp;px targets.</td></tr>
+  </tbody>
+</table>
+<p>Separation between nav and icons is whitespace, not a divider. The only line in the header is the gold hairline along its bottom edge, and it appears only once the page has scrolled.</p>
+
+<h3>2.3 Sticky behaviour</h3>
+<table>
+  <thead><tr><th style="width:22%">Scroll state</th><th>Header</th></tr></thead>
+  <tbody>
+    <tr><td>At top</td><td>Top bar visible, main header transparent over the hero, no border. Full 84&nbsp;px.</td></tr>
+    <tr><td>Scrolled past hero</td><td>Top bar gone. Main header condenses to 64&nbsp;px, takes a solid near-black ground at 92% opacity with a subtle blur behind it, and shows the gold hairline. 200&nbsp;ms transition.</td></tr>
+    <tr><td>Scrolling down</td><td>Header hides on mobile after 120&nbsp;px of downward scroll, freeing the full screen for browsing.</td></tr>
+    <tr><td>Scrolling up</td><td>Returns immediately, at condensed height. Desktop never hides.</td></tr>
+    <tr><td>Mega menu open</td><td>Pinned. Page scroll locked behind the panel.</td></tr>
+  </tbody>
+</table>
+<p>The condensed header must never change height while the menu is open or while a drawer is showing — a resizing header under an open panel is the most common cause of a menu that jumps under the cursor.</p>
+
+<h3>2.4 Search experience</h3>
+<table>
+  <thead><tr><th style="width:22%">Stage</th><th>Design</th></tr></thead>
+  <tbody>
+    <tr><td>Trigger</td><td>Icon in the header; keyboard <code>/</code> on desktop.</td></tr>
+    <tr><td>Open</td><td>Full-width overlay dropping from the header, dark ground, the page dimmed behind. Input is 20&nbsp;px, gold caret, placeholder "Search नथ, झुमका, मंगलसूत्र, RJ-1042".</td></tr>
+    <tr><td>Empty state</td><td>Three groups: recent searches, popular categories, and "browse by metal". Never a blank panel.</td></tr>
+    <tr><td>Typing</td><td>Suggestions after 2 characters, debounced. Four groups in fixed order: Products · Categories · Collections · Reels. Maximum 5 per group.</td></tr>
+    <tr><td>Result row</td><td>Thumbnail, Hindi name above English name, category path in muted 12&nbsp;px. Matched substring in gold.</td></tr>
+    <tr><td>Code search</td><td>A query matching a product code pattern jumps straight to that product, shown as a pinned first result labelled "Product code".</td></tr>
+    <tr><td>No results</td><td>"Nothing found for X" plus three category shortcuts and a WhatsApp link — "Ask us, we may have it in store."</td></tr>
+    <tr><td>Keyboard</td><td>Arrow keys traverse, Enter opens, Escape closes and returns focus to the trigger.</td></tr>
+    <tr><td>Mobile</td><td>Full-screen sheet, keyboard opens automatically, cancel text button top-right.</td></tr>
+  </tbody>
+</table>
+<p>Search matches Hindi, English and product code simultaneously, per the approved search design. A customer who has only ever heard the word झुमका must find it by typing it.</p>
+
+<h3>2.5 Wishlist</h3>
+<table>
+  <thead><tr><th style="width:24%">State</th><th>Design</th></tr></thead>
+  <tbody>
+    <tr><td>Empty</td><td>Outline heart, no badge.</td></tr>
+    <tr><td>Has items</td><td>Outline heart with a small gold dot badge carrying the count. Count is capped visually at 99+.</td></tr>
+    <tr><td>Add feedback</td><td>Heart on the card fills gold, a 120&nbsp;ms scale pulse, and a toast: "Saved to wishlist · View". The header badge increments in the same frame.</td></tr>
+    <tr><td>Guest</td><td>Works identically, saved locally. A one-line note in the wishlist page: "Sign in to keep these on your other devices." Never a modal, never a block.</td></tr>
+    <tr><td>Click through</td><td>Opens the wishlist page, not a dropdown. A dropdown at 30 saved pieces is unusable.</td></tr>
+  </tbody>
+</table>
+
+<h3>2.6 The cart icon — resolved as an Enquiry List</h3>
+<p>The header calls for a cart icon, and this is a catalogue with no checkout. Rather than show a cart that cannot check out, the icon is designed as an <strong>enquiry list</strong>: a customer adds several pieces and sends them as one WhatsApp message instead of five.</p>
+<table>
+  <thead><tr><th style="width:24%">Aspect</th><th>Design</th></tr></thead>
+  <tbody>
+    <tr><td>Icon</td><td>A bag outline, identical in weight to search and wishlist. Badge shows the item count.</td></tr>
+    <tr><td>Panel</td><td>Right-hand drawer. Rows of thumbnail, name, code, weight, remove.</td></tr>
+    <tr><td>Primary action</td><td>"Send enquiry on WhatsApp" — one message listing every code and name, built from the approved WhatsApp template engine.</td></tr>
+    <tr><td>Secondary</td><td>"Clear list" as a text link.</td></tr>
+    <tr><td>No price</td><td>No subtotal, no quantity stepper, no checkout. Nothing that implies a transaction.</td></tr>
+    <tr><td>Empty state</td><td>"Add pieces you want to ask about" plus a link to New Arrivals.</td></tr>
+  </tbody>
+</table>
+<p style="font-size:13px;color:#595d6c"><strong>Owner decision:</strong> if the enquiry list is not wanted, the icon is removed from the header entirely rather than shown as a non-functional cart. A cart that does nothing is worse than no cart.</p>
+
+<h3>2.7 Mobile header</h3>
+<table>
+  <thead><tr><th style="width:24%">Element</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Layout</td><td>Hamburger left · logo centred · search and wishlist right. Four targets, each 44&nbsp;px, 8&nbsp;px apart.</td></tr>
+    <tr><td>Logo</td><td>Compact mark, 36&nbsp;px tall. The full wordmark is illegible at this width.</td></tr>
+    <tr><td>Drawer</td><td>Slides from the left, 88% width, dark ground. Order: search field, Categories (drill-down), Home, About, Contact, then account, then contact block with both phone numbers and a WhatsApp button.</td></tr>
+    <tr><td>Drawer close</td><td>X top-right, tap outside, swipe left, and the hardware back button.</td></tr>
+    <tr><td>Enquiry list</td><td>Moves into the drawer on mobile to keep the header to four targets.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">3 · Mega Menu</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<p style="color:#595d6c">Built from the approved category taxonomy — JEWELLERY, METALS, WEDDING, FOR, OTHERS and everything beneath them. The menu never hardcodes a category; it renders whatever the tree contains, in the owner's order, hiding anything marked hidden.</p>
+
+<h3>3.1 Desktop panel</h3>
+<div style="border:1px solid #9397ab;border-radius:8px;padding:9px;font-size:9.5px;color:#595d6c;break-inside:avoid">
+  <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:6px;display:flex;gap:16px;margin-bottom:6px"><span>LOGO</span><span>Home</span><span style="border-bottom:2px solid #9184d9">Categories ▾</span><span>About</span><span>Contact</span><span style="margin-left:auto">⌕ ♡ ▢</span></div>
+  <div style="display:grid;grid-template-columns:132px 1fr 1fr 1fr 158px;gap:7px">
+    <div style="border:1px dashed #9184d9;background:#f5f4ff;padding:7px"><div style="font-weight:600;color:#5d5294;margin-bottom:4px">Roots</div>JEWELLERY ▸<br>METALS<br>WEDDING<br>FOR<br>OTHERS</div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:7px"><div style="font-weight:600;margin-bottom:4px">Level 2</div>Gold Jewellery ▸<br>Silver Jewellery<br>Black Polish Silver<br>Gold Jewellery Set<br>Silver Jewellery Set</div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:7px"><div style="font-weight:600;margin-bottom:4px">Level 3</div>सिर के आभूषण<br>Ear Jewellery ▸<br>Nose Jewellery<br>Neck Jewellery<br>कलाई के आभूषण<br>अंगुली के आभूषण</div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:7px"><div style="font-weight:600;margin-bottom:4px">Level 4</div>कर्णफूल<br>झुमका<br>झूमर<br>बाली<br>टॉप्स<br><span style="color:#5d5294">See all 10 →</span></div>
+    <div style="border:1px dashed #9397ab;background:#e4e7f5;padding:7px"><div style="font-weight:600;margin-bottom:4px">Featured</div><div style="border:1px dashed #9397ab;padding:20px 4px;text-align:center;margin-bottom:4px">image</div>Bridal Kundan<br><span style="color:#5d5294">Explore →</span></div>
+  </div>
+</div>
+<table>
+  <thead><tr><th style="width:22%">Column</th><th style="width:16%">Width</th><th>Contents</th></tr></thead>
+  <tbody>
+    <tr><td>Roots</td><td>200&nbsp;px fixed</td><td>The five top-level terms, always visible, current one marked with a gold left bar.</td></tr>
+    <tr><td>Levels 2–4</td><td>Equal, flexible</td><td>Children of whatever is hovered to the left. A column with more than 12 items truncates with "See all N →".</td></tr>
+    <tr><td>Featured</td><td>240&nbsp;px fixed</td><td>One category image, its name and a link. Sourced from the term marked featured; hidden entirely if none is set.</td></tr>
+    <tr><td>Panel</td><td>Max 1280&nbsp;px, centred</td><td>Near-black ground, gold hairline top and bottom, one soft shadow. Max height 70% of viewport with the columns scrolling independently.</td></tr>
+  </tbody>
+</table>
+<p>Four levels are visible at once. Anything deeper is reached from the level-4 category page, which is a better place for it than a fifth column nobody can aim at.</p>
+
+<h3>3.2 Interaction behaviour</h3>
+<table>
+  <thead><tr><th style="width:24%">Event</th><th>Response</th></tr></thead>
+  <tbody>
+    <tr><td>Hover "Categories"</td><td>Panel opens after a 120&nbsp;ms intent delay, fading and rising 8&nbsp;px over 200&nbsp;ms. The delay prevents the panel firing as the cursor crosses on its way elsewhere.</td></tr>
+    <tr><td>Hover a root</td><td>Its children replace column 2 instantly. Columns 3 and 4 clear rather than showing stale children.</td></tr>
+    <tr><td>Diagonal movement</td><td>A cursor travelling diagonally toward the next column keeps the current row active for 300&nbsp;ms. Without this, a hover menu loses the item the moment the pointer clips a neighbour.</td></tr>
+    <tr><td>Click a row</td><td>Navigates to that category. Every row is a real link at every level — a parent is never a dead label.</td></tr>
+    <tr><td>Leave the panel</td><td>Closes after 200&nbsp;ms. Immediate close makes the menu feel twitchy.</td></tr>
+    <tr><td>Keyboard</td><td>Enter or Space opens. Arrow keys move within a column, Right enters the child column, Left returns, Escape closes and restores focus to the trigger. Focus is trapped inside the open panel.</td></tr>
+    <tr><td>Touch on a hybrid device</td><td>First tap opens, second tap navigates.</td></tr>
+    <tr><td>Empty category</td><td>A category with no visible products and no children does not appear at all.</td></tr>
+  </tbody>
+</table>
+
+<h3>3.3 Mobile mega menu</h3>
+<table>
+  <thead><tr><th style="width:24%">Aspect</th><th>Design</th></tr></thead>
+  <tbody>
+    <tr><td>Pattern</td><td>Full-screen drill-down, one level per screen. Not an accordion — four nested accordions on a phone produce a 40-row list with no sense of place.</td></tr>
+    <tr><td>Screen header</td><td>Back chevron with the parent's name, the current level's name as the title, and a close X.</td></tr>
+    <tr><td>Rows</td><td>56&nbsp;px tall. Hindi name on the first line, English beneath in 12&nbsp;px muted. A chevron marks rows with children; rows without one navigate.</td></tr>
+    <tr><td>Parent access</td><td>The first row of every child screen is "View all in {parent}" — so a parent category is always reachable, never only a gateway.</td></tr>
+    <tr><td>Transition</td><td>Horizontal slide, 240&nbsp;ms, forward left and back right, so depth is felt.</td></tr>
+    <tr><td>Back button</td><td>The device back gesture moves up one level before closing the menu.</td></tr>
+    <tr><td>Featured</td><td>Shown as a single image card at the top of the root screen only.</td></tr>
+    <tr><td>Search</td><td>A search field is pinned above the list — at 1,000 categories, search is faster than any tree.</td></tr>
+  </tbody>
+</table>
+
+<h3>3.4 Category images in the menu</h3>
+<table>
+  <thead><tr><th style="width:26%">Placement</th><th>Rule</th></tr></thead>
+  <tbody>
+    <tr><td>Root column</td><td>No images. Text only — five images in a narrow column is noise.</td></tr>
+    <tr><td>Levels 2–4</td><td>Optional 32&nbsp;px circular thumbnail from the category image, left of the label. If a category has no image, the row shows no placeholder and the text aligns left with its siblings that do — mixed alignment is less ugly than a grey circle.</td></tr>
+    <tr><td>Featured column</td><td>One 4:5 image, the only large image in the panel.</td></tr>
+    <tr><td>Loading</td><td>Images in the panel are loaded when the menu first opens, not on page load, and cached for the session.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">4 · Hero</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">4.1 Composition</h3>
+<table>
+  <thead><tr><th style="width:24%">Element</th><th>Specification</th></tr></thead>
+  <tbody>
+    <tr><td>Ground</td><td>Near-black, continuous with the page. The hero is not a separate coloured band — that is what makes the header able to float transparently over it.</td></tr>
+    <tr><td>Image</td><td>A single piece, shot on black, lit so the metal is the brightest thing in frame. Right 48% on desktop, bleeding off the right edge. Never a model shot at hero size — jewellery photographed on a person loses its detail at a glance.</td></tr>
+    <tr><td>Eyebrow</td><td>"Gold • Silver • Bridal Kundan" in 12&nbsp;px gold, letter-spaced 0.16em, above the headline.</td></tr>
+    <tr><td>Headline</td><td>Display serif, 64&nbsp;px desktop, two lines maximum. Warm off-white.</td></tr>
+    <tr><td>Sub-line</td><td>18&nbsp;px, muted, one sentence, maximum 90 characters.</td></tr>
+    <tr><td>CTA</td><td>One outlined gold button, 52&nbsp;px tall. A text link may sit beside it, never a second button.</td></tr>
+    <tr><td>Gold rule</td><td>A 64&nbsp;px gold hairline above the eyebrow — the signature mark that ties the hero to every section heading.</td></tr>
+    <tr><td>Scrim</td><td>Where the image approaches the text, a soft left-to-right darkening. No hard edge, no box behind the type.</td></tr>
+  </tbody>
+</table>
+
+<h3>4.2 Desktop and mobile</h3>
+<table>
+  <thead><tr><th style="width:20%">Aspect</th><th style="width:38%">Desktop ≥1024px</th><th>Mobile &lt;768px</th></tr></thead>
+  <tbody>
+    <tr><td>Arrangement</td><td>Copy left 44%, image right 48%, 8% gutter</td><td>Image on top, copy beneath</td></tr>
+    <tr><td>Height</td><td>72% of viewport, min 560&nbsp;px, max 760&nbsp;px</td><td>78% of viewport, capped at 620&nbsp;px</td></tr>
+    <tr><td>Headline</td><td>64&nbsp;px</td><td>36&nbsp;px, three lines maximum</td></tr>
+    <tr><td>CTA</td><td>Auto width, left-aligned</td><td>Full width, 52&nbsp;px tall</td></tr>
+    <tr><td>Image ratio</td><td>4:5 portrait</td><td>3:2 landscape crop, art-directed — not the desktop image squashed</td></tr>
+    <tr><td>Peek</td><td>—</td><td>The next section's heading is visible at the bottom edge, so scrolling is obviously available</td></tr>
+  </tbody>
+</table>
+<p>Text never sits on top of the busy part of the image at any width. On mobile the copy is below the image entirely, which removes the contrast risk rather than managing it.</p>
+
+<h3>4.3 Slider rules</h3>
+<p>The hero defaults to a single static slide. A slider is available but governed, because a carousel on a slow connection downloads three images to show one, and most visitors never see slide two.</p>
+<table>
+  <thead><tr><th style="width:26%">Rule</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Maximum slides</td><td>Three. The control does not accept a fourth.</td></tr>
+    <tr><td>Autoplay</td><td>Off by default. If enabled, 7 seconds per slide, and it stops permanently on any user interaction.</td></tr>
+    <tr><td>Pause control</td><td>An autoplaying slider must show a visible pause button. This is an accessibility requirement, not a preference.</td></tr>
+    <tr><td>Loading</td><td>Only slide one is eager. Slides two and three load after the first paint.</td></tr>
+    <tr><td>Indicators</td><td>Thin gold dashes, not dots. Current dash is solid; the others are 30% opacity.</td></tr>
+    <tr><td>Transition</td><td>Cross-fade, 400&nbsp;ms. No slide-in, no zoom, no parallax.</td></tr>
+    <tr><td>Mobile</td><td>Swipe enabled; autoplay always off regardless of the setting.</td></tr>
+    <tr><td>Reduced motion</td><td>Autoplay disabled entirely; the slider becomes manual.</td></tr>
+    <tr><td>Recommendation</td><td>Use one slide. Use three only for a genuine festival or bridal campaign running alongside the evergreen hero.</td></tr>
+  </tbody>
+</table>
+
+<h3>4.4 Hero content by season</h3>
+<table>
+  <thead><tr><th style="width:24%">Occasion</th><th style="width:30%">Headline direction</th><th>CTA</th></tr></thead>
+  <tbody>
+    <tr><td>Evergreen</td><td>The house and its trade</td><td>Explore Collections</td></tr>
+    <tr><td>Wedding season</td><td>Bridal sets and kundan</td><td>See Bridal Picks</td></tr>
+    <tr><td>Festival</td><td>The festival's own pieces</td><td>Shop the Festive edit</td></tr>
+    <tr><td>New stock</td><td>What arrived this week</td><td>See New Arrivals</td></tr>
+  </tbody>
+</table>
+<p>Each is a single-slide hero swapped by the owner, not four slides rotating. Seasonal relevance beats variety.</p>
+
+<h2 style="break-before:page">5 · Category Showcase</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">5.1 Grid across breakpoints</h3>
+<table>
+  <thead><tr><th style="width:18%">Breakpoint</th><th style="width:14%">Columns</th><th style="width:14%">Visible</th><th>Behaviour</th></tr></thead>
+  <tbody>
+    <tr><td>Desktop ≥1280px</td><td>6</td><td>6</td><td>Single row, no scroll. Six is the number of routes a customer can weigh at once.</td></tr>
+    <tr><td>Laptop 1024–1279px</td><td>5</td><td>5</td><td>Single row.</td></tr>
+    <tr><td>Tablet 768–1023px</td><td>4</td><td>8</td><td>Two rows of four.</td></tr>
+    <tr><td>Mobile ≥480px</td><td>3</td><td>6</td><td>Two rows of three.</td></tr>
+    <tr><td>Mobile &lt;480px</td><td>2</td><td>6</td><td>Three rows of two. Not a horizontal rail — a rail hides half the routes behind a gesture.</td></tr>
+  </tbody>
+</table>
+
+<h3>5.2 Category card anatomy</h3>
+<table>
+  <thead><tr><th style="width:24%">Part</th><th>Specification</th></tr></thead>
+  <tbody>
+    <tr><td>Shape</td><td>Portrait 4:5 image with an 8&nbsp;px radius. Circles are avoided — jewellery silhouettes are long and a circle crops them badly.</td></tr>
+    <tr><td>Image</td><td>The category image from the approved term field, shot on black. Where one is missing the card shows a gold monogram mark on a slightly lifted surface — a designed empty state, never a grey box.</td></tr>
+    <tr><td>Label</td><td>Hindi name, 16&nbsp;px, off-white, directly beneath the image. English reading, 12&nbsp;px, muted, on the second line. Both always shown — customers use both.</td></tr>
+    <tr><td>Count</td><td>Optional, 11&nbsp;px muted, "24 pieces". Hidden when the count is under 3 so a thin category does not advertise its thinness.</td></tr>
+    <tr><td>Target</td><td>The whole card. Minimum 44&nbsp;px in both dimensions at every breakpoint.</td></tr>
+    <tr><td>Alignment</td><td>Centre-aligned text under a centred image. This is the one place the design centres; everywhere else is flush left.</td></tr>
+  </tbody>
+</table>
+
+<h3>5.3 States</h3>
+<table>
+  <thead><tr><th style="width:18%">State</th><th>Treatment</th></tr></thead>
+  <tbody>
+    <tr><td>Default</td><td>Image at full opacity, no border, no shadow.</td></tr>
+    <tr><td>Hover</td><td>Image scales to 1.03 over 280&nbsp;ms behind a fixed frame, so the crop moves but the card does not. A gold hairline draws in along the bottom edge from left to right. Label shifts from off-white to gold.</td></tr>
+    <tr><td>Focus-visible</td><td>2&nbsp;px gold outline at 2&nbsp;px offset around the whole card. Always present, never suppressed.</td></tr>
+    <tr><td>Active</td><td>Scale returns to 1.0 for 80&nbsp;ms — a press-in, not a bounce.</td></tr>
+    <tr><td>Touch</td><td>No hover state at all. The hairline is permanently visible at 40% opacity so the card still reads as interactive.</td></tr>
+    <tr><td>Loading</td><td>Skeleton at the exact card dimensions, shimmering once every 1.6&nbsp;s. The grid never reflows when images arrive.</td></tr>
+  </tbody>
+</table>
+<p>No card lifts on hover, no card gains a shadow. Elevation is reserved for drawers and modals; if a card floats, the page loses its flatness and starts to look like a template.</p>
+
+<h3>5.4 Featured categories</h3>
+<table>
+  <thead><tr><th style="width:26%">Question</th><th>Answer</th></tr></thead>
+  <tbody>
+    <tr><td>What appears here</td><td>Categories the owner has marked featured, in the owner's order, using the approved term field. Never an automatic "most popular" — the owner knows the season.</td></tr>
+    <tr><td>How many</td><td>Six on the homepage. If fewer than six are marked, the section shows only what is marked; it never pads with unmarked categories.</td></tr>
+    <tr><td>If none are marked</td><td>The section is hidden entirely and the page flows from hero to New Arrivals.</td></tr>
+    <tr><td>Homepage heading</td><td>"Shop by Category" with a gold rule above it and a "View all categories →" link on the right of the heading row.</td></tr>
+    <tr><td>Elsewhere</td><td>The same card and grid are reused on the category archive as the child-category strip, and in the mega menu's featured column at a larger size. One component, three placements.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">6 · Product Card System</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<p style="color:#595d6c">The most repeated object on the site. It appears in six contexts and must work identically in all of them. Catalogue only: no price, no quantity, no add-to-cart, no checkout language anywhere on it.</p>
+
+<h3>6.1 Anatomy</h3>
+<div style="display:grid;grid-template-columns:200px 1fr;gap:22px;align-items:start;break-inside:avoid;margin:14px 0 20px">
+  <div style="border:1px solid #9397ab;border-radius:8px;padding:8px;font-size:9.5px;color:#595d6c;display:flex;flex-direction:column;gap:5px">
+    <div style="border:1px dashed #9397ab;background:#e4e7f5;padding:44px 6px;text-align:center;position:relative">image 1:1<div style="position:absolute;top:5px;right:5px;border:1px solid #9184d9;padding:2px 4px;border-radius:99px">♡</div><div style="position:absolute;top:5px;left:5px;border:1px dashed #9397ab;padding:1px 4px">New</div></div>
+    <div>नथ · कुंदन</div>
+    <div style="color:#595d6c">Bridal Nath</div>
+    <div style="color:#595d6c">RJ-1042 &nbsp;·&nbsp; 22K &nbsp;·&nbsp; 8.4 g</div>
+    <div style="border:1px solid #9184d9;background:#f5f4ff;padding:5px;text-align:center;border-radius:4px">Enquire on WhatsApp</div>
+  </div>
+  <div>
+    <table style="margin-top:0">
+      <thead><tr><th style="width:26%">Zone</th><th>Contents and rules</th></tr></thead>
+      <tbody>
+        <tr><td>Image</td><td>1:1, aspect box reserved before load. Product photography on black; the card's ground is the same black, so the image has no visible edge and the piece appears to float.</td></tr>
+        <tr><td>Badge</td><td>Top-left. One only, from: New · Bridal · Festive · Best Seller. Gold hairline outline, 10&nbsp;px, never a filled pill.</td></tr>
+        <tr><td>Wishlist</td><td>Top-right. 44&nbsp;px target, outline heart, fills gold when saved.</td></tr>
+        <tr><td>Name</td><td>Hindi name 15&nbsp;px off-white, English 13&nbsp;px muted beneath. Two lines maximum each, then ellipsis.</td></tr>
+        <tr><td>Meta line</td><td>Code · purity · weight, 12&nbsp;px muted, separated by thin gold middots. Tabular figures so the column aligns down the grid.</td></tr>
+        <tr><td>Action</td><td>WhatsApp button, full card width, outlined gold.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:#595d6c;margin:0">No price field exists on the card because none exists in the data. There is no "price on request" label either — an absence stated is still a conversation about price.</p>
+  </div>
+</div>
+
+<h3>6.2 Weight and purity display</h3>
+<table>
+  <thead><tr><th style="width:24%">Field</th><th style="width:22%">Format</th><th>Rules</th></tr></thead>
+  <tbody>
+    <tr><td>Weight</td><td>8.4 g</td><td>One decimal place always, so 8.0 g and 8.4 g align. The unit is lowercase with a thin space. Tola or carat shown instead where the owner has set that unit on the piece.</td></tr>
+    <tr><td>Purity</td><td>22K · 925</td><td>Gold as 24K / 22K / 18K / 14K; silver as 925. No "carat" spelled out on a card — it collides with gemstone carat in the customer's head.</td></tr>
+    <tr><td>Hallmark</td><td>Small gold mark</td><td>Shown on the detail page beside purity, not on the card. One mark per card is the limit.</td></tr>
+    <tr><td>Missing values</td><td>Omitted</td><td>A missing weight removes the segment and its separator. Never "—", never "N/A", never an empty gap.</td></tr>
+    <tr><td>Owner override</td><td>Global</td><td>Whether weight shows publicly at all is one setting, applied everywhere at once. This is an open decision in the architecture's Appendix C.</td></tr>
+  </tbody>
+</table>
+
+<h3>6.3 Variants</h3>
+<table>
+  <thead><tr><th style="width:18%">Variant</th><th style="width:26%">Used in</th><th>Differences</th></tr></thead>
+  <tbody>
+    <tr><td>Grid</td><td>Category, search, collection</td><td>The full card described above.</td></tr>
+    <tr><td>Compact</td><td>Related, recently viewed</td><td>No badge, no meta line, WhatsApp becomes an icon button. Image plus two lines of name.</td></tr>
+    <tr><td>Rail</td><td>Homepage sections, sliders</td><td>Fixed 200&nbsp;px width on mobile so the next card peeks by 40%, signalling the scroll.</td></tr>
+    <tr><td>Wishlist</td><td>Account wishlist</td><td>Heart becomes a remove X; a "Saved on 4 March" line replaces the badge.</td></tr>
+    <tr><td>Enquiry list row</td><td>Enquiry drawer</td><td>Horizontal: 64&nbsp;px thumbnail, name and code, remove control.</td></tr>
+    <tr><td>Reel-linked</td><td>Inside the reel viewer</td><td>Horizontal, translucent over the video, one tap to the product.</td></tr>
+  </tbody>
+</table>
+
+<h3>6.4 Hover and interaction</h3>
+<table>
+  <thead><tr><th style="width:20%">Element</th><th style="width:26%">Desktop hover</th><th>Touch</th></tr></thead>
+  <tbody>
+    <tr><td>Image</td><td>Cross-fades to gallery image 2 over 320&nbsp;ms, if one exists. This is the single most useful hover on a jewellery site — it shows scale or the reverse of the piece.</td><td>No cross-fade; the gallery is on the detail page.</td></tr>
+    <tr><td>Card border</td><td>Gold hairline appears around the card.</td><td>Permanently at 40% opacity.</td></tr>
+    <tr><td>WhatsApp button</td><td>Hidden until hover on ≥1024&nbsp;px, so the grid stays calm.</td><td>Always visible. On a phone a hidden action is no action.</td></tr>
+    <tr><td>Quick view</td><td>A small "Quick view" text link appears bottom-left on hover.</td><td>Not offered. On mobile, tapping the card <em>is</em> quick view — the page loads as fast as a modal.</td></tr>
+    <tr><td>Wishlist heart</td><td>Fills to gold outline on hover; solid gold when saved.</td><td>Always visible at full opacity.</td></tr>
+  </tbody>
+</table>
+
+<h3>6.5 Quick view</h3>
+<table>
+  <thead><tr><th style="width:24%">Aspect</th><th>Design</th></tr></thead>
+  <tbody>
+    <tr><td>Purpose</td><td>Let a customer check weight, purity and the full gallery without losing their place in a 200-item grid.</td></tr>
+    <tr><td>Form</td><td>Centred modal, max 880&nbsp;px, dark ground, one soft shadow, gold hairline. Page dimmed to 70% behind.</td></tr>
+    <tr><td>Contents</td><td>Gallery left with thumbnails, details right: names, code, metal, purity, weight, stones, two lines of description, category chips, WhatsApp button, wishlist, and "View full details →".</td></tr>
+    <tr><td>Navigation</td><td>Previous and next arrows step through the grid without closing. Arrow keys do the same.</td></tr>
+    <tr><td>Close</td><td>X, click outside, Escape. Focus returns to the card that opened it.</td></tr>
+    <tr><td>URL</td><td>The address updates to the product URL so the view is shareable and the back button closes the modal rather than leaving the page.</td></tr>
+    <tr><td>Mobile</td><td>Not used.</td></tr>
+  </tbody>
+</table>
+
+<h3>6.6 The WhatsApp CTA on a card</h3>
+<table>
+  <thead><tr><th style="width:24%">Property</th><th>Specification</th></tr></thead>
+  <tbody>
+    <tr><td>Label</td><td>"Enquire on WhatsApp". Not "Chat", not "Buy", not "Order". The word enquire sets the right expectation for a piece with no listed price.</td></tr>
+    <tr><td>Style</td><td>Outlined gold, full card width, 44&nbsp;px tall, 2&nbsp;px radius. The WhatsApp glyph sits left of the label at 18&nbsp;px.</td></tr>
+    <tr><td>Message</td><td>Pre-filled from the approved template engine, carrying the product code, Hindi name and the page link. The customer never has to describe the piece.</td></tr>
+    <tr><td>Feedback</td><td>Button shows a brief loading state while the enquiry is recorded, then opens WhatsApp. If recording fails, WhatsApp still opens — the conversation matters more than the record.</td></tr>
+    <tr><td>Desktop</td><td>Opens WhatsApp Web in a new tab.</td></tr>
+    <tr><td>Fallback</td><td>If no WhatsApp number is configured, the button becomes "Call us" with the phone number. It is never a dead link.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">7 · Collection Sections</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">7.1 The six collections</h3>
+<table>
+  <thead><tr><th style="width:18%">Collection</th><th style="width:20%">Homepage treatment</th><th style="width:14%">Items</th><th>Purpose</th></tr></thead>
+  <tbody>
+    <tr><td>New Arrivals</td><td>Rail, position 3</td><td>8 desktop, scroll on mobile</td><td>The reason to return. Highest placement of any product section.</td></tr>
+    <tr><td>Bridal Picks</td><td>Full-bleed band, position 5</td><td>1 image + CTA</td><td>Highest-value enquiry. Treated as a statement, not a grid.</td></tr>
+    <tr><td>Trending</td><td>Grid, position 6</td><td>8 desktop, 4 mobile</td><td>Reinforcement through what others are asking about.</td></tr>
+    <tr><td>Best Sellers</td><td>Alternates with Trending</td><td>8 / 4</td><td>Owner chooses which of the two occupies position 6; both on the homepage is repetition.</td></tr>
+    <tr><td>Featured</td><td>Not a homepage section</td><td>—</td><td>Drives which pieces appear first inside category listings.</td></tr>
+    <tr><td>Festive</td><td>Replaces Trending in season</td><td>8 / 4</td><td>Seasonal. Off-season it does not appear at all.</td></tr>
+  </tbody>
+</table>
+<p>Four product sections on the homepage at most, including New Arrivals. Beyond four the page becomes a catalogue and the customer stops reading section headings.</p>
+
+<h3>7.2 Section layout rules</h3>
+<table>
+  <thead><tr><th style="width:24%">Part</th><th>Rule</th></tr></thead>
+  <tbody>
+    <tr><td>Heading row</td><td>Gold rule, then the collection name in display serif at 32&nbsp;px, with "View all →" right-aligned on the same baseline. On mobile "View all" drops beneath the heading, left-aligned.</td></tr>
+    <tr><td>Sub-line</td><td>Optional, one sentence, 15&nbsp;px muted. Used only where the collection needs explaining — Bridal Picks does, New Arrivals does not.</td></tr>
+    <tr><td>Grid vs rail</td><td>Grid where the set is finite and worth seeing whole. Rail where it is a sample of something larger. New Arrivals is a rail; Trending is a grid.</td></tr>
+    <tr><td>Rhythm</td><td>96&nbsp;px between sections on desktop, 64&nbsp;px on mobile. No dividing lines between sections — space does that work.</td></tr>
+    <tr><td>Backgrounds</td><td>Every product section sits on the same ground. Only the bridal band breaks it. Alternating section backgrounds is the fastest way to make a luxury page look like a template.</td></tr>
+    <tr><td>Empty collection</td><td>The section does not render. No "coming soon", no empty grid.</td></tr>
+    <tr><td>Under-filled</td><td>Fewer items than columns means a left-aligned partial row, never stretched cards.</td></tr>
+  </tbody>
+</table>
+
+<h3>7.3 Collection landing pages</h3>
+<table>
+  <thead><tr><th style="width:24%">Element</th><th>Design</th></tr></thead>
+  <tbody>
+    <tr><td>Header</td><td>Full-bleed cover image at 2.5:1, the collection name in display serif over it at bottom-left, with a scrim. Item count beneath.</td></tr>
+    <tr><td>Intro</td><td>Two sentences maximum, max-width 60 characters per line, left-aligned under the header.</td></tr>
+    <tr><td>Grid</td><td>The standard product grid with the standard filters. A collection page is a filtered catalogue, not a different object.</td></tr>
+    <tr><td>Cross-links</td><td>A strip of other collections at the foot, as cover cards.</td></tr>
+    <tr><td>CTA</td><td>A collection-level WhatsApp button in the header: "Ask about the Bridal Picks collection".</td></tr>
+  </tbody>
+</table>
+
+<h3>7.4 The bridal band</h3>
+<table>
+  <thead><tr><th style="width:24%">Property</th><th>Specification</th></tr></thead>
+  <tbody>
+    <tr><td>Width</td><td>Full-bleed, edge to edge, breaking the 1280&nbsp;px container. One of only three full-bleed elements on the homepage.</td></tr>
+    <tr><td>Height</td><td>480&nbsp;px desktop, 400&nbsp;px mobile.</td></tr>
+    <tr><td>Image</td><td>A bridal set on black, positioned right, bleeding off the edge. On mobile, positioned top with the copy below.</td></tr>
+    <tr><td>Copy</td><td>Eyebrow "Bridal Kundan", headline in display serif at 44&nbsp;px, one sentence beneath.</td></tr>
+    <tr><td>CTA</td><td>One outlined gold button: "Talk to us about bridal". It opens WhatsApp with the bridal template, not a category page — bridal buyers want a person, not a grid.</td></tr>
+    <tr><td>Ground</td><td>A deeper black than the page, so the band reads as a held breath between two product sections.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">8 · Reels Experience</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<p style="color:#595d6c">Four source types — uploaded MP4, Instagram reel, YouTube Short, external URL — behind one player, per the approved reel model. The customer never sees which provider a reel came from.</p>
+
+<h3>8.1 Reel grid</h3>
+<table>
+  <thead><tr><th style="width:20%">Breakpoint</th><th style="width:14%">Columns</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Desktop ≥1280px</td><td>5</td><td>9:16 tiles, 16&nbsp;px gutters, 20 per page then "Load more".</td></tr>
+    <tr><td>Laptop</td><td>4</td><td>—</td></tr>
+    <tr><td>Tablet</td><td>3</td><td>—</td></tr>
+    <tr><td>Mobile</td><td>2</td><td>8&nbsp;px gutters. Two columns keeps each tile large enough to read a piece in.</td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:24%">Tile</th><th>Contents</th></tr></thead>
+  <tbody>
+    <tr><td>Poster</td><td>9:16 always. A non-conforming upload is letterboxed on black, never cropped through the piece. Where no thumbnail is set, a frame from the video is used — a reel tile is never empty.</td></tr>
+    <tr><td>Play affordance</td><td>A small gold-outlined play triangle, bottom-left, 32&nbsp;px. Not centred — a centred play button covers the piece.</td></tr>
+    <tr><td>Caption</td><td>One line, 12&nbsp;px, over a bottom scrim. Truncated with ellipsis.</td></tr>
+    <tr><td>Linked products</td><td>A small gold dot marks reels with linked products, hinting there is something to tap through to.</td></tr>
+    <tr><td>Hover, desktop</td><td>Muted preview plays after a 400&nbsp;ms delay. The delay stops a grid of five tiles all firing as the cursor crosses.</td></tr>
+    <tr><td>Touch</td><td>No preview. Tap opens the viewer.</td></tr>
+  </tbody>
+</table>
+
+<h3>8.2 Reel slider on the homepage</h3>
+<table>
+  <thead><tr><th style="width:24%">Property</th><th>Specification</th></tr></thead>
+  <tbody>
+    <tr><td>Desktop</td><td>Five tiles visible, arrows outside the rail, no dots. Dragging works; the arrows are for people who do not think to drag.</td></tr>
+    <tr><td>Mobile</td><td>2.2 tiles visible so the third peeks. Free scroll with snap, no arrows.</td></tr>
+    <tr><td>Autoplay</td><td>Never on the homepage rail. Posters only. Twenty-four autoplaying videos on a phone is a data bill.</td></tr>
+    <tr><td>Heading</td><td>"Reels" with a gold rule and "See all reels →".</td></tr>
+    <tr><td>Tap</td><td>Opens the fullscreen viewer at that reel, with the whole rail loaded as the viewer's sequence.</td></tr>
+  </tbody>
+</table>
+
+<h3>8.3 Fullscreen viewer</h3>
+<div style="display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:start;break-inside:avoid;margin:14px 0 20px">
+  <div style="border:1px solid #9397ab;border-radius:8px;padding:7px;font-size:9.5px;color:#595d6c;display:flex;flex-direction:column;gap:5px">
+    <div style="display:flex;justify-content:space-between"><span>✕</span><span>3 / 24</span><span>⇪</span></div>
+    <div style="border:1px dashed #9397ab;background:#e4e7f5;padding:58px 4px;text-align:center">video 9:16<br><span style="color:#595d6c">tap = mute</span></div>
+    <div style="display:flex;justify-content:space-between"><span>♡</span><span>swipe ↑ ↓</span><span>🔇</span></div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:4px">Caption line</div>
+    <div style="border:1px dashed #b2b6ca;background:#eef0fa;padding:4px">▤ RJ-1042 · नथ →</div>
+    <div style="border:1px solid #9184d9;background:#f5f4ff;padding:5px;text-align:center;border-radius:4px">Enquire on WhatsApp</div>
+  </div>
+  <div>
+    <table style="margin-top:0">
+      <thead><tr><th style="width:24%">Element</th><th>Behaviour</th></tr></thead>
+      <tbody>
+        <tr><td>Ground</td><td>Full black, no chrome, no header. The viewer takes the whole screen.</td></tr>
+        <tr><td>Video</td><td>9:16, fills height, letterboxed if the source differs. Autoplays muted with a visible unmute control — sound on open is the fastest way to lose a visitor.</td></tr>
+        <tr><td>Counter</td><td>"3 / 24" top-centre, 12&nbsp;px muted, so position in the set is always known.</td></tr>
+        <tr><td>Navigation</td><td>Swipe up and down on mobile; arrow keys and on-screen arrows on desktop. Preloads the next reel's poster only, not its video.</td></tr>
+        <tr><td>Controls</td><td>Tap anywhere toggles mute. Double-tap saves to wishlist with the same gold pulse as a card. A thin gold progress bar sits along the bottom edge.</td></tr>
+        <tr><td>Linked products</td><td>A horizontal strip above the CTA, each a compact product row. Tapping one opens the product and keeps the viewer's position in history, so back returns to the same reel.</td></tr>
+        <tr><td>Share</td><td>Native share sheet on mobile; copy-link on desktop.</td></tr>
+        <tr><td>Close</td><td>X top-left, swipe down, Escape, and the device back gesture.</td></tr>
+        <tr><td>Desktop frame</td><td>The 9:16 video is centred with heavy black on either side; linked products and the caption move into a right-hand panel rather than overlaying the video.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h3>8.4 Enquiry flow from a reel</h3>
+<table>
+  <thead><tr><th style="width:8%">Step</th><th style="width:26%">What the customer does</th><th>What they get</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Taps "Enquire on WhatsApp" in the viewer</td><td>The button shows a brief loading state; the enquiry is recorded against that reel.</td></tr>
+    <tr><td>2</td><td>WhatsApp opens</td><td>A pre-filled message using the reel template, carrying the reel's title and link — so the shop knows exactly which video prompted the question.</td></tr>
+    <tr><td>3</td><td>Returns to the site</td><td>The viewer is still open at the same reel. Nothing is lost.</td></tr>
+  </tbody>
+</table>
+<p>If the reel has linked products, the message names the pieces as well as the reel. A reel enquiry that says only "the one in the video" wastes the first three replies of the conversation.</p>
+
+<h3>8.5 Performance rules for reels</h3>
+<ul>
+  <li>Third-party embeds load a poster image and a play affordance only. The provider's player is fetched on the first interaction, so a page of 24 reels loads no external players.</li>
+  <li>Uploaded video never preloads; the poster carries the page.</li>
+  <li>Hover previews are muted, capped at one playing at a time, and disabled entirely below 1024&nbsp;px.</li>
+  <li>The viewer preloads only the next poster in the sequence.</li>
+  <li>Reduced-motion preference disables hover previews and autoplay; the viewer then requires an explicit play.</li>
+</ul>
+
+<h2 style="break-before:page">9 · Store Locator</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">9.1 Section design</h3>
+<table>
+  <thead><tr><th style="width:24%">Element</th><th>Specification</th></tr></thead>
+  <tbody>
+    <tr><td>Heading</td><td>"Visit Our Stores" in display serif at 32&nbsp;px, gold rule above. Sub-line: "Jhotwara and Mukandpura, Jaipur".</td></tr>
+    <tr><td>Layout, desktop</td><td>Two equal branch cards side by side, 24&nbsp;px apart. Not a map with pins — with two branches, a map is decoration and the addresses are the content.</td></tr>
+    <tr><td>Layout, mobile</td><td>Stacked cards, full width.</td></tr>
+    <tr><td>Ground</td><td>Same page ground. A gold hairline frames each card.</td></tr>
+  </tbody>
+</table>
+
+<h3>9.2 Branch card</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;break-inside:avoid;margin:14px 0 18px;font-size:9.5px;color:#595d6c">
+  <div style="border:1px solid #9397ab;border-radius:8px;padding:9px;display:flex;flex-direction:column;gap:5px">
+    <div style="border:1px dashed #9397ab;background:#e4e7f5;padding:22px 6px;text-align:center">storefront image 16:9</div>
+    <div style="font-size:11px;color:#292b31">Rameshwari Jewellers — Jhotwara</div>
+    <div>Near Brij Bal Mandir School<br>Ranapratap Nagar, Medical Center<br>Jhotwara, Jaipur, Rajasthan 302012</div>
+    <div>Open today · 11:00 – 20:00</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px"><div style="border:1px solid #9184d9;background:#f5f4ff;padding:5px;text-align:center;border-radius:4px">Get Directions</div><div style="border:1px dashed #b2b6ca;padding:5px;text-align:center;border-radius:4px">WhatsApp</div></div>
+    <div style="text-align:center;color:#5d5294">Call 8290260806</div>
+  </div>
+  <div style="border:1px solid #9397ab;border-radius:8px;padding:9px;display:flex;flex-direction:column;gap:5px">
+    <div style="border:1px dashed #9397ab;background:#e4e7f5;padding:22px 6px;text-align:center">storefront image 16:9</div>
+    <div style="font-size:11px;color:#292b31">Rameshwari Jewellers — Mukandpura</div>
+    <div>Near Chetna Clinic<br>Ummangan Building<br>Mukandpura, Jaipur, Rajasthan 302026</div>
+    <div>Open today · 11:00 – 20:00</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px"><div style="border:1px solid #9184d9;background:#f5f4ff;padding:5px;text-align:center;border-radius:4px">Get Directions</div><div style="border:1px dashed #b2b6ca;padding:5px;text-align:center;border-radius:4px">WhatsApp</div></div>
+    <div style="text-align:center;color:#5d5294">Call 7742109937</div>
+  </div>
+</div>
+<table>
+  <thead><tr><th style="width:24%">Part</th><th>Rules</th></tr></thead>
+  <tbody>
+    <tr><td>Image</td><td>Storefront photograph at 16:9. If none exists the card shows a static map crop of the location instead — never a blank panel.</td></tr>
+    <tr><td>Branch name</td><td>18&nbsp;px, off-white, with the locality after an em dash.</td></tr>
+    <tr><td>Address</td><td>14&nbsp;px muted, exactly as recorded, on three lines. Not run together into a paragraph — an address read on a phone while driving needs line breaks.</td></tr>
+    <tr><td>Hours</td><td>"Open today · 11:00 – 20:00" computed from the recorded timings, in gold when open and muted when closed. "Closed · opens 11:00 tomorrow" outside hours.</td></tr>
+    <tr><td>Get Directions</td><td>Primary, outlined gold. Opens the branch's map link in the device's map app.</td></tr>
+    <tr><td>WhatsApp</td><td>Secondary, hairline outline. Uses the showroom enquiry template with the branch name.</td></tr>
+    <tr><td>Call</td><td>Text link beneath the buttons, showing the actual number. Tap-to-call.</td></tr>
+  </tbody>
+</table>
+
+<h3>9.3 Map area</h3>
+<table>
+  <thead><tr><th style="width:26%">Context</th><th>Treatment</th></tr></thead>
+  <tbody>
+    <tr><td>Homepage</td><td>No embedded map. Two cards with directions buttons. An interactive map embed costs several hundred kilobytes and three third-party requests to show two pins.</td></tr>
+    <tr><td>Showroom detail page</td><td>A static map image with a gold pin, sized 16:9, that opens the map app on tap. The image is a facade — the interactive embed loads only if the customer taps "Open interactive map".</td></tr>
+    <tr><td>Fallback</td><td>If no map image exists, the area is replaced by the address block at a larger size with the directions button beneath.</td></tr>
+    <tr><td>Dark styling</td><td>Where an interactive map is used, it takes a dark style so it does not flash white into a black page.</td></tr>
+  </tbody>
+</table>
+
+<h3>9.4 Showroom detail page</h3>
+<table>
+  <thead><tr><th style="width:26%">Order</th><th>Contents</th></tr></thead>
+  <tbody>
+    <tr><td>1 · Header</td><td>Branch name, locality, open status.</td></tr>
+    <tr><td>2 · Gallery</td><td>Interior and storefront photographs, 3-up on desktop, swipe on mobile.</td></tr>
+    <tr><td>3 · Details</td><td>Full address, all timings by day, phone, WhatsApp, in a two-column list.</td></tr>
+    <tr><td>4 · Actions</td><td>Get Directions and Book a visit, side by side, sticky at the foot on mobile.</td></tr>
+    <tr><td>5 · Map</td><td>Static facade as above.</td></tr>
+    <tr><td>6 · Other branch</td><td>A single card linking to the other showroom.</td></tr>
+  </tbody>
+</table>
+<p>"Book a visit" opens WhatsApp with the showroom template. There is no booking form — a form to arrange a jewellery viewing adds a step to a conversation that would have taken one message.</p>
+
+<h2 style="break-before:page">10 · About the Brand</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">10.1 Homepage band</h3>
+<table>
+  <thead><tr><th style="width:24%">Element</th><th>Specification</th></tr></thead>
+  <tbody>
+    <tr><td>Layout</td><td>Desktop: text left at 56%, image right at 40%. Mobile: image, then text, then trust marks.</td></tr>
+    <tr><td>Eyebrow</td><td>"Since 2018" in gold, 12&nbsp;px, letter-spaced.</td></tr>
+    <tr><td>Heading</td><td>Display serif, 32&nbsp;px, two lines maximum.</td></tr>
+    <tr><td>Body</td><td>Three sentences. Not four. The homepage is not the About page — its job is to establish that the shop is real, family-run and hallmarked, then get out of the way.</td></tr>
+    <tr><td>Trust marks</td><td>A row of three: BIS Hallmark · Certified Purity · In-house Craftsmanship. Each a 28&nbsp;px gold line icon above a 12&nbsp;px label. Line icons, never filled badges — filled trust badges read as stock imagery.</td></tr>
+    <tr><td>Link</td><td>"Our story →" as a gold-underlined text link. No button; this is not a conversion point.</td></tr>
+    <tr><td>Image</td><td>A hand at work, or the storefront. Not a stock photograph of a diamond.</td></tr>
+  </tbody>
+</table>
+
+<h3>10.2 The About page</h3>
+<table>
+  <thead><tr><th style="width:8%">#</th><th style="width:24%">Section</th><th>Contents</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Header</td><td>Full-bleed storefront image at 2.5:1, "Rameshwari Jewellers" and "Est. 2018" over a scrim.</td></tr>
+    <tr><td>2</td><td>The story</td><td>Two to three short paragraphs. Where the shop began, what it makes, who runs it. Written plainly — a family jeweller in Jaipur does not need the language of a global maison.</td></tr>
+    <tr><td>3</td><td>Craftsmanship</td><td>Three cards: traditional Rajasthani work, kundan and meena setting, custom commissions. Each with one photograph and two sentences.</td></tr>
+    <tr><td>4</td><td>Trust</td><td>Hallmarking explained in plain words, purity standards, what a customer can expect on a receipt. The most reassuring section on the site and the one most sites skip.</td></tr>
+    <tr><td>5</td><td>Heritage note</td><td>One short passage on Rajasthani jewellery vocabulary — बोरला, आड़, बाजूबंद — connecting the catalogue's own category names to the tradition they come from.</td></tr>
+    <tr><td>6</td><td>Showrooms</td><td>The two branch cards from Section 9.</td></tr>
+    <tr><td>7</td><td>Close</td><td>A single WhatsApp CTA: "Talk to us".</td></tr>
+  </tbody>
+</table>
+<p>No stock photography anywhere on this page. An About page illustrated with purchased images undoes exactly the trust it is trying to build. Where a real photograph does not yet exist, the section waits.</p>
+
+<h2 style="break-before:page">11 · Testimonials</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">11.1 Card design</h3>
+<table>
+  <thead><tr><th style="width:24%">Part</th><th>Specification</th></tr></thead>
+  <tbody>
+    <tr><td>Quote mark</td><td>A single gold serif quote glyph, 40&nbsp;px, at 30% opacity, top-left. The only decorative element permitted on the card.</td></tr>
+    <tr><td>Quote</td><td>15&nbsp;px, off-white, maximum 40 words. Longer quotations are trimmed with the owner's approval, never truncated automatically mid-sentence.</td></tr>
+    <tr><td>Rating</td><td>Five gold line stars, filled to the rating. Optional; hidden when no rating is recorded rather than showing an empty row.</td></tr>
+    <tr><td>Attribution</td><td>Name at 14&nbsp;px off-white, context at 12&nbsp;px muted — "Bridal set, 2024" or "Jhotwara". Context makes a testimonial believable.</td></tr>
+    <tr><td>Photo</td><td>Optional 40&nbsp;px circular portrait left of the name. Cards without photos align with those that have them; no placeholder avatar is ever drawn.</td></tr>
+    <tr><td>Card</td><td>Hairline border, 8&nbsp;px radius, generous padding, no shadow, no fill.</td></tr>
+  </tbody>
+</table>
+
+<h3>11.2 Layout</h3>
+<table>
+  <thead><tr><th style="width:20%">Breakpoint</th><th style="width:22%">Layout</th><th>Behaviour</th></tr></thead>
+  <tbody>
+    <tr><td>Desktop ≥1024px</td><td>3-up grid</td><td>Equal heights, no carousel. Three testimonials read at a glance beat six behind arrows.</td></tr>
+    <tr><td>Tablet</td><td>2-up grid</td><td>Fourth card wraps to a second row only if four exist.</td></tr>
+    <tr><td>Mobile</td><td>Swipe carousel</td><td>One card at 88% width so the next peeks. Dots beneath as thin gold dashes. No autoplay — a testimonial that moves while being read is a testimonial unread.</td></tr>
+    <tr><td>Fewer than three</td><td>Centred row</td><td>Two cards centre; one card centres at 60% width. Never stretched to fill.</td></tr>
+    <tr><td>None</td><td>Hidden</td><td>The section does not render. No sample testimonials, ever.</td></tr>
+  </tbody>
+</table>
+
+<h3>11.3 Section framing</h3>
+<p>Heading "What our customers say" with a gold rule, no sub-line. Placed immediately before the showrooms so the sequence reads: someone trusted them → here is where to find them. A "Read more reviews" link appears only if there is somewhere real to send people.</p>
+
+<h2 style="break-before:page">12 · Footer</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">12.1 Structure</h3>
+<div style="border:1px solid #9397ab;border-radius:8px;padding:10px;font-size:9.5px;color:#595d6c;break-inside:avoid;margin-bottom:12px">
+  <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:10px">
+    <div><div style="color:#292b31;margin-bottom:4px">LOGO</div>Gold • Silver • Bridal Kundan<br>Est. 2018, Jaipur<br><br>◇ ◇ ◇ &nbsp;<span style="color:#595d6c">social</span></div>
+    <div><div style="color:#5d5294;margin-bottom:4px">EXPLORE</div>Gold Jewellery<br>Silver Jewellery<br>Bridal<br>Collections<br>Reels<br>All Categories</div>
+    <div><div style="color:#5d5294;margin-bottom:4px">SHOP</div>About Us<br>Our Showrooms<br>Contact Us<br>Wishlist<br>My Account</div>
+    <div><div style="color:#5d5294;margin-bottom:4px">CONTACT</div>8290260806<br>7742109937<br>rameshwarijewellers01@gmail.com<br>Jhotwara · Mukandpura, Jaipur<br><br><span style="border:1px solid #9184d9;padding:3px 7px;border-radius:4px">WhatsApp us</span></div>
+  </div>
+  <div style="border-top:1px dashed #b2b6ca;margin-top:9px;padding-top:6px;display:flex;justify-content:space-between"><span>BIS Hallmark · Certified Purity · Since 2018</span><span>© 2026 Rameshwari Jewellers</span></div>
+</div>
+<table>
+  <thead><tr><th style="width:22%">Column</th><th>Contents and rules</th></tr></thead>
+  <tbody>
+    <tr><td>Brand</td><td>Logo, tagline, establishment line, social icons. Social icons are gold line marks at 20&nbsp;px in 44&nbsp;px targets, and only platforms the shop actually maintains appear — an empty social link is worse than no icon.</td></tr>
+    <tr><td>Explore</td><td>Six top category links. Not the whole tree — the mega menu does that. These six are chosen by the owner.</td></tr>
+    <tr><td>Shop</td><td>About, Showrooms, Contact, Wishlist, My Account. Account links hide when accounts are disabled.</td></tr>
+    <tr><td>Contact</td><td>Both phone numbers as tap-to-call, email, locality, and a WhatsApp button. Every value from the one contact record.</td></tr>
+    <tr><td>Trust strip</td><td>BIS Hallmark · Certified Purity · Since 2018, 11&nbsp;px muted, left-aligned on the bottom rule.</td></tr>
+    <tr><td>Legal</td><td>Copyright right-aligned on the same rule. Privacy and terms links appear beside it once those pages exist.</td></tr>
+  </tbody>
+</table>
+
+<h3>12.2 Treatment</h3>
+<table>
+  <thead><tr><th style="width:24%">Property</th><th>Specification</th></tr></thead>
+  <tbody>
+    <tr><td>Ground</td><td>One step deeper than the page, full-bleed. A gold hairline along the top edge separates it without a heavy border.</td></tr>
+    <tr><td>Padding</td><td>72&nbsp;px top and 40&nbsp;px bottom on desktop; 48 / 32 on mobile.</td></tr>
+    <tr><td>Type</td><td>Column headings 11&nbsp;px gold, letter-spaced, uppercase. Links 14&nbsp;px muted, moving to off-white on hover with a gold underline.</td></tr>
+    <tr><td>Mobile</td><td>Brand block and contact block always open; Explore and Shop become collapsed accordions. Contact is never collapsed — it is the reason people scroll to a footer.</td></tr>
+    <tr><td>Floating WhatsApp</td><td>Hides while the footer is in view, so it does not cover the footer's own WhatsApp button.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">13 · Black Gold Design System</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<p style="color:#595d6c">Expressed as tokens in three layers — primitive, semantic, component — so a future restyle is a token change rather than a search through screens. These are the values; how they are implemented is not this document's concern.</p>
+
+<h3>13.1 Colour</h3>
+<table>
+  <thead><tr><th style="width:26%">Token</th><th style="width:16%">Value</th><th style="width:14%">Contrast</th><th>Use</th></tr></thead>
+  <tbody>
+    <tr><td>bg</td><td>#0C0C0E</td><td>—</td><td>Page ground. Near-black, never pure black: pure black flattens the shadow detail jewellery photography depends on.</td></tr>
+    <tr><td>bg-deep</td><td>#070708</td><td>—</td><td>Bridal band, footer. The one step deeper.</td></tr>
+    <tr><td>surface</td><td>#16161A</td><td>—</td><td>Cards, drawers, menu panel.</td></tr>
+    <tr><td>surface-raised</td><td>#1F1F25</td><td>—</td><td>Hover surfaces, sticky bars, modals.</td></tr>
+    <tr><td>text</td><td>#F2EFE8</td><td>14.8:1</td><td>Body and headings. Warm off-white, never pure white.</td></tr>
+    <tr><td>text-muted</td><td>#A9A295</td><td>6.4:1</td><td>Meta lines, codes, counts, captions. Passes for body text, so it may carry real information.</td></tr>
+    <tr><td>gold</td><td>#C8A24A</td><td>7.1:1</td><td>The accent. Rules, hairlines, icons, marks, button outlines, active states.</td></tr>
+    <tr><td>gold-strong</td><td>#E0BE6A</td><td>9.8:1</td><td>Hover and focus.</td></tr>
+    <tr><td>gold-quiet</td><td>#5A4A22</td><td>—</td><td>Tinted fills, disabled outlines, progress track.</td></tr>
+    <tr><td>border</td><td>rgba(242,239,232,0.14)</td><td>—</td><td>Neutral hairlines and dividers.</td></tr>
+    <tr><td>success / warning / danger</td><td>#5FA271 / #D2A03C / #C4564B</td><td>≥4.5:1</td><td>System feedback only. Never decorative, never in marketing copy.</td></tr>
+  </tbody>
+</table>
+<h4>Gold discipline</h4>
+<p>Gold is a line, a mark and a border. It is not a fill. A gold-filled button next to a gold necklace makes both look cheaper, and a gold gradient makes the page look like a template. At most one element per screen may carry a gold fill, and on most screens none does.</p>
+
+<h3>13.2 Typography</h3>
+<table>
+  <thead><tr><th style="width:22%">Role</th><th style="width:28%">Family</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Display</td><td>Cormorant Garamond · 300–500</td><td>High-contrast serif. Headlines, section headings, branch names.</td></tr>
+    <tr><td>Interface</td><td>Jost · 300–500</td><td>Geometric sans. Body, labels, buttons, meta.</td></tr>
+    <tr><td>Devanagari display</td><td>Noto Serif Devanagari</td><td>Matched optical weight to Cormorant.</td></tr>
+    <tr><td>Devanagari interface</td><td>Noto Sans Devanagari</td><td>Loaded as a subset, so Latin-only pages never fetch it.</td></tr>
+    <tr><td>Numerals</td><td>Jost, tabular figures</td><td>Weights and codes must align down a column.</td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:18%">Step</th><th style="width:16%">Mobile</th><th style="width:16%">Desktop</th><th>Use</th></tr></thead>
+  <tbody>
+    <tr><td>xs</td><td>12px</td><td>12px</td><td>Codes, counts, badges. Never a sentence.</td></tr>
+    <tr><td>sm</td><td>14px</td><td>14px</td><td>Meta, captions, footer links.</td></tr>
+    <tr><td>base</td><td>16px</td><td>16px</td><td>Body. The floor for all running text.</td></tr>
+    <tr><td>lg</td><td>18px</td><td>20px</td><td>Lead paragraphs, branch names.</td></tr>
+    <tr><td>xl</td><td>24px</td><td>32px</td><td>Section headings.</td></tr>
+    <tr><td>2xl</td><td>32px</td><td>44px</td><td>Page titles, bridal band.</td></tr>
+    <tr><td>3xl</td><td>36px</td><td>64px</td><td>Hero only.</td></tr>
+  </tbody>
+</table>
+<p>Line height 1.5 for body, 1.15 for display, and <strong>1.7 for Devanagari body</strong> — conjuncts and matras need vertical room, and cramping them is the single most common way a Hindi page looks amateur. Letter-spacing: −0.02em on display, 0 on body, +0.16em on gold eyebrows and column headings.</p>
+
+<h3>13.3 Spacing, radius, shadow</h3>
+<table>
+  <thead><tr><th style="width:22%">Scale</th><th>Values and rules</th></tr></thead>
+  <tbody>
+    <tr><td>Space</td><td>4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96&nbsp;px. Nothing between steps. Section rhythm is 96 desktop / 64 mobile; card padding 16; grid gutters 24 desktop / 12 mobile.</td></tr>
+    <tr><td>Radius</td><td>0 for images and full-bleed bands · 2 for buttons and inputs · 8 for cards, drawers and modals · 999 for pills and the floating action. Four values, no others.</td></tr>
+    <tr><td>Shadow</td><td>Cards and sections carry none. Drawers and modals carry one: <code>0 8px 24px rgba(0,0,0,0.5)</code>. Elevation on a black ground is a hairline plus ambient darkness, not a stack of shadows.</td></tr>
+    <tr><td>Container</td><td>Max 1280&nbsp;px, 24&nbsp;px side padding desktop, 16&nbsp;px mobile. Full-bleed exceptions: hero, bridal band, footer.</td></tr>
+  </tbody>
+</table>
+
+<h3>13.4 Icons</h3>
+<table>
+  <thead><tr><th style="width:24%">Property</th><th>Rule</th></tr></thead>
+  <tbody>
+    <tr><td>Style</td><td>Line icons only, 1.5&nbsp;px stroke, rounded caps. One family throughout. Filled icons appear only as an active state — a filled wishlist heart.</td></tr>
+    <tr><td>Sizes</td><td>16 · 20 · 24 · 32&nbsp;px. Interface icons are 24&nbsp;px inside 44&nbsp;px targets.</td></tr>
+    <tr><td>Colour</td><td>Muted by default, gold on hover, gold when active.</td></tr>
+    <tr><td>Set</td><td>Search · heart · bag · hamburger · close · chevrons · phone · WhatsApp · location · share · play · mute · filter · sort · check · plus · minus · arrow-right.</td></tr>
+    <tr><td>Emoji</td><td>Never. Not in the interface, not in copy, not in WhatsApp templates the site generates.</td></tr>
+    <tr><td>Decorative icons</td><td>Hidden from assistive technology. Meaningful icons always carry a name.</td></tr>
+  </tbody>
+</table>
+
+<h3>13.5 Buttons</h3>
+<table>
+  <thead><tr><th style="width:18%">Variant</th><th style="width:30%">Appearance</th><th>Used for</th></tr></thead>
+  <tbody>
+    <tr><td>Primary</td><td>1&nbsp;px gold outline on transparent, gold label, 2&nbsp;px radius</td><td>The single main action on a screen or section.</td></tr>
+    <tr><td>Secondary</td><td>1&nbsp;px neutral hairline, off-white label</td><td>The lesser of two actions on a branch card.</td></tr>
+    <tr><td>Ghost</td><td>No border, gold label, gold underline on hover</td><td>"View all", "Our story", inline links.</td></tr>
+    <tr><td>Icon</td><td>44&nbsp;px square, no border at rest</td><td>Header icons, wishlist, close, mute.</td></tr>
+    <tr><td>Floating</td><td>Pill, gold outline on a surface ground, one shadow</td><td>The floating WhatsApp action only.</td></tr>
+  </tbody>
+</table>
+<table>
+  <thead><tr><th style="width:18%">State</th><th>Treatment</th></tr></thead>
+  <tbody>
+    <tr><td>Default</td><td>Outline at full opacity, transparent ground.</td></tr>
+    <tr><td>Hover</td><td>Border and label move to gold-strong; ground takes a gold tint at 8%. 120&nbsp;ms.</td></tr>
+    <tr><td>Focus-visible</td><td>2&nbsp;px gold-strong outline at 2&nbsp;px offset, in addition to the border. Never removed.</td></tr>
+    <tr><td>Active</td><td>Ground tint deepens to 14%, no movement. Instant.</td></tr>
+    <tr><td>Loading</td><td>Label replaced by three pulsing gold dots; width held so nothing shifts.</td></tr>
+    <tr><td>Disabled</td><td>45% opacity, no hover, cursor unchanged. Rare — prefer hiding an unavailable action.</td></tr>
+  </tbody>
+</table>
+<p>Heights: 52&nbsp;px hero and bridal, 44&nbsp;px standard, 36&nbsp;px compact contexts only where the target area still reaches 44&nbsp;px through padding.</p>
+
+<h3>13.6 Cards</h3>
+<table>
+  <thead><tr><th style="width:24%">Property</th><th>Rule</th></tr></thead>
+  <tbody>
+    <tr><td>Ground</td><td>Product cards use the page ground, so the photograph has no visible edge. Content cards — testimonial, branch — use surface with a hairline.</td></tr>
+    <tr><td>Radius</td><td>8&nbsp;px on the card, 0 on a full-bleed image inside it.</td></tr>
+    <tr><td>Border</td><td>Hairline at rest on content cards; none on product cards until hover.</td></tr>
+    <tr><td>Elevation</td><td>None. Cards do not lift.</td></tr>
+    <tr><td>Padding</td><td>16&nbsp;px, rising to 24&nbsp;px on testimonial and branch cards.</td></tr>
+    <tr><td>Margin</td><td>None. Spacing belongs to the container, so one card works in a grid, a rail and a drawer.</td></tr>
+  </tbody>
+</table>
+
+<h3>13.7 Forms</h3>
+<table>
+  <thead><tr><th style="width:24%">Element</th><th>Specification</th></tr></thead>
+  <tbody>
+    <tr><td>Label</td><td>Always visible, above the field, 13&nbsp;px muted. Placeholder-only labels are not used — the label vanishes exactly when it is needed.</td></tr>
+    <tr><td>Input</td><td>Transparent ground, 1&nbsp;px hairline, 2&nbsp;px radius, 48&nbsp;px tall, 16&nbsp;px text. 16&nbsp;px is a hard floor: anything smaller makes iOS zoom the page on focus.</td></tr>
+    <tr><td>Focus</td><td>Border becomes gold, plus the 2&nbsp;px focus ring.</td></tr>
+    <tr><td>Helper text</td><td>12&nbsp;px muted, beneath the field, present from the start where a format is expected.</td></tr>
+    <tr><td>Error</td><td>Border and message in danger colour, message beneath the field with a small icon, announced to assistive technology. Never a summary at the top alone.</td></tr>
+    <tr><td>Validation timing</td><td>On blur, not on every keystroke. Re-validates live once a field has already errored.</td></tr>
+    <tr><td>Required</td><td>Marked on the label. Optional fields marked "(optional)" where most are required.</td></tr>
+    <tr><td>Phone</td><td>Numeric keypad, country code prefilled, formatting applied as typed.</td></tr>
+    <tr><td>Submit</td><td>Full width on mobile. Disabled only while submitting, never before — a disabled submit hides why it cannot be pressed.</td></tr>
+  </tbody>
+</table>
+
+<h3>13.8 Glass effects</h3>
+<table>
+  <thead><tr><th style="width:26%">Where</th><th>Treatment</th></tr></thead>
+  <tbody>
+    <tr><td>Sticky header</td><td>Ground at 92% opacity with a 12&nbsp;px backdrop blur and a gold hairline. The only glass surface that appears on every page.</td></tr>
+    <tr><td>Reel viewer controls</td><td>Small pill grounds at 40% opacity with an 8&nbsp;px blur, so controls stay legible over any frame.</td></tr>
+    <tr><td>Mobile filter sheet</td><td>Its top edge blurs over the content beneath, signalling that the page is still there.</td></tr>
+    <tr><td>Everywhere else</td><td>No glass. Frosted cards and blurred panels across a whole page are a 2021 trope and they cost real performance on mid-range phones.</td></tr>
+    <tr><td>Fallback</td><td>Where backdrop blur is unsupported, the surface becomes solid at 96% opacity. The design must never depend on the blur for legibility.</td></tr>
+  </tbody>
+</table>
+
+<h3>13.9 Animation</h3>
+<table>
+  <thead><tr><th style="width:22%">Duration</th><th style="width:26%">Applies to</th><th>Easing</th></tr></thead>
+  <tbody>
+    <tr><td>120&nbsp;ms</td><td>Hover, focus, colour changes</td><td>ease-out</td></tr>
+    <tr><td>200&nbsp;ms</td><td>Header condense, menu fade, toast</td><td>cubic-bezier(.2,.7,.3,1)</td></tr>
+    <tr><td>280&nbsp;ms</td><td>Drawers, modals, image scale on hover</td><td>cubic-bezier(.2,.7,.3,1)</td></tr>
+    <tr><td>400&nbsp;ms</td><td>Hero cross-fade, reel transitions</td><td>ease-in-out</td></tr>
+  </tbody>
+</table>
+<h4>Rules</h4>
+<ul>
+  <li>Exit is 0.8× the enter duration. Things should leave faster than they arrive.</li>
+  <li>Animate opacity and transform only. Animating width, height or top causes layout work on every frame and janks on a mid-range phone.</li>
+  <li>Motion must mean something: it shows where a panel came from or confirms an action landed. Decorative motion is cut.</li>
+  <li>Scroll-triggered reveals: one fade-and-rise of 16&nbsp;px, once, on section entry. No staggered cascades, no parallax, no counters ticking up.</li>
+  <li><code>prefers-reduced-motion</code> collapses everything to a 100&nbsp;ms opacity change and disables autoplay, hover previews and scroll reveals entirely. This is a requirement, not an enhancement.</li>
+</ul>
+
+<h2 style="break-before:page">14 · Responsive Rules</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+
+<h3 style="margin-top:0">14.1 Breakpoints</h3>
+<table>
+  <thead><tr><th style="width:18%">Name</th><th style="width:18%">Range</th><th style="width:16%">Container</th><th>Design target</th></tr></thead>
+  <tbody>
+    <tr><td>Mobile S</td><td>320–389px</td><td>Fluid, 16px pad</td><td>Older Android. Everything must fit; nothing may scroll sideways.</td></tr>
+    <tr><td>Mobile</td><td>390–767px</td><td>Fluid, 16px pad</td><td><strong>The primary design target.</strong> Most traffic lands here.</td></tr>
+    <tr><td>Tablet</td><td>768–1023px</td><td>Fluid, 24px pad</td><td>Portrait tablets. Two- and three-column grids.</td></tr>
+    <tr><td>Laptop</td><td>1024–1279px</td><td>Fluid, 24px pad</td><td>Hover states begin here. Mega menu becomes a panel.</td></tr>
+    <tr><td>Desktop</td><td>1280–1599px</td><td>1280px, centred</td><td>The full six-column layouts.</td></tr>
+    <tr><td>Wide</td><td>≥1600px</td><td>1280px, centred</td><td>Container stops growing; only full-bleed bands widen. A 2000&nbsp;px-wide product grid is unreadable.</td></tr>
+  </tbody>
+</table>
+
+<h3>14.2 What changes at each step</h3>
+<table>
+  <thead><tr><th style="width:20%">Element</th><th style="width:16%">Mobile</th><th style="width:14%">Tablet</th><th style="width:14%">Laptop</th><th>Desktop</th></tr></thead>
+  <tbody>
+    <tr><td>Product grid</td><td>2 col</td><td>3 col</td><td>4 col</td><td>4 col</td></tr>
+    <tr><td>Category grid</td><td>2 col</td><td>4 col</td><td>5 col</td><td>6 col</td></tr>
+    <tr><td>Reel grid</td><td>2 col</td><td>3 col</td><td>4 col</td><td>5 col</td></tr>
+    <tr><td>Testimonials</td><td>swipe</td><td>2 col</td><td>3 col</td><td>3 col</td></tr>
+    <tr><td>Branch cards</td><td>stacked</td><td>2 col</td><td>2 col</td><td>2 col</td></tr>
+    <tr><td>Footer</td><td>accordion</td><td>2 col</td><td>4 col</td><td>4 col</td></tr>
+    <tr><td>Navigation</td><td>drawer</td><td>drawer</td><td>mega panel</td><td>mega panel</td></tr>
+    <tr><td>Filters</td><td>bottom sheet</td><td>bottom sheet</td><td>sidebar</td><td>sidebar</td></tr>
+    <tr><td>Hero</td><td>stacked</td><td>stacked</td><td>split</td><td>split</td></tr>
+    <tr><td>Card WhatsApp</td><td>always shown</td><td>always shown</td><td>on hover</td><td>on hover</td></tr>
+    <tr><td>Section rhythm</td><td>64px</td><td>72px</td><td>96px</td><td>96px</td></tr>
+  </tbody>
+</table>
+
+<h3>14.3 Rules that hold at every width</h3>
+<ul>
+  <li><strong>No horizontal scroll, ever</strong>, except inside an element explicitly designed as a rail. A page that scrolls sideways at 320&nbsp;px is a defect, not a compromise.</li>
+  <li><strong>Pinch zoom is never disabled.</strong> Customers zoom into jewellery photographs; taking that away is hostile.</li>
+  <li>Images always declare their aspect ratio, so the layout never shifts as they arrive.</li>
+  <li>Tables and long strings — addresses, product codes — wrap rather than overflow.</li>
+  <li>Text scales by breakpoint step, not by viewport width. Fluid type makes headings unpredictable at odd widths.</li>
+  <li>Orientation change is handled: a phone turned landscape gets the tablet grid, and the reel viewer stays 9:16 letterboxed rather than stretching.</li>
+  <li>Safe areas are respected on notched devices — the floating WhatsApp sits above the home indicator, not under it.</li>
+</ul>
+
+<h2 style="break-before:page">15 · Accessibility Rules</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<p style="color:#595d6c">Target: WCAG 2.2 AA. These are requirements, not aspirations — each one is checkable, and a screen that fails one is not finished.</p>
+
+<h3>15.1 Contrast</h3>
+<table>
+  <thead><tr><th style="width:30%">Pairing</th><th style="width:16%">Ratio</th><th>Verdict</th></tr></thead>
+  <tbody>
+    <tr><td>text on bg</td><td>14.8:1</td><td>Pass AAA</td></tr>
+    <tr><td>text-muted on bg</td><td>6.4:1</td><td>Pass AA for body text — may carry real information</td></tr>
+    <tr><td>gold on bg</td><td>7.1:1</td><td>Pass AA for body text and for icons</td></tr>
+    <tr><td>gold-strong on bg</td><td>9.8:1</td><td>Pass AAA</td></tr>
+    <tr><td>text on surface</td><td>12.9:1</td><td>Pass AAA</td></tr>
+    <tr><td>Focus ring on any ground</td><td>≥3:1</td><td>Pass — required for non-text contrast</td></tr>
+  </tbody>
+</table>
+<ul>
+  <li>Text over photography always sits on a scrim strong enough to hold 4.5:1 at the text's own position — measured, not assumed.</li>
+  <li>Colour never carries meaning alone. A selected filter has a check mark as well as a gold border; an out-of-stock state has a word.</li>
+  <li>Disabled controls at 45% opacity are exempt from contrast rules, but no information may live only in a disabled control.</li>
+</ul>
+
+<h3>15.2 Type sizes</h3>
+<table>
+  <thead><tr><th style="width:30%">Context</th><th style="width:18%">Minimum</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td>Body and running text</td><td>16px</td><td>Hard floor everywhere, at every breakpoint.</td></tr>
+    <tr><td>Meta, captions, footer links</td><td>14px</td><td>Short strings only.</td></tr>
+    <tr><td>Codes, counts, badges</td><td>12px</td><td>Absolute floor. Never a sentence, never an instruction.</td></tr>
+    <tr><td>Form inputs</td><td>16px</td><td>Below this, iOS zooms the page on focus and the layout jumps.</td></tr>
+    <tr><td>Devanagari</td><td>+1px over the Latin step</td><td>Devanagari has smaller effective x-height; matching the Latin size makes it read smaller.</td></tr>
+  </tbody>
+</table>
+<p>Text must survive 200% browser zoom and reflow to a single column without loss of content or function.</p>
+
+<h3>15.3 Touch targets</h3>
+<table>
+  <thead><tr><th style="width:30%">Rule</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Minimum size</td><td>44×44&nbsp;px for every interactive element, including icon buttons, carousel dots and close controls. Visual size may be smaller; the target may not.</td></tr>
+    <tr><td>Separation</td><td>8&nbsp;px minimum between adjacent targets.</td></tr>
+    <tr><td>Card overlays</td><td>The wishlist heart on a product card sits in its own 44&nbsp;px area inside the card's link, not on top of it.</td></tr>
+    <tr><td>Bottom edge</td><td>Nothing interactive within 16&nbsp;px of the screen bottom on iOS, where the system gesture area lives.</td></tr>
+    <tr><td>Destructive actions</td><td>Never adjacent to a common action. Remove-from-wishlist is separated from the card's own link.</td></tr>
+  </tbody>
+</table>
+
+<h3>15.4 Keyboard and screen reader</h3>
+<table>
+  <thead><tr><th style="width:26%">Requirement</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Everything reachable</td><td>Every action is operable by keyboard. Anything shown on hover is also reachable by focus.</td></tr>
+    <tr><td>Visible focus</td><td>2&nbsp;px gold outline at 2&nbsp;px offset on every focusable element. The default ring is never removed without this replacement.</td></tr>
+    <tr><td>Focus not obscured</td><td>A focused element is never hidden behind the sticky header. Scroll padding accounts for the header height.</td></tr>
+    <tr><td>Logical order</td><td>Tab order follows visual order. Skip link — "Skip to content" — is the first focusable element on every page.</td></tr>
+    <tr><td>Focus trapping</td><td>Open drawers, modals and the mega menu trap focus; Escape closes and returns focus to the trigger.</td></tr>
+    <tr><td>Mega menu</td><td>Arrow keys within a column, Right to enter children, Left to return, Escape to close.</td></tr>
+    <tr><td>Reel viewer</td><td>Arrow keys change reel, Space toggles play, M toggles mute, Escape closes.</td></tr>
+    <tr><td>Live regions</td><td>Wishlist count changes, filter result counts and form errors are announced politely.</td></tr>
+    <tr><td>Icon buttons</td><td>Every one carries an accessible name: "Search", "Save to wishlist", "Close", "Unmute".</td></tr>
+    <tr><td>Images</td><td>Product images carry meaningful alternative text built from the names and category. Decorative images are hidden from assistive technology.</td></tr>
+    <tr><td>Language</td><td>Devanagari runs are marked as Hindi so screen readers switch pronunciation. Without this, हिंदी is read as nonsense.</td></tr>
+    <tr><td>Headings</td><td>One h1 per page, no skipped levels. Section headings are real headings, not styled text.</td></tr>
+    <tr><td>Video</td><td>Never autoplays with sound. Any autoplaying carousel has a visible pause control.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">16 · Elementor Layout Strategy</h2>
+<div style="height:2px;background:#9184d9;width:56px;margin:10px 0 20px"></div>
+<p style="color:#595d6c">How this design is assembled, and why it survives its own tooling. The principle from the approved architecture holds: Elementor arranges things that already exist. It never stores them, never defines them, and is never required for them to render.</p>
+
+<h3>16.1 Section to widget map</h3>
+<table>
+  <thead><tr><th style="width:24%">Design section</th><th style="width:30%">Built with</th><th>Key settings</th></tr></thead>
+  <tbody>
+    <tr><td>Top bar</td><td>Contact Block widget</td><td>Fields: phones, locality, email. Every value from the one contact record.</td></tr>
+    <tr><td>Main header</td><td>Theme header builder + Mega Menu widget</td><td>Root term, depth 4, featured column on.</td></tr>
+    <tr><td>Hero</td><td>Elementor container + Image + Heading + Button</td><td>Layout only. No product data.</td></tr>
+    <tr><td>Featured categories</td><td>Category Grid widget</td><td>Featured only, 6 items, columns 6/5/4/3/2 by breakpoint, show Hindi name, hide empty.</td></tr>
+    <tr><td>New Arrivals</td><td>Product Slider widget</td><td>Collection: New Arrivals. 8 items, slides per view 4/3/2.2, autoplay off.</td></tr>
+    <tr><td>Reels strip</td><td>Reel Slider widget</td><td>Latest 10, slides per view 5/3/2.2, autoplay off, captions on.</td></tr>
+    <tr><td>Bridal band</td><td>Container + Image + Heading + WhatsApp Button widget</td><td>WhatsApp template: bridal.</td></tr>
+    <tr><td>Trending / Best Sellers</td><td>Product Grid widget</td><td>Collection filter, 8 items desktop, 4 mobile, columns 4/3/2.</td></tr>
+    <tr><td>About band</td><td>Container + Image + Heading + Text + Icon List</td><td>Layout only.</td></tr>
+    <tr><td>Testimonials</td><td>Testimonial Grid widget</td><td>3 items, columns 3/2/1, mobile carousel on.</td></tr>
+    <tr><td>Showrooms</td><td>Showroom Grid widget</td><td>Both branches, show timings, directions, WhatsApp.</td></tr>
+    <tr><td>Footer</td><td>Theme footer builder + Contact Block widget</td><td>Category links are ordinary menu items; contact comes from the widget.</td></tr>
+    <tr><td>Product detail</td><td>Elementor template + dynamic tags</td><td>Product field tags for names, code, metal, purity, weight; gallery tag; WhatsApp URL tag behind an Elementor button.</td></tr>
+    <tr><td>Category archive</td><td>Elementor archive template</td><td>Category field tags for name and image; Product Grid bound to the current term.</td></tr>
+    <tr><td>Floating WhatsApp</td><td>WhatsApp Button widget, float mode</td><td>Site-wide, set once.</td></tr>
+  </tbody>
+</table>
+<p>Every widget above is a data widget. Colour, spacing and type come from the theme's tokens and Elementor's own style tab — never duplicated into widget settings, so a palette change is one edit rather than two hundred.</p>
+
+<h3>16.2 Why the design survives a theme change</h3>
+<table>
+  <thead><tr><th style="width:26%">Mechanism</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td>Tokens, not values</td><td>Colour, type, spacing, radius and motion live as tokens. A new theme adopts the token sheet and the look travels with it.</td></tr>
+    <tr><td>Components, not pages</td><td>The product card, category card, reel tile and branch card are defined once and rendered by the plugin. A theme change re-skins their surroundings, not them.</td></tr>
+    <tr><td>Data pages are template-driven</td><td>Product, category, reel, collection and showroom pages come from templates the plugin provides and a theme may override. Switching themes changes nothing on them unless the new theme chooses to override.</td></tr>
+    <tr><td>No business data in the theme</td><td>Per the approved architecture, no contact detail, product field or category setting lives in a theme file. Deleting the theme loses layout, never content.</td></tr>
+    <tr><td>Switch-safety checklist</td><td>The eight-point check in the architecture runs before and after every theme change.</td></tr>
+  </tbody>
+</table>
+
+<h3>16.3 Why the design survives Elementor's removal</h3>
+<table>
+  <thead><tr><th style="width:26%">Layer</th><th style="width:22%">Needs</th><th>If Elementor is removed</th></tr></thead>
+  <tbody>
+    <tr><td>Template functions and shortcodes</td><td>The core plugin only</td><td>Unaffected. This is the floor, and it renders every component in this document.</td></tr>
+    <tr><td>Gutenberg blocks</td><td>WordPress itself</td><td>Unaffected. Same renderers, same output.</td></tr>
+    <tr><td>Elementor widgets</td><td>Elementor</td><td>Removed cleanly. The plugin that provides them detects the absence and registers nothing — no fatal error, no broken page.</td></tr>
+    <tr><td>Product, category, reel pages</td><td>Templates</td><td>Unaffected. They were never Elementor templates.</td></tr>
+    <tr><td>Homepage and About</td><td>Elementor layout</td><td>These are the only pages that need rebuilding — in blocks, from the same widgets' block equivalents. A day of work, not a redesign.</td></tr>
+  </tbody>
+</table>
+<p>The test, stated as a single sentence: <strong>deactivate Elementor and the theme, and every product, category, reel, collection and showroom in this design must still render with its image, its names, its specification and a working WhatsApp button.</strong> It will look plain. It must not be broken.</p>
+
+<h3>16.4 What is built where</h3>
+<table>
+  <thead><tr><th style="width:30%">Built as a plugin component</th><th>Built as page layout</th></tr></thead>
+  <tbody>
+    <tr><td>Product card and all six variants · category card · reel tile and viewer · branch card · testimonial card · mega menu · filter panel · search overlay · gallery · WhatsApp button · enquiry drawer · wishlist · empty states · skeletons · toasts</td><td>Homepage section order and spacing · hero composition · bridal band composition · About page · Contact page · footer arrangement · header arrangement</td></tr>
+  </tbody>
+</table>
+<p>The division is deliberate: everything that repeats or touches data is a component the owner cannot accidentally break; everything that is a one-off arrangement is editable in the builder. That boundary is what lets the shop rearrange its homepage on a Sunday evening without risking the catalogue.</p>
+
+<div style="background:#f5f4ff;border:1px solid #d2cefd;border-radius:8px;padding:16px 18px;margin-top:26px;break-inside:avoid">
+  <h5 style="margin:0 0 6px">Open decisions in this document</h5>
+  <ul style="margin:0;font-size:14px">
+    <li><strong>The cart icon</strong> — enquiry list, or removed from the header? Section 2.6.</li>
+    <li><strong>Weight shown publicly</strong> on every product card, or detail pages only? Section 6.2.</li>
+    <li><strong>Hero</strong> — single static hero, or three slides for a seasonal campaign? Section 4.3.</li>
+    <li><strong>Trending or Best Sellers</strong> in homepage position 6 — one, not both. Section 7.1.</li>
+    <li><strong>Display fonts</strong> — Cormorant Garamond and Jost, to confirm. Section 13.2.</li>
+  </ul>
+</div>
+
+</doc-page>
+</x-dc>
+</body>
+</html>

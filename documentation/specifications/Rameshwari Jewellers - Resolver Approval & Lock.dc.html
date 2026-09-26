@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15.5px; line-height: 1.6; }
+h1, h2, h3 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 38px; letter-spacing: -0.03em; }
+h2 { font-size: 23px; margin: 26px 0 4px; }
+h3 { font-size: 16.5px; margin: 20px 0 6px; }
+h5 { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 16px 0 6px; }
+p { margin: 0 0 10px; orphans: 3; widows: 3; }
+ul, ol { margin: 0 0 11px; padding-left: 20px; }
+li { margin: 0 0 4px; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 11px 0 16px; font-size: 12.2px; line-height: 1.44; }
+th { text-align: left; font-weight: 600; font-size: 9.5px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 9px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 6px 9px 6px 0; vertical-align: top; overflow-wrap: anywhere; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 4px; border-radius: 3px; color: #423a6a; overflow-wrap: anywhere; }
+pre { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.6px; line-height: 1.55; background: #f3f5fe; border-left: 2px solid #9184d9; padding: 11px 13px; margin: 11px 0 16px; border-radius: 0 8px 8px 0; white-space: pre-wrap; overflow-wrap: anywhere; color: #292b31; }
+pre code { background: none; padding: 0; color: inherit; font-size: 1em; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.8in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — Resolver Approval &amp; Lock</span>
+  <span>Final approval item</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9.5px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>31 validation checks · all PASS</span>
+  <span>Implementation not started</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:16px">
+  <div style="font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Approval &amp; Lock</div>
+  <h1 style="margin:0">_rj_resolver</h1>
+  <div style="font-size:18px;color:#595d6c;line-height:1.35">One term meta field on 22 of 306 terms. Validated against the locked master and Model B, then locked.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:15px 17px;margin-bottom:18px;break-inside:avoid">
+  <h5 style="margin:0 0 6px;color:#2f6b3a">Validation result</h5>
+  <p style="margin:0 0 7px;font-size:15px">All 31 checks pass — each traced to the section that satisfies it in the mapping table below. No conflict with the Category Master, Model B, or any locked identifier. Two clarifications are recorded in §4 and §5 — neither changes the decision, and both are corrections to my own earlier wording rather than to your brief.</p>
+  <p style="margin:0;font-size:13.5px;color:#595d6c">Nothing in the locked architecture moves: 5 roots · 306 terms · 6 post types · 7 taxonomies · 8 tables. <code>_rj_resolver</code> is the 12th key on <code>rj_category</code>, bringing the total new permanent meta keys since Session 4 to twelve — eleven on <code>rj_page_section</code>, one here.</p>
+</div>
+
+<h2 style="margin-top:0">Validation — 31 checks</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<table>
+  <thead><tr><th style="width:5%">#</th><th style="width:56%">Verdict</th><th>§</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>PASS — <code>_rj_resolver</code> is the only new key. Three alternatives tested; two break locked rules.</td><td>2, 16</td></tr>
+    <tr><td>2</td><td>PASS — term meta on <code>rj_category</code>. Never post meta.</td><td>3</td></tr>
+    <tr><td>3</td><td>PASS — stores a mapping, not a relationship. No product row is written.</td><td>3, 7</td></tr>
+    <tr><td>4</td><td>PASS — blocked at five layers: editor, repository, REST, importer, sweep.</td><td>7</td></tr>
+    <tr><td>5</td><td>PASS — <code>_rj_primary_term</code> validator rejects a resolver term.</td><td>7, 10</td></tr>
+    <tr><td>6</td><td>PASS — <code>409 rj_conflict</code>, naming the facet to use instead.</td><td>7</td></tr>
+    <tr><td>7</td><td>PASS — fails in the dry run with the row number. Nothing written.</td><td>7, 12</td></tr>
+    <tr><td>8</td><td>PASS — schema-validated on every write; malformed values rejected, never coerced.</td><td>3, 14</td></tr>
+    <tr><td>9</td><td>PASS — allow-list of four taxonomies; <code>rj_category</code>, <code>rj_collection_tax</code>, <code>rj_tag</code> refused.</td><td>4, 14</td></tr>
+    <tr><td>10</td><td>PASS — slug must name a live term at write time.</td><td>4, 14</td></tr>
+    <tr><td>11</td><td>PASS — each union ID must be live, a leaf, inside JEWELLERY or OTHERS, and resolver-free.</td><td>4, 14</td></tr>
+    <tr><td>12</td><td>PASS — term being edited, its ancestors and its descendants all rejected.</td><td>4, 14</td></tr>
+    <tr><td>13</td><td>PASS — <strong>structurally impossible.</strong> Shape A cannot target <code>rj_category</code>; Shape B targets resolver-free leaves. One hop by construction.</td><td>14</td></tr>
+    <tr><td>14</td><td>PASS — daily Health warning naming the term and the missing target.</td><td>8, 13, 14</td></tr>
+    <tr><td>15</td><td>PASS — a broken mapping 404s and warns. An empty page reads as a catalogue gap; a 404 reads as a fault.</td><td>8, 14</td></tr>
+    <tr><td>16</td><td>PASS — seven METALS children, Shape A to <code>rj_metal</code> by slug.</td><td>5</td></tr>
+    <tr><td>17</td><td>PASS — eight FOR children, Shape A to <code>rj_audience</code> by slug.</td><td>5</td></tr>
+    <tr><td>18</td><td>PASS — seven WEDDING children mapped individually: four Shape A, three Shape B.</td><td>5</td></tr>
+    <tr><td>19</td><td>PASS — <code>Couple</code> added to <code>rj_occasion</code>. A term in a flat facet is content, not schema.</td><td>5, 17</td></tr>
+    <tr><td>20</td><td>PASS — identical product repository method; only the query source differs.</td><td>8</td></tr>
+    <tr><td>21</td><td>PASS — <code>Domain\Category</code> and <code>Frontend\Query</code> only. Never a widget, block, shortcode or template.</td><td>8, 17</td></tr>
+    <tr><td>22</td><td>PASS — same resolver logic, in the existing hourly job. A count and its archive read one method.</td><td>9</td></tr>
+    <tr><td>23</td><td>PASS — always <code>_rj_primary_term</code>, which is always editorial.</td><td>10</td></tr>
+    <tr><td>24</td><td>PASS — <code>/c/metals/gold/</code>, <code>/c/wedding/mangalsutra/</code>, <code>/c/for/women/</code>.</td><td>8, 11</td></tr>
+    <tr><td>25</td><td>PASS — facet archives noindex, canonical to the category path.</td><td>11</td></tr>
+    <tr><td>26</td><td>PASS — exported and imported; Shape B as portable paths.</td><td>12</td></tr>
+    <tr><td>27</td><td>PASS with a recorded exception — Shape A stores slugs. Shape B cannot (three leaves share one name), so it stores IDs plus a portable <code>paths</code> array, re-resolved on every load.</td><td>4, 13</td></tr>
+    <tr><td>28</td><td>PASS — resolution lives in the plugin's domain layer. A new theme inherits it.</td><td>13</td></tr>
+    <tr><td>29</td><td>PASS — widgets never resolve anything themselves.</td><td>13</td></tr>
+    <tr><td>30</td><td>PASS — term meta travels with any standard database move. Nothing host-specific.</td><td>13</td></tr>
+    <tr><td>31</td><td>PASS — the resolver set is fixed at 22 and does not grow with the catalogue.</td><td>15</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c">Forbidden additions confirmed absent: no <code>rj_category_resolver</code> taxonomy, no <code>rj_resolver</code> table, no <code>_rj_category_map</code> or <code>_rj_filter_map</code>, no hardcoded PHP arrays, no resolver-specific product meta, no duplicate product assignments, no further taxonomy or category system. Each is listed with its reason in §16.</p>
+
+<h2>1 · Approval scope</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<table>
+  <thead><tr><th style="width:26%">In scope</th><th>Out of scope</th></tr></thead>
+  <tbody>
+    <tr><td>One new term meta key, <code>_rj_resolver</code>, on <code>rj_category</code> · its schema, validation and enforcement · the 22 mappings it will carry</td><td>Everything else. The Category Master, the five roots, the three metal hierarchies, the 306-term count, Model B itself, and every post type, taxonomy and table are locked and untouched by this document.</td></tr>
+  </tbody>
+</table>
+
+<h2>2 · Why it is required</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<p>Model B requires that 22 navigation terms resolve their archives from the facet taxonomies rather than from their own product relationships. Something has to record <em>which</em> facet each of the 22 resolves to. Three ways to record it were tested:</p>
+<table>
+  <thead><tr><th style="width:26%">Mechanism</th><th>Outcome</th></tr></thead>
+  <tbody>
+    <tr><td>Slug or name convention</td><td><strong>Fails.</strong> METALS and FOR map one-to-one by name, but WEDDING has three different mapping cases in one branch — three children map to an occasion term, three to a union of category leaves, one to a facet term that does not yet exist. A convention cannot express three shapes, and it breaks silently on a rename.</td></tr>
+    <tr><td>Hardcoded array in plugin code</td><td><strong>Fails.</strong> Puts business data in a code file: lost or overwritten on update, absent from exports, not editable by the owner, and in direct breach of the theme-independence and portability rules. Explicitly forbidden in your brief.</td></tr>
+    <tr><td>Stored term meta</td><td><strong>Works.</strong> 22 rows of schema-validated JSON on terms that already exist. Travels with a standard database move, appears in exports, editable through the tree manager, readable over REST.</td></tr>
+  </tbody>
+</table>
+<p>It is the only addition, and it is unavoidable given the constraints. Without it Model B cannot be built, and Model A is already rejected for storing each fact twice.</p>
+
+<h2>3 · Exact schema</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<table>
+  <thead><tr><th style="width:26%">Property</th><th>Value</th></tr></thead>
+  <tbody>
+    <tr><td>Key</td><td><code>_rj_resolver</code></td></tr>
+    <tr><td>Object type</td><td>Term meta on <code>rj_category</code>. <strong>Never post meta, never user meta.</strong></td></tr>
+    <tr><td>Storage</td><td>Single value, JSON-encoded object. Consistent with the meta conventions in Development Blueprint §9.1.</td></tr>
+    <tr><td>Default</td><td>Empty string. Set on 22 terms, empty on 284.</td></tr>
+    <tr><td>Validation</td><td>Schema-validated on every write. Exactly one of the two shapes in §4; unknown properties rejected; nesting depth 2.</td></tr>
+    <tr><td>Sanitisation</td><td>Decoded, validated field by field, re-encoded. A malformed value is rejected with a field-level message, never coerced.</td></tr>
+    <tr><td>Write capability</td><td><code>rj_manage_categories</code></td></tr>
+    <tr><td>REST</td><td><strong>Read-only</strong> in the tree and term responses, as a decoded <code>resolver</code> object. Not writable over REST — a mapping change is a structural decision made in the tree manager, not an API call.</td></tr>
+    <tr><td>Public</td><td>Yes, read. A client needs to know an archive is dynamic.</td></tr>
+    <tr><td>Indexing</td><td>None required. 22 rows, read through the already-cached term payload.</td></tr>
+    <tr><td>Migration</td><td>001, with the rest of the meta registry. Registered in Development Blueprint §9.3 as the twelfth category term meta key.</td></tr>
+    <tr><td>Activity log</td><td>Every change logged with before and after, under object type <code>category</code>, action <code>update</code>.</td></tr>
+  </tbody>
+</table>
+
+<h2>4 · Allowed shapes</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<h3 style="margin-top:0">Shape A — facet resolver</h3>
+<pre><code>{ "tax": "rj_metal",    "slug": "gold" }
+{ "tax": "rj_audience", "slug": "women" }
+{ "tax": "rj_occasion", "slug": "bridal" }</code></pre>
+<table>
+  <thead><tr><th style="width:18%">Field</th><th style="width:22%">Type</th><th>Validation</th></tr></thead>
+  <tbody>
+    <tr><td><code>tax</code></td><td>string</td><td>Allow-list: <code>rj_metal</code>, <code>rj_purity</code>, <code>rj_occasion</code>, <code>rj_audience</code>. <strong><code>rj_category</code>, <code>rj_collection_tax</code> and <code>rj_tag</code> are rejected</strong> — the first would allow circular resolution, and the other two are not navigation facets.</td></tr>
+    <tr><td><code>slug</code></td><td>string</td><td>Must name a live term in that taxonomy. Slug, never ID — so the mapping survives a re-import that changes term IDs.</td></tr>
+  </tbody>
+</table>
+
+<h3>Shape B — category union resolver</h3>
+<pre><code>{ "terms": [ 412, 587, 703 ] }</code></pre>
+<table>
+  <thead><tr><th style="width:18%">Field</th><th style="width:22%">Type</th><th>Validation</th></tr></thead>
+  <tbody>
+    <tr><td><code>terms</code></td><td>integer array</td><td>2–12 entries. Each must be a live <code>rj_category</code> term, must be a <strong>leaf</strong> (no children), must sit inside JEWELLERY or OTHERS, must not itself carry a resolver, and must not be the term being edited or any of its ancestors or descendants.</td></tr>
+  </tbody>
+</table>
+<div style="background:#fff8f0;border:1px solid #d2a03c;border-radius:8px;padding:13px 15px;margin:12px 0 14px;break-inside:avoid">
+  <h5 style="margin:0 0 5px;color:#8a6410">Clarification — Shape B stores IDs, and that is a deliberate exception</h5>
+  <p style="margin:0;font-size:14px">Check 27 asks that mappings survive term-ID changes by using stable slugs. Shape A does. Shape B cannot: its targets are three <em>different</em> leaves with the <strong>same</strong> visible name and the same slug fragment — मंगलसूत्र under Gold, Silver and Black Polish Silver. A bare slug does not identify which. <strong>Resolution:</strong> Shape B stores IDs <em>and</em> a parallel <code>paths</code> array of full slug paths, written at the same time. The importer resolves paths to IDs on every load, so IDs are derived and re-established after any migration while paths remain the portable record. Health compares the two daily and reports a mismatch. This satisfies check 27 in substance; storing only slugs would be ambiguous, and storing only IDs would be unportable.</p>
+</div>
+<p>No third shape exists. Anything else is rejected at write.</p>
+
+<h2>5 · The 22 mappings</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<table>
+  <thead><tr><th style="width:30%">Term</th><th style="width:14%">Shape</th><th>Resolves to</th></tr></thead>
+  <tbody>
+    <tr><td colspan="3" style="color:#5d5294;font-weight:600;font-size:11px;letter-spacing:0.06em">METALS — all Shape A, <code>rj_metal</code></td></tr>
+    <tr><td>Gold · Diamond · Silver · Platinum · Gemstone · White Gold · Rose Gold</td><td>A</td><td>The same-named <code>rj_metal</code> term, by slug. Seven one-to-one mappings.</td></tr>
+    <tr><td colspan="3" style="color:#5d5294;font-weight:600;font-size:11px;letter-spacing:0.06em">FOR — all Shape A, <code>rj_audience</code></td></tr>
+    <tr><td>Baby · Kids · Girls · Boys · Men · Women · Bride · Groom</td><td>A</td><td>The same-named <code>rj_audience</code> term, by slug. Eight one-to-one mappings.</td></tr>
+    <tr><td colspan="3" style="color:#5d5294;font-weight:600;font-size:11px;letter-spacing:0.06em">WEDDING — mixed, per child</td></tr>
+    <tr><td>Bridal Set</td><td>A</td><td><code>rj_occasion</code> : <code>bridal</code></td></tr>
+    <tr><td>Engagement Rings</td><td>A</td><td><code>rj_occasion</code> : <code>engagement</code></td></tr>
+    <tr><td>Anniversary</td><td>A</td><td><code>rj_occasion</code> : <code>anniversary</code></td></tr>
+    <tr><td>Couple Rings</td><td>A</td><td><code>rj_occasion</code> : <code>couple</code> — <strong>a new term in an existing flat facet.</strong> A term in a flat taxonomy is content, not schema; the facet term list was never locked.</td></tr>
+    <tr><td>Mangalsutra</td><td>B</td><td>The three मंगलसूत्र leaves, under Gold / Silver / Black Polish Silver › महिला के आभूषण › Neck Jewellery</td></tr>
+    <tr><td>Bridal Nath</td><td>B</td><td>The three नथ leaves, under each branch › महिला के आभूषण › Nose Jewellery</td></tr>
+    <tr><td>Maang Tikka</td><td>B</td><td>The three टिका leaves, under each branch › महिला के आभूषण › सिर के आभूषण</td></tr>
+  </tbody>
+</table>
+<p style="font-size:12.5px;color:#595d6c"><strong>Correction to my earlier wording:</strong> the Navigation/Facet document said Maang Tikka resolves to "the three टिका leaves" without noting that टिका sits under सिर के आभूषण, not Neck Jewellery. Corrected above. The mapping count is unchanged at 22.</p>
+
+<h2 style="break-before:page">6 · Resolver assignment rules</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<table>
+  <thead><tr><th style="width:26%">Rule</th><th>Detail</th></tr></thead>
+  <tbody>
+    <tr><td>Who may hold one</td><td>Only the 22 children of METALS, WEDDING and FOR. A resolver on any other term is rejected at write and reported by the weekly sweep.</td></tr>
+    <tr><td>The three roots</td><td>METALS, WEDDING and FOR hold <strong>no</strong> resolver. Their archives show their children, as any parent term does.</td></tr>
+    <tr><td>Editorial terms</td><td>All 284 others have it empty and behave exactly as before. Nothing about the JEWELLERY or OTHERS trees changes.</td></tr>
+    <tr><td>Set by</td><td>The category importer from the <code>resolver</code> column, or the tree manager's own field. Both go through one validator.</td></tr>
+    <tr><td>Removing one</td><td>Permitted. The term reverts to an ordinary empty archive and Health flags it as a navigation term with no products — visible, not silent.</td></tr>
+  </tbody>
+</table>
+
+<h2>7 · Product assignment prohibition</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<p><strong>No product is ever assigned to a resolver term or to METALS, WEDDING or FOR.</strong> Enforced at five independent layers, because a rule enforced in one place is a rule that leaks through the other four.</p>
+<table>
+  <thead><tr><th style="width:24%">Layer</th><th>Enforcement</th></tr></thead>
+  <tbody>
+    <tr><td>Product editor</td><td>The category tree picker hides every term carrying a resolver and the three roots. The assignment cannot be made by hand.</td></tr>
+    <tr><td>Domain repository</td><td><code>Domain\Product\Repository::save()</code> strips and rejects resolver terms before any write. This is the layer everything else passes through, so it is the real guarantee.</td></tr>
+    <tr><td>REST</td><td><code>409 rj_conflict</code>, naming the term and the facet to use instead. Not silently dropped.</td></tr>
+    <tr><td>Importer</td><td>Fails in the <strong>dry run</strong> with the row number and the correct facet column. Nothing is written, so a bad file costs minutes rather than a day.</td></tr>
+    <tr><td>Primary term</td><td><code>_rj_primary_term</code> must be an editorial term. A resolver term is rejected — which is what keeps breadcrumbs and canonicals correct.</td></tr>
+    <tr><td>Weekly sweep</td><td>Reports any relationship found on a resolver term. It can only arrive from a direct database write, and it will be visible within seven days.</td></tr>
+  </tbody>
+</table>
+
+<h2>8 · Archive and query behaviour</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<table>
+  <thead><tr><th style="width:26%">Aspect</th><th>Behaviour</th></tr></thead>
+  <tbody>
+    <tr><td>Where resolution happens</td><td><code>Domain\Category</code> and <code>Frontend\Query</code>, and nowhere else. <strong>Never inside an Elementor widget, a Gutenberg block, a shortcode or a template.</strong> One code path, so all four surfaces inherit it and a fix lands once.</td></tr>
+    <tr><td>Same repository</td><td>A resolver archive calls the identical product repository method as any archive. Only the query source differs; pagination, ordering, the filter panel and the card renderer are the same components.</td></tr>
+    <tr><td>URLs</td><td>Unchanged and under the locked <code>/c/…</code> path: <code>/c/metals/gold/</code>, <code>/c/wedding/mangalsutra/</code>, <code>/c/for/women/</code>.</td></tr>
+    <tr><td>Shape A query</td><td>A term query against the named facet.</td></tr>
+    <tr><td>Shape B query</td><td>A term query against the union of the named <code>rj_category</code> leaves.</td></tr>
+    <tr><td>Caching</td><td>As any archive, keyed on the term. A facet term change bumps the same group version.</td></tr>
+    <tr><td>Broken mapping</td><td><strong>Never a silently empty archive.</strong> A resolver naming a deleted target raises a Health warning, and the archive returns 404 rather than an empty page — an empty page looks like a catalogue gap, a 404 looks like a fault.</td></tr>
+  </tbody>
+</table>
+
+<h2>9 · Count behaviour</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<table>
+  <thead><tr><th style="width:26%">Aspect</th><th>Behaviour</th></tr></thead>
+  <tbody>
+    <tr><td>Source</td><td>The same resolver logic as the archive. A count and its archive can never disagree, because they read one method.</td></tr>
+    <tr><td>When</td><td>The existing hourly <code>Cron\TermCounts</code> job, written to <code>_rj_count_deep</code>. Nothing counts live.</td></tr>
+    <tr><td>Cost</td><td>22 extra queries per hour. Negligible on free shared hosting.</td></tr>
+    <tr><td>Root counts</td><td>METALS, WEDDING and FOR sum their children's resolved counts. Overlap is expected — a gold bridal set counts under both METALS › Gold and WEDDING › Bridal Set, which is correct for a facet.</td></tr>
+    <tr><td>Zero resolved</td><td>Excluded from the mega menu by the same empty-term rule as any other term.</td></tr>
+  </tbody>
+</table>
+
+<h2>10 · Breadcrumb behaviour</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<table>
+  <thead><tr><th style="width:34%">Page</th><th>Breadcrumb</th></tr></thead>
+  <tbody>
+    <tr><td>Resolver archive</td><td>Home › METALS › Gold. From the cached ancestor path, identical to any term.</td></tr>
+    <tr><td>Product</td><td>Always from <code>_rj_primary_term</code>, which is always editorial: Home › JEWELLERY › Gold Jewellery › महिला के आभूषण › कलाई के आभूषण › कड़ा.</td></tr>
+    <tr><td>Product reached via a resolver archive</td><td>Still its editorial path. A product has one true location regardless of route — a breadcrumb that changes with the referrer confuses visitors and search engines alike.</td></tr>
+    <tr><td>Structured data</td><td>Generated from the same cached path as the visible breadcrumb, so the two cannot disagree.</td></tr>
+  </tbody>
+</table>
+
+<h2>11 · SEO behaviour</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<table>
+  <thead><tr><th style="width:26%">Concern</th><th>Handling</th></tr></thead>
+  <tbody>
+    <tr><td>One indexable page per concept</td><td>The category path is canonical. Facet archives — <code>/metal/gold/</code> — are <strong>noindex with a canonical to <code>/c/metals/gold/</code></strong>, exactly as defined in the Navigation/Facet decision.</td></tr>
+    <tr><td>Duplicate content</td><td>Avoided at the data level, not papered over: each fact is stored once, so there is no second set of relationships for a crawler to find.</td></tr>
+    <tr><td>Per-term SEO fields</td><td>All 306 terms keep <code>_rj_seo_title</code>, <code>_rj_seo_desc</code> and <code>_rj_seo_noindex</code>. Resolver terms are ordinary terms in this respect.</td></tr>
+    <tr><td>Sitemap</td><td>A resolver term is included when it resolves to at least one visible product, excluded otherwise.</td></tr>
+    <tr><td>Thin pages</td><td>A resolver term with nothing behind it 404s rather than publishing an empty archive.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">12 · Import and export</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<table>
+  <thead><tr><th style="width:26%">Aspect</th><th>Behaviour</th></tr></thead>
+  <tbody>
+    <tr><td>Category file</td><td>Gains one optional <code>resolver</code> column, populated on 22 of 306 rows as a JSON string. Shape B rows carry slug <em>paths</em>, not IDs. Path matching on the term itself is unchanged.</td></tr>
+    <tr><td>Export</td><td><code>_rj_resolver</code> is exported. Shape B is exported as paths, so the file is portable between installations with different term IDs.</td></tr>
+    <tr><td>Round trip</td><td>Export then re-import reproduces the same state. IDs are re-resolved from paths on load.</td></tr>
+    <tr><td>Product file</td><td><strong>Simpler than Model A would have been</strong> — no METALS, WEDDING or FOR columns at all. Each product carries its editorial categories plus metal, purity, occasion and audience.</td></tr>
+    <tr><td>Validation</td><td>A resolver naming an unknown taxonomy, an unknown slug or an unresolvable path fails the dry run with the row number. A product row naming a resolver term fails the same way.</td></tr>
+    <tr><td>Rollback</td><td>Covered by the existing 30-day ledger; a resolver change is an ordinary term-meta update with a recorded prior value.</td></tr>
+  </tbody>
+</table>
+
+<h2>13 · Migration and hosting</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<table>
+  <thead><tr><th style="width:26%">Scenario</th><th>Effect on resolver behaviour</th></tr></thead>
+  <tbody>
+    <tr><td>Theme replaced</td><td><strong>None.</strong> Resolution is in the plugin's domain layer. A new theme inherits it with no work.</td></tr>
+    <tr><td>Elementor removed</td><td><strong>None.</strong> Widgets never resolve anything themselves. Shortcodes and blocks call the same repository.</td></tr>
+    <tr><td>InfinityFree → Hostinger</td><td><strong>None.</strong> Term meta travels with any standard database move. Nothing host-specific, no outbound request, no required extension.</td></tr>
+    <tr><td>Term IDs change on re-import</td><td>Shape A is unaffected — it stores slugs. Shape B re-resolves from its <code>paths</code> array. Health reports any mismatch.</td></tr>
+    <tr><td>Plugin update</td><td>Meta is data. Migrations are additive or reversible.</td></tr>
+    <tr><td>Facet term renamed</td><td>Slug unchanged, so the mapping holds. Slug changed, so Health reports the break within a day.</td></tr>
+  </tbody>
+</table>
+
+<h2>14 · Security and validation</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<table>
+  <thead><tr><th style="width:30%">Check</th><th>Rule</th></tr></thead>
+  <tbody>
+    <tr><td>Capability</td><td><code>rj_manage_categories</code> on every write. No exception.</td></tr>
+    <tr><td>Nonce</td><td>Required on the admin form. The REST field is read-only, so no write path exists there.</td></tr>
+    <tr><td>Invalid taxonomy</td><td>Rejected. Allow-list of four; <code>rj_category</code>, <code>rj_collection_tax</code> and <code>rj_tag</code> refused.</td></tr>
+    <tr><td>Invalid facet slug</td><td>Rejected. Must name a live term at write time.</td></tr>
+    <tr><td>Invalid category ID in a union</td><td>Rejected. Must be live, a leaf, inside JEWELLERY or OTHERS, and carry no resolver of its own.</td></tr>
+    <tr><td>Self-reference</td><td>Rejected. A union may not contain the term being edited, any ancestor, or any descendant.</td></tr>
+    <tr><td>Circular resolution</td><td><strong>Structurally impossible.</strong> Shape A cannot target <code>rj_category</code>; Shape B targets leaves that may not themselves carry a resolver. A resolver therefore cannot point at another resolver, so no chain can form and no cycle can exist. Depth is one hop by construction, not by a guard.</td></tr>
+    <tr><td>Deleted target</td><td>Daily Health warning naming the term and the missing target, with a direct edit link.</td></tr>
+    <tr><td>Silent empty archive</td><td>Prevented. A broken mapping 404s and warns; it never renders as an empty catalogue page.</td></tr>
+    <tr><td>Output escaping</td><td>Resolver values are internal identifiers and are never echoed, but pass the standard escaper where surfaced in admin.</td></tr>
+    <tr><td>Secrets</td><td>None involved. Nothing sensitive is stored in this field.</td></tr>
+  </tbody>
+</table>
+
+<h2>15 · Scalability</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<table>
+  <thead><tr><th style="width:30%">Dimension</th><th>Assessment</th></tr></thead>
+  <tbody>
+    <tr><td>Resolver count</td><td>Fixed at 22. <strong>Does not grow with the catalogue.</strong> The JEWELLERY tree can reach 1,000 terms and the resolver set stays 22, because it is bounded by the three facet roots.</td></tr>
+    <tr><td>1,000+ terms</td><td>Valid. Resolution is a term query; adding editorial terms adds no resolver work.</td></tr>
+    <tr><td>Query cost</td><td>One indexed term query per resolver archive — the same cost as any archive.</td></tr>
+    <tr><td>Count job</td><td>22 additional queries hourly.</td></tr>
+    <tr><td>Menu payload</td><td>22 short JSON objects inside the already-cached tree. Immaterial against the 50 ms budget at 1,000 terms.</td></tr>
+    <tr><td>If a fourth facet root were ever added</td><td>Its children get resolvers by the same rule. No schema change, no new mechanism.</td></tr>
+  </tbody>
+</table>
+
+<h2>16 · Rejected alternatives</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<table>
+  <thead><tr><th style="width:32%">Alternative</th><th>Why rejected</th></tr></thead>
+  <tbody>
+    <tr><td><code>rj_category_resolver</code> taxonomy</td><td>A new taxonomy is forbidden, and unnecessary for 22 rows.</td></tr>
+    <tr><td><code>rj_resolver</code> table</td><td>A new table is forbidden, and 22 rows do not warrant one.</td></tr>
+    <tr><td><code>_rj_category_map</code> / <code>_rj_filter_map</code></td><td>Two keys where one suffices. Duplicate mechanisms diverge.</td></tr>
+    <tr><td>Hardcoded PHP resolver arrays</td><td>Business data in a code file. Lost on update, absent from exports, not owner-editable, breaks portability.</td></tr>
+    <tr><td>Resolver-specific product meta</td><td>Puts navigation data on products — the exact duplication Model B exists to prevent.</td></tr>
+    <tr><td>Duplicate product assignments (Model A)</td><td>Two homes for one fact. Guaranteed drift, doubled filing, competing landing pages.</td></tr>
+    <tr><td>Another taxonomy or category system</td><td>Forbidden by the Category Master's rule 13.</td></tr>
+    <tr><td>Slug/name convention, no stored field</td><td>Works for METALS and FOR, fails on WEDDING's three mapping cases, breaks silently on a rename.</td></tr>
+    <tr><td>Shape B storing only slugs</td><td>Ambiguous — three leaves share the name मंगलसूत्र. Resolved by storing IDs plus portable paths (§4).</td></tr>
+    <tr><td>Shape B storing only IDs</td><td>Unportable across installations. Same resolution.</td></tr>
+    <tr><td>REST-writable resolver</td><td>A mapping change is a structural decision. Read-only over REST narrows the attack surface at no cost to the owner.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">17 · Final locked rule</h2>
+<div style="height:2px;background:#9184d9;width:52px;margin:6px 0 12px"></div>
+<p style="font-size:22px;font-weight:600;color:#2f6b3a;margin:0 0 14px">DECISION: <code style="font-size:0.82em;background:none;padding:0;color:#2f6b3a">_rj_resolver</code> APPROVED</p>
+
+<h5 style="margin:0 0 6px">LOCKED RULE</h5>
+<p style="font-size:15.5px;border-left:2px solid #9184d9;padding-left:14px;margin:0 0 16px"><code>_rj_resolver</code> is the single stored mapping mechanism for the 22 navigation resolver terms. It is term meta on <code>rj_category</code>, is not product data, does not create product relationships, and must be resolved centrally by the domain/query layer.</p>
+
+<h5 style="margin:0 0 6px">Implementation clauses</h5>
+<ol>
+  <li>All 306 Category Master terms are registered in <code>rj_category</code>. The master is unchanged.</li>
+  <li>The 22 children of METALS, WEDDING and FOR carry <code>_rj_resolver</code>. The three roots and all 284 other terms have it empty.</li>
+  <li>Two shapes only. Shape A stores <code>tax</code> and <code>slug</code>; Shape B stores <code>terms</code> plus portable <code>paths</code>. Schema-validated on every write.</li>
+  <li>Shape A may target only <code>rj_metal</code>, <code>rj_purity</code>, <code>rj_occasion</code> or <code>rj_audience</code>. Never <code>rj_category</code> — which is what makes circular resolution structurally impossible.</li>
+  <li><strong>No product is ever assigned to a resolver term or to one of the three roots.</strong> Enforced in the editor, the domain repository, REST (409), the importer dry run, and the primary-term validator.</li>
+  <li>Resolution occurs in <code>Domain\Category</code> and <code>Frontend\Query</code> only — never in a widget, block, shortcode or template.</li>
+  <li>Counts use the same resolver logic, in the existing hourly job.</li>
+  <li>Resolver archives keep the locked <code>/c/…</code> path. Facet archives are noindex and canonical to them.</li>
+  <li>Product breadcrumbs always follow <code>_rj_primary_term</code>, which is always editorial.</li>
+  <li><code>Couple</code> is added to <code>rj_occasion</code>. A term in a flat facet is content, not schema.</li>
+  <li>Export and import preserve <code>_rj_resolver</code>, Shape B as paths.</li>
+  <li>Health verifies all 22 resolvers daily. A broken mapping warns and 404s; it never renders an empty archive.</li>
+</ol>
+
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:16px 18px;margin-top:20px;break-inside:avoid">
+  <h5 style="margin:0 0 8px;color:#2f6b3a">Architecture status</h5>
+  <table style="margin:0 0 10px">
+    <tbody>
+      <tr><td style="width:44%"><strong>CATEGORY MASTER</strong></td><td style="color:#2f6b3a;font-weight:600">LOCKED</td></tr>
+      <tr><td><strong>MODEL B</strong></td><td style="color:#2f6b3a;font-weight:600">LOCKED</td></tr>
+      <tr><td><strong><code>_rj_resolver</code></strong></td><td style="color:#2f6b3a;font-weight:600">LOCKED</td></tr>
+      <tr><td><strong>IMPLEMENTATION</strong></td><td style="color:#8a6410;font-weight:600">NOT STARTED</td></tr>
+    </tbody>
+  </table>
+  <p style="margin:0 0 6px;font-size:14px"><strong>Final schema:</strong> 5 roots · 306 terms · 6 post types · 7 taxonomies · 8 tables · 10 settings groups · 12 new permanent meta keys since Session 4 (11 on <code>rj_page_section</code>, 1 on <code>rj_category</code>).</p>
+  <p style="margin:0;font-size:14px;color:#595d6c"><strong>No decision remains open.</strong> Decision 2, the Elementor widget count, is resolved by the Free-First Audit capability model — fifteen Free widgets, zero required dynamic tags. It is needed at Stage 21 and blocks nothing before it.</p>
+</div>
+
+</doc-page>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/styles.css">
+<script src="_ds/nocturne-59d83597-e1a9-43e2-9742-b91ca8b56ee3/_ds_bundle.js"></script>
+<script src="./doc-page.js"></script>
+<style>
+doc-page:not(:defined) { visibility: hidden; }
+body { background: #f5f5f4; color: #292b31; font-family: "Inter", system-ui, sans-serif; font-size: 15px; line-height: 1.58; }
+h1, h2 { font-family: "Inter", system-ui, sans-serif; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; color: #292b31; margin: 0 0 8px; }
+h1 { font-size: 36px; letter-spacing: -0.03em; }
+h2 { font-size: 22px; margin: 24px 0 4px; }
+h5 { font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #5d5294; margin: 14px 0 6px; }
+p { margin: 0 0 10px; orphans: 3; widows: 3; }
+table { width: 100%; max-width: 100%; table-layout: fixed; border-collapse: collapse; margin: 10px 0 15px; font-size: 11.8px; line-height: 1.42; }
+th { text-align: left; font-weight: 600; font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; color: #5d5294; border-bottom: 1px solid #b2b6ca; padding: 5px 8px 5px 0; vertical-align: bottom; }
+td { border-bottom: 1px solid #e4e7f5; padding: 5px 8px 5px 0; vertical-align: top; overflow-wrap: anywhere; }
+th:last-child, td:last-child { padding-right: 0; }
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.86em; background: #f5f4ff; padding: 1px 3px; border-radius: 3px; color: #423a6a; overflow-wrap: anywhere; }
+a { color: #5d5294; }
+</style>
+</helmet>
+<doc-page margin="0.75in">
+
+<div slot="header" style="display:flex;justify-content:space-between;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:#595d6c;border-bottom:1px solid #e4e7f5;padding-bottom:5px">
+  <span>Rameshwari Jewellers — C-7 &amp; NEW-1 Verification</span>
+  <span>Pre-code · No architecture change</span>
+</div>
+<div slot="footer" style="display:flex;justify-content:space-between;font-size:9px;color:#595d6c;border-top:1px solid #e4e7f5;padding-top:5px">
+  <span>5 status edits · 0 architecture changes</span>
+  <span>C-11, OPEN-1, OPEN-2 unresolved</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px">
+  <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:#5d5294">Rameshwari Jewellers · Verification pass</div>
+  <h1 style="margin:0">C-7 Status &amp; NEW-1 Verification</h1>
+  <div style="font-size:17.5px;color:#595d6c;line-height:1.35">C-7 synchronized across four active references. NEW-1 already corrected — verified, no change made.</div>
+  <div style="height:2px;background:#9184d9;width:88px;margin-top:12px"></div>
+</div>
+
+<h2 style="margin-top:0">1 · C-7 verification</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<h5>References found, before this pass</h5>
+<table>
+  <thead><tr><th style="width:26%">Location</th><th style="width:22%">Class</th><th>State as found</th></tr></thead>
+  <tbody>
+    <tr><td>Final Reconciliation §1, executive status</td><td>ACTIVE</td><td>One row: "<code>_rj_name_alt</code> · SUPERSEDED · Category Master — not needed and is not used". <strong>Inconsistent</strong> — asserts the key itself is settled, when only its justification is.</td></tr>
+    <tr><td>Final Reconciliation §6, meta registry</td><td>ACTIVE</td><td>"<strong>SUPERSEDED</strong> — justification removed by Category Master. C-7." <strong>Inconsistent</strong> — same conflation.</td></tr>
+    <tr><td>Final Reconciliation §6, totals row</td><td>ACTIVE</td><td>"16, one of which (<code>_rj_name_alt</code>) is superseded pending C-7". Partly correct, wording conflated.</td></tr>
+    <tr><td>Development Blueprint §9.3, term meta registry</td><td>ACTIVE</td><td>"Second Hindi word for the same thing. <strong>The Conflict 1 resolution</strong>". <strong>Inconsistent</strong> — presents a superseded justification as the key's active purpose.</td></tr>
+    <tr><td>Development Blueprint §8.1, import record field</td><td>ACTIVE</td><td>"The resolution proposed for Conflict 1 — a second Hindi word that means the same thing, searchable but not a separate term." <strong>Inconsistent</strong> — same.</td></tr>
+    <tr><td>Final Reconciliation §3, superseded table</td><td>SUPERSEDED/HISTORICAL</td><td>"<code>_rj_name_alt</code> <strong>as the Decision 1 resolution</strong>" — correctly scoped to the historical usage. No change.</td></tr>
+    <tr><td>Final Reconciliation §5 C-7, §9, §10</td><td>OPEN DECISION</td><td>Already NEEDS CLARIFICATION with both options stated. No change.</td></tr>
+    <tr><td>Development Blueprint §0, Conflict 1 recommendation</td><td>SUPERSEDED/HISTORICAL</td><td>Inside the labelled Conflict 1 reasoning record. No change.</td></tr>
+    <tr><td>Category Master</td><td>LOCKED REPLACEMENT</td><td>"The <code>_rj_name_alt</code> approach is not needed and is not used." Source of truth for the <em>justification</em>. Not modified.</td></tr>
+  </tbody>
+</table>
+
+<h5>Corrections applied — four active references</h5>
+<table>
+  <thead><tr><th style="width:24%">Document · §</th><th style="width:34%">Old active wording</th><th>New active wording</th></tr></thead>
+  <tbody>
+    <tr><td>Final Reconciliation §1</td><td>One row: "<code>_rj_name_alt</code> · SUPERSEDED"</td><td><strong>Split into two rows.</strong> "<code>_rj_name_alt</code> — original Decision 1 use · SUPERSEDED · Category Master" and "<code>_rj_name_alt</code> — keep or remove the key · <strong>NEEDS CLARIFICATION</strong> · C-7 — pending owner decision".</td></tr>
+    <tr><td>Final Reconciliation §6 registry</td><td>"SUPERSEDED — justification removed by Category Master. C-7."</td><td>"<strong>PENDING C-7</strong> — its Decision 1 justification is superseded; whether the key remains is an open owner decision. <strong>No implementation may assume it exists.</strong>"</td></tr>
+    <tr><td>Final Reconciliation §6 totals</td><td>"one of which is superseded pending C-7"</td><td>"one of which (<code>_rj_name_alt</code>) is <strong>pending the C-7 owner decision</strong>"</td></tr>
+    <tr><td>Development Blueprint §9.3</td><td>"Second Hindi word for the same thing. The Conflict 1 resolution"</td><td>"<strong>PENDING C-7.</strong> Its original Decision 1 justification is superseded — pairs are separate terms. Whether the key remains, as a search-synonym field, is an open owner decision. <strong>Not an approved requirement.</strong>"</td></tr>
+    <tr><td>Development Blueprint §8.1</td><td>"The resolution proposed for Conflict 1 — a second Hindi word…"</td><td>"<strong>PENDING C-7.</strong> Proposed as the Conflict 1 resolution, which is superseded — pairs are separate terms. Whether the column exists at all awaits the owner decision; the import file must not depend on it until then."</td></tr>
+  </tbody>
+</table>
+
+<h5>Final status</h5>
+<p style="font-size:16px;font-weight:500;color:#8a6410;margin:0 0 10px">C-7 — NEEDS CLARIFICATION / PENDING OWNER DECISION</p>
+<table>
+  <thead><tr><th style="width:34%">Aspect</th><th>State</th></tr></thead>
+  <tbody>
+    <tr><td>Original Decision 1 use</td><td><strong>SUPERSEDED.</strong> Pairs resolved as separate terms, so a second-word-for-one-thing field has no remaining consumer in that role.</td></tr>
+    <tr><td>Keep or remove the key</td><td><strong>OPEN.</strong> Not decided. Options remain as documented: retain with a stated search-synonym purpose, or remove from the registry.</td></tr>
+    <tr><td>Implementation</td><td><strong>Must not assume it exists.</strong> Stated in both registry entries. The key is not an approved requirement, and the Stage 2 import file must not depend on the column.</td></tr>
+    <tr><td>Silent removal</td><td><strong>None performed.</strong> The key remains in both registries, labelled pending. No purpose invented, no approval implied.</td></tr>
+  </tbody>
+</table>
+
+<h2 style="break-before:page">2 · NEW-1 verification</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<h5>Exact active wording found — Development Blueprint §15, line 1167</h5>
+<table>
+  <thead><tr><th style="width:18%">Column</th><th>Content as found</th></tr></thead>
+  <tbody>
+    <tr><td>Component</td><td>Audience resolver</td></tr>
+    <tr><td>Class</td><td><code>Services\Notifier\AudienceResolver</code></td></tr>
+    <tr><td>Responsibility</td><td>"Expands an event into recipients from followed categories, followed collections, <strong>and the customer-declared <code>_rj_notify_prefs</code> event groups — the sole audience source</strong>. Chunks above 500."</td></tr>
+    <tr><td>Depends on</td><td><strong>Customer, Preferences</strong></td></tr>
+  </tbody>
+</table>
+<p style="font-size:18px;font-weight:600;color:#2f6b3a;margin:4px 0 10px">NEW-1 VERIFIED — NO CHANGE REQUIRED</p>
+<p>The active definition contains no Segment dependency and names <code>_rj_notify_prefs</code> as the sole audience source. It was corrected in the preceding Cleanup Pass and is already consistent with the locked architecture, so no edit was made in this pass. Followed-category and followed-collection behaviour is preserved and depends on no rejected storage — collections read <code>_rj_fav_collections</code>, categories read the customer's own follows. The 500-recipient chunking rule is intact.</p>
+
+<h2>3 · Active reference scan</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:19%">Search term</th><th style="width:22%">Active occurrence</th><th style="width:27%">Historical occurrence</th><th>Final treatment</th></tr></thead>
+  <tbody>
+    <tr><td><code>rj_customer_segment</code></td><td style="color:#2f6b3a"><strong>None</strong></td><td>Dev §0, §7.3, closing box; Tech §4.1 row + notice, closing box; Conflict 3 Resolution and Validation; Final Recon §3, §6</td><td>SUPERSEDED/HISTORICAL — all labelled NOT CREATED or REJECTED. Retain.</td></tr>
+    <tr><td><code>_rj_segment</code></td><td style="color:#2f6b3a"><strong>None</strong></td><td>Dev §0, closing box; Conflict 3 Resolution; Final Recon §3, §6</td><td>SUPERSEDED/HISTORICAL — Final Recon §6 marks it "REJECTED — never create". Retain.</td></tr>
+    <tr><td>"Segment" (capitalised, as a dependency)</td><td style="color:#2f6b3a"><strong>None</strong></td><td>Only inside the rejection records above</td><td>SUPERSEDED/HISTORICAL. The §15 depends-on column now reads "Preferences".</td></tr>
+    <tr><td>"segments" (lower case)</td><td style="color:#2f6b3a"><strong>None</strong></td><td>Tech §4.1 explanatory note, under a SUPERSEDED preface</td><td>SUPERSEDED/HISTORICAL. Retain as reasoning.</td></tr>
+    <tr><td><code>AudienceResolver</code></td><td>Dev §15, one row</td><td>None</td><td>ACTIVE — verified consistent. Depends on Customer and Preferences only.</td></tr>
+    <tr><td><code>_rj_notify_prefs</code></td><td>Dev §8.3, §9.5, §15, §7.3; Tech §8.3; Final Recon §6, §8</td><td>None</td><td>LOCKED REPLACEMENT — the sole notification-audience source.</td></tr>
+    <tr><td><code>_rj_name_alt</code></td><td>Dev §8.1, §9.3; Final Recon §1, §6 — all four now labelled PENDING C-7</td><td>Dev §0 Conflict 1 record; Final Recon §3</td><td>OPEN DECISION — pending owner decision. No active section treats it as required.</td></tr>
+  </tbody>
+</table>
+<p><strong>No active implementation section depends on <code>rj_customer_segment</code>, <code>_rj_segment</code>, or admin-assigned segment storage.</strong> No historical reasoning record was deleted.</p>
+
+<h2>4 · C-7 consistency check</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:52%">Confirmation</th><th style="width:10%">Result</th><th>Evidence</th></tr></thead>
+  <tbody>
+    <tr><td>Executive status = NEEDS CLARIFICATION</td><td>PASS</td><td>Final Recon §1 now carries two rows; the keep/remove row reads NEEDS CLARIFICATION · "C-7 — pending owner decision". Verified in the file after editing.</td></tr>
+    <tr><td>Open decisions = NEEDS CLARIFICATION</td><td>PASS</td><td>§5 C-7 row, §9 non-blocking row 1, §10 summary row — all read NEEDS CLARIFICATION. Unchanged; already correct.</td></tr>
+    <tr><td>Meta registry = pending clarification</td><td>PASS</td><td>Final Recon §6 row reads "PENDING C-7"; totals row reads "pending the C-7 owner decision"; Dev §9.3 reads "PENDING C-7 … Not an approved requirement". All verified.</td></tr>
+    <tr><td>Category Master remains source of truth</td><td>PASS</td><td>Not opened for writing. Its statement that the approach "is not needed and is not used" is cited as the authority for the superseded <em>justification</em> in Final Recon §1.</td></tr>
+    <tr><td>No implementation requirement assumes <code>_rj_name_alt</code></td><td>PASS</td><td>Both registries state it explicitly. Dev §8.1 adds that the import file must not depend on the column.</td></tr>
+    <tr><td>No silent removal performed</td><td>PASS</td><td>The key is still present in Dev §9.3, Dev §8.1's field table, the §8.1 JSON sample and Final Recon §6. Term-meta count still 16.</td></tr>
+  </tbody>
+</table>
+
+<h2>5 · NEW-1 consistency check</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<table>
+  <thead><tr><th style="width:52%">Confirmation</th><th style="width:10%">Result</th><th>Evidence</th></tr></thead>
+  <tbody>
+    <tr><td><code>_rj_notify_prefs</code> = sole notification-audience source</td><td>PASS</td><td>Named as "the sole audience source" in the §15 AudienceResolver responsibility; also the audience in Dev §8.3, Tech §8.3 and Dev §7.3.</td></tr>
+    <tr><td>No active dependency on <code>rj_customer_segment</code></td><td>PASS</td><td>Absent from §7.1, §6.1 and §15. Occurs only in labelled rejection records.</td></tr>
+    <tr><td>No active dependency on <code>_rj_segment</code></td><td>PASS</td><td>Absent from §9.5 and §15.</td></tr>
+    <tr><td>No Segment object required</td><td>PASS</td><td>§15 depends-on column reads "Customer, Preferences" — Preferences being the dependency name the Preference filter row already uses.</td></tr>
+    <tr><td>No new architecture created</td><td>PASS</td><td>No taxonomy, meta key, table or options group added. <code>_rj_notify_prefs</code> schema, consent rules, channels, drivers, throttles and quiet hours all untouched.</td></tr>
+  </tbody>
+</table>
+
+<h2>6 · Final status</h2>
+<div style="height:2px;background:#9184d9;width:50px;margin:6px 0 10px"></div>
+<div style="background:#eef7f0;border:1px solid #9cc4a6;border-radius:8px;padding:16px 18px;break-inside:avoid">
+  <p style="margin:0 0 10px;font-size:16px;font-weight:500;color:#2f6b3a">C-7 status synchronized.<br>NEW-1 verified.<br>No locked architecture changed.<br>No code written.<br>C-11, OPEN-1 and OPEN-2 remain unresolved.<br>No other specification changes made.</p>
+  <table style="margin:0">
+    <tbody>
+      <tr><td style="width:44%"><strong>Edits applied</strong></td><td>5 — three in the Final Reconciliation, two in the Development Blueprint. All five re-read and confirmed present.</td></tr>
+      <tr><td><strong>NEW-1</strong></td><td>VERIFIED — NO CHANGE REQUIRED. Already corrected in the Cleanup Pass.</td></tr>
+      <tr><td><strong>Verification</strong></td><td style="color:#2f6b3a;font-weight:600">C-7: 6 / 6 PASS · NEW-1: 5 / 5 PASS</td></tr>
+      <tr><td><strong>Active segment dependencies</strong></td><td style="color:#2f6b3a;font-weight:600">Zero</td></tr>
+      <tr><td><strong>Locked architecture</strong></td><td>Unchanged — 6 post types · 7 taxonomies · 8 tables · 9 settings groups · 306 terms · 5 roots · 16 category term meta keys</td></tr>
+      <tr><td><strong>NEW-2</strong></td><td>Still deferred to C-7. Development Blueprint §7.2's feature-matrix row is untouched and must be covered by whichever way C-7 resolves.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</doc-page>
+</x-dc>
+</body>
+</html>
