@@ -30,10 +30,12 @@
 		</properties>
 	</rule>
 
+	<!-- `rj` is also an approved prefix, but WPCS rejects prefixes under three characters,
+	     so it cannot be listed here. The Stage 1 `rj_`/`RJ_` bootstrap globals carry
+	     scoped phpcs:disable/enable pairs in their own files instead. -->
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array">
-				<element value="rj"/>
 				<element value="rameshwari"/>
 			</property>
 		</properties>
@@ -45,8 +47,9 @@
 	</rule>
 	<rule ref="Generic.PHP.BacktickOperator"/>
 
-	<!-- Test classes follow PHPUnit naming (FooTest.php), not class-foo.php. -->
+	<!-- PSR-4 classes (src/) and PHPUnit tests use ClassName.php, not class-foo.php. -->
 	<rule ref="WordPress.Files.FileName">
 		<exclude-pattern>*/tests/*</exclude-pattern>
+		<exclude-pattern>*/src/*</exclude-pattern>
 	</rule>
 </ruleset>
