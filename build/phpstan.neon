@@ -1,0 +1,24 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+    - vendor/spaze/phpstan-disallowed-calls/extension.neon
+    - vendor/spaze/phpstan-disallowed-calls/disallowed-execution-calls.neon
+
+parameters:
+    level: 6
+    phpVersion: 80200
+    paths:
+        - ../plugin
+        - ../optional
+        - ../theme
+        - ../tests
+    treatPhpDocTypesAsCertain: false
+    ignoreErrors:
+        -
+            # The test bootstrap must locate the WordPress test library at run time.
+            identifier: rameshwari.variableInclude
+            path: ../tests/bootstrap.php
+
+rules:
+    - Rameshwari\Build\PHPStan\NoEvalRule
+    - Rameshwari\Build\PHPStan\NoShellExecRule
+    - Rameshwari\Build\PHPStan\NoVariableIncludeRule

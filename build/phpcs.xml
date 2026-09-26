@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<ruleset name="Rameshwari">
+	<description>WordPress Coding Standards for the Rameshwari platform.</description>
+
+	<!-- Paths are relative to this file. -->
+	<file>../plugin</file>
+	<file>../optional</file>
+	<file>../theme</file>
+	<file>../tests</file>
+
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+
+	<arg name="extensions" value="php"/>
+	<arg name="colors"/>
+	<arg value="sp"/>
+
+	<!-- Locked floors: PHP 8.2, WordPress 6.5. -->
+	<config name="testVersion" value="8.2-"/>
+	<config name="minimum_wp_version" value="6.5"/>
+
+	<rule ref="WordPress"/>
+	<rule ref="PHPCompatibilityWP"/>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="rameshwari"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="rj"/>
+				<element value="rameshwari"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Dangerous-construct bans. PHPStan enforces the same rules; both run in the pipeline. -->
+	<rule ref="Squiz.PHP.Eval.Discouraged">
+		<type>error</type>
+	</rule>
+	<rule ref="Generic.PHP.BacktickOperator"/>
+
+	<!-- Test classes follow PHPUnit naming (FooTest.php), not class-foo.php. -->
+	<rule ref="WordPress.Files.FileName">
+		<exclude-pattern>*/tests/*</exclude-pattern>
+	</rule>
+</ruleset>

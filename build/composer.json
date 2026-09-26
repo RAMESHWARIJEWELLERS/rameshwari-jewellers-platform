@@ -1,0 +1,38 @@
+{
+    "name": "rameshwari/platform-build",
+    "description": "Development tooling only. Nothing in build/ ships to production.",
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.2"
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^9.6",
+        "spaze/phpstan-disallowed-calls": "^4.0",
+        "szepeviktor/phpstan-wordpress": "^2.0",
+        "wp-coding-standards/wpcs": "^3.1",
+        "yoast/phpunit-polyfills": "^1.1"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rameshwari\\Build\\PHPStan\\": "phpstan/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "8.2.0"
+        },
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "lint": "phpcs --standard=phpcs.xml",
+        "analyse": "phpstan analyse -c phpstan.neon --no-progress --memory-limit=1G",
+        "test": "phpunit -c phpunit.xml.dist"
+    }
+}

@@ -1,0 +1,85 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: build
+
+jobs:
+  lint:
+    name: Coding standards (phpcs)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer:v2
+          coverage: none
+      - run: composer install --no-interaction --no-progress --prefer-dist
+      - run: composer lint
+
+  analyse:
+    name: Static analysis (phpstan)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer:v2
+          coverage: none
+      - run: composer install --no-interaction --no-progress --prefer-dist
+      - run: composer analyse
+
+  test:
+    name: PHPUnit · PHP ${{ matrix.php }} · WordPress ${{ matrix.wp }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Declared floors: RJ_MIN_PHP 8.2, RJ_MIN_WP 6.5
+          - php: '8.2'
+            wp: '6.5'
+          # Current: newest PHP confirmed with PHPUnit 9, newest WordPress
+          - php: '8.4'
+            wp: 'latest'
+    env:
+      WP_TESTS_DIR: /tmp/wordpress-tests-lib
+      WP_CORE_DIR: /tmp/wordpress
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: wordpress_test
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mysqli
+          tools: composer:v2
+          coverage: none
+      - run: composer install --no-interaction --no-progress --prefer-dist
+      - run: bash bin/install-wp-tests.sh wordpress_test root root 127.0.0.1:3306 ${{ matrix.wp }}
+      - run: composer test
