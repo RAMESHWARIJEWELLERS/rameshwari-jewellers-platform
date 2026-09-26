@@ -12,11 +12,36 @@ parameters:
         - ../theme
         - ../tests
     treatPhpDocTypesAsCertain: false
+    # Stage 1 plugin constants, defined without executing the plugin.
+    bootstrapFiles:
+        - stubs/rj-constants.php
+    # WordPress test-library symbols (WP_UnitTestCase, tests_add_filter). Read, never executed.
+    scanFiles:
+        - stubs/wordpress-tests.php
+    # Analyse the RJ constants by type, not by the placeholder value in the stub.
+    dynamicConstantNames:
+        - RJ_VERSION
+        - RJ_DB_VERSION
+        - RJ_FILE
+        - RJ_PATH
+        - RJ_URL
+        - RJ_MIN_PHP
+        - RJ_MIN_WP
+        - RJ_TEXTDOMAIN
     ignoreErrors:
         -
             # The test bootstrap must locate the WordPress test library at run time.
             identifier: rameshwari.variableInclude
             path: ../tests/bootstrap.php
+            count: 2
+        -
+            # The autoloader requires a path built from a validated class name.
+            # A PSR-4 autoloader cannot know its file path ahead of time, so this
+            # one include is the only exception in plugin code. count: 1 makes a
+            # second variable include in this file fail the analysis.
+            identifier: rameshwari.variableInclude
+            path: ../plugin/rameshwari-core/src/Support/Autoloader.php
+            count: 1
 
 rules:
     - Rameshwari\Build\PHPStan\NoEvalRule

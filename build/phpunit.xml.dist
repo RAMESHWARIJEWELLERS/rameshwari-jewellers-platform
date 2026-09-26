@@ -7,7 +7,10 @@
 	failOnRisky="true"
 	>
 	<testsuites>
-		<!-- Add unit, rest, security, migration and regression suites as they gain tests. -->
+		<!-- Unit tests run inside the WordPress test library because the classes call escaping and JSON helpers. -->
+		<testsuite name="unit">
+			<directory suffix="Test.php">../tests/unit</directory>
+		</testsuite>
 		<testsuite name="integration">
 			<directory suffix="Test.php">../tests/integration</directory>
 		</testsuite>

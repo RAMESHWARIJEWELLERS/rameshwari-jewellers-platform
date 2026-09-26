@@ -2,7 +2,8 @@
 /**
  * PHPUnit bootstrap for the Rameshwari platform.
  *
- * Stage 0 loads the WordPress core test library only. No plugin is loaded yet.
+ * Loads the WordPress core test library, then the core plugin as a
+ * must-use plugin so it is active for every test.
  *
  * @package Rameshwari
  */
@@ -21,4 +22,14 @@ if ( ! file_exists( $rj_tests_dir . '/includes/functions.php' ) ) {
 define( 'WP_TESTS_PHPUNIT_POLYFILLS_PATH', dirname( __DIR__ ) . '/build/vendor/yoast/phpunit-polyfills' );
 
 require_once $rj_tests_dir . '/includes/functions.php';
+
+tests_add_filter(
+	'muplugins_loaded',
+	static function (): void {
+		require dirname( __DIR__ ) . '/plugin/rameshwari-core/rameshwari-core.php';
+
+		\Rameshwari\Core\Support\Autoloader::register( 'Rameshwari\\Tests\\Fixtures\\', __DIR__ . '/fixtures/' );
+	}
+);
+
 require_once $rj_tests_dir . '/includes/bootstrap.php';
