@@ -8,10 +8,12 @@
  * @package Rameshwari
  */
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- `rj` is the approved project prefix; WPCS rejects prefixes under three characters. Test-bootstrap global only.
 $rj_tests_dir = getenv( 'WP_TESTS_DIR' );
 if ( ! $rj_tests_dir ) {
 	$rj_tests_dir = rtrim( sys_get_temp_dir(), '/\\' ) . '/wordpress-tests-lib';
 }
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 
 if ( ! file_exists( $rj_tests_dir . '/includes/functions.php' ) ) {
 	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite, WordPress.Security.EscapeOutput.OutputNotEscaped -- CLI-only diagnostic.
@@ -19,6 +21,7 @@ if ( ! file_exists( $rj_tests_dir . '/includes/functions.php' ) ) {
 	exit( 1 );
 }
 
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound -- Name is fixed by the WordPress test library, which reads it.
 define( 'WP_TESTS_PHPUNIT_POLYFILLS_PATH', dirname( __DIR__ ) . '/build/vendor/yoast/phpunit-polyfills' );
 
 require_once $rj_tests_dir . '/includes/functions.php';

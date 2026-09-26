@@ -22,7 +22,7 @@ final class ModuleRegistry {
 	/**
 	 * Adds a module class.
 	 *
-	 * @param class-string<Module> $module_class Class implementing Module.
+	 * @param string $module_class Class name. Anything that does not implement Module is rejected.
 	 * @return void
 	 * @throws \InvalidArgumentException When the class is not a Module.
 	 * @throws \LogicException           When the id is already taken.

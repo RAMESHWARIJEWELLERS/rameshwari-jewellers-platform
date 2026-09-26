@@ -15,13 +15,6 @@ use Rameshwari\Core\Support\Logger;
 final class Plugin {
 
 	/**
-	 * Modules registered at boot. Empty in Stage 1; each later stage adds its own.
-	 *
-	 * @var array<int, class-string<Module>>
-	 */
-	private const MODULES = array();
-
-	/**
 	 * The booted instance.
 	 *
 	 * @var Plugin|null
@@ -45,11 +38,8 @@ final class Plugin {
 			return;
 		}
 
+		// Stage 1 registers no modules. Each later stage adds its $registry->add() calls here.
 		$registry = new ModuleRegistry();
-
-		foreach ( self::MODULES as $module_class ) {
-			$registry->add( $module_class );
-		}
 
 		self::$instance = new self( $registry );
 		self::$instance->register_modules();
@@ -86,7 +76,11 @@ final class Plugin {
 	 * @return array<int, string> Ids of the modules registered, in order.
 	 */
 	public function register_modules(): array {
-		/** @var Logger $logger */
+		/**
+		 * The shared logger.
+		 *
+		 * @var Logger $logger
+		 */
 		$logger = $this->container->get( Logger::class );
 
 		try {

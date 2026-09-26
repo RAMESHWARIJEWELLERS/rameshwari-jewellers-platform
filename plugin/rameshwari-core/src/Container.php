@@ -37,7 +37,7 @@ final class Container {
 	/**
 	 * Registers a factory. The factory runs on first get(), not here.
 	 *
-	 * @param string                    $id      Service id.
+	 * @param string                     $id      Service id.
 	 * @param callable(Container): mixed $factory Builds the service.
 	 * @return void
 	 * @throws \LogicException When the service was already built.

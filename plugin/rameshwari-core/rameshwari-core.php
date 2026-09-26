@@ -18,6 +18,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound -- `rj` is the approved project prefix; WPCS rejects prefixes under three characters. Scoped to the Stage 1 bootstrap identifiers below, which tests, stubs and the gate depend on.
 define( 'RJ_VERSION', '0.1.0' );
 define( 'RJ_DB_VERSION', 0 );
 define( 'RJ_FILE', __FILE__ );
@@ -26,6 +27,9 @@ define( 'RJ_URL', plugin_dir_url( __FILE__ ) );
 define( 'RJ_MIN_PHP', '8.2' );
 define( 'RJ_MIN_WP', '6.5' );
 define( 'RJ_TEXTDOMAIN', 'rameshwari' );
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
+
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound -- `rj` is the approved project prefix; WPCS rejects prefixes under three characters. Scoped to the Stage 1 bootstrap identifiers below, which tests, stubs and the gate depend on.
 
 /**
  * Lists unmet platform requirements.
@@ -124,6 +128,7 @@ function rj_activate() {
 		array( 'back_link' => true )
 	);
 }
+// phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound
 
 register_activation_hook( __FILE__, 'rj_activate' );
 

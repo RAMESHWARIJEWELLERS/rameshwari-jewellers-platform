@@ -30,10 +30,12 @@
 		</properties>
 	</rule>
 
+	<!-- `rj` is also an approved prefix, but WPCS rejects prefixes under three characters,
+	     so it cannot be listed here. The Stage 1 `rj_`/`RJ_` bootstrap globals carry
+	     scoped phpcs:disable/enable pairs in their own files instead. -->
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array">
-				<element value="rj"/>
 				<element value="rameshwari"/>
 			</property>
 		</properties>
