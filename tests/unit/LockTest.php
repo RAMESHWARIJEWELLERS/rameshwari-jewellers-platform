@@ -118,6 +118,25 @@ final class LockTest extends WP_UnitTestCase {
 	}
 
 	/**
+	 * With no mode given, an undecided object-cache flag still yields a working lock.
+	 */
+	public function test_default_mode_normalises_to_bool(): void {
+		global $_wp_using_ext_object_cache;
+
+		$saved                      = $_wp_using_ext_object_cache;
+		$_wp_using_ext_object_cache = null; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Reproduces the undecided state.
+
+		try {
+			$lock = new Lock( null, fn(): int => $this->now );
+
+			$this->assertIsString( $lock->acquire( 'default-mode', 60 ) );
+			$this->assertTrue( $lock->is_locked( 'default-mode' ) );
+		} finally {
+			$_wp_using_ext_object_cache = $saved; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Restores the original state.
+		}
+	}
+
+	/**
 	 * Names must be safe storage keys.
 	 */
 	public function test_rejects_invalid_name(): void {
