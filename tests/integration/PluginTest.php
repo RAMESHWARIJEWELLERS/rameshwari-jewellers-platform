@@ -7,8 +7,11 @@
 
 namespace Rameshwari\Tests\Integration;
 
+use Rameshwari\Core\Activator;
+use Rameshwari\Core\Deactivator;
 use Rameshwari\Core\ModuleRegistry;
 use Rameshwari\Core\Plugin;
+use Rameshwari\Core\Upgrader;
 use Rameshwari\Core\Support\Logger;
 use Rameshwari\Tests\Fixtures\Modules\BaseModule;
 use Rameshwari\Tests\Fixtures\Modules\CycleAModule;
@@ -51,10 +54,15 @@ final class PluginTest extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Stage 1 registers no modules and no post types, taxonomies or options.
+	 * Booting registers no modules, post types or taxonomies and writes no schema
+	 * version. The only hooks added since Stage 1 are Stage 3's approved
+	 * activation, deactivation and admin_init upgrade callbacks.
 	 */
 	public function test_stage_1_registers_nothing_else(): void {
+		$version = get_option( 'rj_db_version' );
+
 		$this->assertSame( array(), ( new Plugin( new ModuleRegistry() ) )->register_modules() );
+		Plugin::boot();
 
 		foreach ( get_post_types() as $post_type ) {
 			$this->assertStringStartsNotWith( 'rj_', $post_type );
@@ -62,7 +70,14 @@ final class PluginTest extends WP_UnitTestCase {
 		foreach ( get_taxonomies() as $taxonomy ) {
 			$this->assertStringStartsNotWith( 'rj_', $taxonomy );
 		}
-		$this->assertFalse( get_option( 'rj_db_version' ) );
+		$this->assertSame( $version, get_option( 'rj_db_version' ), 'Booting must not write the schema version.' );
+
+		$activation = 'activate_' . plugin_basename( RJ_FILE );
+
+		$this->assertSame( 10, has_action( $activation, 'rj_activate' ) );
+		$this->assertSame( 10, has_action( $activation, array( Activator::class, 'activate' ) ) );
+		$this->assertSame( 10, has_action( 'deactivate_' . plugin_basename( RJ_FILE ), array( Deactivator::class, 'deactivate' ) ) );
+		$this->assertSame( 10, has_action( 'admin_init', array( Upgrader::class, 'on_admin_init' ) ) );
 	}
 
 	/**

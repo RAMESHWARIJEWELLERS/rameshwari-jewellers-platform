@@ -28,6 +28,26 @@ abstract class WP_UnitTestCase extends \PHPUnit\Framework\TestCase {
 	 * @return void
 	 */
 	public function tear_down(): void {}
+
+	/**
+	 * Query filter that makes CREATE TABLE temporary inside a test.
+	 *
+	 * @param string $query SQL.
+	 * @return string
+	 */
+	public function _create_temporary_tables( $query ) {
+		return $query;
+	}
+
+	/**
+	 * Query filter that makes DROP TABLE temporary inside a test.
+	 *
+	 * @param string $query SQL.
+	 * @return string
+	 */
+	public function _drop_temporary_tables( $query ) {
+		return $query;
+	}
 }
 
 /**

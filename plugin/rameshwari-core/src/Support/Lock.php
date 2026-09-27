@@ -50,7 +50,8 @@ final class Lock {
 	 * @param callable|null $clock      Returns the current Unix time. Defaults to time().
 	 */
 	public function __construct( ?bool $persistent = null, ?callable $clock = null ) {
-		$this->persistent = $persistent ?? wp_using_ext_object_cache();
+		// wp_using_ext_object_cache() returns null until WordPress has decided, as in some test runs.
+		$this->persistent = $persistent ?? (bool) wp_using_ext_object_cache();
 		$this->clock      = $clock ?? static fn(): int => time();
 	}
 
