@@ -77,9 +77,25 @@ final class Installer {
 	private static function stamp(): void {
 		$state = get_option( Upgrader::STATE_OPTION, array() );
 		$state = is_array( $state ) ? $state : array();
+		if ( ! isset( $state['install_timestamp'] ) && isset( $state['installed_at'] ) ) {
+			$state['install_timestamp'] = $state['installed_at'];
+		}
+		if ( ! isset( $state['completed_migration_ids'] ) && isset( $state['migrations'] ) && is_array( $state['migrations'] ) ) {
+			$state['completed_migration_ids'] = $state['migrations'];
+		}
+		$state = array_merge(
+			array(
+				'install_timestamp'       => null,
+				'completed_migration_ids' => array(),
+				'last_rebuild_times'      => array(),
+				'seeded'                  => false,
+			),
+			$state
+		);
+		unset( $state['installed_at'], $state['migrations'] );
 
-		if ( ! isset( $state['installed_at'] ) ) {
-			$state['installed_at'] = gmdate( 'Y-m-d H:i:s' );
+		if ( ! isset( $state['install_timestamp'] ) ) {
+			$state['install_timestamp'] = gmdate( 'Y-m-d H:i:s' );
 			update_option( Upgrader::STATE_OPTION, $state, false );
 		}
 	}

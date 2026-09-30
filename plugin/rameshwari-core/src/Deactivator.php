@@ -7,12 +7,16 @@
 
 namespace Rameshwari\Core;
 
+use Rameshwari\Core\Data\Rewrites;
+
 /**
  * Runs on deactivation. Touches no data: tables, rows, the schema version,
  * roles and capabilities all stay, so re-activating changes nothing.
  *
- * Unscheduling cron, clearing cache groups and flushing rewrites are added
- * by the stages that create them; in Stage 3 none exist yet.
+ * Stage 4 unregisters the post types, taxonomies and rewrite rules and
+ * rebuilds the rules without them. Posts and terms stay in the database and
+ * reappear on reactivation. Unscheduling cron and clearing cache groups are
+ * added by the stages that create them.
  */
 final class Deactivator {
 
@@ -22,6 +26,6 @@ final class Deactivator {
 	 * @return void
 	 */
 	public static function deactivate(): void {
-		// Nothing to undo in Stage 3.
+		Rewrites::remove();
 	}
 }
