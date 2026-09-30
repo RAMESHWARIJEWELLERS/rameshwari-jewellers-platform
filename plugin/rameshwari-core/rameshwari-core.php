@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound -- `rj` is the approved project prefix; WPCS rejects prefixes under three characters. Scoped to the Stage 1 bootstrap identifiers below, which tests, stubs and the gate depend on.
 define( 'RJ_VERSION', '0.1.0' );
-define( 'RJ_DB_VERSION', 0 );
+define( 'RJ_DB_VERSION', 1 );
 define( 'RJ_FILE', __FILE__ );
 define( 'RJ_PATH', plugin_dir_path( __FILE__ ) );
 define( 'RJ_URL', plugin_dir_url( __FILE__ ) );
@@ -143,3 +143,8 @@ require_once RJ_PATH . 'src/Support/Autoloader.php';
 \Rameshwari\Core\Support\Autoloader::register( 'Rameshwari\\Core\\', RJ_PATH . 'src/' );
 
 add_action( 'plugins_loaded', array( \Rameshwari\Core\Plugin::class, 'boot' ) );
+
+// Registered after rj_activate, so the requirement guard always runs first.
+register_activation_hook( __FILE__, array( \Rameshwari\Core\Activator::class, 'activate' ) );
+register_deactivation_hook( __FILE__, array( \Rameshwari\Core\Deactivator::class, 'deactivate' ) );
+add_action( 'admin_init', array( \Rameshwari\Core\Upgrader::class, 'on_admin_init' ) );

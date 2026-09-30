@@ -45,7 +45,17 @@
 	<rule ref="Squiz.PHP.Eval.Discouraged">
 		<type>error</type>
 	</rule>
-	<rule ref="Generic.PHP.BacktickOperator"/>
+	<rule ref="WordPress.WP.Capabilities">
+        <properties>
+            <property name="custom_capabilities" type="array">
+                <element value="rj_manage_settings"/>
+                <element value="rj_manage_categories"/>
+                <element value="rj_manage_catalogue"/>
+            </property>
+        </properties>
+    </rule>
+
+    <rule ref="Generic.PHP.BacktickOperator"/>
 
 	<!-- PSR-4 classes (src/) and PHPUnit tests use ClassName.php, not class-foo.php. -->
 	<rule ref="WordPress.Files.FileName">

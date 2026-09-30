@@ -38,8 +38,12 @@ final class Plugin {
 			return;
 		}
 
-		// Stage 1 registers no modules. Each later stage adds its $registry->add() calls here.
 		$registry = new ModuleRegistry();
+
+		// Stage 4: the core registries. The registry orders them by their requires().
+		foreach ( array( Data\PostTypes::class, Data\Taxonomies::class, Data\Options::class, Data\Meta::class, Data\Rewrites::class ) as $module ) {
+			$registry->add( $module );
+		}
 
 		self::$instance = new self( $registry );
 		self::$instance->register_modules();
