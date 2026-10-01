@@ -187,13 +187,31 @@ final class Upgrader {
 	private function record( int $number ): void {
 		$state = get_option( self::STATE_OPTION, array() );
 		$state = is_array( $state ) ? $state : array();
-		$done  = isset( $state['migrations'] ) && is_array( $state['migrations'] ) ? $state['migrations'] : array();
+		if ( ! isset( $state['install_timestamp'] ) && isset( $state['installed_at'] ) ) {
+			$state['install_timestamp'] = $state['installed_at'];
+		}
+		if ( ! isset( $state['completed_migration_ids'] ) && isset( $state['migrations'] ) && is_array( $state['migrations'] ) ) {
+			$state['completed_migration_ids'] = $state['migrations'];
+		}
+		$state = array_merge(
+			array(
+				'install_timestamp'       => null,
+				'completed_migration_ids' => array(),
+				'last_rebuild_times'      => array(),
+				'seeded'                  => false,
+			),
+			$state
+		);
+		unset( $state['installed_at'], $state['migrations'] );
+		$done = isset( $state['completed_migration_ids'] ) && is_array( $state['completed_migration_ids'] ) ? $state['completed_migration_ids'] : array();
 
 		if ( ! in_array( $number, $done, true ) ) {
 			$done[] = $number;
 		}
 
-		$state['migrations'] = $done;
+		$state['completed_migration_ids'] = $done;
+		$state['last_rebuild_times']      = isset( $state['last_rebuild_times'] ) && is_array( $state['last_rebuild_times'] ) ? $state['last_rebuild_times'] : array();
+		$state['seeded']                  = isset( $state['seeded'] ) && is_bool( $state['seeded'] ) ? $state['seeded'] : false;
 
 		update_option( self::STATE_OPTION, $state, false );
 	}

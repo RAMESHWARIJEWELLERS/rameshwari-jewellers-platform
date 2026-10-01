@@ -8,7 +8,9 @@
 namespace Rameshwari\Tests\Integration;
 
 use Rameshwari\Core\Data\Capabilities;
+use Rameshwari\Core\Data\PostTypes;
 use Rameshwari\Core\Data\Schema;
+use Rameshwari\Core\Data\Taxonomies;
 use Rameshwari\Core\Support\Logger;
 use Rameshwari\Core\Upgrader;
 use WP_UnitTestCase;
@@ -44,6 +46,11 @@ abstract class DatabaseTestCase extends WP_UnitTestCase {
 	 */
 	public function tear_down(): void {
 		$this->clean();
+
+		// A deactivation test unregisters the post types and taxonomies for the rest of the process.
+		PostTypes::register_all();
+		Taxonomies::register_all();
+
 		parent::tear_down();
 	}
 

@@ -8,6 +8,8 @@
 namespace Rameshwari\Tests\Integration;
 
 use Rameshwari\Core\Activator;
+use Rameshwari\Core\Data\PostTypes;
+use Rameshwari\Core\Data\Taxonomies;
 use Rameshwari\Core\Deactivator;
 use Rameshwari\Core\ModuleRegistry;
 use Rameshwari\Core\Plugin;
@@ -58,18 +60,17 @@ final class PluginTest extends WP_UnitTestCase {
 	 * version. The only hooks added since Stage 1 are Stage 3's approved
 	 * activation, deactivation and admin_init upgrade callbacks.
 	 */
-	public function test_stage_1_registers_nothing_else(): void {
+	public function test_registers_only_approved_entities_and_hooks(): void {
 		$version = get_option( 'rj_db_version' );
 
 		$this->assertSame( array(), ( new Plugin( new ModuleRegistry() ) )->register_modules() );
 		Plugin::boot();
 
-		foreach ( get_post_types() as $post_type ) {
-			$this->assertStringStartsNotWith( 'rj_', $post_type );
-		}
-		foreach ( get_taxonomies() as $taxonomy ) {
-			$this->assertStringStartsNotWith( 'rj_', $taxonomy );
-		}
+		$rj_types = array_values( array_filter( get_post_types(), static fn( string $name ): bool => str_starts_with( $name, 'rj_' ) ) );
+		$rj_taxes = array_values( array_filter( get_taxonomies(), static fn( string $name ): bool => str_starts_with( $name, 'rj_' ) ) );
+
+		$this->assertEqualsCanonicalizing( array_keys( PostTypes::definitions() ), $rj_types, 'Only the six Stage 4 post types may exist.' );
+		$this->assertEqualsCanonicalizing( array_keys( Taxonomies::definitions() ), $rj_taxes, 'Only the seven Stage 4 taxonomies may exist.' );
 		$this->assertSame( $version, get_option( 'rj_db_version' ), 'Booting must not write the schema version.' );
 
 		$activation = 'activate_' . plugin_basename( RJ_FILE );

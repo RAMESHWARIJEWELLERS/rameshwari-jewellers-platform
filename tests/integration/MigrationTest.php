@@ -67,7 +67,12 @@ final class MigrationTest extends DatabaseTestCase {
 		$state = get_option( Upgrader::STATE_OPTION );
 
 		$this->assertIsArray( $state );
-		$this->assertSame( array( 1 ), $state['migrations'] );
+		$this->assertSame( array( 1 ), $state['completed_migration_ids'] );
+		$this->assertArrayHasKey( 'install_timestamp', $state );
+		$this->assertArrayHasKey( 'last_rebuild_times', $state );
+		$this->assertArrayHasKey( 'seeded', $state );
+		$this->assertArrayNotHasKey( 'migrations', $state );
+		$this->assertArrayNotHasKey( 'installed_at', $state );
 	}
 
 	/**

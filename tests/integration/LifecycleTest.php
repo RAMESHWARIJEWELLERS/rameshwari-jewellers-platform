@@ -29,7 +29,10 @@ final class LifecycleTest extends DatabaseTestCase {
 		$this->assertSame( 1, Upgrader::stored_version() );
 		$this->assertNotNull( get_role( 'rj_customer' ) );
 		$this->assertTrue( get_role( 'administrator' )->has_cap( 'rj_manage_settings' ) );
-		$this->assertArrayHasKey( 'installed_at', (array) get_option( Upgrader::STATE_OPTION ) );
+		$this->assertSame(
+			array( 'install_timestamp', 'completed_migration_ids', 'last_rebuild_times', 'seeded' ),
+			array_keys( (array) get_option( Upgrader::STATE_OPTION ) )
+		);
 	}
 
 	/**
