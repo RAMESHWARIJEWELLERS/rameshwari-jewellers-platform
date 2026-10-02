@@ -28,6 +28,11 @@ final class Meta implements Module {
 
 	public const FLAT_TERM_TAXONOMIES = array( 'rj_metal', 'rj_purity', 'rj_occasion', 'rj_audience' );
 
+	/**
+	 * Private, system-owned: the first time a product was published (Stage 6, Option A).
+	 */
+	public const PUBLICATION_MARKER = '_rj_first_published_at';
+
 	private const DERIVED = array( '_rj_depth_cache', '_rj_path_cache', '_rj_count_deep' );
 
 	private const CATEGORY_ONLY = array( '_rj_depth_cache', '_rj_path_cache', '_rj_count_deep', '_rj_menu_columns' );
@@ -40,20 +45,21 @@ final class Meta implements Module {
 	public static function post_meta(): array {
 		return array(
 			'rj_product'      => array(
-				'_rj_code'             => array( 'code', '', true ),
-				'_rj_name_hi'          => array( 'text:191', '', true ),
-				'_rj_name_en'          => array( 'text:191', '', true ),
-				'_rj_weight'           => array( 'decimal:3:0:99999', 0, true ),
-				'_rj_weight_unit'      => array( 'enum:g|tola|carat', 'g', true ),
-				'_rj_gallery'          => array( 'attachments:12', array(), true ),
-				'_rj_stone_details'    => array( 'textarea:500', '', true ),
-				'_rj_making_note'      => array( 'textarea:500', '', false ),
-				'_rj_whatsapp_message' => array( 'textarea:0', '', false ),
-				'_rj_visibility'       => array( 'enum:public|hidden|archived', 'public', true ),
-				'_rj_featured'         => array( 'bool', false, true ),
-				'_rj_primary_term'     => array( 'term:rj_category', 0, true ),
-				'_rj_view_count'       => array( 'int:0:', 0, false ),
-				'_rj_enquiry_count'    => array( 'int:0:', 0, false ),
+				'_rj_code'               => array( 'code', '', true ),
+				'_rj_name_hi'            => array( 'text:191', '', true ),
+				'_rj_name_en'            => array( 'text:191', '', true ),
+				'_rj_weight'             => array( 'decimal:3:0:99999', 0, true ),
+				'_rj_weight_unit'        => array( 'enum:g|tola|carat', 'g', true ),
+				'_rj_gallery'            => array( 'attachments:12', array(), true ),
+				'_rj_stone_details'      => array( 'textarea:500', '', true ),
+				'_rj_making_note'        => array( 'textarea:500', '', false ),
+				'_rj_whatsapp_message'   => array( 'textarea:0', '', false ),
+				'_rj_visibility'         => array( 'enum:public|hidden|archived', 'public', true ),
+				'_rj_featured'           => array( 'bool', false, true ),
+				'_rj_primary_term'       => array( 'term:rj_category', 0, true ),
+				'_rj_view_count'         => array( 'int:0:', 0, false ),
+				'_rj_enquiry_count'      => array( 'int:0:', 0, false ),
+				'_rj_first_published_at' => array( 'datetime', '', false ),
 			),
 			'rj_reel'         => array(
 				'_rj_source_type'     => array( 'enum:upload|instagram|youtube|url', 'upload', true ),
@@ -194,11 +200,18 @@ final class Meta implements Module {
 	public static function register_all(): void {
 		foreach ( self::post_meta() as $post_type => $keys ) {
 			foreach ( $keys as $key => $spec ) {
-				$auth = 'rj_page_section' === $post_type
-					? static fn(): bool => current_user_can( 'rj_manage_settings' )
-					: static fn( bool $allowed, string $meta_key, int $object_id ): bool => current_user_can( 'edit_post', $object_id );
+				if ( self::PUBLICATION_MARKER === $key ) {
+					$auth = '__return_false';
+				} elseif ( 'rj_page_section' === $post_type ) {
+					$auth = static fn(): bool => current_user_can( 'rj_manage_settings' );
+				} else {
+					$auth = static fn( bool $allowed, string $meta_key, int $object_id ): bool => current_user_can( 'edit_post', $object_id );
+				}
 
-				register_post_meta( $post_type, $key, self::args( $spec, $auth ) );
+				// Product visibility passes through unsanitised so ProductGuard can refuse an invalid value instead of it being coerced to public.
+				$pass_through = 'rj_product' === $post_type && '_rj_visibility' === $key;
+
+				register_post_meta( $post_type, $key, self::args( $spec, $auth, $pass_through ) );
 			}
 		}
 
@@ -396,9 +409,10 @@ final class Meta implements Module {
 	 *
 	 * @param array{0: string, 1: mixed, 2: bool} $spec Rule, default, public.
 	 * @param callable|string                     $auth Authorisation callback.
+	 * @param bool                                $pass_through Keep the raw string so a guard can refuse invalid input.
 	 * @return array<string, mixed>
 	 */
-	private static function args( array $spec, callable|string $auth ): array {
+	private static function args( array $spec, callable|string $auth, bool $pass_through = false ): array {
 		list( $rule, $default, $public ) = $spec;
 
 		$type = self::type( $rule );
@@ -407,7 +421,9 @@ final class Meta implements Module {
 			'type'              => $type,
 			'single'            => true,
 			'default'           => $default,
-			'sanitize_callback' => static fn( mixed $value ): mixed => self::sanitize( $rule, $value ),
+			'sanitize_callback' => $pass_through
+				? static fn( mixed $value ): mixed => is_scalar( $value ) ? (string) $value : ''
+				: static fn( mixed $value ): mixed => self::sanitize( $rule, $value ),
 			'auth_callback'     => $auth,
 			'show_in_rest'      => $public ? array( 'schema' => self::schema( $rule, $type ) ) : false,
 		);
