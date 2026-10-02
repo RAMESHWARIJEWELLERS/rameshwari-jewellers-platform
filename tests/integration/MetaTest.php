@@ -10,6 +10,8 @@ namespace Rameshwari\Tests\Integration;
 use Rameshwari\Core\Data\Capabilities;
 use Rameshwari\Core\Data\Meta;
 use Rameshwari\Core\Data\Options;
+use Rameshwari\Core\Product\ProductData;
+use Rameshwari\Core\Product\ProductModule;
 use WP_UnitTestCase;
 
 /**
@@ -29,11 +31,11 @@ final class MetaTest extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Runtime registrations: 56 post, 63 term, 10 user (129 total).
+	 * Runtime registrations: 57 post, 63 term, 10 user (130 total).
 	 */
 	public function test_registration_counts(): void {
 		$post = array(
-			'rj_product'      => 14,
+			'rj_product'      => 15, // Fourteen §9.1 keys plus the Stage 6 publication marker.
 			'rj_reel'         => 9,
 			'rj_collection'   => 4,
 			'rj_showroom'     => 11,
@@ -284,12 +286,7 @@ final class MetaTest extends WP_UnitTestCase {
 	 * Weight leaves public product responses while the switch is off, and returns when it is on.
 	 */
 	public function test_weight_follows_public_switch(): void {
-		$product = self::factory()->post->create(
-			array(
-				'post_type'   => 'rj_product',
-				'post_status' => 'publish',
-			)
-		);
+		$product = $this->published_product();
 		update_post_meta( $product, '_rj_weight', 12.5 );
 
 		wp_set_current_user( 0 );
@@ -302,5 +299,48 @@ final class MetaTest extends WP_UnitTestCase {
 		$on = rest_do_request( new \WP_REST_Request( 'GET', '/wp/v2/products/' . $product ) )->get_data();
 
 		$this->assertEquals( 12.5, $on['meta']['_rj_weight'] );
+	}
+
+	/**
+	 * A product that satisfies the Stage 6 publication contract.
+	 *
+	 * A bare published post cannot stay published, so tests that need a public
+	 * product build a complete one through the product service.
+	 *
+	 * @return int
+	 */
+	private function published_product(): int {
+		$root = (int) self::factory()->term->create(
+			array(
+				'taxonomy' => 'rj_category',
+				'name'     => 'Meta root ' . wp_generate_password( 6, false ),
+			)
+		);
+		$leaf = (int) self::factory()->term->create(
+			array(
+				'taxonomy' => 'rj_category',
+				'name'     => 'Meta leaf ' . wp_generate_password( 6, false ),
+				'parent'   => $root,
+			)
+		);
+
+		$id = ProductModule::service()->save(
+			ProductData::from_array(
+				array(
+					'code'       => 'MT-WEIGHT',
+					'name_en'    => 'Weight ring',
+					'name_hi'    => 'अंगूठी',
+					'metal'      => array( (int) self::factory()->term->create( array( 'taxonomy' => 'rj_metal' ) ) ),
+					'purity'     => array( (int) self::factory()->term->create( array( 'taxonomy' => 'rj_purity' ) ) ),
+					'categories' => array( $leaf ),
+					'status'     => 'publish',
+				)
+			)
+		);
+
+		$this->assertIsInt( $id );
+		$this->assertSame( 'publish', get_post_status( $id ) );
+
+		return $id;
 	}
 }

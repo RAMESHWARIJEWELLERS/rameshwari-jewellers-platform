@@ -337,3 +337,37 @@ Two layers. **Layer 1** is the domain boundary: `ProductService` and `ProductDat
 **Importer contract.** The future importer's only write surface is `ProductService` with `ProductData`. A direct WordPress write by an importer is a defect.
 
 **Planned tests for this section.** Direct `update_post_meta` with a duplicate code is rejected; direct `wp_set_object_terms` with a root or resolver term is reverted and the previous terms stay; a second metal or purity is reverted; a classic save of a product missing a required field stays draft with a notice; REST publish with a missing field is refused before any write; the title is overwritten after a meta-only save; the save handler does not recurse; two concurrent claims of one code leave exactly one owner; a scan finds no direct product writes outside `src/Product/`.
+
+## Addendum — owner decisions H-1 = A and M-4 = A (correction pass)
+
+Recorded after the independent audit. Earlier decisions and history above are unchanged; this addendum resolves the audit's conflict between D3 and the statement that reads are unchanged.
+
+**H-1 = A. Stage 6 owns public-read visibility enforcement for `rj_product`.**
+- A product is public only when `post_status = publish` AND `_rj_visibility = public` (an unset visibility is public, the registered default).
+- Hidden and archived products are excluded from public product reads: the REST collection (`rest_rj_product_query`), the REST single read (`rest_request_before_callbacks`, a 404 for the public), explicit `rj_product` native queries (`pre_get_posts`, a meta clause), and broad native queries that can return products (taxonomy archives, searches, `post_type=any`, mixed post-type arrays containing `rj_product`). Broad queries exclude non-public product IDs with `post__not_in`, so pagination and other post types are untouched. `is_admin()` is not an exemption: `admin-ajax.php` requests from anonymous or low-privilege users obey the same rule. Only users who can edit others' products are unfiltered.
+- The rule is stated once, in `ProductService::public_visibility_clause()` (query form) and `ProductService::is_public()` (single form).
+- Authenticated/editorial/admin access stays with existing WordPress permissions: users who can edit others' products are not filtered. A lower-privileged user (for example a contributor) sees only public products through these paths.
+- Internal lookups (Product Code identity) pass `rj_internal` and see every status and visibility.
+- No custom REST route is added.
+
+**M-4 = A. An already-published product must remain publication-valid after later mutations.**
+- Q6 requirements are unchanged and weight stays optional.
+- Service updates re-check publication using the stored status. REST updates re-check using the stored status when the request omits one. Direct meta writes that would blank a published product's English or Hindi name are refused. Term writes (`set_object_terms`) and term removals (`wp_remove_object_terms`, through `deleted_term_relationships`) that would leave a published product invalid are reverted; removing one of several valid categories is allowed. A classic save that leaves a published product invalid reverts it to draft with an admin notice. Hard deletion is not intercepted (`before_delete_post` marks the product so the removal guard does not restore terms on it). Replacement through `wp_set_object_terms()` is judged on its final state (`guard_terms`); the removal guard ignores the removals core performs inside it, so a valid one-term replacement is allowed and an empty replacement is reverted. Deleting a taxonomy term (`wp_delete_term()`) is not guarded: both term guards stand down while core deletes a term, so no relationship is restored to a row about to be deleted and no orphan row is left. A published product whose only Metal or Purity term is deleted becomes publication-invalid; no replacement term is invented (accepted limitation).
+
+**Other corrections recorded here**
+- M-3: the publication marker is recorded on `transition_post_status` to publish only when the product has no publication gaps (add-if-absent). A product that transitions before its meta and terms are saved is held as pending and marked once the save proves it valid. A save that fails validation is reverted to draft and never receives a marker.
+- M-2: an invalid `_rj_visibility` is rejected, never coerced to public (`InvalidArgumentException` from `ProductData`, 400 `rj_invalid` over REST, refused for direct meta writes). For `rj_product`, `Meta.php` registers the visibility key with a pass-through string sanitizer so `ProductGuard::guard_meta()` receives the raw value and refuses anything other than `public`, `hidden` or `archived`; other post types keep the enum sanitizer.
+- M-1: the Product Code claim is rechecked after the write (REST after-insert, `save_post` priority 25). The lowest product ID keeps the code; the other loses it and, if published, returns to draft. No database constraint and no change to `rj_product_index`. This narrows the race; it is not a proof of safety under true parallel requests.
+- M-5: the system-write scope moved to `ProductSystemScope`, so the service no longer depends on the guard. `ProductGuard::as_system()` is kept and delegates.
+- L-1: every re-entrancy flag is set through `with_busy()` with `try/finally`.
+
+## Addendum — correction pass M-4a, M-6, M-8
+
+- **M-4a:** removals now have their own guard (`guard_term_removal`), because `wp_remove_object_terms()` fires `deleted_term_relationships`, not `set_object_terms`. A removal that would leave a published product invalid is reverted using the same publication rule as additions and replacements.
+- **M-4a follow-up:** core's `wp_set_object_terms()` and `wp_delete_term()` also remove relationships. `guard_term_removal` skips both (detected from the call stack, which cannot stick as a flag could), and `guard_terms` skips `wp_delete_term()`. Direct `wp_remove_object_terms()` calls remain guarded.
+- **M-6:** the `is_admin()` early return in `ProductGuard::public_query()` is removed. The capability rule (`can_read_all()`) is the only exemption.
+- **M-8:** this addendum and the statements above now describe the implementation.
+
+**Accepted, non-blocking limitations (not changed by this pass)**
+- **M-1:** the Product Code recheck narrows the race; it is not proof of safety under true parallel requests. If a higher-ID write finishes its recheck before a lower-ID write has saved, both can hold the code until the next save of the higher one.
+- **M-7:** broad public queries run one extra lookup for non-public product IDs. It is unbounded and not memoised per request; cost grows with the number of hidden and archived products.

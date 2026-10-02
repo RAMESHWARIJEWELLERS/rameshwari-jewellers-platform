@@ -37,12 +37,14 @@ final class ThemeIndependenceTest extends WP_UnitTestCase {
 		$this->assertSame( WP_DEFAULT_THEME, get_stylesheet() );
 
 		foreach ( PostTypes::definitions() as $post_type => $args ) {
-			$route   = '/wp/v2/' . $args['rest_base'];
+			$route = '/wp/v2/' . $args['rest_base'];
+			// A product cannot be published without its required fields (Stage 6), so it is created as a draft.
+			$status  = 'rj_product' === $post_type ? 'draft' : 'publish';
 			$request = new \WP_REST_Request( 'POST', $route );
 			$request->set_body_params(
 				array(
 					'title'  => 'Theme check',
-					'status' => 'publish',
+					'status' => $status,
 				)
 			);
 
@@ -55,6 +57,26 @@ final class ThemeIndependenceTest extends WP_UnitTestCase {
 			$this->assertSame( 200, $read->get_status(), $post_type );
 			$this->assertSame( $post_type, $read->get_data()['type'] );
 		}
+	}
+
+	/**
+	 * Publishing a product that lacks its required fields is refused before anything is written.
+	 */
+	public function test_incomplete_product_publish_is_rejected_over_rest(): void {
+		$request = new \WP_REST_Request( 'POST', '/wp/v2/products' );
+		$request->set_body_params(
+			array(
+				'title'  => 'Theme check',
+				'status' => 'publish',
+			)
+		);
+
+		$response = rest_do_request( $request );
+		$data     = $response->get_data();
+
+		$this->assertSame( 400, $response->get_status() );
+		$this->assertSame( 'rj_invalid', $data['code'] );
+		$this->assertStringContainsString( 'Product Code', $data['message'] );
 	}
 
 	/**
