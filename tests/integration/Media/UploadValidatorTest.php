@@ -239,12 +239,23 @@ final class UploadValidatorTest extends \WP_UnitTestCase {
 		$this->assertSame( 'file_missing', $result->code() );
 	}
 
-	/**
-	 * A file cut off before its header is not an image.
-	 */
+		/**
+		 * A truncated, corrupt image file is rejected.
+		 *
+		 * The detector classifies a cut-off file differently by environment: some
+		 * identify the PNG signature and then fail to read dimensions
+		 * (image_unreadable), others do not recognise the type at all
+		 * (unsupported_type). Both are legitimate rejections. The invariant is that
+		 * the file is never accepted and carries one of exactly these two codes.
+		 */
 	public function test_truncated_file_is_not_an_image(): void {
-		$this->assertFails( 'unsupported_type', substr( $this->png( 10, 10 ), 0, 12 ), 'cut.png' );
+		$result = ( new UploadValidator() )->validate( $this->temp( substr( $this->png( 10, 10 ), 0, 12 ) ), 'cut.png', 'product_primary' );
+
+		$this->assertFalse( $result->is_valid() );
+		$this->assertNotSame( '', $result->code() );
+		$this->assertContains( $result->code(), array( 'unsupported_type', 'image_unreadable' ) );
 	}
+
 
 	/**
 	 * The detected type decides, not what the caller says it is.
