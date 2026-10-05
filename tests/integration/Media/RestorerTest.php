@@ -107,10 +107,11 @@ final class RestorerTest extends \WP_UnitTestCase {
 	/**
 	 * The replacer with real collaborators.
 	 *
+	 * @param RetentionStore|null $store Retention store, to control its clock.
 	 * @return Replacer
 	 */
-	private function replacer(): Replacer {
-		return new Replacer( new UploadValidator(), new RetentionStore(), new Formats(), new Lock(), new Logger( static function (): void {} ) );
+	private function replacer( ?RetentionStore $store = null ): Replacer {
+		return new Replacer( new UploadValidator(), $store ?? new RetentionStore(), new Formats(), new Lock(), new Logger( static function (): void {} ) );
 	}
 
 	/**
@@ -189,19 +190,21 @@ final class RestorerTest extends \WP_UnitTestCase {
 	/**
 	 * Replaces with a new PNG through the real replacer.
 	 *
-	 * @param int $id    Attachment ID.
-	 * @param int $size  New size.
-	 * @param int $shade New shade.
+	 * @param int      $id    Attachment ID.
+	 * @param int      $size  New size.
+	 * @param int      $shade New shade.
+	 * @param int|null $at    Unix time the artifact is stamped with; the real time when null.
 	 * @return string The artifact that kept the old file.
 	 */
-	private function replace_with( int $id, int $size, int $shade ): string {
+	private function replace_with( int $id, int $size, int $shade, ?int $at = null ): string {
 		$tmp = wp_tempnam( 'rjincoming' );
 
 		file_put_contents( $tmp, $this->png( $size, $shade ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- Local test file.
 
 		$this->temps[] = $tmp;
 
-		$result = $this->replacer()->replace( $id, $tmp, 'new.png', 'image' );
+		$store  = null === $at ? null : new RetentionStore( static fn (): int => $at );
+		$result = $this->replacer( $store )->replace( $id, $tmp, 'new.png', 'image' );
 
 		$this->assertTrue( $result->is_success(), $result->code() );
 
@@ -422,13 +425,14 @@ final class RestorerTest extends \WP_UnitTestCase {
 	 * With several retained versions, any one can be restored.
 	 */
 	public function test_multiple_versions(): void {
-		$id = $this->attachment( 300, 40 );
-		$h1 = $this->hash_of( $id );
-		$a1 = $this->replace_with( $id, 200, 100 );
-		$h2 = $this->hash_of( $id );
-		$a2 = $this->replace_with( $id, 100, 220 );
+		$now = time();
+		$id  = $this->attachment( 300, 40 );
+		$h1  = $this->hash_of( $id );
+		$a1  = $this->replace_with( $id, 200, 100, $now - 2 * self::DAY );
+		$h2  = $this->hash_of( $id );
+		$a2  = $this->replace_with( $id, 100, 220, $now - 1 * self::DAY );
 
-		$this->assertSame( array( $a2, $a1 ), array_slice( $this->restorer()->candidates( $id )->names(), 0, 2 ) );
+		$this->assertSame( array( $a2, $a1 ), $this->restorer()->candidates( $id )->names() );
 
 		$this->assertTrue( $this->restorer()->restore( $id, $a1 )->is_success() );
 		$this->assertSame( $h1, $this->hash_of( $id ) );
