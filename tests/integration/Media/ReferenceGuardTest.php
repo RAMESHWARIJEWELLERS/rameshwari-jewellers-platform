@@ -13,8 +13,8 @@ use Rameshwari\Core\Services\Media\ReferenceSources;
 use Rameshwari\Core\Support\Logger;
 
 /**
- * Real WordPress deletes against every reference kind. The guard is registered
- * here by the test; nothing in the plugin wires it yet.
+ * Real WordPress deletes against every reference kind. The test builds its own guard
+ * and attaches it before the media module's guard, so it can read its own log and report.
  */
 final class ReferenceGuardTest extends \WP_UnitTestCase {
 
@@ -33,7 +33,10 @@ final class ReferenceGuardTest extends \WP_UnitTestCase {
 	private array $log = array();
 
 	/**
-	 * Registers the guard.
+	 * Attaches the guard ahead of the media module's own one.
+	 *
+	 * The media module hooks its guard at priority 10. This one runs at priority 1, so when it
+	 * blocks, the module's guard sees a non-null result and returns it unchanged.
 	 */
 	public function set_up(): void {
 		parent::set_up();
@@ -47,14 +50,15 @@ final class ReferenceGuardTest extends \WP_UnitTestCase {
 				}
 			)
 		);
-		$this->guard->register();
+
+		add_filter( 'pre_delete_attachment', array( $this->guard, 'filter' ), 1, 3 );
 	}
 
 	/**
-	 * Detaches the guard.
+	 * Detaches only this test's guard, leaving the module's hook in place.
 	 */
 	public function tear_down(): void {
-		$this->guard->unregister();
+		remove_filter( 'pre_delete_attachment', array( $this->guard, 'filter' ), 1 );
 		remove_all_filters( 'query' );
 
 		parent::tear_down();
