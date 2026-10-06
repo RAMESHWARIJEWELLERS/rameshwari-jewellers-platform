@@ -190,12 +190,26 @@ final class FormatsTest extends \WP_UnitTestCase {
 	 * Siblings are discovered by file existence, AVIF first.
 	 */
 	public function test_siblings_are_found_by_file_existence(): void {
-		$derivative = $this->derivative( $this->image_attachment(), 'rj_card' );
-		$formats    = new Formats();
+		$source = $this->derivative( $this->image_attachment(), 'rj_card' );
 
+		// Metadata generation now converts to modern formats through the media module, so this test
+		// uses its own copy of the derivative, whose name no conversion has ever seen.
+		$derivative = dirname( $source ) . '/rjsiblings-' . wp_generate_uuid4() . '.png';
+
+		$this->assertTrue( copy( $source, $derivative ) );
+
+		$this->files[] = $derivative;
+
+		$formats = new Formats();
+
+		$this->assertFileDoesNotExist( dirname( $derivative ) . '/' . pathinfo( $derivative, PATHINFO_FILENAME ) . '.webp' );
+		$this->assertFileDoesNotExist( dirname( $derivative ) . '/' . pathinfo( $derivative, PATHINFO_FILENAME ) . '.avif' );
 		$this->assertSame( array(), $formats->siblings( $derivative ) );
 
 		$webp = $this->sibling( $derivative, 'webp' );
+
+		$this->assertSame( array( 'image/webp' => $webp ), $formats->siblings( $derivative ) );
+
 		$avif = $this->sibling( $derivative, 'avif' );
 
 		$this->assertSame(
@@ -214,6 +228,14 @@ final class FormatsTest extends \WP_UnitTestCase {
 		$id         = $this->image_attachment();
 		$metadata   = wp_get_attachment_metadata( $id );
 		$derivative = $this->derivative( $id, 'rj_card' );
+
+		// Metadata generation already converted this derivative through the media module. Remove
+		// only that derivative's modern-format files, so the failed conversion starts from none.
+		foreach ( ( new Formats() )->siblings( $derivative ) as $sibling ) {
+			wp_delete_file( $sibling );
+		}
+
+		$this->assertSame( array(), ( new Formats() )->siblings( $derivative ) );
 
 		add_filter( 'wp_image_editors', '__return_empty_array' );
 

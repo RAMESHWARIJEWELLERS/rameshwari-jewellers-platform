@@ -119,9 +119,44 @@ final class ResponsiveTest extends \WP_UnitTestCase {
 
 		wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $file ) );
 
+		$this->remove_incidental_siblings( $id, $file );
+
 		$this->attachments[] = $id;
 
 		return $id;
+	}
+
+	/**
+	 * Removes the modern-format files the media module wrote while the fixture was built.
+	 *
+	 * Only siblings of this attachment's own sizes are removed. The original file and the size
+	 * files themselves are never touched, so a WebP original keeps its own sizes.
+	 *
+	 * @param int    $id   Attachment ID.
+	 * @param string $file Original file path.
+	 * @return void
+	 */
+	private function remove_incidental_siblings( int $id, string $file ): void {
+		$metadata = wp_get_attachment_metadata( $id );
+		$sizes    = is_array( $metadata ) && isset( $metadata['sizes'] ) && is_array( $metadata['sizes'] ) ? $metadata['sizes'] : array();
+		$protect  = array( $file );
+		$parents  = array();
+
+		foreach ( $sizes as $size ) {
+			if ( is_array( $size ) && isset( $size['file'] ) && is_string( $size['file'] ) ) {
+				$path      = dirname( $file ) . '/' . $size['file'];
+				$protect[] = $path;
+				$parents[] = $path;
+			}
+		}
+
+		foreach ( $parents as $parent ) {
+			foreach ( ( new Formats() )->siblings( $parent ) as $sibling ) {
+				if ( ! in_array( $sibling, $protect, true ) ) {
+					wp_delete_file( $sibling );
+				}
+			}
+		}
 	}
 
 	/**
