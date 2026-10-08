@@ -41,7 +41,7 @@ final class Plugin {
 		$registry = new ModuleRegistry();
 
 		// Stage 4: the core registries. Stage 5: the category rules. The registry orders them by their requires().
-		foreach ( array( Data\PostTypes::class, Data\Taxonomies::class, Data\Options::class, Data\Meta::class, Data\Rewrites::class, Category\CategoryRules::class, Category\CategoryPickerBox::class, Product\ProductModule::class, Services\Media\MediaModule::class ) as $module ) {
+		foreach ( array( Data\PostTypes::class, Data\Taxonomies::class, Data\Options::class, Data\Meta::class, Data\Rewrites::class, Category\CategoryRules::class, Category\CategoryPickerBox::class, Product\ProductModule::class, Services\Media\MediaModule::class, Domain\PageSection\PageSectionModule::class ) as $module ) {
 			$registry->add( $module );
 		}
 
