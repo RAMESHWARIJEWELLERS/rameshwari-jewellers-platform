@@ -52,7 +52,7 @@ final class Cache {
 		}
 
 		$this->group      = $group;
-		$this->persistent = $persistent ?? wp_using_ext_object_cache();
+		$this->persistent = $persistent ?? (bool) wp_using_ext_object_cache();
 	}
 
 	/**
